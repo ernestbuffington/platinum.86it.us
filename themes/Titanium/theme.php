@@ -25,7 +25,7 @@
 /*----------------------------------------------------------------*/
 if (realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) { exit('Access Denied'); }
 
-$theme_name = basename(dirname(__FILE__));
+$theme_name = basename(__DIR__);
 
 /*--------------------------*/
 /* Theme Management Section */
@@ -57,12 +57,17 @@ $avatar_overide_size = '150';
 $make_xtreme_avatar_small = true;
 $use_xtreme_voting = false;
 
+if(isset($ThemeInfo['bgcolor1']))
 $bgcolor1   = $ThemeInfo['bgcolor1'];
+if(isset($ThemeInfo['bgcolor2']))
 $bgcolor2   = $ThemeInfo['bgcolor2'];
+if(isset($ThemeInfo['bgcolor3']))
 $bgcolor3   = $ThemeInfo['bgcolor3'];
+if(isset($ThemeInfo['bgcolor4']))
 $bgcolor4   = $ThemeInfo['bgcolor4'];
-
+if(isset($ThemeInfo['textcolor1']))
 $textcolor1 = $ThemeInfo['textcolor1'];
+if(isset($ThemeInfo['textcolor2']))
 $textcolor2 = $ThemeInfo['textcolor2'];
 
 define('titanium_theme_dir', 'themes/'.$theme_name.'/');
@@ -72,7 +77,8 @@ define('titanium_js_dir', titanium_style_dir.'js/');
 define('titanium_hdr_images', titanium_images_dir.'hdr/');
 define('titanium_ftr_images', titanium_images_dir.'ftr/');
 
-define('titanium_width', ((substr($ThemeInfo['themewidth'], -1) == '%') ? str_replace('%','',($ThemeInfo['themewidth'])).'%' : str_replace('px','',($ThemeInfo['themewidth'])).'px'));
+if(isset($ThemeInfo['themewidth']))
+define('titanium_width', ((str_ends_with((string) $ThemeInfo['themewidth'], '%')) ? str_replace('%','',((string) $ThemeInfo['themewidth'])).'%' : str_replace('px','',((string) $ThemeInfo['themewidth'])).'px'));
 
 define('titanium_copyright', 'Titanium Theme Designed By: TheGhost<br />Copyright &copy '.date('Y').' The 86it Developer Network<br />All Rights Reserved');
 define('titanium_copyright_click', 'Click the Link to Display Copyrights');
