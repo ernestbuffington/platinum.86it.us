@@ -1318,7 +1318,10 @@ if (count($snavi_mod) > 0)
 	if ((count($snavi_menu_clan_cat) > 0) || (count($snavi_menu_clan_inactive) > 0) || (count($snavi_menu_clan_unlisted) > 0))
 
 	{
-
+    
+	if(!isset($snavi_lang['clan_desc']))
+	$snavi_lang['clan_desc'] = 'The GhostTown Clan (GT)';
+	
     $snavi_menu_clan_top = 'null|>|null|>|#IMG=' . $snavi_image['menu_clan'] . '#|>|' . $snavi_lang['clan_desc'] . '|>|#INDEX#|>|null|>|null';
 
 		$snavi_menu_clan_sub = array();
