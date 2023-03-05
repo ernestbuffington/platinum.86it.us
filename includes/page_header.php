@@ -40,10 +40,10 @@ global $name, $sitename, $is_inline_review, $prefix, $db;
 $sql = "SELECT custom_title from ".$prefix."_modules where title='$name'";
 $result = $db->sql_query($sql);
 $row = $db->sql_fetchrow($result);
-if ($row[custom_title] == "") {
+if ($row['custom_title'] == "") {
     $mod_name = preg_replace("/_/", " ", $name);
 } else {
-    $mod_name = $row[custom_title];
+    $mod_name = $row['custom_title'];
 }
 //if (!$is_inline_review & $mod_name != "Private Messages") {
 //    title("$sitename: $mod_name");
