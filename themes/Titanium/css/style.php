@@ -15,11 +15,17 @@ global $digits_color, $fieldset_border_width, $fieldset_color, $define_theme_xtr
 /****************************************/ 
 /* Theme Colors Definition              */
 /****************************************/
+if(isset($ThemeInfo['bgcolor1']))
 $bgcolor1   = $ThemeInfo['bgcolor1'];
+if(isset($ThemeInfo['bgcolor2']))
 $bgcolor2   = $ThemeInfo['bgcolor2'];
+if(isset($ThemeInfo['bgcolor3']))
 $bgcolor3   = $ThemeInfo['bgcolor3'];
+if(isset($ThemeInfo['bgcolor4']))
 $bgcolor4   = $ThemeInfo['bgcolor4'];
+if(isset($ThemeInfo['textcolor1']))
 $textcolor1 = $ThemeInfo['textcolor1'];
+if(isset($ThemeInfo['bgcolor2']))
 $textcolor2 = $ThemeInfo['textcolor2'];
 /****************************************/
 ?> 
