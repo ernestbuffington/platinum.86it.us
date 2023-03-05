@@ -456,18 +456,22 @@ function ShoutBox($ShoutSubmit, $prefix, $ShoutComment, $db, $user, $cookie, $sh
 	} else {
 		$mid_content = "<table style=\"table-layout: fixed; width: 100%;\" border=\"0\" align=\"left\" cellspacing=\"0\" cellpadding=\"2\">";
 	}
+    
+	global $db, $prefix;	
+	
 	$flag = 1;
 	$ThemeSel = get_theme();
 	$sql = "SELECT * from ".$prefix."_shoutbox_themes WHERE themeName='$ThemeSel'";
 	$resultT = $db->sql_query($sql);
 	$rowColor = $db->sql_fetchrow($resultT);
+	
 	if (is_user($user)) {
 		$username = $cookie[1];
 		if ($username != '') {
-			$sqluserinfo = "SELECT user_timezone, user_dateformat, FROM ".$prefix."_users WHERE username=".$username." ";
-			$resultuserinfo = $db->sql_query($sqluserinfo);
-			$userSetup = $db->sql_fetchrow($resultuserinfo);
-		}
+			$sqlF = "SELECT `user_timezone`, `user_dateformat` FROM `".$prefix."_users` WHERE `username`='$username'";
+			$resultF = $db->sql_query($sqlF);
+			$userSetup = $db->sql_fetchrow($resultF);
+	 }
 	}
 	$sql = "select * from ".$prefix."_shoutbox_date";
 	$resultD = $db->sql_query($sql);
@@ -748,6 +752,7 @@ $shoutAvatar = 1; // 1 = show / 0 = hide
 	$ShoutMarqueeheight = $rowsize['height'];
 }
 switch($ShoutSubmit) {
+	
 	default:
 	ShoutBox($ShoutSubmit, $prefix, $ShoutComment, $db, $user, $cookie, $shoutuid);
 	break;
