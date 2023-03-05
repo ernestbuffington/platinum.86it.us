@@ -58,7 +58,7 @@ if ( !defined('BLOCK_FILE') ) {
 }
 global $prefix, $ShoutSubmit, $ShoutComment, $db, $user, $cookie, $shoutuid, $top_content, $mid_content, $bottom_content, $ShoutMarqueewidth, $ShoutMarqueeheight, $currentlang;
 function ShoutBox($ShoutSubmit, $prefix, $ShoutComment, $db, $user, $cookie, $shoutuid) {
-	$BannedShouter = null;
+ $BannedShouter = null;
  $ShoutError = null;
  $userSetup = [];
  $tempContent = [];
@@ -410,7 +410,7 @@ function ShoutBox($ShoutSubmit, $prefix, $ShoutComment, $db, $user, $cookie, $sh
 	$sql = "select * from ".$prefix."_shoutbox_theme_images WHERE themeName='$ThemeSel'";
 	$result = $db->sql_query($sql);
 	$themeRow = $db->sql_fetchrow($result);
-	if ($themeRow['blockBackgroundImage'] != '' AND file_exists("modules/Shout_Box/images/background/$themeRow[blockBackgroundImage]")) {
+	if (isset($themeRow['blockBackgroundImage']) && $themeRow['blockBackgroundImage'] != '' AND file_exists("modules/Shout_Box/images/background/$themeRow[blockBackgroundImage]")) {
 		$showBackground = 'yes';
 	} else {
 		$showBackground = 'no';
