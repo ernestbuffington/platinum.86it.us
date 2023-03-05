@@ -495,12 +495,12 @@ if( $ab_config['track_active'] == 1 AND !is_excluded($nsnst_const['remote_ip']))
 		if(!$c2c) { $c2c = '00'; }
 		if($nsnst_const['ban_user_id'] == 1) { $nsnst_const['ban_username2'] = ''; } else { $nsnst_const['ban_username2'] = $nsnst_const['ban_username']; }
 		$refered_from = htmlentities($nsnst_const['referer']);
-		if(!@get_magic_quotes_runtime()) {
-			$ban_username2 = addslashes($nsnst_const['ban_username2']);
-			$user_agent = addslashes($nsnst_const['user_agent']);
-			$pg = addslashes($pg);
-			$refered_from = addslashes($refered_from);
-		}
+		
+		$ban_username2 = addslashes($nsnst_const['ban_username2']);
+		$user_agent = addslashes($nsnst_const['user_agent']);
+		$pg = addslashes($pg);
+		$refered_from = addslashes($refered_from);
+		
 		$db->sql_query('INSERT INTO `' . $prefix . '_nsnst_tracked_ips` (`user_id`, `username`, `date`, `ip_addr`, `ip_long`, `page`, `user_agent`, `refered_from`, `x_forward_for`, `client_ip`, `remote_addr`, `remote_port`, `request_method`, `c2c`) VALUES ("' . addslashes($nsnst_const['ban_user_id']) . '", "' . $ban_username2 . '", "' . addslashes($nsnst_const['ban_time']) . '", "' . addslashes($nsnst_const['remote_ip']) . '", "' . addslashes($nsnst_const['remote_long']) .'", "' . $pg . '", "' . $user_agent . '", "' . $refered_from . '", "' . addslashes($nsnst_const['forward_ip']) . '", "' . addslashes($nsnst_const['client_ip']) . '", "' . addslashes($nsnst_const['remote_addr']) . '", "' . addslashes($nsnst_const['remote_port']) . '", "' . addslashes($nsnst_const['request_method']) . '", "' . $c2c . '")');
 		$clearedtime = strtotime(date('Y-m-d', $nsnst_const['ban_time']));
 		$cleartime = strtotime(date('Y-m-d', $nsnst_const['ban_time']));
