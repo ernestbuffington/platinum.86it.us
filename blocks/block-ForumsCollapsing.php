@@ -109,6 +109,15 @@
 #               hideViewReadOnly mode.                                 #
 # 12/03/2004  : Added truncation to poster name and last replied name. #
 ########################################################################
+
+########################################################################
+# Applied rules:
+# * LongArrayToShortArrayRector
+# * ListToArrayDestructRector (https://wiki.php.net/rfc/short_list_syntax https://www.php.net/manual/en/migration71.new-features.php#migration71.new-features.symmetric-array-destructuring)
+# * SensitiveConstantNameRector (https://wiki.php.net/rfc/case_insensitive_constant_deprecation)
+# * NullToStrictStringFuncCallArgRector
+########################################################################
+
 global $admin, $bgcolor1, $bgcolor2, $db, $prefix, $sitename, $textcolor1, $textcolor2, $user, $user_prefix, $userinfo, $currentlang, $language;
 $l = $userinfo['user_level'];
 $hideLinksFromGuests = TRUE;
@@ -147,15 +156,15 @@ if(file_exists('language/rwsforumcollapsing/lang-'.$currentlang.'.php')) {
 //
 // The following should not be changed.  If you need to modify them, modify them in the language folder.
 // These are strictly local scope
-$bfcShowHide = bfcSHOWHIDE;
-$bfcJumpForum = bfcJUMPFORUM;
-$bfcJumpFunction = bfcJUMPFUNCTION;
-$bfcForum = bfcFORUM;
-$bfcTopic = bfcTOPIC;
-$bfcReplies = bfcREPLIES;
-$bfcAuthor = bfcAUTHOR;
-$bfcViews = bfcVIEWS;
-$bfcLastPost = bfcLASTPOST;
+$bfcShowHide = \BFCSHOWHIDE;
+$bfcJumpForum = \BFCJUMPFORUM;
+$bfcJumpFunction = \BFCJUMPFUNCTION;
+$bfcForum = \BFCFORUM;
+$bfcTopic = \BFCTOPIC;
+$bfcReplies = \BFCREPLIES;
+$bfcAuthor = \BFCAUTHOR;
+$bfcViews = \BFCVIEWS;
+$bfcLastPost = \BFCLASTPOST;
 // Calculate posting time offset for user defined timezones
 $serverTimeZone = date('Z') / 3600;
 if ($serverTimeZone >= 0) {
@@ -222,18 +231,18 @@ if ($showTickerMessage) {
 }
 $content = '';
 if (strlen($backendForumsXML)>0) {
-	$content .= '<div style="text-align: center"><a href="' . $backendForumsXML . '" title="' . bfcBACKENDTITLE . '"><img src="images/blocks/xmlicon.gif" alt="" border="0" /></a></div><br />';
+	$content .= '<div style="text-align: center"><a href="' . $backendForumsXML . '" title="' . \BFCBACKENDTITLE . '"><img src="images/blocks/xmlicon.gif" alt="" border="0" /></a></div><br />';
 }
 if ($showTopPosters==1 || $showTopPosters==2) {
 	$sql = 'SELECT `user_id`, `username`, `user_posts`, `user_avatar`, `user_level`, `rank_title`, `rank_id` FROM `' . $user_prefix . '_users` u LEFT JOIN `' . $prefix . '_bbranks`'
 		. ' r on u.user_rank=r.rank_id WHERE `username` NOT IN (' . $skipTopPostersUserNames . ') ORDER BY `user_posts` DESC LIMIT 0,' . $showTopPostersNum;
 	$result=$db->sql_query($sql);
 	$num_posters=$db->sql_numrows($result);
-	$content .= '<div style="text-align: center"><span style="font-weight: bold; text-decoration: underline;">' . bfcTOPPOSTERS . '</span><br /><br /><table class="outer" cellpadding="0"'
+	$content .= '<div style="text-align: center"><span style="font-weight: bold; text-decoration: underline;">' . \BFCTOPPOSTERS . '</span><br /><br /><table class="outer" cellpadding="0"'
 			. ' style="border-collapse: collapse; border-color: ' . $textcolor1 . '; margin: 0 auto; vertical-align: middle;" cellspacing="1" border="0">';
 	$cycle = 1;
 	$content .= '<tr class="even">';
-	while(list($user_id, $username, $user_posts, $user_avatar, $user_level, $rank_title, $rank_id) = $db->sql_fetchrow($result)) {
+	while([$user_id, $username, $user_posts, $user_avatar, $user_level, $rank_title, $rank_id] = $db->sql_fetchrow($result)) {
 		$staffTitle = '';
 		if ($showTopPostersRanks==3) {
 			if ($user_level==2||$user_level==3) {
@@ -262,7 +271,7 @@ if ($showTopPosters==1 || $showTopPosters==2) {
 			if ($user_avatar == '') {
 				$content .= '&nbsp;&nbsp;<a href="modules.php?name=Forums&amp;file=profile&amp;mode=viewprofile&amp;u=' . $user_id . '" ' . $staffTitle . '>'
 						. '<img alt="" src="modules/Forums/images/avatars/noimage.gif" border ="0" width="32" /></a></td>';
-			} elseif (preg_match('#http://#i', $user_avatar)) {
+			} elseif (preg_match('#http://#i', (string) $user_avatar)) {
 				$content .= '&nbsp;&nbsp;<a href="modules.php?name=Forums&amp;file=profile&amp;mode=viewprofile&amp;u=' . $user_id . '" ' . $staffTitle . '>'
 						. '<img alt="" src="' . $user_avatar . '" border ="0" width="32" /></a></td>';
 			} else {
@@ -294,9 +303,9 @@ if ($showJumpBoxes) {
 			GROUP BY c.cat_id, c.cat_title, c.cat_order
 			ORDER BY c.cat_order';
 	if ( !($result = $db->sql_query($sql)) ) {
-		$content = bfcGETCATEGORYLISTERROR . bfcMYSQLSAID . mysql_error();
+		$content = \BFCGETCATEGORYLISTERROR . \BFCMYSQLSAID . mysql_error();
 	}
-	$category_rows = array();
+	$category_rows = [];
 	while ( $row = $db->sql_fetchrow($result) ) {
 		$category_rows[] = $row;
 	}
@@ -305,11 +314,11 @@ if ($showJumpBoxes) {
 				FROM `' . $prefix . '_bbforums`
 				ORDER BY `cat_id`, `forum_order`';
 		if ( !($result = $db->sql_query($sql)) ) {
-			$content = bfcGETFORUMINFOERROR . bfcMYSQLSAID . mysql_error();
+			$content = \BFCGETFORUMINFOERROR . \BFCMYSQLSAID . mysql_error();
 		}
 		$boxstring = '<select name="' . POST_FORUM_URL . '" onchange="if(this.options[this.selectedIndex].value != -1){ top.location.href=this.options[this.selectedIndex].value }">'
 					. '<optgroup label="' . 'Select Forum' . '" style="color:' . $textcolor2 . '"><option value="-1">&nbsp;</option></optgroup>';
-		$forum_rows = array();
+		$forum_rows = [];
 		while ( $row = $db->sql_fetchrow($result) ) {
 			$forum_rows[] = $row;
 		}
@@ -336,16 +345,16 @@ if ($showJumpBoxes) {
 	}
 }
 $links = '<select onchange="if(this.options[this.selectedIndex].value != -1){ top.location.href=this.options[this.selectedIndex].value }">'
-		. '<optgroup style="color:' . $textcolor2 . ';" label="' . bfcSELECT . '"><option value="-1">&nbsp;</option>';
-$links .= '<option value="modules.php?name=Forums&amp;file=search&amp;search_id=unanswered">' . bfcVIEWUNANSWEREDPOSTS . '</option>';
-$links .= '<option value="modules.php?name=Forums">' . bfcFORUMINDEX . '</option>';
-$links .= '<option value="modules.php?name=Forums&amp;file=search">' . bfcSEARCHFORUMS . '</option>';
+		. '<optgroup style="color:' . $textcolor2 . ';" label="' . \BFCSELECT . '"><option value="-1">&nbsp;</option>';
+$links .= '<option value="modules.php?name=Forums&amp;file=search&amp;search_id=unanswered">' . \BFCVIEWUNANSWEREDPOSTS . '</option>';
+$links .= '<option value="modules.php?name=Forums">' . \BFCFORUMINDEX . '</option>';
+$links .= '<option value="modules.php?name=Forums&amp;file=search">' . \BFCSEARCHFORUMS . '</option>';
 if (is_user($user)) {
-	$links .= '<option value="modules.php?name=Forums&amp;file=search&amp;search_id=newposts">' . bfcVIEWPOSTSSINCELASTVISIT . '</option>';
-	$links .= '<option value="modules.php?name=Forums&amp;file=search&amp;search_id=egosearch">' . bfcVIEWYOURPOSTS . '</option>';
-	$links .= '<option value="modules.php?name=Watched_Topics">' . bfcWATCHEDTOPICS . '</option>';
-	$links .= '<option value="modules.php?name=Forums&amp;file=profile&amp;mode=editprofile">' . bfcPROFILE . '</option>';
-	$links .= '<option value="modules.php?name=Private_Messages&amp;file=index&amp;folder=inbox">' . bfcPRIVATEMESSAGES . '</option>';
+	$links .= '<option value="modules.php?name=Forums&amp;file=search&amp;search_id=newposts">' . \BFCVIEWPOSTSSINCELASTVISIT . '</option>';
+	$links .= '<option value="modules.php?name=Forums&amp;file=search&amp;search_id=egosearch">' . \BFCVIEWYOURPOSTS . '</option>';
+	$links .= '<option value="modules.php?name=Watched_Topics">' . \BFCWATCHEDTOPICS . '</option>';
+	$links .= '<option value="modules.php?name=Forums&amp;file=profile&amp;mode=editprofile">' . \BFCPROFILE . '</option>';
+	$links .= '<option value="modules.php?name=Private_Messages&amp;file=index&amp;folder=inbox">' . \BFCPRIVATEMESSAGES . '</option>';
 }
 $links .= '</optgroup></select>';
 $content .= '<div style="text-align: center">';
@@ -368,7 +377,7 @@ if ($showTickerMessage) {
 } else {
 	$id = ' id="main_topic"';
 }
-$content .=	'<tr' . $id . ' bgcolor="' . $tickerBGColor . '"><td colspan="4"><div style="text-align: left;">'.bfcSHOWHIDE.'</div></td>'
+$content .=	'<tr' . $id . ' bgcolor="' . $tickerBGColor . '"><td colspan="4"><div style="text-align: left;">'.\BFCSHOWHIDE.'</div></td>'
 		. '<td id="show_hide"><div style="margin: 0 auto; border: 1px solid #4B4B4B; background-color: ' . $bgcolor1 . '; width: 60px; height: 12px; font: normal 11px Arial, Verdana, Helvetica, sans-serif; text-align: center;'
 		. ' cursor: pointer;">' . $bfcShowHide . '</div></td></tr>';
 if ($showTickerMessage) {
@@ -382,10 +391,10 @@ $result = $db->sql_query( 'SELECT t.topic_id, t.forum_id, t.topic_last_post_id, 
 						. ' FROM `' . $prefix . '_bbtopics` t, `' . $prefix . '_bbforums` f'
 						. ' WHERE t.forum_id NOT IN(' . $hideTheseForums . ') AND t.forum_id=f.forum_id ORDER BY t.topic_last_post_id DESC');
 $cnt = 0;
-while( list( $topic_id, $forum_id, $topic_last_post_id, $topic_title, $topic_poster, $topic_views, $topic_replies, $topic_moved_id, $topic_status, $forum_name ) = $db->sql_fetchrow( $result ) ) {
+while( [$topic_id, $forum_id, $topic_last_post_id, $topic_title, $topic_poster, $topic_views, $topic_replies, $topic_moved_id, $topic_status, $forum_name] = $db->sql_fetchrow( $result ) ) {
 	$skip_display = 0;
 	$result1 = $db->sql_query( 'SELECT `auth_view`, `auth_read`, `forum_name`, `cat_id` FROM `' . $prefix . '_bbforums` WHERE `forum_id` = "' . $forum_id . '"');
-	list( $auth_view, $auth_read, $forum_name, $cat_id ) = $db->sql_fetchrow( $result1 );
+	[$auth_view, $auth_read, $forum_name, $cat_id] = $db->sql_fetchrow( $result1 );
 	if( $hideViewReadOnly) {
 		if( ( $auth_view != 0 ) || ( $auth_read != 0 ) ) {
 			$skip_display = 1;
@@ -403,18 +412,18 @@ while( list( $topic_id, $forum_id, $topic_last_post_id, $topic_title, $topic_pos
 		}
 		$countTopics += 1;
 		$result5 = $db->sql_query('SELECT `cat_title` FROM `' . $prefix . '_bbcategories` WHERE `cat_id`="' . $cat_id . '"');
-		list($cat_title)=$db->sql_fetchrow($result5);
+		[$cat_title]=$db->sql_fetchrow($result5);
 		$result2 = $db->sql_query('SELECT `username`, `user_id` FROM `' . $user_prefix . '_users` WHERE `user_id`="' . $topic_poster . '"');
-		list($username, $user_id)=$db->sql_fetchrow($result2);
+		[$username, $user_id]=$db->sql_fetchrow($result2);
 		$avtor=$username;
 		$sifra=$user_id;
 		$result4 = $db->sql_query('SELECT u.username, u.user_id, p.poster_id, FROM_UNIXTIME(p.post_time + ' . $userTimeZone . ') as post_time'
 								. ' FROM `' . $user_prefix . '_users` u, `' . $prefix . '_bbposts` p WHERE u.user_id=p.poster_id AND p.post_id="' . $topic_last_post_id . '"');
-		list($username, $user_id, $poster_id, $post_time)=$db->sql_fetchrow($result4);
-		$_username = substr($username,0,15);
-		$_avtor = substr($avtor,0,15);
+		[$username, $user_id, $poster_id, $post_time]=$db->sql_fetchrow($result4);
+		$_username = substr((string) $username,0,15);
+		$_avtor = substr((string) $avtor,0,15);
 		if ($topic_status) {
-			$lockTopic = '<img src="/images/blocks/locktopicgray.gif" width="14" height="14" alt="' . bfcTOPICLOCKED . '" title="' . bfcTOPICLOCKED . '" border="none" /> ';
+			$lockTopic = '<img src="/images/blocks/locktopicgray.gif" width="14" height="14" alt="' . \BFCTOPICLOCKED . '" title="' . \BFCTOPICLOCKED . '" border="none" /> ';
 		} else {
 			$lockTopic = '';
 		}
