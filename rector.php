@@ -8,7 +8,7 @@ use Rector\Set\ValueObject\LevelSetList;
 
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->paths([
-		  __DIR__ . '/includes/db/mysqli.php',
+		  __DIR__ . '/db/mysqli.php',
 		  //__DIR__ . '/includes/nukesentinel.php',
 		  //__DIR__ . '/mainfile.php', PHP 8.2.3
 		  //__DIR__ . '/modules/Forums/common.php',
