@@ -8,29 +8,29 @@
 /*********************************************************/
 /*              Collapsing Forums Block                  */
 /*********************************************************/
-define('bfcTOPICLOCKED','Topic Locked');
-define('bfcBACKENDTITLE','Syndicate Platinum Nuke Pro v200');
-define('bfcTOPPOSTERS','Top Posters:');
-define('bfcMYSQLSAID','MySQL said: ');
-define('bfcJUMPFORUM','Jump To Forum');
-define('bfcJUMPFUNCTION','Jump To Function');
-define('bfcGETCATEGORYLISTERROR','Couldn\'t obtain category list. ');
-define('bfcGETFORUMINFOERROR','Couldn\'t obtain forums information. ');
-define('bfcSELECT','Select');
-define('bfcVIEWPOSTSSINCELASTVISIT','View Posts Since Last Visit');
-define('bfcVIEWYOURPOSTS','View Your Posts');
-define('bfcVIEWUNANSWEREDPOSTS','View Unanswered Posts');
-define('bfcFORUMINDEX','Forum Index');
-define('bfcSEARCHFORUMS','Search Forums');
-define('bfcWATCHEDTOPICS','View/Edit Your Watched Posts');
-define('bfcPROFILE','Profile');
-define('bfcPRIVATEMESSAGES','Private Messages');
-define('bfcFORUM','Forum');
-define('bfcTOPIC','Topic');
-define('bfcREPLIES','Replies');
-define('bfcAUTHOR','Author');
-define('bfcVIEWS','Views');
-define('bfcLASTPOST','Last Post');
-define('bfcSHOWHIDE','Show/Hide');
-define('bfcSHOWHIDELABELTEXT','Click on the Show/Hide text (on the far right) to expand/collapse this block');
+define('BFCTOPICLOCKED','Topic Locked');
+define('BFCBACKENDTITLE','Syndicate Platinum Nuke Pro v200');
+define('BFCTOPPOSTERS','Top Posters:');
+define('BFCMYSQLSAID','MySQL said: ');
+define('BFCJUMPFORUM','Jump To Forum');
+define('BFCJUMPFUNCTION','Jump To Function');
+define('BFCGETCATEGORYLISTERROR','Couldn\'t obtain category list. ');
+define('BFCGETFORUMINFOERROR','Couldn\'t obtain forums information. ');
+define('BFCSELECT','Select');
+define('BFCVIEWPOSTSSINCELASTVISIT','View Posts Since Last Visit');
+define('BFCVIEWYOURPOSTS','View Your Posts');
+define('BFCVIEWUNANSWEREDPOSTS','View Unanswered Posts');
+define('BFCFORUMINDEX','Forum Index');
+define('BFCSEARCHFORUMS','Search Forums');
+define('BFCWATCHEDTOPICS','View/Edit Your Watched Posts');
+define('BFCPROFILE','Profile');
+define('BFCPRIVATEMESSAGES','Private Messages');
+define('BFCFORUM','Forum');
+define('BFCTOPIC','Topic');
+define('BFCREPLIES','Replies');
+define('BFCAUTHOR','Author');
+define('BFCVIEWS','Views');
+define('BFCLASTPOST','Last Post');
+define('BFCSHOWHIDE','Show/Hide');
+define('BFCSHOWHIDELABELTEXT','Click on the Show/Hide text (on the far right) to expand/collapse this block');
 ?>
