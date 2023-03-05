@@ -592,6 +592,13 @@ define('_AB_HELP_043',"Click on the admins id to edit their properties.");
 define('_AB_HELP_044',"Activate Proxy blocker.<br />3 levels are provided:<br />Lite - Traps the most obvious proxies.<br />Mild - Traps less obvious proxies.<br />Strong - Traps most proxies.<br /><br />This is not 100% as proxies change their way of working daily.");
 define('_AB_HELP_045',"Select the template file you want to be displayed if you have the above switch set to <strong>On</strong>.");
 define('_AB_HELP_046',"Activate <strong>D</strong>enial <strong>O</strong>f <strong>S</strong>ervice Attack Blocker.<br /><br />Please remember that this will protect from DOS attacks only not DDOS attacks. This is not 100% but will stop most attacks.");
+
+if(!isset($nuke_config['nukeurl']))
+$nuke_config['nukeurl'] = '';
+
+if(!isset($prefix))
+$prefix = 'nuke';
+
 define('_AB_HELP_047',"Force visitors to the <strong>".$nuke_config['nukeurl']."</strong> URL. This is stored in your site's ".$prefix."_config table and can be changed via your site's Admin -> Preferences panel.<br /><br />This is handy if your site will respond to both http://yoursite.com and http://www.yoursite.com .");
 define('_AB_HELP_048',"With this setting you can disable NukeSentinel(tm) and test for unknown interactions.");
 define('_AB_HELP_049',"Display a list of all tracked IP's that are in your database.");
