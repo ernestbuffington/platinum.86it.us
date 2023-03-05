@@ -468,6 +468,7 @@ function ShoutBox($ShoutSubmit, $prefix, $ShoutComment, $db, $user, $cookie, $sh
 	if (is_user($user)) {
 		$username = $cookie[1];
 		if ($username != '') {
+			# oh how thee deserves a punch in the nut sack for being careless!
 			$sqlF = "SELECT `user_timezone`, `user_dateformat` FROM `".$prefix."_users` WHERE `username`='$username'";
 			$resultF = $db->sql_query($sqlF);
 			$userSetup = $db->sql_fetchrow($resultF);
@@ -489,6 +490,10 @@ function ShoutBox($ShoutSubmit, $prefix, $ShoutComment, $db, $user, $cookie, $sh
 		} else {
 			if ($flag == 1) { $flag = 2; }
 			elseif ($flag == 2) { $flag = 1; }
+			
+			$rowColor = [];
+			if(!isset($rowColor['blockColor1']))
+			$rowColor['blockColor1'] = 'none';
 			$mid_content .= "<tr><td style=\"background-color: $rowColor[blockColor1];\">";
 		}
 		$mid_content .= "<strong>"._SB_ADMIN.":</strong> $stickyRow0[comment]";
@@ -535,9 +540,16 @@ function ShoutBox($ShoutSubmit, $prefix, $ShoutComment, $db, $user, $cookie, $sh
 	}
 	// end sticky shouts
 	$i = 0;
+
 	while ($row = $db->sql_fetchrow($result)) {
-		if ($flag == 1) { $bgcolor = $rowColor['blockColor1']; }
-		if ($flag == 2) { $bgcolor = $rowColor['blockColor2']; }
+
+		if ($flag == 1) { 
+		$bgcolor = $rowColor['blockColor1'] ?? 'none'; 
+		}
+		if ($flag == 2) { 
+		$bgcolor = $rowColor['blockColor2'] ?? 'none'; 
+		}
+		
 		if ($showBackground == 'yes') {
 			$tempContent[$i] = "<tr><td>";
 		} else {
@@ -669,8 +681,12 @@ $shoutAvatar = 1; // 1 = show / 0 = hide
 		$i++;
 	}
 	// Reversing the posts
-	if ($conf['reversePosts'] == "no") {
+	if (isset($conf['reversePosts']) && $conf['reversePosts'] == "no") {
 		for ($j = 0; $j < $conf['number']; $j++) {
+			
+			if(!isset($mid_content))
+			$mid_content = '';
+			if(isset($tempContent[$j]))
 			$mid_content .= $tempContent[$j];
 		}
 	} else {
