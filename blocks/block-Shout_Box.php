@@ -415,6 +415,10 @@ function ShoutBox($ShoutSubmit, $prefix, $ShoutComment, $db, $user, $cookie, $sh
 	} else {
 		$showBackground = 'no';
 	}
+	
+	if(!isset($themeRow['blockArrowColor']))
+	$themeRow['blockArrowColor'] = '';
+	
 	if (file_exists("modules/Shout_Box/images/up/$themeRow[blockArrowColor]") AND $themeRow['blockArrowColor'] != '') {
 		$up_img = "modules/Shout_Box/images/up/$themeRow[blockArrowColor]";
 	} else {
@@ -454,15 +458,15 @@ function ShoutBox($ShoutSubmit, $prefix, $ShoutComment, $db, $user, $cookie, $sh
 	}
 	$flag = 1;
 	$ThemeSel = get_theme();
-	$sql = "select * from ".$prefix."_shoutbox_themes WHERE themeName='$ThemeSel'";
+	$sql = "SELECT * from ".$prefix."_shoutbox_themes WHERE themeName='$ThemeSel'";
 	$resultT = $db->sql_query($sql);
 	$rowColor = $db->sql_fetchrow($resultT);
 	if (is_user($user)) {
 		$username = $cookie[1];
 		if ($username != '') {
-			$sqlF = "SELECT user_timezone, user_dateformat, from ".$prefix."_users WHERE username='$username'";
-			$resultF = $db->sql_query($sqlF);
-			$userSetup = $db->sql_fetchrow($resultF);
+			$sqluserinfo = "SELECT user_timezone, user_dateformat, FROM ".$prefix."_users WHERE username=".$username." ";
+			$resultuserinfo = $db->sql_query($sqluserinfo);
+			$userSetup = $db->sql_fetchrow($resultuserinfo);
 		}
 	}
 	$sql = "select * from ".$prefix."_shoutbox_date";
