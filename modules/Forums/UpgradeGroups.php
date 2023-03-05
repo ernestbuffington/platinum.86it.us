@@ -7,7 +7,7 @@
 if (!preg_match("#modules.php#i", $PHP_SELF)) {
     die ("You can't access this file directly...");
 }
-if ($popup != "1"){
+if (!isset($popup)){
     $module_name = basename(dirname(__FILE__));
     require("modules/".$module_name."/nukebb.php");
 }

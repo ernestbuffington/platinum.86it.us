@@ -43,7 +43,7 @@ if ( !defined('MODULE_FILE') )
 
 $index = 1;
 
-if ($popup != "1")
+if (!isset($popup))
     {
         $module_name = basename(__DIR__);
         require_once("modules/".$module_name."/nukebb.php");

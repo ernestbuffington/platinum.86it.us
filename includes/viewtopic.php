@@ -33,7 +33,7 @@ if ( !defined('MODULE_FILE') ) {
 	die("Illegal Module File Access");
 }
 
-if ($popup != "1")
+if (!isset($popup))
     {
         $module_name = basename(dirname(__FILE__));
         require_once("modules/".$module_name."/nukebb.php");

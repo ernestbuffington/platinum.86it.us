@@ -60,7 +60,7 @@ CloseTable();
 //
 // Compress buffered output if require_onced and send to browser
 //
-if ($popup != "1") {
+if (!isset($popup)) {
     include_once("footer.php");
 }
 

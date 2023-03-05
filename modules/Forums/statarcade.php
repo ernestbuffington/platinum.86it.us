@@ -36,7 +36,7 @@ if ( !defined('MODULE_FILE') )
 
 
 
-if ($popup != "1") {
+if (!isset($popup)) {
 
 	$module_name = basename(dirname(__FILE__));
 

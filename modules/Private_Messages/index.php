@@ -52,7 +52,7 @@ $mod_name = preg_replace("/_/", " ", $name);
 } else {
 $mod_name = $row_title['custom_title'];
 }
-if ($popup != "1") {
+if (!isset($popup)) {
     $module_name = basename(dirname(__FILE__));
     require("modules/Forums/nukebb.php");
 //    title("$sitename: $mod_name");
