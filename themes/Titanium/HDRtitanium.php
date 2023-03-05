@@ -63,33 +63,25 @@ global $theme_name;
 <style type="text/css">
 .bookmark
 {
-    background: url(<?php echo BOOKMARKS_TITLE_BACKGROUND; ?>);
-	<?php echo BOOKMARKS_TITLE_CONTAIN; ?> 	
 
 }
 
 .boxtitle
 {
-    background: url(<?php echo BOOKMARKS_TITLE_BACKGROUND; ?>);
-	<?php echo BOOKMARKS_TITLE_CONTAIN; ?> 	
-
 }
 
 .boxlist
 {
-    background: url(<?php echo BOOKMARKS_BACKGROUND; ?>);
-	<?php echo CONTAIN; ?> 	
+
 }
 
 .flames
 {
-    background: url(<?php echo LOGO_BACKGROUND; ?>);
-	<?php echo CONTAIN; ?> 
+
 }
 
 table.newblock {
-    background: url(<?php echo HEADER_BACKGROUND; ?>);
-	<?php echo HEADER_CONTAIN; ?>
+
 }
 </style> 
 <?
@@ -118,11 +110,11 @@ if (@file_exists(NUKE_THEMES_DIR.$ThemeSel.'/classes/class.swfheader.php'))#    
 }                                                                          #
 ############################################################################
 
-global $browser;
+global $browser, $titanium_width;
 $titanium_browser = new Browser();
 
 echo "\n\n<!-- START Header ".$domain.". -->\n\n"; 
-    echo '<div class="container" style="width: '.titanium_width.'">';
+    echo '<div class="container" style="width: '.$titanium_width.'">';
 	echo "\n\n<!-- START Header ".$domain.". -->\n\n";
     echo "<table width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n";
     echo "<tr>\n";
