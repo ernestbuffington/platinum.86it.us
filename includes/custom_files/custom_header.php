@@ -43,10 +43,14 @@
     $ip = $_SERVER["REMOTE_ADDR"];
 	$url = $_SERVER["REQUEST_URI"];
     $uname = $cookie[1];
-    if (!isset($uname)) {
+    
+	$guest = 0;
+	
+	if (!isset($uname)) 
+	{
         $uname = "$ip";
         $guest = 1;
-	$httphost=gethostbyaddr($ip);
+	    $httphost=gethostbyaddr($ip);
 
 // debut robots code aidé par le script robotstats
 $detecte = false;
