@@ -8,7 +8,8 @@ use Rector\Set\ValueObject\LevelSetList;
 
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->paths([
-		  __DIR__ . '/includes/nukesentinel.php',
+		  //__DIR__ . '/includes/nukesentinel.php',
+		  __DIR__ . '/mainfile.php',
     ]);
 
     // register a single rule
