@@ -1070,12 +1070,12 @@ function check_html ($string, $allowed_html = "", $allowed_protocols = ['http', 
 	$stop = FALSE;
 	if(!function_exists('kses_no_null'))
 	{
-		@include_once("includes/kses/kses.php");
+		include_once("includes/kses/kses.php");
 	}
-	if (get_magic_quotes_gpc() == 1 )
-	{ 
-		$string = stripslashes((string) $string ); 
-	} 
+	//if (get_magic_quotes_gpc() == 1 )
+	//{ 
+	//	$string = stripslashes((string) $string ); 
+	//} 
 	$hotHtml = "nohtml"; 
 	$Zstrip = stripos_clone($allowed_html, $hotHtml); 
 	if ($Zstrip === false)
