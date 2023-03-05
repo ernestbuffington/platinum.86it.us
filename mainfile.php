@@ -568,9 +568,14 @@ function is_active($module) {
     return 0;
 }
 function render_blocks($side, $blockfile, $title, $content, $bid, $url) {
-    if(!defined('BLOCK_FILE' or 'CORE_FILE')) {
-      define('BLOCK_FILE', true) and define('CORE_FILE', true);
+    if(!defined('BLOCK_FILE')) {
+      define('BLOCK_FILE', true);
     }
+	
+    if(!defined('CORE_FILE')) {
+      define('CORE_FILE', true);
+    }
+	
     if (empty($url)) {
         if (empty($blockfile)) {
             // GT-NExtGEn 0.5 by Bill Murrin (Audioslaved) http://gt.audioslaved.com (c) 2004
