@@ -400,6 +400,18 @@ function get_lang($module) {
 }
 
 /**
+* @get microtime
+* @version 1.0.0
+* @Platinum
+* @author TheGhost
+*/
+function get_microtime() 
+{
+    list($usec, $sec) = explode(' ', microtime());
+    return ($usec + $sec);
+}
+
+/**
 * @define once
 * @version 1.0.0
 * @Platinum
