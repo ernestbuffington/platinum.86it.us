@@ -1848,6 +1848,7 @@ include_once(NUKE_CLASSES_DIR.'class.zip.php');
 require_once NUKE_INCLUDE_DIR . 'csrf-magic.php';
 function addCSSToHead($content, $type='file') {
 	global $headCSS;
+	$headCSS = [];
 	// Duplicate external file?
 	if (($type == 'file') && (count($headCSS) > 0) && (in_array([$type, $content], $headCSS))) return;
 	$headCSS[] = [$type, $content];
@@ -1855,6 +1856,7 @@ function addCSSToHead($content, $type='file') {
 }
 function addJSToHead($content, $type='file') {
 	global $headJS;
+	$headJS = [];
 	// Duplicate external file?
 	if (($type == 'file') && (count($headJS) > 0) && (in_array([$type, $content], $headJS))) return;
 	$headJS[] = [$type, $content];
@@ -1862,6 +1864,7 @@ function addJSToHead($content, $type='file') {
 }
 function addJSToBody($content, $type='file') {
 	global $bodyJS;
+	$bodyJS = [];
 	// Duplicate external file?
 	if (($type == 'file') && (count($bodyJS) > 0) && (in_array([$type, $content], $bodyJS))) return;
 	$bodyJS[] = [$type, $content];
@@ -1869,6 +1872,8 @@ function addJSToBody($content, $type='file') {
 }
 function writeHEAD() {
 	global $headCSS, $headJS;
+	$headCSS = [];
+	$headJS = [];
 	if (is_array($headCSS) && count($headCSS) > 0) {
 		foreach($headCSS AS $css) {
 			if ($css[0]=='file') {
