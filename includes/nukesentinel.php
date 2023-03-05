@@ -7,6 +7,16 @@
 /* See CREDITS.txt for ALL contributors                 */
 /********************************************************/
 
+/*******************************
+Applied rules:
+ * LongArrayToShortArrayRector
+ * AddDefaultValueForUndefinedVariableRector (https://github.com/vimeo/psalm/blob/29b70442b11e3e66113935a2ee22e165a70c74a4/docs/fixing_code.md#possiblyundefinedvariable)
+ * CountOnNullRector (https://3v4l.org/Bndc9)
+ * ListToArrayDestructRector (https://wiki.php.net/rfc/short_list_syntax https://www.php.net/manual/en/migration71.new-features.php#migration71.new-features.symmetric-array-destructuring)
+ * WhileEachToForeachRector (https://wiki.php.net/rfc/deprecations_php_7_2#each)
+ *******************************/
+
+
 define("NUKESENTINEL_IS_LOADED", TRUE);
 unset($nsnst_const);
 if (realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
@@ -15,10 +25,10 @@ if (realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
 }
 
 
-$ab_config = array();
-$blocker_array = array();
-$blocker_row = array();
-$config = array();
+$ab_config = [];
+$blocker_array = [];
+$blocker_row = [];
+$config = [];
 
 //SEE TECHNOCRAT below
 define('REGEX_UNION','#\w?\s?union\s\w*?\s?(select|all|distinct|insert|update|drop|delete)#is');
@@ -112,8 +122,10 @@ if(!empty($aid) AND empty($_COOKIE['admin']) AND $op != 'login') { die(_AB_FALSE
 
 // Stop Santy Worm
 if($ab_config['santy_protection'] == 1) {
-	$bad_uri_content=array('rush', 'highlight=%', 'perl', 'chr(', 'pillar', 'visualcoder', 'sess_');
-	while(list($stid,$uri_content)=each($bad_uri_content)) { if(stristr($_SERVER['REQUEST_URI'], $uri_content)) { die(_AB_SANTY); } }
+	$bad_uri_content=['rush', 'highlight=%', 'perl', 'chr(', 'pillar', 'visualcoder', 'sess_'];
+	foreach ($bad_uri_content as $stid => $uri_content) {
+     if(stristr($_SERVER['REQUEST_URI'], $uri_content)) { die(_AB_SANTY); }
+ }
 }
 
 // Invalid ip check
@@ -478,7 +490,7 @@ if( $ab_config['track_active'] == 1 AND !is_excluded($nsnst_const['remote_ip']))
 		$tresult = $db->sql_query('SELECT `c2c` FROM `' . $prefix . '_nsnst_ip2country` WHERE `ip_lo`<="' . $nsnst_const['remote_long'] . '" AND `ip_hi`>="' . $nsnst_const['remote_long'] . '" LIMIT 0,1');
 		$checkrow = $db->sql_numrows($tresult);
 		if($checkrow > 0) {
-			list($c2c) = $db->sql_fetchrow($tresult);
+			[$c2c] = $db->sql_fetchrow($tresult);
 		}
 		if(!$c2c) { $c2c = '00'; }
 		if($nsnst_const['ban_user_id'] == 1) { $nsnst_const['ban_username2'] = ''; } else { $nsnst_const['ban_username2'] = $nsnst_const['ban_username']; }
@@ -558,10 +570,10 @@ function get_query_string() {
 
 // Copyright 2004(c) Raven PHP Scripts
 function st_clean_string($cleanstring) {
-	$st_fr1 = array("%00", "%01", "%02", "%03", "%04", "%05", "%06", "%07", "%08", "%09", "%10", "%11", "%12", "%13", "%14", "%15", "%16", "%17", "%18", "%19", "%20", "%21", "%22", "%23", "%24", "%25", "%26", "%27", "%28", "%29", "%30", "%31", "%32", "%33", "%34", "%35", "%36", "%37", "%38", "%39", "%40", "%41", "%42", "%43", "%44", "%45", "%46", "%47", "%48", "%49", "%50", "%51", "%52", "%53", "%54", "%55", "%56", "%57", "%58", "%59", "%60", "%61", "%62", "%63", "%64", "%65", "%66", "%67", "%68", "%69", "%70", "%71", "%72", "%73", "%74", "%75", "%76", "%77", "%78", "%79");
-	$st_to1 = array("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", " ", "!", "\"", "#", "$", "%", "&", "'", "(", ")", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "@", "A", "B", "C", "D", "E", "F", "G", "H", "I", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "`", "a", "b", "c", "d", "e", "f", "g", "h", "i", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y");
-	$st_fr2 = array("%0A", "%0B", "%0C", "%0D", "%0E", "%0F", "%1A", "%1B", "%1C", "%1D", "%1E", "%1F", "%2A", "%2B", "%2C", "%2D", "%2E", "%2F", "%3A", "%3B", "%3C", "%3D", "%3E", "%3F", "%4A", "%4B", "%4C", "%4D", "%4E", "%4F", "%5A", "%5B", "%5C", "%5D", "%5E", "%5F", "%6A", "%6B", "%6C", "%6D", "%6E", "%6F", "%7A", "%7B", "%7C", "%7D", "%7E", "%7F", "%0a", "%0b", "%0c", "%0d", "%0e", "%0f", "%1a", "%1b", "%1c", "%1d", "%1e", "%1f", "%2a", "%2b", "%2c", "%2d", "%2e", "%2f", "%3a", "%3b", "%3c", "%3d", "%3e", "%3f", "%4a", "%4b", "%4c", "%4d", "%4e", "%4f", "%5a", "%5b", "%5c", "%5d", "%5e", "%5f", "%6a", "%6b", "%6c", "%6d", "%6e", "%6f", "%7a", "%7b", "%7c", "%7d", "%7e", "%7f");
-	$st_to2 = array("", "", "", "", "", "", "", "", "", "", "", "", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "J", "K", "L", "M", "N", "O", "Z", "[", "\\", "]", "^", "_", "j", "k", "l", "m", "n", "o", "z", "{", "|", "}", "~", "", "", "", "", "", "", "", "", "", "", "", "", "", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "J", "K", "L", "M", "N", "O", "Z", "[", "\\", "]", "^", "_", "j", "k", "l", "m", "n", "o", "z", "{", "|", "}", "~", "");
+	$st_fr1 = ["%00", "%01", "%02", "%03", "%04", "%05", "%06", "%07", "%08", "%09", "%10", "%11", "%12", "%13", "%14", "%15", "%16", "%17", "%18", "%19", "%20", "%21", "%22", "%23", "%24", "%25", "%26", "%27", "%28", "%29", "%30", "%31", "%32", "%33", "%34", "%35", "%36", "%37", "%38", "%39", "%40", "%41", "%42", "%43", "%44", "%45", "%46", "%47", "%48", "%49", "%50", "%51", "%52", "%53", "%54", "%55", "%56", "%57", "%58", "%59", "%60", "%61", "%62", "%63", "%64", "%65", "%66", "%67", "%68", "%69", "%70", "%71", "%72", "%73", "%74", "%75", "%76", "%77", "%78", "%79"];
+	$st_to1 = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", " ", "!", "\"", "#", "$", "%", "&", "'", "(", ")", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "@", "A", "B", "C", "D", "E", "F", "G", "H", "I", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "`", "a", "b", "c", "d", "e", "f", "g", "h", "i", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y"];
+	$st_fr2 = ["%0A", "%0B", "%0C", "%0D", "%0E", "%0F", "%1A", "%1B", "%1C", "%1D", "%1E", "%1F", "%2A", "%2B", "%2C", "%2D", "%2E", "%2F", "%3A", "%3B", "%3C", "%3D", "%3E", "%3F", "%4A", "%4B", "%4C", "%4D", "%4E", "%4F", "%5A", "%5B", "%5C", "%5D", "%5E", "%5F", "%6A", "%6B", "%6C", "%6D", "%6E", "%6F", "%7A", "%7B", "%7C", "%7D", "%7E", "%7F", "%0a", "%0b", "%0c", "%0d", "%0e", "%0f", "%1a", "%1b", "%1c", "%1d", "%1e", "%1f", "%2a", "%2b", "%2c", "%2d", "%2e", "%2f", "%3a", "%3b", "%3c", "%3d", "%3e", "%3f", "%4a", "%4b", "%4c", "%4d", "%4e", "%4f", "%5a", "%5b", "%5c", "%5d", "%5e", "%5f", "%6a", "%6b", "%6c", "%6d", "%6e", "%6f", "%7a", "%7b", "%7c", "%7d", "%7e", "%7f"];
+	$st_to2 = ["", "", "", "", "", "", "", "", "", "", "", "", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "J", "K", "L", "M", "N", "O", "Z", "[", "\\", "]", "^", "_", "j", "k", "l", "m", "n", "o", "z", "{", "|", "}", "~", "", "", "", "", "", "", "", "", "", "", "", "", "", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "J", "K", "L", "M", "N", "O", "Z", "[", "\\", "]", "^", "_", "j", "k", "l", "m", "n", "o", "z", "{", "|", "}", "~", ""];
 	$cleanstring = str_replace($st_fr1, $st_to1, $cleanstring);
 	$cleanstring = str_replace($st_fr2, $st_to2, $cleanstring);
 	return $cleanstring;
@@ -611,7 +623,7 @@ function get_post_string() {
 
 if (!function_exists('http_build_query')) {
 	function http_build_query($data, $prefix='', $sep='&', $key='') {
-		$ret = array();
+		$ret = [];
 		foreach ((array)$data as $k => $v) {
 			if (is_int($k) && $prefix != null) {
 				$k = urlencode($prefix . $k);
@@ -752,7 +764,7 @@ function is_reserved($rangeip) {
 
 function abget_blocked($remoteip){
 	global $prefix, $db;
-	$ip = array();
+	$ip = [];
 	$ip = explode('.', $remoteip);
 	$ip[0] = (isset($ip[0])) ? intval($ip[0]) : '';
 	$ip[1] = (isset($ip[1])) ? intval($ip[1]) : '';
@@ -799,7 +811,7 @@ function abget_admin($author){
 function abget_configs(){
 	global $config, $db, $prefix;
 	$configresult = $db->sql_query('SELECT `config_name`, `config_value` FROM `' . $prefix . '_nsnst_config`');
-	while (list($config_name, $config_value) = $db->sql_fetchrow($configresult)) {
+	while ([$config_name, $config_value] = $db->sql_fetchrow($configresult)) {
 		$config[$config_name] = $config_value;
 	}
 	return $config;
@@ -808,13 +820,14 @@ function abget_configs(){
 function abget_reason($reason_id){
 	global $db, $prefix;
 	$reasonresult = $db->sql_query('SELECT `reason` FROM `' . $prefix . '_nsnst_blockers` WHERE `blocker`="' . $reason_id . '"');
-	list($title_long) = $db->sql_fetchrow($reasonresult);
+	[$title_long] = $db->sql_fetchrow($reasonresult);
 	$reason_value = $title_long;
 	return $reason_value;
 }
 
 function write_ban($banip, $htip, $blocker_row) {
-	global $ab_config, $admin, $blocker_array, $db, $nsnst_const, $nuke_config, $prefix, $user_prefix;
+	$c2c = null;
+ global $ab_config, $admin, $blocker_array, $db, $nsnst_const, $nuke_config, $prefix, $user_prefix;
 	$a_aid = '';
 	if(isset($_COOKIE['admin']) && !empty($_COOKIE['admin'])) {
 		$abadmin = st_clean_string(base64_decode($_COOKIE['admin']));
@@ -852,7 +865,7 @@ function write_ban($banip, $htip, $blocker_row) {
 		$poststring = base64_encode($post_url);
 		$checkrow = $db->sql_numrows($db->sql_query('SELECT * FROM `' . $prefix . '_nsnst_ip2country`'));
 		if($checkrow > 0) {
-			list($c2c) = $db->sql_fetchrow($db->sql_query('SELECT `c2c` FROM `' . $prefix . '_nsnst_ip2country` WHERE `ip_lo`<="' . $nsnst_const['remote_long'] . '" AND `ip_hi`>="' . $nsnst_const['remote_long'] . '"'));
+			[$c2c] = $db->sql_fetchrow($db->sql_query('SELECT `c2c` FROM `' . $prefix . '_nsnst_ip2country` WHERE `ip_lo`<="' . $nsnst_const['remote_long'] . '" AND `ip_hi`>="' . $nsnst_const['remote_long'] . '"'));
 		}
 		if(!$c2c) { $c2c = '00'; }
 		if(!@get_magic_quotes_runtime()) {
@@ -960,7 +973,7 @@ function write_mail($banip, $blocker_row, $abmatch = '') {
 		}
 		$adminmail = $nuke_config['adminmail'];
 		if (TNML_IS_ACTIVE) {
-			$params = array('batch' => 1);
+			$params = ['batch' => 1];
 			tnml_fMailer($admincontact, $subject, $message, $adminmail, '', $params);
 		} else {
 			for($i=0, $maxi=count($admincontact); $i < $maxi; $i++) {
@@ -1050,7 +1063,8 @@ function is_god($axadmin = '') {
 
 if(!function_exists('file_get_contents')) {
 	function file_get_contents($filename, $use_include_path = 0) {
-		$file = @fopen($filename, 'rb', $use_include_path);
+		$data = null;
+  $file = @fopen($filename, 'rb', $use_include_path);
 		if($file) {
 			while (!feof($file)) $data .= fread($file, 1024);
 			@fclose($file);
@@ -1205,7 +1219,7 @@ function ab_flood($blocker_row) {
 	$_sessnm = session_name();
 	$currtime = time();
 	$floodarray = file($ab_config['ftaccess_path']);
-	$floodcount = count($floodarray);
+	$floodcount = is_array($floodarray) || $floodarray instanceof \Countable ? count($floodarray) : 0;
 	$floodopen = fopen($ab_config['ftaccess_path'], 'w;');
 	foreach($floodarray as $floodwrite){
 		if ($floodcount - 10 >= 0) if(!strstr($floodwrite, $floodarray[$floodcount - 10]))
@@ -1302,14 +1316,14 @@ function PMA_auth_check() {
 		&& function_exists('base64_decode')) {
 		if(!empty($HTTP_AUTHORIZATION)
 			&& substr($HTTP_AUTHORIZATION, 0, 6) == 'Basic ') {
-			list($PHP_AUTH_USER, $PHP_AUTH_PW) = explode(':', base64_decode(substr($HTTP_AUTHORIZATION, 6)));
+			[$PHP_AUTH_USER, $PHP_AUTH_PW] = explode(':', base64_decode(substr($HTTP_AUTHORIZATION, 6)));
 		} else if(!empty($_ENV)
 			&& isset($_ENV['HTTP_AUTHORIZATION'])
 			&& substr($_ENV['HTTP_AUTHORIZATION'], 0, 6) == 'Basic ') {
-			list($PHP_AUTH_USER, $PHP_AUTH_PW) = explode(':', base64_decode(substr($_ENV['HTTP_AUTHORIZATION'], 6)));
+			[$PHP_AUTH_USER, $PHP_AUTH_PW] = explode(':', base64_decode(substr($_ENV['HTTP_AUTHORIZATION'], 6)));
 		} else if(@getenv('HTTP_AUTHORIZATION')
 			&& substr(getenv('HTTP_AUTHORIZATION'), 0, 6) == 'Basic ') {
-			list($PHP_AUTH_USER, $PHP_AUTH_PW) = explode(':', base64_decode(substr(getenv('HTTP_AUTHORIZATION'), 6)));
+			[$PHP_AUTH_USER, $PHP_AUTH_PW] = explode(':', base64_decode(substr(getenv('HTTP_AUTHORIZATION'), 6)));
 		}
 	} // end IIS
 
@@ -1356,4 +1370,3 @@ if(@ini_get('register_globals')) {
 	}
 }
 
-?>
