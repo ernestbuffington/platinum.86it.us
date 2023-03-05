@@ -41,7 +41,7 @@
  * NullToStrictStringFuncCallArgRector
  ********************************************/
 
-if(!defined('END_TRANSACTION')){ define('END_TRANSACTION', 2); }
+//if(!defined('END_TRANSACTION')){ define('END_TRANSACTION', 2); }
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -398,6 +398,20 @@ function get_lang($module) {
         }
     }
 }
+
+/**
+* @define once
+* @version 1.0.0
+* @Platinum
+* @author TheGhost
+*/
+function define_once($constant, $value) 
+{
+    if(!defined($constant)): 
+      define($constant, $value);
+	endif;
+}
+
 function is_admin($admin) {
     static $adminSave; 
     if (!$admin) { return 0; }
