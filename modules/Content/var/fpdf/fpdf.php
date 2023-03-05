@@ -1370,8 +1370,9 @@ function Image($file,$x,$y,$w=0,$h=0,$type='',$link='',$paint=true)
 			$type=substr($file,$pos+1);
 		}
 		$type=strtolower($type);
-		$mqr=get_magic_quotes_runtime();
-		set_magic_quotes_runtime(0);
+		$mqr= = '';
+		//$mqr=get_magic_quotes_runtime();
+		//set_magic_quotes_runtime(0);
 		if($type=='jpg' or $type=='jpeg')	$info=$this->_parsejpg($file);
 		elseif($type=='png') $info=$this->_parsepng($file);
 		elseif($type=='gif') $info=$this->_parsegif($file); //EDITEI - GIF format included
@@ -1805,8 +1806,9 @@ function _putfonts()
 		$this->_out('<</Type /Encoding /BaseEncoding /WinAnsiEncoding /Differences ['.$diff.']>>');
 		$this->_out('endobj');
 	}
-	$mqr=get_magic_quotes_runtime();
-	set_magic_quotes_runtime(0);
+	$mqr= = '';
+	//$mqr=get_magic_quotes_runtime();
+	//set_magic_quotes_runtime(0);
 	foreach($this->FontFiles as $file=>$info)
 	{
 		//Font file embedding
