@@ -1,0 +1,658 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.0  (Win32)">
+	<META NAME="CREATED" CONTENT="20051217;9093200">
+	<META NAME="CHANGED" CONTENT="20070527;21305379">
+	<STYLE>
+	<!--
+		@page { size: 8.5in 11in }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<P ALIGN=CENTER STYLE="margin-top: 0.17in; page-break-after: avoid"><FONT SIZE=4><FONT FACE="Albany, sans-serif">Member
+Application v2.1.4 User Manual</FONT></FONT> 
+</P>
+<P ALIGN=CENTER><FONT FACE="Times New Roman, serif"><FONT SIZE=3>This
+guide is aimed at helping you get an idea of the capabilities of
+Member Application. The true and complete capabilities are limited
+primarily by your imagination.</FONT></FONT></P>
+<P ALIGN=CENTER><FONT FACE="Courier New, monospace"><FONT SIZE=3><B>Backup
+your site completely before Installing!</B></FONT></FONT></P>
+<P ALIGN=CENTER><BR><BR>
+</P>
+<DIV ID="Table of Contents1" DIR="LTR">
+	<P><BR><BR>
+	</P>
+	<DIV ID="Table of Contents1_Head" DIR="LTR">
+		<P STYLE="margin-left: 0.39in; margin-right: 0.39in; text-indent: 0.39in; margin-top: 0.17in; page-break-after: avoid">
+		<FONT FACE="Albany, sans-serif"><FONT SIZE=4 STYLE="font-size: 16pt"><B>Table
+		of Contents</B></FONT></FONT></P>
+	</DIV>
+	<P ALIGN=LEFT STYLE="margin-bottom: 0in"><A HREF="#Installation">Installation</A></P>
+	<P ALIGN=LEFT STYLE="margin-bottom: 0in"><A HREF="#Upgrade">Upgrade</A></P>
+	<P ALIGN=LEFT STYLE="margin-bottom: 0in"><A HREF="#Configuration">Configuration</A></P>
+	<P STYLE="margin-bottom: 0in"><A HREF="#License">License</A></P>
+	<P STYLE="margin-bottom: 0in"><A HREF="#Features">Features</A></P>
+	<P ALIGN=LEFT STYLE="margin-bottom: 0in"><BR>
+	</P>
+</DIV>
+<P ALIGN=LEFT><FONT FACE="Courier New, monospace"><FONT SIZE=3><B>Notes:</B></FONT></FONT></P>
+<P><FONT FACE="Times New Roman, serif">Member Application v2.1.4 is a
+maintenance release fixing numerous problems stemming from the
+addition of HTML mail functionality and unintended consequences.  It
+also has a few little decorative changes you probably won't notice,
+but, they make me happier..</FONT></P>
+<P><FONT FACE="Times New Roman, serif">This package was tested for
+use with Nuke-Evolution v2.0.1 or later, with PHP-Nuke v7.6 patched
+with <A HREF="http://www.nukeresources.com/" TARGET="_blank">Chatserv's</A>
+3.2 security patch, with PHP-Nuke Platinum v7.6b4v2, with PHP-Nuke
+7.8, and with Raven Nuke v2.1.0. No other configurations have been
+tested. If this package works for you in a different configuration
+please let us know.  It has been reported to work PHP-Nuke 7.9 and
+8.0 also.</FONT></P>
+<P STYLE="page-break-before: always"><BR><BR>
+</P>
+<OL TYPE=I>
+	<LI><P><A HREF="../MA200" NAME="Installation"><B><FONT FACE="Courier New, monospace">Installation</FONT></B></A></P>
+	<OL>
+		<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>I suggest
+		that in the forum admin of your Nuke install, create a forum for
+		your admins and/or moderators to review applications in.</FONT></FONT></P>
+		<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>I also
+		suggest that in the PHPBB group admin of your Nuke install, create
+		a group that will have permissions to access the forum you just
+		made.</FONT></FONT></P>
+		<OL>
+			<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>I suggest
+			you make the forum only accessible by users in the group you are
+			creating.</FONT></FONT></P>
+		</OL>
+		<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Upload this
+		archive or the directory structure containing all the files to your
+		root Nuke directory.</FONT></FONT></P>
+		<OL>
+			<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Extract
+			the contents of the archive if you haven't done so.</FONT></FONT></P>
+		</OL>
+		<LI><P><FONT FACE="Times New Roman, serif">CHMOD the file
+		yoursite.com/your_nuke_home_directory/modules/Member_Application/admin/update.log
+		to 646 or 666.</FONT></P>
+		<LI><P><FONT FACE="Times New Roman, serif">Browse to
+		yoursite.com/your_nuke_home_directory/MA_Install_214.php.</FONT></P>
+		<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>You must
+		select &quot;Clean install of Member Application V2.1.4&quot; if
+		this is a new install on a site where Member Application has never
+		been installed before.</FONT></FONT></P>
+		<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Click the
+		Install/Upgrade button</FONT></FONT></P>
+		<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>If you have
+		received no errors is shown, installation should be complete.</FONT></FONT></P>
+		<LI><P STYLE="margin-bottom: 0in; line-height: 200%"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>You
+		should now delete MA_Install_214.php.</FONT></FONT></P>
+		<LI><P STYLE="margin-bottom: 0in; line-height: 200%"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>You
+		should now go to your admin panel and setup your member
+		application.</FONT></FONT></P>
+	</OL>
+	<LI><P STYLE="margin-bottom: 0in; line-height: 200%; page-break-before: always">
+	<A HREF="../MA200" NAME="Upgrade"><B><FONT FACE="Courier New, monospace">Upgrade</FONT></B></A></P>
+	<OL>
+		<LI><P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 200%">
+		<FONT FACE="Times New Roman, serif"><FONT SIZE=3>You can only
+		upgrade from version 1.0.1 or later. If you have a version prior to
+		1.0.1, then you must upgrade to 1.0.1 first before you can upgrade
+		to 2.1.4.</FONT></FONT></P>
+		<LI><P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 200%">
+		<FONT FACE="Times New Roman, serif"><FONT SIZE=3>To upgrade you
+		must first delete the modules/Member_Application directory.</FONT></FONT></P>
+		<LI><P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 200%">
+		<FONT FACE="Times New Roman, serif"><FONT SIZE=3>Delete any Member
+		Application files in your root Nuke directory including update.idat
+		if it is there..</FONT></FONT></P>
+		<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Upload this
+		archive or the directory structure containing all the files to your
+		root Nuke directory.</FONT></FONT></P>
+		<OL>
+			<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Extract
+			the contents of the archive if you haven't done so.</FONT></FONT></P>
+		</OL>
+		<LI><P><FONT FACE="Times New Roman, serif">CHMOD the file
+		yoursite.com/your_nuke_home_directory/modules/Member_Application/admin/update.log
+		to 646 or 666.</FONT></P>
+		<LI><P><FONT FACE="Times New Roman, serif">Browse to
+		yoursite.com/your_nuke_home_directory/MA_Install_214.php.</FONT></P>
+		<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>You must
+		select &quot;Upgrade Member Application&quot;.</FONT></FONT></P>
+		<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Click the
+		Install/Upgrade button</FONT></FONT></P>
+		<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>If you have
+		received no errors installation should be complete.</FONT></FONT></P>
+		<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>You should
+		now delete MA_Install_214.php.</FONT></FONT></P>
+		<LI><P STYLE="margin-bottom: 0in; line-height: 200%"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>You
+		should now go to your admin panel and setup your member
+		application.</FONT></FONT></P>
+		<OL>
+			<LI><P STYLE="margin-bottom: 0in; line-height: 200%"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>You
+			will notice the title field for your current form is blank. You
+			must enter a title here and save it.</FONT></FONT></P>
+		</OL>
+		<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>In the
+		forum admin of your Nuke install, create a forum for your admins
+		and/or moderators to review applications in.</FONT></FONT></P>
+		<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>In the
+		forum group admin of your Nuke install, create a group that will
+		have permissions to access the forum you just made.</FONT></FONT></P>
+		<OL>
+			<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>I suggest
+			you make the forum only accessible by users in the review group
+			you are creating.</FONT></FONT></P>
+		</OL>
+	</OL>
+	<LI><P STYLE="line-height: 200%; page-break-before: always"><A HREF="../MA200" NAME="Configuration"><B><FONT FACE="Courier New, monospace">Configuration</FONT></B></A></P>
+	<OL>
+		<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>You should
+		now have a Member Application icon in your Modules Administration
+		area.</FONT></FONT></P>
+		<OL>
+			<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>In the
+			Member Application Setup page, you have the following areas. They
+			should be configured in the order listed here.</FONT></FONT></P>
+			<OL>
+				<OL>
+					<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>If this
+					is an upgrade, enter your form title. This is how the form will
+					be listed and it will display at the top of the form the user
+					sees.</FONT></FONT></P>
+				</OL>
+			</OL>
+			<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Use html
+			mail. If this is checked, all emails sent from this software will
+			contain an html header. What this means is if you put html coding
+			in your questions, your approved text, or your declined text it
+			should show up properly in emails.</FONT></FONT></P>
+			<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Send Admin
+			Notification Email. If this is checked you will see an area to
+			enter an email address.</FONT></FONT></P>
+			<OL>
+				<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>When an
+				application is submitted, a notification e-mail can be sent to
+				this address. This uses the php mail function and must be
+				supported by your server. </FONT></FONT>
+				</P>
+				<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Enter the
+				desired notification email address.</FONT></FONT></P>
+				<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>For a
+				detailed notification e-mail, make sure the Detail On check box
+				is checked.</FONT></FONT></P>
+			</OL>
+			<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>If you
+			want everyone in the group assigned to review applications from
+			this form, check &quot;Send Group Notification Email&quot;.</FONT></FONT></P>
+			<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>If you
+			want to send the applicant a notice of a change in the status of
+			their application, check Send User Notification Email.</FONT></FONT></P>
+			<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>You can
+			check forum post and the application will post to the review forum
+			you choose below.</FONT></FONT></P>
+			<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>You should
+			now select a review forum and a review group for this application
+			form.</FONT></FONT></P>
+			<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Auto
+			assign group, if checked, will allow you to select a group for
+			approved applicants to be automatically assigned to. </FONT></FONT>
+			</P>
+			<OL>
+				<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>This only
+				works if they were logged in when they applied. Anonymous users
+				should not be assigned to a group.</FONT></FONT></P>
+			</OL>
+			<LI><P><FONT FACE="Times New Roman, serif">Limit Number Of
+			Applications when checked will limit the number of applications
+			for this form. When you check this box, you will be shown an area
+			to enter the number of applications you wish to receive. If you
+			enter 0, you will stop receiving applications for this form. Any
+			attempt to fill out this form will cause the &ldquo;</FONT>No
+			Applications Text&rdquo; <FONT FACE="Times New Roman, serif">to be
+			displayed instead of the form.</FONT></P>
+			<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Allow
+			Anonymous Application when checked allows anyone to fill out this
+			application form. It uses the user &quot;Anonymous&quot;. You need
+			to make sure you collect the information needed to manually add a
+			new user if you have this checked. Also you should not check Auto
+			Assign Group if you have this checked.</FONT></FONT></P>
+			<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Show Form
+			list will put a drop down at the top of the application listing
+			all your available applications.</FONT></FONT></P>
+			<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Vertical
+			Alignment changes the response for each question to be underneath
+			the question instead of to the left of it.</FONT></FONT></P>
+			<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Editor
+			Compatible turns off the field checking Javascript making the form
+			compatible with TinyMCE and possibly other text area editors.</FONT></FONT></P>
+			<OL>
+				<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>This
+				solves known issues with PHP-Nuke 7.8 and later as well as some
+				other Nuke distributions.</FONT></FONT></P>
+			</OL>
+			<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Application
+			Text</FONT></FONT></P>
+			<OL>
+				<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>You
+				should enter your member agreement, introduction, etc. or any
+				other text you want in here. You can use a subset of HTML codes
+				here depending on the settings of your web site.</FONT></FONT></P>
+			</OL>
+			<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>No
+			Applications Text</FONT></FONT></P>
+			<OL>
+				<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>You
+				should enter a message here that will display when your maximum
+				number of applications has been reached for this form, if you
+				have Limit Number Of Applications checked.</FONT></FONT></P>
+			</OL>
+			<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Thank You
+			Text</FONT></FONT></P>
+			<OL>
+				<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Enter a
+				message here that will be displayed after the form has been
+				successfully filled out. Just a note, below this message the user
+				will also see their application number so they can refer to it
+				later if needed.</FONT></FONT></P>
+			</OL>
+			<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Application
+			Approved Text</FONT></FONT></P>
+			<OL>
+				<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Enter
+				text here to be the body of the notification email sent to the
+				user if their application is approved.</FONT></FONT></P>
+			</OL>
+			<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Application
+			Denied Text</FONT></FONT></P>
+			<OL>
+				<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Enter
+				text here to be the body of the notification email sent to the
+				user if their application is denied.</FONT></FONT></P>
+			</OL>
+			<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Click on
+			&quot;Save Changes&quot;. The page should be refresh and your
+			settings saved.</FONT></FONT></P>
+		</OL>
+		<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Questions
+		for Users Click on the Questions List Icon</FONT></FONT></P>
+		<P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>CAUTION: If you
+		edit a question, that question will be changed in all applications
+		that are stored in the database. This could cause great confusion
+		in the future when you review an application that was filled out
+		before you made changes. Be careful!</FONT></FONT></P>
+		<OL>
+			<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>You can
+			add, edit, or delete the questions listed here.</FONT></FONT></P>
+			<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>To add a
+			new question, click on the Add Question button. The same options
+			and rules apply to a new question as apply to editing a question.</FONT></FONT></P>
+			<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>To edit a
+			question click on the edit icon.</FONT></FONT></P>
+			<OL>
+				<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>You can
+				edit your question. You can use a subset of HTML commands here if
+				you desire.</FONT></FONT></P>
+				<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>You can
+				change the in use status. Only questions checked as in use will
+				be displayed to the user.</FONT></FONT></P>
+				<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>You can
+				change the required status. This will cause a question to require
+				an answer or the application will generate an error and not be
+				completed.</FONT></FONT></P>
+				<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>You can
+				change the input field format.</FONT></FONT></P>
+				<OL>
+					<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Label is
+					simply that. It will put text on the screen, without a response
+					area. Remember you can use some html formatting in questions to
+					change their appearance</FONT></FONT></P>
+					<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Entry
+					will provide a standard text input field.</FONT></FONT></P>
+					<OL>
+						<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>You
+						will notice a box labeled default appear. You can put default
+						text in this box. Remember, that putting default text in a
+						required entry defeats the purpose of requiring it. </FONT></FONT>
+						</P>
+					</OL>
+					<LI><P><FONT FACE="Times New Roman, serif">Validated Entry will
+					provide a standard text input field that is validated using
+					REGEX statements. When selected, a new entry area will appear
+					for you to enter the REGEX statement. An example would be for US
+					phone numbers I use &ldquo;^[2-9][0-9]{2}[-][2-9][0-9]{2}[-][0-9]{4}$&rdquo;
+					(without the quotes).</FONT></P>
+					<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Text
+					Area will provide a text block of 60 columns and 20 rows.</FONT></FONT></P>
+					<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Password
+					will provide an entry field where any character entered will be
+					displayed as as &quot;*&quot; character. The characters are then
+					stored in the database and are only visible when viewing an
+					application in the Member Application admin area. Email messages
+					or forum posts from Member Application will contain the &quot;*&quot;
+					characters.</FONT></FONT></P>
+					<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Check
+					box will provide a check box.</FONT></FONT></P>
+					<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Check
+					Box List will allow you to make a list of check boxes so you can
+					do something like &quot;check all that apply&quot;. This is not
+					tested for the required setting. If you mark it required, it
+					still will not require an answer.</FONT></FONT></P>
+					<OL>
+						<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>After
+						you press the update button, you will have the opportunity to
+						edit or add choices to the check box list. All previously
+						entered choices for this question are listed here. As well as a
+						blank entry you can fill in to add a choice.</FONT></FONT></P>
+					</OL>
+					<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Drop
+					down list will provide a drop down list that you add choices to.</FONT></FONT></P>
+					<OL>
+						<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>After
+						you press the update button, you will have the opportunity to
+						edit or add choices to the drop down list. All previously
+						entered choices for this question are listed here. As well as a
+						blank entry you can fill in to add a choice.</FONT></FONT></P>
+					</OL>
+					<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>By
+					clicking on the directional arrows, you can change the order of
+					the choices.</FONT></FONT></P>
+					<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>You can
+					also enable or disable the choice by checking or unchecking the
+					in use check box.</FONT></FONT></P>
+					<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>'Radio
+					buttons will provide a list of radio buttons that you add
+					choices to.</FONT></FONT></P>
+					<OL>
+						<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>After
+						you press the update button, you will have the opportunity to
+						edit or add choices to the radio buttons. All previously
+						entered choices for this question are listed here. As well as a
+						blank entry you can fill in to add a choice.</FONT></FONT></P>
+					</OL>
+					<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>By
+					clicking on the directional arrows, you can change the order of
+					the choices.</FONT></FONT></P>
+					<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>You can
+					also enable or disable the choice by checking or unchecking the
+					in use check box.</FONT></FONT></P>
+					<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Click on
+					the Add Question or Update button to save your changes. If all
+					went well, you will be returned to the question list.</FONT></FONT></P>
+					<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>You can
+					reorder questions by clicking on the up or down arrows in the
+					list of questions.</FONT></FONT></P>
+					<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>You can
+					delete a question by clicking on the &quot;X&quot; icon.</FONT></FONT></P>
+					<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>If this
+					is a drop down or radio button, you can edit your choices by
+					clicking on edit icon that has no pencil in it.</FONT></FONT></P>
+				</OL>
+			</OL>
+			<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Application
+			List</FONT></FONT></P>
+			<OL>
+				<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>You can
+				view any application by clicking on the icon in the view column.</FONT></FONT></P>
+				<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>You can
+				change the status of an application by clicking on the
+				appropriate radio button and then clicking on the + icon in the
+				status column.</FONT></FONT></P>
+				<OL>
+					<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>If you
+					set the form this application relates to to Auto assign group,
+					if you approve the application the user will be added to the
+					group you set up for this form. If you later decide to decline
+					this application you will have to manually remove the applicant
+					from the group.</FONT></FONT></P>
+					<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>If you
+					change the status of the application to declined or approved and
+					you have Send User Notification Email set, they will be sent an
+					email notifying them of the change of status.</FONT></FONT></P>
+				</OL>
+				<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>You can
+				delete any application by clicking on the X icon. WARNING -
+				DELETED APPLICATIONS CANNOT BE RECOVERED!</FONT></FONT></P>
+				<LI><P><FONT FACE="Times New Roman, serif"><FONT SIZE=3>View form
+				opens a new window with the application form in it fully
+				functional and just as the applicant would see it. If you are
+				using multiple forms, you should copy the URL from your browser
+				so you can link to this form.</FONT></FONT></P>
+			</OL>
+		</OL>
+	</OL>
+	<LI><P STYLE="line-height: 200%; page-break-before: always"><A HREF="../MA200" NAME="Configuration&gt;Configuration&lt;/A&gt;&lt;/B&gt;&lt;/FONT&gt;&lt;/P&gt;&lt;OL&gt;&lt;LI&gt;&lt;P STYLE="><B><FONT FACE="Courier New, monospace">Use.</FONT></B></A></P>
+	<OL>
+		<LI><P>This module is intended to add a level of membership
+		application to PHP-Nuke. This came about because I wanted to have
+		registered site users as well as registered team members. I was
+		unable to find a configurable module that could help me accomplish
+		this. Member Application was born.</P>
+		<LI><P>In the normal operation of Member Application, a user will
+		fill out the form you've created for them. You will then get a
+		notification e-mail or the application will be posted in the
+		previously selected forum. 
+		</P>
+		<LI><P>To link to the different application forms you've created,
+		in the admin menu click on the view form icon. When the form is
+		displayed, copy the link shown in your browser address bar and
+		paste it in the appropriate place in your cms. The address you
+		paste will look something like
+		<A HREF="http://www.yoursite.com/modules.php?name=Member_Application&amp;appno=0">http://www.yoursite.com/modules.php?name=Member_Application&amp;appno=0</A>.</P>
+	</OL>
+	<LI><P>M_A_a_status block.</P>
+	<OL>
+		<LI><P>This block shows the application number and it's current
+		status. It is a scrolling block that will display the last 20
+		applications. 
+		</P>
+		<LI><P>By editing the file &ldquo;block-M_A_a_status.php&rdquo; you
+		can make small changes to the block. For example, changing $usename
+		= False to True will cause the user name to be displayed with the
+		rest of the application information that is already displayed.</P>
+	</OL>
+	<LI><P STYLE="line-height: 200%; page-break-before: always"><A HREF="../MA200" NAME="License"><B><FONT FACE="Courier New, monospace">License</FONT></B></A></P>
+	<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 200%">
+	<FONT FACE="Times New Roman, serif"><FONT SIZE=3>The Member
+	Application License</FONT></FONT></P>
+	<P STYLE="margin-bottom: 0in; line-height: 200%"><TT><FONT FACE="Times New Roman, serif">Preamble</FONT></TT></P>
+	<P><TT><FONT FACE="Times New Roman, serif">The intent of this
+	document is to state the conditions under which a Package may be
+	copied, such that the Copyright Holder maintains some semblance of
+	artistic control over the development of the package, while giving
+	the users of the package the right to use and distribute the Package
+	in a more-or-less customary fashion, plus the right to make
+	reasonable modifications for their own use.</FONT></TT></P>
+	<P><TT><FONT FACE="Times New Roman, serif">Definitions:</FONT></TT></P>
+	<OL>
+		<LI><P STYLE="margin-bottom: 0in"><TT><FONT FACE="Times New Roman, serif">&quot;Package&quot;
+		refers to the collection of files distributed by the Copyright
+		Holder, and derivatives of that collection of files created through
+		textual modification.</FONT></TT> 
+		</P>
+		<LI><P STYLE="margin-bottom: 0in"><TT><FONT FACE="Times New Roman, serif">&quot;Standard
+		Version&quot; refers to such a Package if it has not been modified,
+		or has been modified in accordance with the wishes of the Copyright
+		Holder.</FONT></TT> 
+		</P>
+		<LI><P STYLE="margin-bottom: 0in"><TT><FONT FACE="Times New Roman, serif">&quot;Copyright
+		Holder&quot; is Tim Leitz, aka Driven By Faith Designs aka DBF
+		Designs..</FONT></TT> 
+		</P>
+		<LI><P STYLE="margin-bottom: 0in"><TT><FONT FACE="Times New Roman, serif">&quot;You&quot;
+		is you, if you're thinking about copying or distributing this
+		Package.</FONT></TT> 
+		</P>
+		<LI><P STYLE="margin-bottom: 0in"><TT><FONT FACE="Times New Roman, serif">&quot;Reasonable
+		copying fee&quot; is whatever you can justify on the basis of media
+		cost, duplication charges, time of people involved, and so on. (You
+		may be required to justify it to the Copyright Holder, and always
+		to the computing community at large as a market that must bear the
+		fee.)</FONT></TT> 
+		</P>
+		<LI><P><TT><FONT FACE="Times New Roman, serif">&quot;Freely
+		Available&quot; means that no fee is charged for the item itself,
+		though there may be fees involved in handling the item. It also
+		means that recipients of the item may redistribute it under the
+		same conditions they received it.</FONT></TT> 
+		</P>
+		<LI><P><TT><FONT FACE="Times New Roman, serif">You may make and
+		give away verbatim copies of the source form of the Standard
+		Version of this Package without restriction, provided that you
+		duplicate all of the original copyright notices and associated
+		disclaimers.</FONT></TT></P>
+		<LI><P><TT><FONT FACE="Times New Roman, serif">You may apply bug
+		fixes, portability fixes and other such modifications derived from
+		the Copyright Holder. A Package modified in such a way shall still
+		be considered the Standard Version.</FONT></TT></P>
+		<LI><P><TT><FONT FACE="Times New Roman, serif">You may otherwise
+		modify your copy of this Package in any way, provided that you
+		insert a prominent notice in each changed file stating how and when
+		you changed that file, and provided that you do the following:</FONT></TT></P>
+		<OL>
+			<LI><P><TT><FONT FACE="Times New Roman, serif">Allow the Copyright
+			Holder to include your modifications in the Standard Version of
+			the Package.</FONT></TT></P>
+			<LI><P><TT><FONT FACE="Times New Roman, serif">Use the modified
+			Package only within your corporation or organization.</FONT></TT></P>
+			<LI><P><TT><FONT FACE="Times New Roman, serif">Make distribution
+			arrangements with the Copyright Holder.</FONT></TT></P>
+		</OL>
+		<LI><P><TT><FONT FACE="Times New Roman, serif">The data files
+		supplied as input to or produced as output from the programs of
+		this Package do not automatically fall under the copyright of this
+		Package, but belong to whomever generated them, and may be sold
+		commercially, and may not be aggregated with this Package.</FONT></TT></P>
+		<LI><P><TT><FONT FACE="Times New Roman, serif">The name of the
+		Copyright Holder may not be used to endorse or promote products
+		derived from this software without specific prior written
+		permission.</FONT></TT></P>
+		<LI><P><TT><B><FONT FACE="Courier New, monospace">THIS PACKAGE IS
+		PROVIDED &quot;AS IS&quot; AND WITHOUT ANY EXPRESS OR IMPLIED
+		WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES
+		OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. The End</FONT></B></TT></P>
+	</OL>
+	<LI><P STYLE="page-break-before: always"><A HREF="../MA200" NAME="Features"><B><FONT FACE="Courier New, monospace">Features</FONT></B></A></P>
+	<OL>
+		<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Multiple
+		forms for different uses.</FONT></P>
+		<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Anonymous
+		access to forms allowed.</FONT></P>
+		<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Choose
+		forum and group for review of each form</FONT></P>
+		<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Record
+		User IP in application database</FONT></P>
+		<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">User
+		input options:</FONT></P>
+		<OL>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Label</FONT></P>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Entry</FONT></P>
+			<OL>
+				<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">With
+				default text in entry.</FONT></P>
+			</OL>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Validated
+			Entry</FONT></P>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Text
+			Area</FONT></P>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Password</FONT></P>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Check
+			Box</FONT></P>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Check
+			Box List</FONT></P>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Drop
+			down List</FONT></P>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Radio
+			Buttons</FONT></P>
+		</OL>
+		<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Most
+		user inputs can be passive or required.</FONT></P>
+		<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Completed
+		applications are stored in a database table.</FONT></P>
+		<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Forms
+		can be formatted with the responses beside the questions or under
+		the questions (vertical).</FONT></P>
+		<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Fields
+		validated before the page is reloaded (via JAVA Script)</FONT></P>
+		<OL>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Editor
+			Compatible switch turns this off due to conflicts with add-on
+			Java-Script editors.</FONT></P>
+		</OL>
+		<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Application
+		notification options:</FONT></P>
+		<OL>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Small
+			notice emailed to admin.</FONT></P>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Detailed
+			(complete application) emailed to admin.</FONT></P>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Posted
+			to a forum.</FONT></P>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Topic
+			watch can be set on for the selected group for that forum</FONT></P>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">The
+			selected group can be e-mailed</FONT></P>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Notify
+			user on Application status change</FONT></P>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">HTML
+			Formatted emails.</FONT></P>
+		</OL>
+		<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">User
+		Application Status Block included.</FONT></P>
+		<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Other
+		Admin options or features</FONT></P>
+		<OL>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Set
+			status for applications in the admin panel</FONT></P>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Applications
+			can be deleted from admin interface.</FONT></P>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Applications
+			are numbered to distinguish multiple applications from 1 user in 1
+			day.</FONT></P>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Customizable
+			welcome or terms text.</FONT></P>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Customizable
+			Thank You text.</FONT></P>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Set
+			number of applications taken.</FONT></P>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Customizable
+			&quot;No longer taking applications&quot; text.</FONT></P>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Customizable
+			&quot;Application accepted&quot; text.</FONT></P>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Customizable
+			&quot;Application declined&quot; text.</FONT></P>
+		</OL>
+		<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Other
+		Features</FONT></P>
+		<OL>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">More
+			intelligent installer.</FONT></P>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Drop-down
+			list of all application forms available now on the top of
+			application forms.</FONT></P>
+			<OL>
+				<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">This
+				is admin selectable on each form.</FONT></P>
+				<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">The
+				drop-down always contains all forms.</FONT></P>
+			</OL>
+			<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">Full
+			multi-language support.</FONT></P>
+			<OL>
+				<LI><P STYLE="font-weight: medium"><FONT FACE="Times New Roman, serif">US
+				english is included.</FONT></P>
+			</OL>
+		</OL>
+	</OL>
+</OL>
+<P><BR><BR>
+</P>
+</BODY>
+</HTML>

@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8"/>
+	<title>Platinum Nuke Pro Docs</title>
+	<link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="css/layout.css" type="text/css" media="screen" />
+	<!--[if lt IE 9]>
+	<link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" />
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+    <script type="text/javascript" src="js/prototype.js"></script>
+<script type="text/javascript" src="js/scriptaculous.js?load=effects,builder"></script>
+<script type="text/javascript" src="js/lightbox.js"></script>
+	<script src="js/jquery-1.5.2.min.js" type="text/javascript"></script>
+	<script src="js/hideshow.js" type="text/javascript"></script>
+	<script src="js/jquery.tablesorter.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="js/jquery.equalHeight.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() 
+    	{ 
+      	  $(".tablesorter").tablesorter(); 
+   	 } 
+	);
+	$(document).ready(function() {
+
+	//When page loads...
+	$(".tab_content").hide(); //Hide all content
+	$("ul.tabs li:first").addClass("active").show(); //Activate first tab
+	$(".tab_content:first").show(); //Show first tab content
+
+	//On Click Event
+	$("ul.tabs li").click(function() {
+
+		$("ul.tabs li").removeClass("active"); //Remove any "active" class
+		$(this).addClass("active"); //Add "active" class to selected tab
+		$(".tab_content").hide(); //Hide all tab content
+
+		var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
+		$(activeTab).fadeIn(); //Fade in the active ID content
+		return false;
+	});
+
+});
+    </script>
+    <script type="text/javascript">
+    $(function(){
+        $('.column').equalHeight();
+    });
+</script>
+
+</head>
+
+
+<body>
+
+	<header id="header">
+		<hgroup>
+			<h1 class="site_title">Platinum Nuke</h1>
+			<h2 class="section_title">EXPECT TO BE IMPRESSED</h2><div class="btn_view_site"><a href="http://www.platinumnukepro.com">Support</a></div>
+		</hgroup>
+	</header> <!-- end of header bar -->
+	
+	<section id="secondary_bar">
+		<div class="user">
+			<p>Main Menu</p>
+			<!-- <a class="logout_user" href="#" title="Logout">Logout</a> -->
+		</div>
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs"><a href="index.html">Main Menu</a> <div class="breadcrumb_divider"></div> <a class="current">Security</a></article>
+		</div>
+	</section><!-- end of secondary bar -->
+	
+	<aside id="sidebar" class="column">
+		<form class="quick_search">
+			<input type="text" value="Quick Search" onFocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+		</form>
+		<hr/>
+		<h3>Installation</h3>
+		<ul class="toggle">
+			<li class="icn_new_article"><a href="prep.html">Preperation</a></li>
+			<li class="icn_edit_article"><a href="setup.html">Setup</a></li>
+			<li class="icn_categories"><a href="installation.html">Installation</a></li>
+			<li class="icn_tags"><a href="common1.html">Common Issues</a></li>
+		</ul>
+		<h3>Site Setup</h3>
+		<ul class="toggle">
+			<li class="icn_add_user"><a href="settings.html">Settings</a></li>
+			<li class="icn_view_users"><a href="sec1.html">Security</a></li>
+			<li class="icn_profile"><a href="common2.html">Common Issues</a></li>
+		</ul>
+		<h3>New Features</h3>
+		<ul class="toggle">
+			<li class="icn_folder"><a href="php53.html">PHP 5.3 Ready</a></li>
+			<li class="icn_folder"><a href="gallery.html">Coppermine 1.3.2</a></li>
+			<li class="icn_folder"><a href="tegonukem.html">Tego Nuke Mailer</a></li>
+            <li class="icn_folder"><a href="dfgsite.html">DFW Site Info</a></li>
+            <li class="icn_folder"><a href="trickedoutnews.html">Tricked Out News</a></li>
+            <li class="icn_folder"><a href="collapsingforums.html">Collapsing Forums Mod</a></li>
+            <li class="icn_folder"><a href="rnya.html">RNYA 5.0.0</a></li>
+            <li class="icn_folder"><a href="legaldocs.html">Legal Docs 1.0.0</a></li> 
+            <li class="icn_folder"><a href="jquery.html">JQuery Menu</a></li>
+            <li class="icn_folder"><a href="multipleranks.html">Multiple Ranks Mod</a></li>
+            <li class="icn_folder"><a href="edl.html">Nuke Style EDL 3.0</a></li>
+		</ul>	
+		<h3>How to</h3>
+		<ul class="toggle">			
+			<li class="icn_folder"><a href="pnpdefault_css.html">Platinum Nuke Pro Default CSS</a></li>
+			<li class="icn_folder"><a href="colorbox_mod.html">Platinum Nuke Pro Ckeditor Colorbox mod</a></li>
+			<li class="icn_folder"><a href="youtube_cke_mod.html">Platinum Nuke Pro Ckeditor Youtube mod</a></li>
+		</ul>
+		<h3>Administration</h3>
+		<ul class="toggle">
+			<li class="icn_settings"><a href="options.html">Options</a></li>
+			<li class="icn_security"><a href="sec2.html">Security</a></li>
+			<li class="icn_jump_back"><a href="common3.html">Common Issues</a></li>
+		</ul>
+		
+		<footer>
+			<hr />
+			<p><strong>Copyright &copy; 2017 Platinum Nuke Pro</strong></p>
+			<p><strong><em>Theme edits by</em></strong> <a href="http://ngnuke.webuda.com"><strong>Nextgen</strong></a></p>
+			<p><strong><em>Theme styling by</em></strong> <a href="http://www.havocst.net"><strong>DocHaVoC</strong></a></p>
+           <p><a href="projectcredit.html"><strong><em>Project Credits</em></strong></a></p> 
+           <br>
+	  </footer>
+	</aside><!-- end of sidebar -->
+	
+	<section id="main" class="column">
+		
+		<h4 class="alert_info">Setting up Nuke Sentinel.</h4>
+		
+		<article class="module width_full">
+			<header><h3>Version Information</h3></header>
+			<div class="module_content">
+				<article class="stats_graph"><img src="images/plat.gif" width="255" height="128" alt="Main" longdesc="http://platinumnukepro.com"></article>
+				
+				<article class="stats_overview">
+				  <div class="overview_today">
+						<p class="overview_day">PHP-Nuke</p>
+						<p class="overview_count">7.6</p>
+						<p class="overview_day">Patched</p>
+						<p class="overview_count">3.5</p>
+						<p class="overview_type"></p>
+					</div>
+					<div class="overview_previous">
+						<p class="overview_day">Nuke Sentinel</p>
+						<p class="overview_count">2.6.0.1</p>
+						<p class="overview_day">BBTONUKE</p>
+						<p class="overview_count">2.0.23</p>
+						<p class="overview_type"></p>
+					</div>
+				</article>
+				<div class="clear"></div>
+			</div>
+		</article><!-- end of stats article --><!-- end of content manager article --><!-- end of messages article -->
+		
+    <div class="clear"></div><!-- end of post new article -->
+
+    <article class="module width_full">
+<header>
+  <h3>Nuke Sentinel Setup</h3></header>
+				<div class="module_content">
+					<p>Nuke Sentinel is one of the most important modules you will setup in Platinum Nuke Pro. Security is always a concern and Nuke Sentinel does a great job at keeping your site secure. It can be one of the hardest to setup though so please pay attention. As a safety measure please login to your cpanel or vdeck or what ever panel your host uses so you can have access to change permissions, edit files if needed etc.</p>
+
+<p>Remember that Nuke Sentinel has been pre-configured to do the following so tread lightly.</p>
+
+					<ul>
+						<li>Track all IP's (for the last 7 days).</li>
+                        <li>Email Admin, Block, and redirect to Default Page upon the following attacks: Admin, Author, CLike, Union, Filters, and Referer.</li>
+                        <li>Email Admin only for Script attacks, as NukeSentinel™ is very aggressive in keyword matching and there are many false positives, so we leave this up to the Admin to decide.</li>
+				
+					</ul>
+                    
+                    <p>Click on Blocker Configuration and review the settings for all the blockers. Most have been preset but you should still review them all. If you change any settings, be sure to save them prior to moving onto a different blocker.</p>
+                    
+                    <p>Now start setting up security by going to NukeSentinel administration from the ACP. Click on Admin Auth List, you should see the NukeSentinel ADMIN record that you added during Configuration (setup.php). Make a note of the username and password, they will be needed later.</p>
+                    
+                    <p>At this point you should be able to SAFELY activate the Admin Access Protection part of NukeSentinel™. Go back to the NukeSentinel™ Administration main panel. In the Administrative Settings section you should see a drop down box beside Admin Auth:. In many cases, you will see "Off", "Admin HTTPAuth", and "Admin CGIAuth" as options. If "Admin CGIAuth" is NOT listed, simply click "Admin HTTPAuth" and save the settings..</p>
+                    
+                    <p>If "Admin HTTPAuth" is not in the list skip over the next two paragraphs.</p>
+                    
+                    <p>So, if you are reading this, then you have Admin HTTPAuth and you have selected it. You will now be prompted with the standard browser HTTP Authentication pop up. Type in your NukeSentinel™ id/pass and it should then let you in. If it does, close all browser sessions that you might have open so we can REALLY test this. Open up a new, single browser sessions and type http://www.YOURDOMAIN.com or http://www.YOURDOMAIN.com/html and select GO or press enter. You should see your nuke site with the Welcome message. Next, type http://www.YOURDOMAIN.com/admin.php or http://www.YOURDOMAIN.com/html/admin.php and select GO or press enter. 
+</p>                    
+                    <p>You should be prompted with the HTTP Authorization screen. Enter your NukeSentinel™ id/pass and submit it. Assuming it works, you should now see the regular nuke Admin login screen. Enter your nuke admin id/pass and submit it. You should now see your ACP..</p>
+                    
+                    <p>If you are reading this, then you have skipped here because Admin HTTPAuth is not on the list of available Administrative Settings. In this case we are going to need to activate what we call CGI Auth which is equivalent to HTTP Authentication but using .htaccess and .staccess files. To do this:.</p>
+                    
+                    <ul>
+						<li>Change your permissions on both .htaccess and .staccess to 777.</li>
+                        <li>Place the paths to .htaccess and .staccess in the NukeSentinel™ Admin Control Panel.</li>
+                        <li>Select CGI Auth Access from the drop down box.</li>
+                        <li>Save your settings up to this point.</li>
+					</ul>
+                    
+                    <p>From the NukeSentinel™ Admin Control Panel, select HTTP Auth menu then Scan For New Admins.Now select Admin Auth List and make sure that all admins have been assigned passwords. At the top of the list of admins you should see a link that says Build CGIAuth file. Click it. That will build your .staccess id:pass file. </p>
+                    
+                    <p>Now click on the Administration link to bring you back to the main NS ACP. Scroll down to the .staccess box, you will see a link that says CGI Auth Setup. Click it. It should produce a new window with the information needed for your .htaccess.</p>
+                    
+                    <p>The last steps are below and you should have Nuke Sentinel squared away</p>
+                    
+                    <ul>
+						<li>Change your permissions on both .htaccess and .staccess back to 666.</li>
+                        <li>If you find yourself locked out of your ACP after these steps you can temporarily comment out the lines that you have just added to .htaccess. Just put a # character in front of all the lines you added. This will give you access again while you resolve the problem. You should probably check to see that the appropriate .staccess file has been written. It will be one line with a username and encrypted password in it.</li>
+                        <li>Some or all of the above .htaccess code may already be present in your .htaccess file. If you see that your .htaccess file already has the code, then you only need to verify that the USERNAME and path to .staccess are correct.</li>
+                        
+					</ul>
+                    
+				</div>
+		</article><!-- end of styles article -->
+		<div class="spacer"></div>
+	</section>
+
+
+</body>
+
+</html>

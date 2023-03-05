@@ -1,0 +1,66 @@
+/* Teamspeak Display Preview Release 3                                       */
+/* Copyright (C) 2005  Guido van Biemen (aka MrGuide@NL)                     */
+/*                                                                           */
+/* This program is free software; you can redistribute it and/or modify      */
+/* it under the terms of the GNU General Public License as published by      */
+/* the Free Software Foundation; either version 2 of the License, or         */
+/* (at your option) any later version.                                       */
+/*                                                                           */
+/* This program is distributed in the hope that it will be useful,           */
+/* but WITHOUT ANY WARRANTY; without even the implied warranty of            */
+/* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the             */
+/* GNU General Public License for more details.                              */
+/*                                                                           */
+/* You should have received a copy of the GNU General Public License         */
+/* along with this program; if not, write to the Free Software               */
+/* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA */
+
+#teamspeakdisplay  img {
+	border: 0px;
+}
+#teamspeakdisplay table {
+	border-collapse: collapse;
+	border-spacing: 0px;
+}
+#teamspeakdisplay td {
+	font: 9pt arial, verdana,helvetica;
+	padding: 0px;
+	white-space: nowrap;
+	vertical-align: top;
+}
+#teamspeakdisplay td.teamspeakserver {
+	padding-left: 3px;
+	font-weight: bold;
+}
+#teamspeakdisplay td.teamspeakchannel {
+	padding-left: 3px;
+}
+#teamspeakdisplay td.teamspeaksubchannel {
+	padding-left: 3px;
+}
+#teamspeakdisplay td.teamspeakplayer {
+	padding-left: 3px;
+}
+#teamspeakdisplay a.teamspeakserver {
+	font: 9pt arial, verdana,helvetica;
+	text-decoration: none;
+	font-weight: bold;
+}
+#teamspeakdisplay a.teamspeakserver:hover {
+}
+#teamspeakdisplay a.teamspeakchannel {
+	font: 9pt arial, verdana,helvetica;
+	font-weight: bold;
+	text-decoration: none;
+}
+#teamspeakdisplay a.teamspeakchannel:hover {
+}
+#teamspeakdisplay a.teamspeaksubchannel {
+	font: 9pt arial, verdana,helvetica;
+	font-weight: bold;
+	text-decoration: none;
+}
+#teamspeakdisplay a.teamspeaksubchannel:hover {
+}
+
+#tsdisplaydiv { overflow:hidden; float:center; width:140;}

@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8"/>
+	<title>Platinum Nuke Pro Docs</title>
+	<link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="css/layout.css" type="text/css" media="screen" />
+	<!--[if lt IE 9]>
+	<link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" />
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+    <script type="text/javascript" src="js/prototype.js"></script>
+<script type="text/javascript" src="js/scriptaculous.js?load=effects,builder"></script>
+<script type="text/javascript" src="js/lightbox.js"></script>
+	<script src="js/jquery-1.5.2.min.js" type="text/javascript"></script>
+	<script src="js/hideshow.js" type="text/javascript"></script>
+	<script src="js/jquery.tablesorter.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="js/jquery.equalHeight.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() 
+    	{ 
+      	  $(".tablesorter").tablesorter(); 
+   	 } 
+	);
+	$(document).ready(function() {
+
+	//When page loads...
+	$(".tab_content").hide(); //Hide all content
+	$("ul.tabs li:first").addClass("active").show(); //Activate first tab
+	$(".tab_content:first").show(); //Show first tab content
+
+	//On Click Event
+	$("ul.tabs li").click(function() {
+
+		$("ul.tabs li").removeClass("active"); //Remove any "active" class
+		$(this).addClass("active"); //Add "active" class to selected tab
+		$(".tab_content").hide(); //Hide all tab content
+
+		var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
+		$(activeTab).fadeIn(); //Fade in the active ID content
+		return false;
+	});
+
+});
+    </script>
+    <script type="text/javascript">
+    $(function(){
+        $('.column').equalHeight();
+    });
+</script>
+
+<script type="text/javascript" src="js/slimbox2.js"></script>
+<link rel="stylesheet" href="css/slimbox2.css" type="text/css" media="screen" />
+</head>
+
+
+<body>
+
+	<header id="header">
+		<hgroup>
+			<h1 class="site_title">Platinum Nuke</h1>
+			<h2 class="section_title">EXPECT TO BE IMPRESSED</h2><div class="btn_view_site"><a href="http://www.platinumnukepro.com" title="support" target="_new">Support</a></div>
+		</hgroup>
+	</header> <!-- end of header bar -->
+	
+	<section id="secondary_bar">
+		<div class="user">
+			<p><a href="index.html">MAIN</a></p>
+			<!-- <a class="logout_user" href="#" title="Logout">Logout</a> -->
+		</div>
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs"><a href="index.html">MAIN</a> <div class="breadcrumb_divider"></div> <a class="current">Theme Conversions</a></article>
+		</div>
+	</section><!-- end of secondary bar -->
+	
+	<aside id="sidebar" class="column">
+		
+		<hr/>
+<h3>Installation</h3>
+		<ul class="toggle">
+			<li class="icn_new_article"><a href="prep.html">Preperation</a></li>
+			<li class="icn_edit_article"><a href="setup.html">Setup</a></li>
+			<li class="icn_categories"><a href="installation.html">Post Installation</a></li>
+			<li class="icn_jump_back"><a href="common1.html">Common Issues</a></li>
+		</ul>
+		<h3>Site Setup</h3>
+		<ul class="toggle">
+			<li class="icn_add_user"><a href="settings.html">Settings</a></li>
+			<li class="icn_security"><a href="sec1.html">Security</a></li>
+			<li class="icn_jump_back"><a href="common2.html">Common Issues</a></li>
+		</ul>
+		<h3>New Features</h3>
+		<ul class="toggle">
+			<li class="icn_folder"><a href="php53.html">PHP 5.3 Ready</a></li>
+			<li class="icn_folder"><a href="gallery.html">Coppermine 1.3.2</a></li>
+			<li class="icn_folder"><a href="tegonukem.html">Tego Nuke Mailer</a></li>
+            <li class="icn_folder"><a href="dfgsite.html">DFW Site Info</a></li>
+            <li class="icn_folder"><a href="trickedoutnews.html">Tricked Out News</a></li>
+            <li class="icn_folder"><a href="collapsingforums.html">Collapsing Forums Mod</a></li>
+            <li class="icn_folder"><a href="rnya.html">RNYA 5.0.0</a></li>
+            <li class="icn_folder"><a href="legaldocs.html">Legal Docs 1.0.0</a></li> 
+            <li class="icn_folder"><a href="jquery.html">JQuery Menu</a></li>
+            <li class="icn_folder"><a href="multipleranks.html">Multiple Ranks Mod</a></li>
+            <li class="icn_folder"><a href="edl.html">Nuke Style EDL 3.0</a></li>
+		</ul>	
+		<h3>How to</h3>
+		<ul class="toggle">			
+			<li class="icn_folder"><a href="pnpdefault_css.html">Platinum Nuke Pro Default CSS</a></li>
+			<li class="icn_folder"><a href="colorbox_mod.html">Platinum Nuke Pro Ckeditor Colorbox mod</a></li>
+			<li class="icn_folder"><a href="youtube_cke_mod.html">Platinum Nuke Pro Ckeditor Youtube mod</a></li>
+		</ul>
+		<h3>Themes</h3>
+		<ul class="toggle">
+			<li class="icn_settings"><a href="options.html">Options</a></li>
+			<li class="icn_jump_back"><a href="common3.html">Common Issues</a></li>
+		</ul>
+		<h3>Theme Conversion<br> Platinum v501-502 to PNPv1.0</h3>
+        <ul class="toggle">
+			<li class="icn_tags"><a href="converting.html">Converting</a></li>
+			<li class="icn_tags"><a href="tabbed_pages.html">Required CSS edits for Tabbed Pages</a></li>
+			<li class="icn_tags"><a href="collapsible_forum_index.html">Collapsible Forum Index Mod</a></li>
+            <li class="icn_tags"><a href="forum_colorbox_mod.html">Forum Colorbox Mod</a></li>
+            <li class="icn_tags"><a href="ranks_social_bookmarks_mods.html">Ranks and Social bookmarks Mods</a></li>
+            <li class="icn_tags"><a href="forum_topic_and_titles_boxover_mod.html">Forum Topic and Titles boxover Mod</a></li>
+            </ul>
+		<footer>
+			<hr />
+			<p><strong>Copyright &copy; 2017 Platinum Nuke Pro</strong></p>
+			<p><strong><em>Theme edits by</em></strong> <a href="http://ngnuke.webuda.com"><strong>Nextgen</strong></a></p>
+			<p><strong><em>Theme styling by</em></strong> <a href="http://www.havocst.net"><strong>DocHaVoC</strong></a></p>
+           <p><a href="projectcredit.html"><strong><em>Project Credits</em></strong></a></p> 
+           <br>
+	  </footer>
+	</aside><!-- end of sidebar -->
+	
+	<section id="main" class="column">
+		
+		<h4 class="alert_info">Theme Conversions.</h4>
+		
+		<article class="module width_full">
+			<header><h3>Version</h3></header>
+			<div class="module_content">
+				<article class="stats_graph"><img src="images/PNP_logo_mirror_250w.png" width="200" height="146" alt="Main" longdesc="http://platinumnukepro.com"></article>
+				
+				<article class="stats_overview">
+				  <div class="overview_today">
+						<p class="overview_day">PHP-Nuke</p>
+						<p class="overview_count">7.6</p>
+						<p class="overview_day">Patched</p>
+						<p class="overview_count">3.5</p>
+						<p class="overview_type"></p>
+					</div>
+					<div class="overview_previous">
+						<p class="overview_day">Nuke Sentinel</p>
+						<p class="overview_count">2.6.0.1</p>
+						<p class="overview_day">BBTONUKE</p>
+						<p class="overview_count">2.0.23</p>
+						<p class="overview_type"></p>
+					</div>
+				</article>
+				<div class="clear"></div>
+			</div>
+		</article><!-- end of stats article --><!-- end of content manager article --><!-- end of messages article -->
+		
+    <div class="clear"></div><!-- end of post new article -->
+
+    <article class="module width_full">
+<header>
+  <h3>Nuke Platinum Pro Theme Conversions.</h3></header>
+ <div class="module_content">
+					<p align="center"><strong><em>DHTML Collapsible Forum Index MOD</em></strong></p>
+                    
+
+	  </div> 
+  <div class="module_content">
+					<p>-----[ OPEN ]------------------------------------------ <br>
+                        <br>
+					  themes/Your_theme/forum/index_body.tpl<br>
+  <br>
+					  -----[ AT TOP OF PAGE ADD (at line 1) ]------------------------------------------ <br>
+  <br>
+					  -----[ FIND ]------------------------------------------</p>
+					<p> NOTE --- Find the first TABLE definition in the template:</p>
+					<p>&lt;table</p>
+					<p>-----[ BEFORE, ADD ]------------------------------------------</p>
+					<p>&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot; src=&quot;{U_CFI_JSLIB}&quot;&gt;&lt;/script&gt;<br>
+					  &lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt;<br>
+					  &lt;!--</p>
+					<p>var CFIG_Version = &quot;DHTML Collapsible Forum Index MOD v1.1.1&quot;;</p>
+					<p>var CFIG = new _CFIG('CFIG',<br>
+					  ['{IMG_PLUS}', '{IMG_MINUS}'],<br>
+					  ['{IMG_DW_ARROW}', '{IMG_UP_ARROW}'],<br>
+					  ['{COOKIE_PATH}', '{COOKIE_DOMAIN}', (('{COOKIE_SECURE}' == '0') ? false : true)]);<br>
+					  CFIG.T['cookie'] = '{CFI_COOKIE_NAME}';<br>
+					  CFIG.T['title'] = ['{L_CFI_OPTIONS}', '{L_CFI_OPTIONS_EX}'];<br>
+					  CFIG.T['close'] = '{L_CFI_CLOSE}';<br>
+					  CFIG.T['delete'] = '{L_CFI_DELETE}';<br>
+					  CFIG.T['restore'] = '{L_CFI_RESTORE}';<br>
+					  CFIG.T['save'] = '{L_CFI_SAVE}';<br>
+					  CFIG.T['expand_all'] = '{L_CFI_EXPAND_ALL}';<br>
+					  CFIG.T['collapse_all'] = '{L_CFI_COLLAPSE_ALL}';<br>
+					  CFIG.T['u_index'] = '{U_INDEX}';<br>
+					  CFIG.allowed = true;</p>
+					<p> if( CFIG.IsEnabled() &amp;&amp; parseInt(CFIG.getQueryVar('c')) &gt; 0 )<br>
+					  {<br>
+					  window.location.replace('{U_INDEX}');<br>
+					  }<br>
+					  // --&gt;<br>
+  &lt;/script&gt;<br>
+	  </p>
+					<p>-----[ FIND ]------------------------------------------</p>
+					<p> NOTE --- the whole line to look for should be similar to this:<br>
+					  {CURRENT_TIME}&lt;br /&gt;&lt;/span&gt;&lt;span class=&quot;nav&quot;&gt;&lt;a href=&quot;{U_INDEX}&quot; class=&quot;nav&quot;&gt;{L_INDEX}&lt;/a&gt;{NAV_CAT_DESC}&lt;/span&gt;&lt;/td&gt;</p>
+					<p>{CURRENT_TIME}</p>
+					<p>-----[ BEFORE, ADD ]------------------------------------------</p>
+					<p> {CURRENT_TIME}&lt;br /&gt;&lt;/span&gt;<br>
+					  &lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt;<br>
+					  &lt;!--<br>
+					  CFIG.writeButton();<br>
+					  // --&gt;<br>
+  &lt;/script&gt;</p>
+					<p>-----[ IN-LINE FIND ]------------------------------------------</p>
+					<p>{CURRENT_TIME}&lt;br /&gt;&lt;/span&gt;&lt;span</p>
+					<p>-----[ IN-LINE REPLACE WITH ]------------------------------------------</p>
+					<p>&lt;span</p>
+					<p> NOTE --- so the result should look something like this:</p>
+					<p> {CURRENT_TIME}&lt;br /&gt;&lt;/span&gt;<br>
+  &lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt;<br>
+  &lt;!--<br>
+					  CFIG.writeButton();<br>
+					  // --&gt;<br>
+  &lt;/script&gt;<br>
+  &lt;span class=&quot;nav&quot;&gt;&lt;a href=&quot;{U_INDEX}&quot; class=&quot;nav&quot;&gt;{L_INDEX}&lt;/a&gt;{NAV_CAT_DESC}&lt;/span&gt;&lt;/td&gt;</p>
+					<p>&nbsp;</p>
+					<p>-----[ FIND ]------------------------------------------</p>
+					<p>&lt;/table&gt;</p>
+					<p>-----[ AFTER, ADD ]------------------------------------------</p>
+					<p>&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt;<br>
+					  &lt;!--<br>
+					  CFIG.writePanel();</p>
+					<p>&lt;!-- BEGIN catrow --&gt;<br>
+					  CFIG.C['cat_{catrow.CAT_ID}'] = new _CFIC('{catrow.CAT_ID}', '{catrow.DISPLAY}');<br>
+					  &lt;!-- BEGIN forumrow --&gt;<br>
+					  if( CFIG.C['cat_{catrow.CAT_ID}'] ) CFIG.C['cat_{catrow.CAT_ID}'].add('forum_{catrow.CAT_ID}_{catrow.forumrow.FORUM_ID}');<br>
+					  &lt;!-- END forumrow --&gt;<br>
+					  &lt;!-- END catrow --&gt;</p>
+					<p>function CFIG_slideCat(cat_id, isLink)<br>
+					  {<br>
+					  if( CFIG &amp;&amp; CFIG.currentStep &lt;= 0 )<br>
+					  {<br>
+					  if( CFIG.IsEnabled() &amp;&amp; CFIG.C['cat_'+cat_id] )<br>
+					  {<br>
+					  if( isLink ) return false;<br>
+					  CFIG.createQueue();<br>
+					  CFIG.slideForums(cat_id);<br>
+					  CFIG.execQueue();<br>
+					  CFIG.saveIndexState(CFIG.T['cookie']);<br>
+					  return false;	// omit the default action of the link.<br>
+					  }<br>
+					  if( !isLink )<br>
+					  {<br>
+					  var u_index = CFIG.T['u_index'];<br>
+					  u_index += ( u_index.indexOf('?') &gt; 0 ? '&amp;' : '?' ) + 'c=' + parseInt(cat_id);<br>
+					  window.location.replace(u_index);<br>
+					  return false;<br>
+					  }<br>
+					  }<br>
+					  return true;	// let the link do its job.<br>
+					  }<br>
+					  function CFIG_onLoad()<br>
+					  {<br>
+					  if( CFIG_oldOnLoad )<br>
+					  {<br>
+					  CFIG_oldOnLoad();<br>
+					  CFIG_oldOnLoad = null;<br>
+					  }<br>
+					  if( CFIG &amp;&amp; CFIG.IsEnabled() )<br>
+					  {<br>
+					  CFIG.restoreIndexState(CFIG.T['cookie']);<br>
+					  }<br>
+					  }<br>
+					  var CFIG_oldOnLoad = window.onload;<br>
+					  window.onload = CFIG_onLoad;<br>
+					  // --&gt;<br>
+  &lt;/script&gt;<br>
+	  </p>
+					<p>-----[ FIND ]------------------------------------------</p>
+					<p> &lt;!-- BEGIN catrow --&gt;</p>
+					<p> NOTE --- There is no other action to apply here, just skip to next FIND.</p>
+					<p>&nbsp;</p>
+					<p>-----[ FIND ]------------------------------------------</p>
+					<p> &lt;tr&gt;</p>
+					<p>-----[ REPLACE WITH ]------------------------------------------</p>
+					<p> &lt;tr onclick=&quot;CFIG_slideCat('{catrow.CAT_ID}', false);&quot; style=&quot;cursor:pointer;cursor:hand;&quot;  title=&quot;{catrow.CAT_DESC}&quot;&gt;</p>
+					<p>-----[ FIND ]------------------------------------------</p>
+					<p> NOTE --- the whole line to look for should be similar to this:<br>
+  &lt;td class=&quot;catLeft&quot; colspan=&quot;2&quot; height=&quot;28&quot;&gt;&lt;span class=&quot;cattitle&quot;&gt;&lt;a href=&quot;{catrow.U_VIEWCAT}&quot; class=&quot;cattitle&quot;&gt;{catrow.CAT_DESC}&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;</p>
+					<p>&quot;{catrow.U_VIEWCAT}&quot;</p>
+					<p>-----[ IN-LINE FIND ]------------------------------------------</p>
+					<p>&gt;</p>
+					<p>-----[ IN-LINE AFTER, ADD ]------------------------------------------</p>
+					<p>&amp;nbsp;&amp;nbsp;&lt;img name=&quot;icon_sign_{catrow.CAT_ID}&quot; src=&quot;{SPACER}&quot; border=&quot;0&quot; /&gt;&amp;nbsp;&amp;nbsp;</p>
+					<p>-----[ IN-LINE FIND ]------------------------------------------</p>
+					<p>&quot;{catrow.U_VIEWCAT}&quot;</p>
+					<p>-----[ IN-LINE AFTER, ADD ]------------------------------------------</p>
+					<p> onclick=&quot;return CFIG_slideCat('{catrow.CAT_ID}', true);&quot; onfocus=&quot;this.blur();&quot;</p>
+					<p> NOTE --- so the result should look something like this:<br>
+  &lt;td class=&quot;catLeft&quot; colspan=&quot;2&quot; height=&quot;28&quot;&gt;&amp;nbsp;&amp;nbsp;&lt;img name=&quot;icon_sign_{catrow.CAT_ID}&quot; src=&quot;{SPACER}&quot; border=&quot;0&quot; /&gt;&amp;nbsp;&amp;nbsp;&lt;span class=&quot;cattitle&quot;&gt;&lt;a href=&quot;{catrow.U_VIEWCAT}&quot; onclick=&quot;return CFIG_slideCat('{catrow.CAT_ID}', true);&quot; onfocus=&quot;this.blur();&quot; class=&quot;cattitle&quot;&gt;{catrow.CAT_DESC}&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;</p>
+					<p>&nbsp;</p>
+					<p>-----[ FIND ]------------------------------------------</p>
+					<p> &lt;!-- BEGIN forumrow --&gt;</p>
+					<p> NOTE --- There is no other action to apply here, just skip to next FIND.</p>
+					<p>&nbsp;</p>
+					<p>-----[ FIND ]------------------------------------------</p>
+					<p> &lt;tr&gt;</p>
+					<p>-----[ REPLACE WITH ]------------------------------------------</p>
+					<p> &lt;tr id=&quot;forum_{catrow.CAT_ID}_{catrow.forumrow.FORUM_ID}&quot; style=&quot;display:{catrow.forumrow.DISPLAY};&quot;&gt;</p>
+					<p> -----[ SAVE/CLOSE FILE ]------------------------------------------ </p>
+					<p> -----[ OPEN ]------------------------------------------ <br>
+                        <br>
+					  themes/Your_theme/forum/forums.cfg<br>
+  <br>
+					  -----[ AT BOTTOM OF PAGE ADD BEFORE THE CLOSING TAG ( ?&gt; ) ]------------------------------------------ <br>
+  <br>
+					  //+MOD: DHTML Collapsible Forum Index MOD<br>
+					  $images['up_arrow'] = &quot;$current_template_images/icon_up_arrow.gif&quot;;<br>
+					  $images['down_arrow'] = &quot;$current_template_images/icon_down_arrow.gif&quot;;<br>
+					  $images['icon_sign_plus'] = &quot;$current_template_images/icon_sign_plus.gif&quot;;<br>
+					  $images['icon_sign_minus'] = &quot;$current_template_images/icon_sign_minus.gif&quot;;<br>
+					  //-MOD: DHTML Collapsible Forum Index MOD<br>
+  <br>
+					  -----[ SAVE/CLOSE FILE ]------</p>
+					<p align="center"><strong><em>- EoM--------DHTML Collapsible Forum Index MOD-</strong></em></p>
+                    
+
+	  </div>          
+	  </article><!-- end of styles article -->
+		<div class="spacer"></div>
+	</section>
+
+
+</body>
+
+</html>

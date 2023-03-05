@@ -1,0 +1,233 @@
+|=============================================================================|
+|                                                                             |
+|  Site Navigator for PHP-Nuke                                                |
+|  Copyright (c) 2004 Devaz Network, All Rights Reserved                      |
+|  http://devaz.uni.cc                                                        |
+|                                                                             |
+|  Layout Definition (English)                                                |
+|  Creation date    : July 13th, 2004                                         |
+|  Last revised     : -                                                       |
+|  Revision history : -                                                       |
+|                                                                             |
+|-----------------------------------------------------------------------------|
+|                                                                             |
+|  Converted to Nuke-Evolution by ICEMAN at http://montecitogaming.com or     |
+|  http://tc-net.info (but download at http://montecitogaming.com             |
+|                                                                             |
+|-----------------------------------------------------------------------------|
+|                                                                             |
+|  This program is free software; you can redistribute it and/or modify it    |
+|  under the terms of the GNU General Public License as published by the      |
+|  Free Software Foundation; either version 2 of the License, or (at your     |
+|  option) any later version. (http://www.gnu.org/copyleft/gpl.html)          |
+|                                                                             |
+|  This program is distributed in the hope that it will be useful, but        |
+|  WITHOUT ANY WARRANTY; without even the implied warranty of                 |
+|  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General   |
+|  Public License for more details.                                           |
+|                                                                             |
+|  You should have received a copy of the GNU General Public License along    |
+|  with this program; if not, write to the Free Software Foundation, Inc.,    |
+|  59 Temple Place, Suite 330, Boston, MA  02111-1307  USA                    |
+|                                                                             |
+|  You run this program at your sole risk. Author cannot be held liable of    |
+|  uses and misuses of this program. It advised to test this program under    |
+|  a development environment. Be sure to make any backups before implement    |
+|  and running this program within a production environment.                  |
+|                                                                             |
+|  Installing and running this program also means you agree to the terms of   |
+|  usages and conditions to this program. All codes that released here are    |
+|  considered as sample code only. It may be fully functional, but you use    |
+|  at your own risk. No warranty is given or implied. All original header     |
+|  code and copyright messages will be maintained to give credit where        |
+|  credit is due. If you modify this program, the only requirement is that    |
+|  you also maintain all original copyright messages.                         |
+|                                                                             |
+|=============================================================================|
+
+|
+| entry descriptions:
+| each entry containing a string containing 7 fields separated by "|>|" separator
+| - 1st field is a unique name to be used as "group" identifier
+| - 2nd field is menu show/hide state:
+|   * if module name supplied, this menu will shown depend on module's active state
+|   * if "#isuser#" (without quotes) supplied, this menu accessible only for registered users
+|   * if "#isadmin#" (without quotes) supplied, this menu accessible only for administrators
+|   * if radminXXX occurs (separate multiple values by comma), accessible for specific admin level (admin menu only)
+|   * if "null" (without quotes) or empty, this menu accessible for all visitors
+| - 3rd field is an icon image to be used in menu item, or "null" for none
+| - 4th field is the category title (localized) or an image using "#IMG=xxx#" (without quotes), should not empty
+| - 5th field is the category description (localized), if empty category title will be used
+| - 6th field is the menu URL:
+|   * if "auto" (without quotes) supplied, it will generate automatic link (only if 2nd field is module name)
+|   * if "null" (without quotes) supplied, this menu do nothing when clicked
+|   * if "#INDEX#" (without quotes) supplied, it will replace with index script file, e.g. index.php
+|   * if "#MODULE#" (without quotes) supplied, it will replace with module script file, e.g. modules.php
+|   * if "#ADMIN#" (without quotes) supplied, it will replace with admin script file, e.g. admin.php
+| - 7th field is URL target window e.g. "_blank" will opening in a new window, "null" open in current window
+| - 8th field is preserved for future use, must be "null"
+|
+
+
+| define module categories in "home" menu
+| used to grouping modules into several category menus under "home"
+|
+@@IF home_module_cat@@
+web  |>| null |>| icon_home.png     |>| Website             |>| Website modules      |>| null |>| null |>| null
+news |>| null |>| icon_article.png  |>| News &amp; Articles |>| News and articles    |>| null |>| null |>| null
+user |>| null |>| icon_manblack.png |>| User Related        |>| User related modules |>| null |>| null |>| null
+@@ENDIF home_module_cat@@
+
+
+| define module category items in "home" menu
+| used to grouping modules into several category menus under "home"
+|
+@@IF home_module_item@@
+web  |>| Advertising       |>| icon_recommend.png    |>| Advertising      |>| Advertising module      |>| #MODULE#?name=Advertising   |>| null |>| null
+web  |>| Content           |>| icon_briefcase.png    |>| Contents         |>| Contents module         |>| auto 			      |>| null |>| null
+web  |>| Docs              |>| icon_docs.png         |>| Docs             |>| Docs module             |>| #MODULE#?name=Docs          |>| null |>| null
+web  |>| Donations         |>| icon_donations.png    |>| Donations        |>| Donations module        |>| #MODULE#?name=Donations     |>| null |>| null
+web  |>| Downloads         |>| icon_file.png         |>| Downloads        |>| Downloads module        |>| auto 			      |>| null |>| null
+web  |>| FAQ               |>| icon_help.png         |>| FAQ              |>| FAQ module              |>| auto 			      |>| null |>| null
+web  |>| Feedback          |>| icon_feedback.png     |>| Feedback         |>| Feedback module         |>| auto 			      |>| null |>| null
+web  |>| Site_Map          |>| icon_map.png          |>| Site Map         |>| Site Map module         |>| #MODULE#?name=Site_Map      |>| null |>| null
+web  |>| Supporters        |>| icon_supporter.png    |>| Supporters       |>| Supporters module       |>| #MODULE#?name=Supporters    |>| null |>| null
+user |>| Profile           |>| icon_manblue.png      |>| Profile          |>| Profile module          |>| #MODULE#?name=Profile       |>| null |>| null
+user |>| null              |>| null                  |>| -                |>| Separator               |>| null                |>| null |>| null
+user |>| Forums            |>| icon_forum.png        |>| Forums           |>| Forums module           |>| auto 			      |>| null |>| null
+user |>| Members_List      |>| icon_group.png        |>| Members List     |>| Member list module      |>| auto 			      |>| null |>| null
+news |>| News              |>| icon_article.png      |>| Site News        |>| News module             |>| auto 			      |>| null |>| null
+web  |>| NukeSentinel      |>| icon_nukesentinel.png |>| NukeSentinel     |>| NukeSentinel module     |>| #MODULE#?name=NukeSentinel  |>| null |>| null
+user |>| Private_Messages  |>| icon_mail.png         |>| Private Messages |>| Private messages module |>| auto 			      |>| null |>| null
+web  |>| Recommend_Us      |>| icon_recommend.png    |>| Recommend Us     |>| Recommend us module     |>| auto 			      |>| null |>| null
+web  |>| Reviews           |>| icon_reviews.png      |>| Reviews          |>| Reviews module          |>| auto 			      |>| null |>| null
+web  |>| Search            |>| icon_search.png       |>| Search           |>| Search module           |>| auto 			      |>| null |>| null
+web  |>| Statistics        |>| icon_stats.png        |>| Statistics       |>| Statistics module       |>| auto 			      |>| null |>| null
+news |>| Stories_Archive   |>| icon_story.png        |>| Stories Archive  |>| Stories archive module  |>| auto 			      |>| null |>| null
+news |>| Submit_News       |>| icon_news-add.png     |>| Submit News      |>| Submit news module      |>| auto 			      |>| null |>| null
+web  |>| Surveys           |>| icon_surveys.png      |>| Surveys          |>| Surveys module          |>| auto 			      |>| null |>| null
+web  |>| Top               |>| icon_top.png          |>| Top              |>| Top module              |>| auto 			      |>| null |>| null
+news |>| Topics            |>| icon_news.png         |>| Topics           |>| Topics module           |>| auto 			      |>| null |>| null
+web  |>| Web_Links         |>| icon_4nwho.png        |>| Web Links        |>| Web links module        |>| auto 			      |>| null |>| null
+user |>| Groups            |>| icon_manred.png       |>| Groups           |>| Groups module           |>| #MODULE#?name=Groups        |>| null |>| null
+user |>| Your_Account      |>| icon_mangreen.png     |>| Your Account     |>| Your account module     |>| auto 			      |>| null |>| null
+@@ENDIF home_module_item@@
+
+
+| define custom categories in "home" menu
+| used to grouping your custom menu into several category menus under "home"
+|
+@@IF home_custom_cat@@
+|search  |>| null |>| icon_find.png     |>| Search The Web    |>| Search using popular search engines |>| null |>| null |>| null
+|website |>| null |>| icon_internet.png |>| Interesting Sites |>| Visit interesting websites          |>| null |>| null |>| null
+@@ENDIF home_custom_cat@@
+
+
+| define custom menu items in "home" menu
+| used to grouping custom menu into several category menus under "home"
+|
+@@IF home_custom_item@@
+|search  |>| null |>| icon_search.png |>| Google Search      |>| Search web with Google  |>| http://www.google.com        |>| _blank |>| null
+|search  |>| null |>| icon_search.png |>| Yahoo! Search      |>| Search web with Yahoo!  |>| http://www.yahoo.com         |>| _blank |>| null
+|search  |>| null |>| icon_search.png |>| Lycos Search       |>| Search web with Lycos   |>| http://www.lycos.com         |>| _blank |>| null
+website |>| null |>| icon_home.png   |>| Tech-C Help Center |>| Tech-c Help Center      |>| http://www.tc-net.info       |>| _blank |>| null
+website |>| null |>| icon_home.png   |>| Montecito Gaming   |>| Montecito Gaming        |>| http://mg.tc-net.info        |>| _blank |>| null
+website |>| null |>| icon_home.png   |>| Apache Server      |>| Apache Web Server       |>| http://www.apache.org        |>| _blank |>| null
+website |>| null |>| icon_home.png   |>| CPG-Nuke           |>| Secure PHP-Nuke port    |>| http://www.cpgnuke.com       |>| _blank |>| null
+website |>| null |>| icon_home.png   |>| Devaz Network      |>| What the h*ll is this?  |>| http://devaz.uni.cc          |>| _blank |>| null
+website |>| null |>| icon_home.png   |>| GNome Desktop      |>| GNome Linux desktop     |>| http://www.gnomedesktop.org  |>| _blank |>| null
+website |>| null |>| icon_home.png   |>| Linux Central      |>| Linux community         |>| http://linuxcentral.com      |>| _blank |>| null
+website |>| null |>| icon_home.png   |>| Mambo Portal       |>| Mambo Open Source       |>| http://www.mamboportal.com   |>| _blank |>| null
+website |>| null |>| icon_home.png   |>| Mozilla            |>| Home of Mozilla browser |>| http://www.mozilla.org       |>| _blank |>| null
+website |>| null |>| icon_home.png   |>| MySQL              |>| MySQL official site     |>| http://www.mysql.com         |>| _blank |>| null
+website |>| null |>| icon_home.png   |>| Nuke Cops          |>| PHP-Nuke community site |>| http://www.nukecops.com      |>| _blank |>| null
+website |>| null |>| icon_home.png   |>| Nuke Resources     |>| Nuke Resources          |>| http://www.nukeresources.com |>| _blank |>| null
+website |>| null |>| icon_home.png   |>| Nuke Scripts       |>| Home of NSN projects    |>| http://www.nukescripts.net   |>| _blank |>| null
+website |>| null |>| icon_home.png   |>| PHP-Nuke           |>| PHP-Nuke official site  |>| http://phpnuke.org           |>| _blank |>| null
+website |>| null |>| icon_home.png   |>| PHP.net            |>| PHP parser engine       |>| http://www.php.net           |>| _blank |>| null
+website |>| null |>| icon_home.png   |>| SourceForge        |>| Open Sources Hoster     |>| http://sourceforge.net       |>| _blank |>| null
+website |>| null |>| icon_home.png   |>| Zend PHP Engine    |>| The core of PHP         |>| http://www.zend.com          |>| _blank |>| null
+@@ENDIF home_custom_item@@
+
+
+
+| define custom categories in "admin" menu
+| used to grouping your custom menu into several category menus under "admin"
+|
+@@IF admin_cat@@
+account  |>| null |>| icon_manwhite.png |>| Account     |>| Account Administration       |>| null |>| null |>| null
+webpage  |>| null |>| icon_home.png     |>| Appearances |>| Site Layout Administration   |>| null |>| null |>| null
+article  |>| null |>| icon_article.png  |>| Articles    |>| Article Administration       |>| null |>| null |>| null
+service  |>| null |>| icon_group.png    |>| Services    |>| Site Services Administration |>| null |>| null |>| null
+other    |>| null |>| icon_document.png |>| Others      |>| Other Administration         |>| null |>| null |>| null
+@@ENDIF admin_cat@@
+
+
+| define menu items in "admin" menu
+| used to define shortcuts accessible only for site administrators
+|
+@@IF admin_item@@
+account |>| null             |>| icon_mangreen.png      |>| Administrators |>| Author administration       |>| #ADMIN#?op=mod_authors   |>| null |>| null
+article |>| radminarticle    |>| icon_article.png       |>| Articles       |>| Site news administration    |>| #ADMIN#?op=adminStory    |>| null |>| null
+service |>| null             |>| icon_recommend.png     |>| Banners        |>| Banner administration       |>| #ADMIN#?op=BannersAdmin  |>| null |>| null
+webpage |>| null             |>| icon_setting.png       |>| Blocks         |>| Block administration        |>| #ADMIN#?op=blocks        |>| null |>| null
+article |>| radmincontent    |>| icon_briefcase.png     |>| Contents       |>| Content Administration      |>| #ADMIN#?op=content       |>| null |>| null
+service |>| radmindownload   |>| icon_file.png          |>| Downloads      |>| Download Administration     |>| #ADMIN#?op=DLMain        |>| null |>| null
+article |>| radminfaq        |>| icon_help.png          |>| FAQ            |>| FAQ administration          |>| #ADMIN#?op=FaqAdmin      |>| null |>| null
+service |>| radminforum      |>| icon_forum.png         |>| Forums         |>| Forum administration        |>| #ADMIN#?op=forums        |>| null |>| null
+other   |>| null             |>| icon_group.png         |>| Groups         |>| Group administration        |>| #ADMIN#?op=Groups        |>| null |>| null
+other   |>| null             |>| icon_internet.png      |>| HTTP Referers  |>| Referer administration      |>| #ADMIN#?op=hreferer      |>| null |>| null
+webpage |>| null             |>| icon_notes.png         |>| Messages       |>| Message administration      |>| #ADMIN#?op=messages      |>| null |>| null
+webpage |>| null             |>| icon_document.png      |>| Modules        |>| Module administration       |>| #ADMIN#?op=modules       |>| null |>| null
+webpage |>| null             |>| icon_themes.png        |>| Themes         |>| Theme administration        |>| #ADMIN#?op=themes        |>| null |>| null
+webpage |>| null             |>| icon_supporter.png     |>| Supporters     |>| Supporters administration   |>| #ADMIN#?op=SPMain        |>| null |>| null
+webpage |>| null             |>| icon_backup.png        |>| Database       |>| Database administration     |>| #ADMIN#?op=database      |>| null |>| null
+other   |>| radminnewsletter |>| icon_panel.png         |>| Newsletters    |>| Newsletter administration   |>| #ADMIN#?op=newsletter    |>| null |>| null
+article |>| radminreviews    |>| icon_article.png       |>| Reviews        |>| Review administration       |>| #ADMIN#?op=reviews       |>| null |>| null
+other   |>| radminarticle    |>| icon_briefcase.png     |>| Submissions    |>| Submission administration   |>| #ADMIN#?op=submissions   |>| null |>| null
+other   |>| null             |>| icon_nukesentinel.png  |>| NukeSentinel   |>| NukeSentinel administration |>| #ADMIN#?op=ABMain        |>| null |>| null
+other   |>| null             |>| icon_info.png          |>| System Info    |>| System Info                 |>| #ADMIN#?op=info          |>| null |>| null
+other   |>| null             |>| icon_4nwho.png         |>| Who Is Online  |>| Who Is Online               |>| #ADMIN#?op=who           |>| null |>| null
+other   |>| null             |>| icon_evo-userinfo.png  |>| DFW Site Info  |>| DFW Site Info admin         |>| #ADMIN#?op=DFWAdmin  |>| null |>| null
+service |>| radminsurvey     |>| icon_popular.png       |>| Surveys        |>| Survey administration       |>| #ADMIN#?op=Surveys       |>| null |>| null
+article |>| radmintopic      |>| icon_setting.png       |>| Topics         |>| Topic administration        |>| #ADMIN#?op=topicsmanager |>| null |>| null
+article |>| null             |>| icon_news.png          |>| News Config    |>| News administration         |>| #ADMIN#?op=NENewsConfig  |>| null |>| null
+account |>| radminusers      |>| icon_manblue.png       |>| Users          |>| User administration         |>| #ADMIN#?op=mod_users     |>| null |>| null
+service |>| radminlink       |>| icon_internet.png      |>| Web Links      |>| Weblink administration      |>| #ADMIN#?op=Links         |>| null |>| null
+service |>| null             |>| icon_sitemap.png       |>| Site Map       |>| Site Map administration     |>| #ADMIN#?op=site_map      |>| null |>| null
+service |>| null             |>| icon_donations.png     |>| Donations      |>| Donations administration    |>| #ADMIN#?op=Donations     |>| null |>| null
+null    |>| null             |>| null                   |>| -              |>| Separator                   |>| null                     |>| null |>| null
+null    |>| null             |>| icon_admin.png         |>| Configuration  |>| Site prefences settings     |>| #ADMIN#?op=Configure     |>| null |>| null
+null    |>| null             |>| null                   |>| -              |>| Separator                   |>| null                     |>| null |>| null
+null    |>| null             |>| icon_logout.png        |>| Logout         |>| Logout as administrator     |>| #ADMIN#?op=logout        |>| null |>| null
+@@ENDIF admin_item@@
+
+
+| define menu items in "account" menu
+| used to define shortcuts accessible only for registered members
+|
+@@IF account_item@@
+null |>| Your_Account     |>| icon_panel.png     |>| Account Preferences |>| Configure your account preferences  |>| #MODULE#?name=Your_Account&op=edituser |>| null |>| null
+null |>| Your_Account     |>| icon_home.png      |>| Home Settings       |>| Adjust your home settings           |>| #MODULE#?name=Your_Account&op=edithome |>| null |>| null
+null |>| Private_Messages |>| icon_mail.png      |>| Private Messages    |>| Administering your private messages |>| #MODULE#?name=Private_Messages         |>| null |>| null
+null |>| Your_Account     |>| icon_online.png    |>| Themes Selection    |>| Change your default theme           |>| #MODULE#?name=Your_Account&op=chgtheme |>| null |>| null
+null |>| Your_Account     |>| null               |>| -                   |>| Separator                           |>| null                                   |>| null |>| null
+null |>| Your_Account     |>| icon_logout.png    |>| Logout              |>| Logout as a registered user         |>| #MODULE#?name=Your_Account&op=logout   |>| null |>| null
+@@ENDIF account_item@@
+
+
+| define custom categories in "clan" menu
+| used to grouping your custom menu into several category menus under "admin"
+|
+@@IF clan_cat@@
+AA  |>| null |>| icon_manwhite.png |>| Account     |>| Account Administration       |>| null |>| null |>| null
+BF  |>| null |>| icon_home.png     |>| Appearances |>| Site Layout Administration   |>| null |>| null |>| null
+
+@@ENDIF clan_cat@@
+
+
+
+
+|
+| END OF FILE
+|

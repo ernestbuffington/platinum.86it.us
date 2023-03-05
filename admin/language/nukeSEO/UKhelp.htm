@@ -1,0 +1,158 @@
+<a name="top"></a>
+<div align="center"><h3>Metatags is not everything!</h3></div>
+
+But good and correct MetaTags can help search-engins and their users to find and
+ catogorize your site correctly.<br>
+Do <strong>not</strong> beleive that MetaTags solve all your problems making your site known -
+ there is much more work to do! Do not forget your content.
+
+In this help I can only cover the most known and used MetaTags - for other MetaTags you will need 
+to search the net. 
+<br>
+Before you start: I have have opened the Meta.php file for a more easy access, whatever you update 
+it to is your own responsibility. 
+<br><br>
+At this stage of the module there is only a weak checking of your content.
+ 
+<br>  
+
+The most important MetaTags are:
+<ul>
+<li>Title
+<li><a href="#DESCRIPTION">Description</a>
+<li><a href="#KEYWORDS">Keywords</a>
+<li><a href="#ROBOTS">Robots</a>
+</ul>
+See below for further information:
+<p>
+
+There are two types of META tags: <a href="#HTTP-EQUIV">HTTP-EQUIV</a> and <a href="#NAME">NAME</a><br>
+
+<a name="HTTP-EQUIV"></a>
+<h4>HTTP-EQUIV</h4><div align="right"><a href="#top">Back to Top</a></div>
+META HTTP-EQUIV tags are the equivalent of HTTP headers. 
+Just like normal headers, META HTTP-EQUIV tags control and direct the actions 
+of Web browsers, and are used to refine the information which is provided by 
+the actual headers.
+HTTP-EQUIV tags are designed to affect the Web browser in the same manner as 
+ normal headers.
+<ul>
+<a name="Expires"></a>
+<li><h5>Expires</h5><div align="right"><a href="#top">Back to Top</a></div>
+This tells the browser when the document will expire. Can be given as a date 
+in RFC850 format or as a number of days (+25)
+<br>Example: <code>&lt;META HTTP-EQUIV="expires" CONTENT="Wed, 23 Apr 2003 12:25:01 GMT"&gt;</code>
+<br>Example: <code>&lt;META HTTP-EQUIV="expires" CONTENT="+25"&gt;</code> 
+<br>
+<a name="Pragma"></a>
+<li><h5>Pragma</h5><div align="right"><a href="#top">Back to Top</a></div>
+Tell the browser not to cache a page locally. Should work in Netscape Navigator
+ but some sites reports that IE ignore this MetaTag. There is only one valid value: "no-cache".
+<br>Example <code>&lt;META HTTP-EQUIV="Pragma" CONTENT="no-cache"&gt;</code>
+<br>
+<a name="Refresh"></a>
+<li><h5>Refresh</h5><div align="right"><a href="#top">Back to Top</a></div>
+Specifies the time in seconds before the Web browser reloads the document automatically.
+It can also specify a different URL for the browser to load - redirect your site. 
+<br>Example <code>&lt;META HTTP-EQUIV="Refresh" CONTENT="0.01;URL=http://www.drdirect-url.com"&gt;</code>
+<br>Be aware that if you save this - your site will be redirected as first time you save the MetaTags!!
+<br>Also be aware that using refresh can disturb web-crawlers and search engins visiting your site,
+ with negative effect on your rating as a consequense.
+<br> 
+<a name="Set-Cookie"></a>
+<li><h5>Set-Cookie</h5><div align="right"><a href="#top">Back to Top</a></div>
+This is one way to set a cookie in the user’s Web browser. 
+If you set the expiration date, the cookie will be considered permanent saved to disk (until it expires),
+ if not date is set it will only be considered valid for the current session and will be erased 
+ when closing the browser.
+<br>Not all allow their browser to set cookies, sodo not relay on its use. 
+<br>Example <code>&lt;META HTTP-EQUIV="Set-Cookie" CONTENT="cookievalue=your value here;expires=Wed, 23 Apr 2003 12:25:01 GMT; path=/"&gt;</code>  
+<br>  
+<a name="Window-target">
+<li><h5>Window-target</h5><a name="Window-target"></a><div align="right"><a href="#top">Back to Top</a></div>
+Specifies the "named window" of the current page, and can be used to prevent a page from
+ appearing inside another framed page. This means that the Web browser 
+ will try to force the page to go the top frameset.
+<br>Only one valid value: "_top" 
+<br>Example <code>&lt;META HTTP-EQUIV="Window-target" CONTENT="_top"&gt;</code>
+<br>
+<a name="PICS-Label"></a>
+<li><h5>PICS-Label</h5><div align="right"><a href="#top">Back to Top</a></div>
+<I>PICS-Label</I> (PICS stands for Platform for Internet Content Selection).
+World Wide Web Consortium (W3C) developed this standard for labeling online content for more information go to 
+<A HREF="http://www.w3.org/PICS/">www.w3.org/PICS/</A> ). The W3C’s standard left the actual creation
+ of labels to the "labeling services." Anything which has a URL can be labeled, and labels can be
+ assigned in two ways. First, a third party labeling service may rate the site, and the labels
+ are stored at the actual labeling bureau which resides on the Web server of the labeling service.
+ The second method involves the developer or Web site host contacting a rating service, 
+ filling out the proper forms, and using the HTML META tag information that the service 
+ provides on their pages. One such free service is the 
+ <A HREF="http://vancouver-webpages.com/VWP1.0/VWP1.0.gen.html">PICS-Label generator</A> 
+ that Vancouver-Webpages provides. It is based on the Vancouver Webpages Canadian PICS ratings, 
+ version 1.0, and can be used as a guideline for creating your own PICS-Label META tag.
+<br>
+ Even PICS-Label was designed as a ratings label, it is also used for code signing, 
+ privacy, and intellectual property rights management. A PICS-Label for an entire site  
+ can look like this:<BR>   
+<br>Example <code>&lt;META http-equiv="PICS-Label" content='(PICS-1.1 "http://vancouver-webpages.com/VWP1.0/" l gen true comment "VWP1.0" by "webmaster@visayas.dk" on "2003.04.19T14:07-0700" for "http://visayas.dk" r (P 0 S 0 V 0 Com 0 Tol 0 Env 0 SF 0 Edu 0 Can 0 MC -3 Gam -1 ))'&gt;</code>
+
+</ul>  
+
+<a name="NAME"></a>
+<h4>NAME</h4><div align="right"><a href="#top">Back to Top</a></div>
+META tags with a NAME attribute are used for META types which do not correspond
+ to normal HTTP headers.
+<ul>  
+<a name="DESCRIPTION"></a>
+<li><h5>DESCRIPTION</h5><div align="right"><a href="#top">Back to Top</a></div>
+Widely used by the search engins. Often shown when a site is found in a search: so this is the way your
+ site get presented!. use some time to get a neat and good description of what the site is about. Do not will 
+ it with keywords - it keeo people away from clicking at the site. Make sure to use words that also can be found 
+ in KEYWORDS and on the first page of the site. Due to spam many search engins tries to verify if the
+ DESCRIPTION is likely to be about the site by comparing the words - no similarities means spam - 
+ lower ration or even black listed.
+<br>Example <code>&lt;META NAME="description" CONTENT="Visayas - the heart of Philippines. Interactive information site about Visayas ....."&gt;</code>  
+<strong></strong> 
+<a name="KEYWORDS"></a>
+<li><h5>KEYWORDS</h5><div align="right"><a href="#top">Back to Top</a></div>
+Keywords are used to give extra information to search engins. Use important and descriptive words 
+ from the site. Add words in common mis-spellings - like 'philipines'. Do not repeat words to 
+ improve ratings - the trick do not work, actually it makes it worse!
+<br>Example <code>&lt;META NAME="description" CONTENT="This page is about the meaning of life, the universe, mankind and plants."&gt;</code>
+<br>
+<a name="ROBOTS"></a>
+<li><h5>ROBOTS</h5><div align="right"><a href="#top">Back to Top</a></div>
+This controles how Robots (spiders, webcrawlers, search engines) index a web site.
+ Also seek information about the robot.txt file that is used to stop indexing of
+ certain foldes and files. For more information visit <a href="http://www.searchengineworld.com/metatag/robots.htm">Robots.txt</a> <br>
+ 
+There are these valid values: all, none, index,noindex,follow,nofollow. When using 2 they are seperated by a comma.
+<br><br> 
+INDEX means its ok for a robot the page. 
+<br>
+NOINDEX means its NOT ok for a robot the page. 
+<br>
+FOLLOW means its ok for a robot to follow the links found on this page. 
+<br>
+NOFOLLOW means its NOT ok for a robot to follow the links found on this page. 
+<br>
+ALL=INDEX,FOLLOW
+<br>
+NONE=NOINDEX,NOFOLLOW. 
+<br>Default is ALL
+<br>Example <code>&lt;META NAME="ROBOTS" CONTENT="INDEX,FOLLOW"&gt;</code>
+
+   
+</ul>
+<a name="other Tags"></a>
+<h4>Many Other MetaTags</h4>
+Sorry! I cant cover it all - search the web or start at the links below <br>
+
+
+<br>
+<a name="Links"></a>
+<h4>Links</h4> <div align="right"><a href="#top">Back to Top</a></div>
+<li><a href="http://www.webdeveloper.com/html/html_metatags.html" target=_BLANK>Back to Basics: META Tags</a>
+<li><a href="http://webdeveloper.com/html/html_metatag_res.html" target=_BLANK>WebDeveloper.com META Tag Resources</a>
+<li><a href="http://vancouver-webpages.com/META/" target=_BLANK>Vancouver Webpages: A Dictionary of HTML META Tags</a>
+<li><a href="http://geotags.com/geo/DMS3.html" target=_BLANK>Geo tags - If your site is about an area, country</a>

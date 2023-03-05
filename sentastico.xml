@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sentastico>
+    <name>plat-pro-dev</name>
+    <version>2.0.0</version>
+    <zipname>plat-pro-dev_2.0.0</zipname>
+    <type>Portal/CMS</type>
+    <info>ALPHA TESTING - DO NOT USE.</info>
+    <db>yes</db>
+    <homepage>http://www.platinumnukepro.com/</homepage>
+    <installer></installer>
+</sentastico>

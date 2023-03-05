@@ -1,0 +1,202 @@
+ul.sortable li {
+	position: relative;
+	text-align: left;
+}
+
+ul.sortable2 li {
+	position: relative;
+	text-align: left;
+}
+
+ul.boxy {
+	list-style-type: none;
+	padding: 4px 4px 0 4px;
+	margin: 0px;
+	width: 10em;
+	font-size: 11px;
+	font-family: Arial, sans-serif;
+        border: 1px solid green;
+}
+ul.boxy li {
+	cursor:move;
+	margin-bottom: 4px;
+	padding: 2px 2px;
+	border: 1px solid #ccc;
+	background-color: $bgcolor2;
+}
+
+ul.boxc {
+	list-style-type: none;
+	padding: 4px 4px 0 4px;
+	margin: 0px;
+	width: 10em;
+	font-size: 11px;
+	font-family: Arial, sans-serif;
+        border: 1px solid #ffe000;
+}
+ul.boxc li {
+	cursor:move;
+	margin-bottom: 4px;
+	padding: 2px 2px;
+	border: 1px solid #ccc;
+	background-color: $bgcolor2;
+}
+
+ul.boxr {
+	list-style-type: none;
+	padding: 4px 4px 0 4px;
+	margin: 0px;
+	width: 10em;
+	font-size: 11px;
+	font-family: Arial, sans-serif;
+        border: 1px solid red;
+}
+
+ul.boxd {
+	list-style-type: none;
+	padding: 4px 4px 0 4px;
+	margin: 0px;
+	width: 10em;
+	font-size: 11px;
+	font-family: Arial, sans-serif;
+        border: 1px solid purple;
+}
+
+ul.boxd li {
+	cursor:move;
+	margin-bottom: 4px;
+	padding: 2px 2px;
+	border: 1px solid #ccc;
+	background-color: $bgcolor2;
+}
+
+ul.boxr li {
+	cursor:move;
+	margin-bottom: 4px;
+	padding: 2px 2px;
+	border: 1px solid #ccc;
+	background-color: $bgcolor2;
+}
+
+ul.bak {
+	list-style-type: none;
+	padding: 4px 4px 0 4px;
+	margin: 0px;
+	width: 10em;
+	font-size: 11px;
+	font-family: Arial, sans-serif;
+        border: 2px solid blue;
+}
+
+ul.bak li {
+	cursor:move;
+	margin-bottom: 4px;
+	padding: 2px 2px;
+	border: 1px solid #ccc;
+	background-color: $bgcolor2;
+}
+
+ul.d {
+	list-style-type: none;
+	padding: 4px 4px 0 4px;
+	margin: 0px;
+	width: 10em;
+	font-size: 11px;
+	font-family: Arial, sans-serif;
+        border: 2px solid #ff0000;
+}
+
+ul.d li {
+	cursor:move;
+	margin-bottom: 4px;
+	padding: 2px 2px;
+	border: 1px solid #ccc;
+	background-color: $bgcolor2;
+}
+
+ul.edit {
+	list-style-type: none;
+	padding: 4px 4px 0 4px;
+	margin: 0px;
+	width: 10em;
+	font-size: 11px;
+	font-family: Arial, sans-serif;
+        border: 2px solid #ff0000;
+}
+
+ul.edit li {
+	cursor:move;
+	margin-bottom: 4px;
+	padding: 2px 2px;
+	border: 1px solid #ccc;
+	background-color: $bgcolor2;
+}
+
+ul.edit2 {
+	list-style-type: none;
+	padding: 4px 4px 0 4px;
+	margin: 0px;
+	width: 10em;
+	font-size: 11px;
+	font-family: Arial, sans-serif;
+        border: 2px solid #ff0000;
+}
+
+ul.edit2 li {
+	cursor:move;
+	margin-bottom: 4px;
+	padding: 2px 2px;
+	border: 1px solid #ccc;
+	background-color: $bgcolor2;
+}
+
+#l {
+    width: 160px;
+    float: left;
+    margin-left: 5px;
+}
+
+#c {
+    width: 160px;
+    float: left;
+    margin-left: 5px;
+}
+
+#r {
+    width: 160px;
+    float: left;
+    margin-left: 5px;
+}
+
+#t {
+    width: 160px;
+    float: left;
+    margin-left: 5px;
+}
+
+#d {
+    width: 160px;
+    float: left;
+    margin-left: 5px;
+}
+
+#f {
+    width: 160px;
+    float: left;
+    margin-left: 5px;
+}
+
+#edit {
+    width: 160px;
+    float: left;
+    margin-left: 5px;
+}
+
+#edit2 {
+    width: 260px;
+    float: left;
+    margin-left: 5px;
+}
+.note {
+BORDER-RIGHT: #f63817 1px; BORDER-TOP: #f63817 1px; BORDER-LEFT: #f63817 1px; WIDTH: 180px; BORDER-BOTTOM: #f63817 1px;
+}

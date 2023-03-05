@@ -1,0 +1,29 @@
+.class1 {font-family:"Comic Sans MS";}
+.class1 A:link {font-size:9px; font-family:"Comic Sans MS"; color:#cc6600; font-weight:bold;}
+.class1 A:visited {font-size:9px; font-family:"Comic Sans MS";}
+.class1 A:active {font-size:9px; font-family:"Comic Sans MS";}
+.class1 A:hover {font-size:9px; font-family:"Comic Sans MS"; color:#900;}
+
+.class2 {font-family:"Comic Sans MS";}
+.class2 A:link {font-size:12px; font-family:"Comic Sans MS"; color:#3366ff; font-weight:bold;}
+.class2 A:visited {font-size:12px; font-family:"Comic Sans MS";}
+.class2 A:active {font-size:12px; font-family:"Comic Sans MS";}
+.class2 A:hover {font-size:12px; font-family:"Comic Sans MS"; color:#900;}
+
+.class3 {font-family:"Comic Sans MS";}
+.class3 A:link {font-size:15px; font-family:"Comic Sans MS"; color:ffcc00; font-weight:bold;}
+.class3 A:visited {font-size:15px ; font-family:"Comic Sans MS";}
+.class3 A:active {font-size:15px; font-family:"Comic Sans MS";}
+.class3 A:hover {font-size:15px; font-family:"Comic Sans MS"; color:#900;}
+
+.class4 {font-family:"Comic Sans MS";}
+.class4 A:link {font-size:18px; font-family:"Comic Sans MS"; color:#5f9ea0; font-weight:bold;}
+.class4 A:visited {font-size:18px; font-family:"Comic Sans MS";}
+.class4 A:active {font-size:18px; font-family:"Comic Sans MS";}
+.class4 A:hover {font-size:18px; font-family:"Comic Sans MS"; color:#900;}
+
+.class5 {font-family:"Comic Sans MS";}
+.class5 A:link {font-size:24px; font-family:"Comic Sans MS"; color:#00cc00; font-weight:bold;}
+.class5 A:visited {font-size:24px; font-family:"Comic Sans MS";}
+.class5 A:active {font-size:24px; font-family:"Comic Sans MS";}
+.class5 A:hover {font-size:24px; font-family:"Comic Sans MS"; color:#900;}

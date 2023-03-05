@@ -1,0 +1,82 @@
+ul.AddRows {
+  list-style: none;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+li.LineRight {
+  min-height: 22px;
+  float:right;
+  width: 49%;
+  vertical-align: middle;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding-top: 6px;
+  padding-bottom: 1px;
+  list-style: none;
+}
+li.LineLeft {
+  min-height: 22px;
+  width: 50%;
+  text-align: left;
+  text-indent: 5px;
+  margin-top: 2px;
+  vertical-align: middle;
+  margin-left: 2px;
+  margin-bottom: 2px;
+  padding-top: 6px;
+  padding-bottom: 1px;
+  float: left;
+  list-style: none;
+}
+
+.BlockImages {
+  font-size: 12px;
+  padding: 5px;
+  border: 1px solid;
+}
+
+tr.threerow {
+ padding: 3px 3px 3px 3px;
+ width: 100%;
+}
+
+td.threerow {
+ padding: 3px 3px 3px 3px;
+}
+
+.clear { /* generic container (i.e. div) for floating buttons */
+    overflow: hidden;
+    width: 100%;
+}
+
+a.button {
+    background: transparent url('../../images/DFW/bg_button_a.gif') no-repeat scroll top right;
+    color: #000000;
+    display: inline-block;
+    float: none;
+    font: normal 12px arial, sans-serif;
+    height: 24px;
+	width: 150px;
+    margin-right: 6px;
+    padding-right: 18px; /* sliding doors padding */
+    text-decoration: none;
+}
+
+a.button span {
+    background: transparent url('../../images/DFW/bg_button_span.gif') no-repeat;
+    display: block;
+    line-height: 14px;
+    padding: 4px 0 4px 16px;
+} 
+
+a.button:active {
+    background-position: bottom right;
+    color: #000;
+    outline: none; /* hide dotted outline in Firefox */
+}
+
+a.button:active span {
+    background-position: bottom left;
+    padding: 6px 0 4px 18px; /* push text down 1px */
+} 

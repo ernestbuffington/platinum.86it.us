@@ -1,0 +1,70 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="4" style="border-collapse: collapse">
+  <tr>
+    <td><center>
+      <font size="5">We Need Your Help</font><br>
+	  <a href="#MakeDonation"><img border="0" src="$DON_BUTTON_TOP" $DON_TOP_IMG_DIMS></a></center>
+	  <hr>
+	  $DON_TEXT
+	  <a name="MakeDonation"></a><a name="AdminTop"></a>
+      <hr>
+      <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1" height="1">
+        <tr>
+          <td width="156" rowspan="6" height="1"><b><font size="4"> Make a Donation</font></b>
+		    <form action="$PP_URL/cgi-bin/webscr" target="paypal" method="post">
+			  <p> 
+				<input type="hidden" name="cmd" value="_xclick">
+				<input type="hidden" name="business" value="$PP_RECEIVER_EMAIL" >
+				<input type="hidden" name="item_name" value="$PP_ITEMNAME">
+				<input type="hidden" name="item_number" value="110">
+				Please select an amount:<br>
+				<input type="radio" name="amount" value=""> Other&nbsp; 
+				<input type="text" name="amount" value="$0.00" size="10">
+				<input type="hidden" name="rm" value="2">
+				<br>
+				$DONATION_AMOUNTS
+				<br>
+			  </p>
+              <p> 
+				<input type="hidden" name="on0" value="List your name? ">
+				$tr_config[don_name_prompt]<br>
+				<select size="Yes" name="os0">
+				  <option selected value="Yes">$tr_config[don_name_yes]</option>
+				  <option value="No">$tr_config[don_name_no]</option>
+				</select> &nbsp;
+			  </p> 
+				<input type="hidden" name="no_shipping" value="$PP_NO_SHIP">
+				<input type="hidden" name="currency_code" value="USD">
+				<input type="hidden" name="cn" value="Comments">
+				<input type="hidden" name="image_url" value="$PP_IMAGE">
+				<input type="hidden" name="custom" value="$USERNAME">
+				<input type="hidden" name="cancel_return" value="$PP_CANCEL_URL"> 
+				<input type="hidden" name="return" value="$PP_TY_URL">
+				<input type="hidden" name="image_url" value="$PP_IMAGE_URL">
+
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                <input type="image" src="$DON_BUTTON_SUBMIT" border="0" name="I1" $DON_SUB_IMG_DIMS>
+              </p>
+            </form>
+	      </td>
+	      <td valign="top">
+    	    <table style="border-collapse: collapse" bordercolor="#111111" cellpadding="0" cellspacing="0">
+  	          <tr>
+                <td width="100%" colspan="3"><b>Who has donated so far this month</b><br>&nbsp;</td>
+              </tr>
+  	          <tr>
+                <td align="left" >&nbsp;&nbsp; Name</td>
+                <td width="55" align="left" >&nbsp;&nbsp;$DON_AMT</td>
+                <td align="left">&nbsp;&nbsp;&nbsp;$DON_DATE&nbsp;&nbsp;&nbsp;&nbsp;</td>
+              </tr>
+			  <tr>
+			    <td colspan="3"><hr></td>
+			  </tr>
+   			    $ROWS_DONATORS
+		    </table>
+          </td>
+		  
+		</tr>
+      </table>
+	</td>
+  </tr>
+</table>

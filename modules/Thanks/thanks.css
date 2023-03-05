@@ -1,0 +1,98 @@
+h1 {
+	font: bold 330%/100% "Lucida Grande";
+	position: relative;
+	text-align: center;
+	min-height: 50px;
+	color: #CCFF66;
+	margin: 1em 0;
+	padding: 4px;
+	border: 3px groove #bebebe;
+	background-color: #000066;
+	filter:alpha(opacity=60);
+	opacity: 0.80;
+	-moz-opacity:0.60;
+	-moz-border-radius: .5em;
+	-webkit-border-radius: .5em;
+	-webkit-transition: all 1s ease-in-out;
+}
+.span {
+	position: absolute;
+	display: block;
+	text-align: center;
+	height: 32px;
+	outline-color: #FF0000;
+}
+#deano {
+	border: 3px groove #bebebe;
+	background-color: #cccc99;
+	filter:alpha(opacity=60);
+	opacity: 0.90;
+	-moz-opacity:0.90;
+	-moz-border-radius: 1em;
+	-webkit-border-radius: 1em;
+	-webkit-transition: all 1s ease-in-out;
+	position: relative;
+}
+#access {
+
+text-align: center;
+}
+#rmenu {
+	font: bold 330%/100% "Lucida Grande";
+	float: none;
+	margin: 3em 0;
+	padding: 4px;
+	border: 3px groove #bebebe;
+	background-color: #003300;
+	font-style: oblique;
+	color: #ffffff;
+	filter:alpha(opacity=60);
+	opacity: 0.80;
+	-moz-opacity:0.80;
+	font-size: 16px;
+	-moz-border-radius: .5em;
+	-webkit-border-radius: .5em;
+	-webkit-transition: all 1s ease-in-out;
+	position: relative;
+}
+#submenu {
+	font: bold 330%/100% "Lucida Grande";
+	float: none;
+	margin: 2em 0;
+	padding: 2px;
+	border: 3px groove #bebebe;
+	background-color: #000066;
+	font-style: oblique;
+	color: #ffffff;
+	filter:alpha(opacity=60);
+	opacity: 0.80;
+	-moz-opacity:0.80;
+	font-size: 12px;
+	-moz-border-radius: 1em;
+	-webkit-border-radius: 1em;
+	-webkit-transition: all 1s ease-in-out;
+	position: relative;
+}
+#compliant {
+	text-align: center;
+	white-space: nowrap;
+	position: relative;
+	vertical-align: bottom;
+	display: block;
+	top: 130px;
+	z-index: auto;
+	position: relative;
+	border: none;
+}
+
+</style>
+<!--[if lt IE 7]>
+
+<style>
+h1 span {
+  background: none;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='gradient.png', sizingMethod='scale');
+}
+</style>
+
+<![endif]-->

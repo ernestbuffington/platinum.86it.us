@@ -1,0 +1,554 @@
+
+
+A:link {
+FONT-SIZE: 12px; 
+COLOR: #272E34; 
+FONT-FAMILY:  arial, helvetica, verdana, sans-serif; 
+TEXT-DECORATION: none
+}
+A:visited {
+FONT-SIZE: 12px; 
+COLOR: #272E34; 
+FONT-FAMILY:  arial, helvetica, verdana, sans-serif; 
+TEXT-DECORATION: none
+}
+A:active {
+FONT-SIZE: 12px; 
+COLOR: #272E34; 
+FONT-FAMILY:  arial, helvetica, verdana, sans-serif; 
+TEXT-DECORATION: none
+}
+A:hover {
+FONT-SIZE: 12px; 
+COLOR: #FFFFFF; 
+FONT-FAMILY:  arial, helvetica, verdana, sans-serif; 
+TEXT-DECORATION: none
+}
+BODY {
+FONT-SIZE: 12px; 
+CURSOR: default; 
+COLOR: #272E34; 
+BACKGROUND-color: #ADBECB; 
+FONT-FAMILY:  arial, helvetica, verdana, sans-serif; 
+TEXT-DECORATION: none
+}
+
+TEXTAREA {
+background:#97AAB9;
+color:#272E34;
+font:11px Arial,Helvetica,sans-serif;
+BORDER-TOP: #26313B 1px solid; 
+BORDER-BOTTOM: #F5F8FA 1px solid; 
+BORDER-LEFT: #26313B 1px solid; 
+BORDER-RIGHT: #F5F8FA 1px solid;
+}
+P {
+FONT-SIZE: 12px; 
+COLOR: #272E34; 
+LINE-HEIGHT: 1.4; 
+FONT-FAMILY:  arial, helvetica, verdana, sans-serif; 
+TEXT-DECORATION: none
+}
+TABLE {
+FONT-SIZE: 12px; 
+COLOR: #272E34; 
+FONT-FAMILY:  arial, helvetica, verdana, sans-serif; 
+TEXT-DECORATION: none
+}
+
+TD.content {
+FONT-SIZE: 12px;
+COLOR: #272E34; 
+TEXT-DECORATION: none;
+FONT-FAMILY:  arial, helvetica, verdana, sans-serif;
+ 
+}
+TD.extra {
+background:#ADBECB; 
+BORDER-TOP: #F5F8FA 1px solid; 
+BORDER-BOTTOM: #26313B 1px solid; 
+BORDER-LEFT: #F5F8FA 1px solid; 
+BORDER-RIGHT: #26313B 1px solid;
+}
+TD.info1 {
+font: normal 11px Arial, Helvetica, sans-serif;
+color:#272E34;
+background:#BAC9D7;
+BORDER-TOP: #26313B 1px solid; 
+BORDER-BOTTOM: #F5F8FA 1px solid; 
+BORDER-LEFT: #26313B 1px solid; 
+BORDER-RIGHT: #F5F8FA 1px solid;
+}
+TD.info2 {
+font: normal 11px Arial, Helvetica, sans-serif;
+background:#B1BFCB;
+color:#272E34;
+BORDER-TOP: #26313B 1px solid; 
+BORDER-BOTTOM: #F5F8FA 1px solid; 
+BORDER-LEFT: #26313B 1px solid; 
+BORDER-RIGHT: #F5F8FA 1px solid;
+}
+TD.infolt {
+background:#97AAB9;
+color:#272E34;
+BORDER-TOP: #26313B 1px solid; 
+BORDER-BOTTOM: #F5F8FA 1px solid; 
+BORDER-LEFT: #26313B 1px solid; 
+BORDER-RIGHT: #F5F8FA 1px solid;
+}
+TD.infort {
+background:#B1BFCB;
+color:#272E34;
+BORDER-TOP: #26313B 1px solid; 
+BORDER-BOTTOM: #F5F8FA 1px solid; 
+BORDER-LEFT: #26313B 1px solid; 
+BORDER-RIGHT: #F5F8FA 1px solid;
+}
+TD.extras {
+background:#B1BFCB;
+color:#272E34;
+BORDER-TOP: #26313B 1px solid; 
+BORDER-BOTTOM: #F5F8FA 1px solid; 
+BORDER-LEFT: #26313B 1px solid; 
+BORDER-RIGHT: #F5F8FA 1px solid;
+}
+TD.extra1 {
+background:#96A7B6;
+BORDER-TOP: #26313B 1px solid; 
+BORDER-BOTTOM: #F5F8FA 1px solid; 
+BORDER-LEFT: #26313B 1px solid; 
+BORDER-RIGHT: #F5F8FA 1px solid;
+}
+TD.extra2 {
+background:#CED8DF;
+color:#272E34;
+BORDER-TOP: #26313B 1px solid; 
+BORDER-BOTTOM: #F5F8FA 1px solid; 
+BORDER-LEFT: #26313B 1px solid; 
+BORDER-RIGHT: #F5F8FA 1px solid;
+}
+hr {
+border-top: 1px solid #272E34;
+border-bottom: 1px solid #F0F2F4;
+height: 2px;
+width: 100%;
+}
+
+UL {
+	LIST-STYLE-TYPE: square
+}
+.center {
+	TEXT-ALIGN: center
+}
+.justify {
+	TEXT-ALIGN: justify
+}
+.right {
+	TEXT-ALIGN: right
+}
+
+.heading {
+FONT-WEIGHT: bold; 
+FONT-SIZE: 12px; 
+COLOR: #272E34; 
+FONT-FAMILY: Tahoma; 
+LETTER-SPACING: 0px; 
+TEXT-DECORATION: none
+}
+.heading1 {
+FONT-WEIGHT: bold; 
+FONT-SIZE: 12px; 
+COLOR: #272E34; 
+FONT-FAMILY: Tahoma; 
+LETTER-SPACING: 0px; 
+TEXT-DECORATION: none
+}
+.fade {
+FONT-WEIGHT: bold; 
+FONT-SIZE: 10px; 
+COLOR: #272E34; 
+FONT-FAMILY: Tahoma; 
+LETTER-SPACING: 0px; 
+TEXT-DECORATION: none
+}
+.user {
+FONT-WEIGHT: bold; 
+FONT-SIZE: 10px; 
+COLOR: #272E34; 
+FONT-FAMILY:  arial, helvetica, verdana, sans-serif; 
+LETTER-SPACING: 0px; 
+TEXT-DECORATION: none
+}
+IMG.work {
+BORDER-RIGHT: #FFFFFF 1px solid; 
+BORDER-TOP: #FFFFFF 1px solid; 
+BORDER-LEFT: #FFFFFF 1px solid; 
+BORDER-BOTTOM: #FFFFFF 1px solid
+}
+.error {
+COLOR: #272E34; 
+BACKGROUND-COLOR: #8f8f8f
+}
+
+#custtable {
+Z-INDEX: 6; 
+VISIBILITY: hidden; 
+FONT: 12px arial; 
+COLOR: #272E34; 
+POSITION: absolute; 
+TEXT-ALIGN: center
+}
+#linktable {
+Z-INDEX: 6; 
+VISIBILITY: hidden; 
+FONT: 12px arial; 
+COLOR: #272E34; 
+POSITION: absolute; 
+TEXT-ALIGN: center
+}
+
+SELECT {
+	color : #272E34;
+	font: normal 11px Arial, Helvetica, sans-serif;
+	 BACKGROUND: #B1BFCB;
+}
+
+BODY {
+SCROLLBAR-BASE-color:  #8A9BA9;
+SCROLLBAR-ARROW-color: #ADBECB;
+}
+td.b1	{
+background:#D7E2EB;
+BORDER-TOP: #26313B 1px solid; 
+BORDER-BOTTOM: #F5F8FA 1px solid; 
+BORDER-LEFT: #26313B 1px solid; 
+BORDER-RIGHT: #F5F8FA 1px solid;}
+td.b2	{
+background:#A5C0D6;
+BORDER-TOP: #26313B 1px solid; 
+BORDER-BOTTOM: #F5F8FA 1px solid; 
+BORDER-LEFT: #26313B 1px solid; 
+BORDER-RIGHT: #F5F8FA 1px solid;
+}
+td.b3	{
+background:#D7E2EB;
+BORDER-TOP: #26313B 1px solid; 
+BORDER-BOTTOM: #F5F8FA 1px solid; 
+BORDER-LEFT: #26313B 1px solid; 
+BORDER-RIGHT: #F5F8FA 1px solid;
+}
+/* This is the border line & background colour round the entire page */
+.bodyline	{ 
+background-color: #617990; 
+border:1px solid; 
+border-color:#F5F8FA;
+}
+.tablein {
+color : #272E34;
+font: normal 11px  Arial, Helvetica, sans-serif;
+background:#BAC9D7;
+BORDER-TOP: #26313B 1px solid; 
+BORDER-BOTTOM: #F5F8FA 1px solid; 
+BORDER-LEFT: #26313B 1px solid; 
+BORDER-RIGHT: #F5F8FA 1px solid;
+}
+.tableout {
+background:#D7E2EB;
+BORDER-TOP: #F5F8FA 1px solid; 
+BORDER-BOTTOM: #26313B 1px solid; 
+BORDER-LEFT: #F5F8FA 1px solid; 
+BORDER-RIGHT: #26313B 1px solid;
+}	
+/* This is the outline round the main forum tables */
+.forumline	{ 
+background:#D7E2EB;
+BORDER-TOP: #F5F8FA 1px solid; 
+BORDER-BOTTOM: #26313B 1px solid; 
+BORDER-LEFT: #F5F8FA 1px solid; 
+BORDER-RIGHT: #26313B 1px solid;
+}
+.forumline2	{ 
+background:#C2D1DC;
+BORDER-TOP: #26313B 1px solid; 
+BORDER-BOTTOM: #F5F8FA 1px solid; 
+BORDER-LEFT: #26313B 1px solid; 
+BORDER-RIGHT: #F5F8FA 1px solid;
+}
+
+
+
+/* Main table cell colours and backgrounds */
+td.row1	{
+background:#D7E2EB;
+BORDER-TOP: #F5F8FA 1px solid; 
+BORDER-BOTTOM: #26313B 1px solid; 
+BORDER-LEFT: #F5F8FA 1px solid; 
+BORDER-RIGHT: #26313B 1px solid;
+}
+td.row2	{
+background:#D7E2EB;
+BORDER-TOP: #F5F8FA 1px solid; 
+BORDER-BOTTOM: #26313B 1px solid; 
+BORDER-LEFT: #F5F8FA 1px solid; 
+BORDER-RIGHT: #26313B 1px solid;
+}
+td.row3	{
+background:#D7E2EB;
+BORDER-TOP: #F5F8FA 1px solid; 
+BORDER-BOTTOM: #26313B 1px solid; 
+BORDER-LEFT: #F5F8FA 1px solid; 
+BORDER-RIGHT: #26313B 1px solid;
+}
+td.row4	{
+background:#586574;
+BORDER-TOP: #26313B 1px solid; 
+BORDER-BOTTOM: #F5F8FA 1px solid; 
+BORDER-LEFT: #26313B 1px solid; 
+BORDER-RIGHT: #F5F8FA 1px solid;
+}
+td.rowpic {
+		background:#D7E2EB;
+BORDER-TOP: #F5F8FA 1px solid; 
+BORDER-BOTTOM: #26313B 1px solid; 
+BORDER-LEFT: #F5F8FA 1px solid; 
+BORDER-RIGHT: #26313B 1px solid;
+}
+td.pic{
+	color: #272E34; font-size: 11px; font-weight : bold;
+	 height: 25px;
+    background:#D7E2EB;
+BORDER-TOP: #F5F8FA 1px solid; 
+BORDER-BOTTOM: #26313B 1px solid; 
+BORDER-LEFT: #F5F8FA 1px solid; 
+BORDER-RIGHT: #26313B 1px solid;
+
+th	{
+color: #272E34; 
+font-size: 11px; 
+font-weight : bold;
+background:#BAC9D7;
+BORDER-TOP: #F5F8FA 1px solid; 
+BORDER-BOTTOM: #26313B 1px solid; 
+BORDER-LEFT: #F5F8FA 1px solid; 
+BORDER-RIGHT: #26313B 1px solid; height: 20px;
+}
+th.1	{
+	color: #272E34; font-size: 11px; font-weight : bold;
+	 height: 25px;
+    background:#BAC9D7;
+BORDER-TOP: #F5F8FA 1px solid; 
+BORDER-BOTTOM: #26313B 1px solid; 
+BORDER-LEFT: #F5F8FA 1px solid; 
+BORDER-RIGHT: #26313B 1px solid;
+	
+}
+
+td.cat,td.catHead,td.catSides,td.catLeft,td.catRight,td.catBottom {
+			
+			background:#D7E2EB;
+BORDER-TOP: #F5F8FA 1px solid; 
+BORDER-BOTTOM: #26313B 1px solid; 
+BORDER-LEFT: #F5F8FA 1px solid; 
+BORDER-RIGHT: #26313B 1px solid; height: 28px;
+}
+
+
+/*
+  Setting additional nice inner borders for the main table cells.
+  The names indicate which sides the border will be on.
+  Don't worry if you don't understand this, just ignore it :-)
+*/
+td.cat,td.catHead,td.catBottom {
+	height: 29px;
+	BORDER-TOP: #F5F8FA 1px solid; 
+BORDER-BOTTOM: #26313B 1px solid; 
+BORDER-LEFT: #F5F8FA 1px solid; 
+BORDER-RIGHT: #26313B 1px solid;
+}
+th.thHead,th.thSides,th.thTop,th.thLeft,th.thRight,th.thBottom,th.thCornerL,th.thCornerR {
+	font-weight: bold; BORDER-TOP: #F5F8FA 1px solid; 
+BORDER-BOTTOM: #26313B 1px solid; 
+BORDER-LEFT: #F5F8FA 1px solid; 
+BORDER-RIGHT: #26313B 1px solid; height: 28px; }
+td.row3Right,td.spaceRow {
+background:#D7E2EB;
+BORDER-TOP: #F5F8FA 1px solid; 
+BORDER-BOTTOM: #26313B 1px solid; 
+BORDER-LEFT: #F5F8FA 1px solid; 
+BORDER-RIGHT: #26313B 1px solid;}
+
+th.thHead,td.catHead { font-size: 12px; BORDER-TOP: #F5F8FA 1px solid; 
+BORDER-BOTTOM: #26313B 1px solid; 
+BORDER-LEFT: #F5F8FA 1px solid; 
+BORDER-RIGHT: #26313B 1px solid; }
+th.thSides,td.catSides,td.spaceRow	 { BORDER-TOP: #F5F8FA 1px solid; 
+BORDER-BOTTOM: #26313B 1px solid; 
+BORDER-LEFT: #F5F8FA 1px solid; 
+BORDER-RIGHT: #26313B 1px solid; }
+th.thRight,td.catRight,td.row3Right	 { BORDER-TOP: #F5F8FA 1px solid; 
+BORDER-BOTTOM: #26313B 1px solid; 
+BORDER-LEFT: #F5F8FA 1px solid; 
+BORDER-RIGHT: #26313B 1px solid; }
+th.thLeft,td.catLeft	  { BORDER-TOP: #F5F8FA 1px solid; 
+BORDER-BOTTOM: #26313B 1px solid; 
+BORDER-LEFT: #F5F8FA 1px solid; 
+BORDER-RIGHT: #26313B 1px solid; }
+th.thBottom,td.catBottom  { BORDER-TOP: #F5F8FA 1px solid; 
+BORDER-BOTTOM: #26313B 1px solid; 
+BORDER-LEFT: #F5F8FA 1px solid; 
+BORDER-RIGHT: #26313B 1px solid; }
+th.thTop	 { BORDER-TOP: #F5F8FA 1px solid; 
+BORDER-BOTTOM: #26313B 1px solid; 
+BORDER-LEFT: #F5F8FA 1px solid; 
+BORDER-RIGHT: #26313B 1px solid; }
+th.thCornerL { BORDER-TOP: #F5F8FA 1px solid; 
+BORDER-BOTTOM: #26313B 1px solid; 
+BORDER-LEFT: #F5F8FA 1px solid; 
+BORDER-RIGHT: #26313B 1px solid; }
+th.thCornerR { BORDER-TOP: #F5F8FA 1px solid; 
+BORDER-BOTTOM: #26313B 1px solid; 
+BORDER-LEFT: #F5F8FA 1px solid; 
+BORDER-RIGHT: #26313B 1px solid; }
+
+
+/* The largest text used in the index page title and toptic title etc. */
+.maintitle,h1,h2	{
+			font-weight: bold; font-size: 22px; font-family: Arial, Helvetica, sans-serif;
+			text-decoration: none; line-height : 120%; color : #272E34;
+}
+
+
+/* General text */
+.gen { font-size : 12px; }
+.genmed { font-size : 11px; }
+.gensmall { font-size : 10px; }
+.gen,.genmed,.gensmall { color : #272E34; }
+a.gen,a.genmed,a.gensmall { color: #272E34; text-decoration: none; }
+a.gen:hover,a.genmed:hover,a.gensmall:hover	{ color: #FFFFFF; text-decoration: none; }
+
+
+/* The register, login, search etc links at the top of the page */
+.mainmenu		{ font-size : 11px; color : #272E34;}
+a.mainmenu		{ text-decoration: none; color : #272E34;}
+a.mainmenu:hover{ text-decoration: none; color : #FFFFFF;}
+
+
+/* Forum category titles */
+.cattitle		{ font-weight: bold; font-size: 12px ; letter-spacing: 0px; color : #272E34}
+a.cattitle		{ text-decoration: none; color : #272E34; }
+a.cattitle:hover{ text-decoration: none; color : #FFFFFF;}
+
+
+/* Forum title: Text and link to the forums used in: index.php */
+.forumlink		{ font-weight: bold; font-size: 12px; color : #272E34; }
+a.forumlink 	{ text-decoration: none; color : #272E34; }
+a.forumlink:hover{ text-decoration: NONE; color : #FFFFFF; }
+
+
+/* Used for the navigation text, (Page 1,2,3 etc) and the navigation bar when in a forum */
+.nav			{ font-weight: bold; font-size: 11px; color : #272E34;}
+a.nav			{ text-decoration: none; color : #272E34; }
+a.nav:hover		{ text-decoration: NONE; color : #FFFFFF;}
+
+
+/* titles for the topics: could specify viewed link colour too */
+.topictitle			{ font-weight: bold; font-size: 11px; color : #272E34; }
+a.topictitle:link   { text-decoration: none; color : #272E34; }
+a.topictitle:visited { text-decoration: none; color : #272E34; }
+a.topictitle:hover	{ text-decoration: NONE; color : #FFFFFF; }
+
+
+/* Name of poster in viewmsg.php and viewtopic.php and other places */
+.name			{ font-size : 11px; color : #272E34;}
+
+/* Location, number of posts, post date etc */
+.postdetails		{ font-size : 10px; color : #272E34; }
+
+
+/* The content of the posts (body of text) */
+.postbody { font-size : 12px;}
+a.postlink:link	{ text-decoration: none; color : #272E34; }
+a.postlink:visited { text-decoration: none; color : #272E34; }
+a.postlink:hover { text-decoration: NONE; color : #FFFFFF}
+
+
+/* Quote & Code blocks */
+.code {
+	font-family: Courier, 'Courier New', sans-serif; font-size: 11px; color: #23315F;
+	background-color: #CAD5DD; border:1px solid; border-color:#272E34 #EBECED #EBECED #272E34;
+}
+
+.quote {
+	font-family: arial, 'tahoma', sans-serif; font-size: 12px; color: #23315F;
+	background-color: #CAD5DD; border:1px solid; border-color:#272E34 #EBECED #EBECED #272E34;
+}
+
+
+/* Copyright and bottom info */
+.copyright		{ font-size: 10px; font-family: Verdana, Arial, Helvetica, sans-serif; color: #272E34; letter-spacing: 0px;}
+a.copyright		{ color: #272E34; text-decoration: none;}
+a.copyright:hover { color: #FFFFFF; text-decoration: NONE;}
+
+
+/* Form elements */
+input {
+	background:#97AAB9;
+color:#272E34;
+font:11px Arial,Helvetica,sans-serif;
+BORDER-TOP: #26313B 1px solid; 
+BORDER-BOTTOM: #F5F8FA 1px solid; 
+BORDER-LEFT: #26313B 1px solid; 
+BORDER-RIGHT: #F5F8FA 1px solid;
+}
+
+/* The text input fields background colour */
+input.post, textarea.post {
+	background-color : #97AAB9;
+}
+
+input { text-indent : 2px; }
+
+/* The buttons used for bbCode styling in message post */
+input.button {
+	background:#97AAB9;
+color:#272E34;
+font:11px Arial,Helvetica,sans-serif;
+BORDER-TOP: #26313B 1px solid; 
+BORDER-BOTTOM: #F5F8FA 1px solid; 
+BORDER-LEFT: #26313B 1px solid; 
+BORDER-RIGHT: #F5F8FA 1px solid;
+}
+
+/* The main submit button option */
+input.mainoption {
+	background:#97AAB9;
+color:#272E34;
+font:11px Arial,Helvetica,sans-serif;
+BORDER-TOP: #26313B 1px solid; 
+BORDER-BOTTOM: #F5F8FA 1px solid; 
+BORDER-LEFT: #26313B 1px solid; 
+BORDER-RIGHT: #F5F8FA 1px solid;
+}
+
+/* None-bold submit button */
+input.liteoption {
+	background:#97AAB9;
+color:#272E34;
+font:11px Arial,Helvetica,sans-serif;
+BORDER-TOP: #26313B 1px solid; 
+BORDER-BOTTOM: #F5F8FA 1px solid; 
+BORDER-LEFT: #26313B 1px solid; 
+BORDER-RIGHT: #F5F8FA 1px solid;
+}
+
+/* This is the line in the posting page which shows the rollover
+  help line. This is actually a text box, but if set to be the same
+  colour as the background no one will know ;)
+*/
+.helpline {background:#97AAB9;
+color:#272E34;
+font:11px Arial,Helvetica,sans-serif;
+BORDER-TOP: #26313B 1px solid; 
+BORDER-BOTTOM: #F5F8FA 1px solid; 
+BORDER-LEFT: #26313B 1px solid; 
+BORDER-RIGHT: #F5F8FA 1px solid; }

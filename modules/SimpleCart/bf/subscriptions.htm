@@ -1,0 +1,227 @@
+<html>
+<head>
+<title>PayPal Button Factory</title>
+<META http-equiv="DESCRIPTION" content="PayPal Donate buttons enable donors to quickly donate to you via the web. When finished, your buyers can make their purchases quickly and securely on PayPal-hosted payment pages.">
+<META http-equiv="KEYWORDS" content="PayPal Button Factory, Shopping Cart, Buy Now, Pay Now, eCommerce, etc.">
+<link rel="stylesheet" type="text/css" href="pp_styles_111402.css">
+<link rel="shortcut icon" href="pp_favicon.ico">
+
+<script language="javascript">
+<!--
+var hostid = "PayPal"; // Replace PayPal with host-specific id
+var version = "001"; 
+var bnvalue = "ButtonFactory." + hostid + "." + version
+
+//Create HTML Button (Donate)
+function generateDonateButtonCode(form) {
+var tmp = "";
+tmp = "<form method=\"post\" action=\"https:\/\/www.paypal.com\/cgi-bin\/webscr\" target=\"paypal\">\n";
+tmp += "<input type=\"hidden\" name=\"cmd\" value=\"_xclick\">\n";
+tmp += "<input type=\"hidden\" name=\"business\" value=\"" + document.form1.business.value + "\">\n";
+tmp += "<input type=\"hidden\" name=\"item_name\" value=\"" + document.form1.item_name.value + "\">\n";
+tmp += "<input type=\"hidden\" name=\"bn\"  value=\"" + bnvalue + "\">\n";
+tmp += "<input type=\"image\" name=\"add\" src=\"" + document.form1.selectedButton.value + "\">\n";
+tmp += "<\/form>";
+document.form1.donateButtonCode.value = tmp;
+}
+
+//Highlight Button
+function highlight(){
+document.form1.donateButtonCode.focus()
+document.form1.donateButtonCode.select()
+}
+
+//Preview Button
+
+
+//Reset Form Button
+function resetForm() {
+document.form1.donateButtonCode.value = "";
+document.form1.item_name.value = "";
+document.form1.item_name.focus();
+location.href="#top"	
+}
+
+//-->
+</script>
+</head>
+
+<body bgcolor="#ffffff" >
+<a Name="top"></a>
+<table cellpadding=0 cellspacing=0 border=0 align=center width=510>
+	<tr>
+	
+			<td nowrap width="118"><a href="http://www.paypal.com"><img src="paypal_logo.gif" border="0" width="117" height="35"></a></td>
+
+			<td width=297 align=center class="ppheading">
+              <p align="left"><font size="5">&nbsp;Button Factory</font></p>
+            </td>
+
+			
+				<td nowrap class="pptext" align=right width="181"><a href="javascript:eval(tmp=window.open('help.htm','popwin','width=300,height=520,toolbar=0,location=0,status=0,menubar=0,scrollbars=1,resizable=0'));tmp.focus();">Help</a>&nbsp;|&nbsp;<a href="" onclick="window.close()">Close</a></td>	
+			
+		
+	</tr>
+</table>
+
+<br class="h5">
+<table cellpadding=0 cellspacing=0 border=0 align=center width=509 height="39">
+	<tr valign=bottom>
+		<td background="bg.gif" width=482>
+			<table border=0 cellpadding=0 cellspacing=0 align=center>
+				<tr>
+						<td><a href="addtocart.htm"><img src="BF_off_addtocart.gif" border=0 width=130 height=36 alt="Add to Cart"></a></td>						
+					<td><img src="pixel.gif" width=1 height=1></td>
+						<td><a href="buynow.htm"><img src="BF_off_buynow.gif" border=0 width=130 height=36 alt="Buy Now"></a></td>
+					<td><img src="pixel.gif" width=1 height=1></td>
+						<td><a href="donate.htm"><img src="BF_off_donate.gif" border=0 width=130 height=36 alt="Donate"></a></td>
+					<td><img src="pixel.gif" width=1 height=1></td>
+						<td><a href="subscriptions.htm"><img src="BF_on_subscriptions.gif" border=0 width=130 height=36 alt="Subscriptions"></a></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+
+<table width="508" cellspacing="1" cellpadding="0" border="0" align="center" bgcolor="#dbdbdb">
+	<tr>
+		<td valign="right" width="527">
+
+
+<table width="438" cellpadding="0" cellspacing="0" border="0" align="center" bgcolor="#ffffff">
+	<tr valign="top">
+		<td width="492" class="pptext" align="left">
+<form name="form1">
+  <table border="0" cellpadding="4" cellspacing="0" width="515">
+
+      <tr>
+      <td class="pptext" colspan=3 width="492" height="16">
+</td>
+    </tr>
+    
+    <tr>
+      <td class="pptext" colspan=3 width="492" height="44">Subscription Button Factory is currently unavailable.
+		</td>
+    </tr>
+      <tr>
+      <td class="pptext" colspan=3 width="492" height="30">
+
+<a Name="middle"></a>
+</td>
+    </tr>
+
+    <tr>
+      <td class="pptext" width="131" height="16"></td>
+      <td class="ppsmalltext" width="364" colspan="2" height="16">
+      </td>
+    </tr>
+      <tr>
+      <td class="pptext" width="131" align="right" height="20"></td>
+      <td class="ppsmalltext" height="20">
+      
+      &nbsp;</td>
+      <td class="ppsmalltext" width="268" height="20"><a href="#buttons"></a></td>
+      </tr>
+    <tr>
+      <td class="pptext" width="121" align="center" height="63"><strong><br></strong></td>
+      <td width="*" colspan="2" height="63">
+      
+            <table width="*" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td class="ppsmalltext" width="208">
+                      <p>&nbsp;</p>
+                    </td>
+					<td valign="middle" width="*">
+           <table width="100%" cellspacing="1" cellpadding="0" border="0" bgcolor="#dbdbdb">
+				<tr>
+					<td valign="right">
+	
+					
+					</td>
+				</tr>
+			</table>
+					
+					</td>
+				</tr>
+			</table>
+
+      
+      </td>
+    </tr>
+    <tr>
+      <td class="pptext" width="131" align="right" height="25"></td>
+      <td width="364" colspan="2" height="25"></td>
+    </tr>
+
+    <tr>
+      <td class="pptext" width="131" height="16"></td>
+      <td class="ppsmalltext" width="364" colspan="2" height="16"></td>
+    </tr>
+    <tr>
+    <td class="pptext" width="131" height="27" align="middle"></td>
+      <td class="ppsmalltext" width="364" colspan="2" height="27">&nbsp;</td>
+    </tr>
+     <tr>
+      <td class="pptext" colspan=3 width="492" align="middle">
+  </td>
+</tr>
+<tr height="10"><td colspan=4><td>&nbsp;</td></tr>
+
+     <tr>
+      <td class="pptext" colspan=3 width="492" align="middle"></td>
+</tr>
+
+    </tr>
+
+</table>
+</form>
+  </td>
+  </tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+
+<table border=0 cellpadding="0" cellspacing="0">
+<tr height="900"><td colspan=4><td>&nbsp;</td></tr>
+</table>
+
+
+
+
+
+
+<a name="buttons"></a>
+<strong><span style="font-family:verdana,arial,helvetica,sans-serif;font-size:14px;"><center>Click on the Donate-button image you wish to use:<br><br></center></span></strong>
+
+<table border=1 bgcolor="#ffffff" cellpadding="2" cellspacing="0" align="center" width="80%" summary="button images">
+
+
+<tr>
+<td align=center width="25%"><a href="#top" onclick="document.form1.selectedButton.value=document.images['img-46'].src;document.images['selectedButton'].src=document.images['img-46'].src;">
+<img src="x-click-but01.gif" border="0" name="img-46" width="62" height="31"></a></td>
+
+<td align=center width="25%"><a href="#top" onclick="document.form1.selectedButton.value=document.images['img-48'].src;document.images['selectedButton'].src=document.images['img-48'].src;">
+<img src="x-click-but23.gif" border="0" name="img-48" width="68" height="23"></a></td>
+
+<td align=center width="25%"><a href="#top" onclick="document.form1.selectedButton.value=document.images['img-49'].src;document.images['selectedButton'].src=document.images['img-49'].src;">
+<img src="x-click-butcc.gif" border="0" name="img-49" width="73" height="44"></a></td>
+
+<td align=center width="25%"><a href="#top" onclick="document.form1.selectedButton.value=document.images['img-50'].src;document.images['selectedButton'].src=document.images['img-50'].src;">
+<img src="x-click-but5.gif" border="0" name="img-50" width="150" height="52"></a></td>
+
+</tr>
+</table>
+
+
+<table border=0 cellpadding="0" cellspacing="0">
+<tr height="300"><td colspan=4><td>&nbsp;</td></tr>
+</table>
+
+</body>
+</html>
+
+

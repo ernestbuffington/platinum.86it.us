@@ -1,0 +1,276 @@
+Platinum Nuke Pro - Change Log
+
+Platinum Nuke Pro - v1.0.1 (Released) [ View Issues ]
+=============================================
+- 0000286: [[ MODULES ]] Remove Emporium (Shoping Cart) module (sgtmudd) - closed.
+- 0000288: [[ MODs/HACKs ] - CORE] Add ability to check if browser adblocking enabled (sgtmudd) - closed.
+- 0000287: [[ MODs/HACKs ] - FORUMS] Modifier error in AUC admin manager-delete group (sgtmudd) - closed.
+- 0000281: [[ MODULES ]] New User signup 'Continue' button fails (dochavoc) - closed.
+- 0000279: [[ FORUMS ]] Rebuild layout of Forum Admin Attachment Settings page (sgtmudd) - closed.
+- 0000276: [[ FORUMS ]] Rebuild layout of Forum Admin (General) configuration page (sgtmudd) - closed.
+- 0000274: [[ CORE ]] Update CKeditor to 4.3 (sgtmudd) - closed.
+- 0000273: [[ CORE ]] Rename default config.php for easier upgrading (sgtmudd) - closed.
+- 0000272: [[ BUGS ]] bug report module - missing modules (sgtmudd) - closed.
+- 0000269: [[ SECURITY ]] Errors in nuke honeypot (sgtmudd) - closed.
+- 0000271: [[ MODULES ]] czuerinfo when you try to save give a 404 error (sgtmudd) - closed.
+- 0000270: [[ BLOCKS ]] Add HoneyPot link to Advanced PNPro Admin (sgtmudd) - closed.
+- 0000239: [[ MODULES ]] PayPal IPN Check Error Message (sgtmudd) - closed.
+- 0000268: [[ CORE ]] 404 errors finding .js and .css files (sgtmudd) - closed.
+- 0000267: [[ CORE ]] jquery.rating.css file missing (sgtmudd) - closed.
+- 0000234: [[ CORE ]] Nuke Honeypot - more security (sgtmudd) - closed.
+- 0000265: [[ CORE ]] getPreventDefault() is deprecated. (sgtmudd) - closed.
+- 0000264: [[ CORE ]] bad file path for gitme.js (sgtmudd) - closed.
+- 0000263: [[ THEMES ]] reference to templates/phpbb2/ (sgtmudd) - closed.
+- 0000262: [[ THEMES ]] typo in getting qte_stylesheet.css (sgtmudd) - closed.
+- 0000260: [[ BLOCKS ]] Add ability to change New PM sound (swf or wav) (sgtmudd) - closed.
+- 0000243: [[ ADD-ONS ] - SUGGESTIONS] Global Image Gallery module for Admins (sgtmudd) - closed.
+- 0000250: [[ INSTALLER ]] Update the automatic and manual install and upgrade doc files (sgtmudd) - closed.
+- 0000259: [[ INSTALLER ]] Update coding and functions of the installer (sgtmudd) - closed.
+- 0000258: [[ MODULES ]] Need 2 new Admin Icons - About Us, Nuke Honeypot (dochavoc) - closed.
+- 0000257: [[ INSTALLER ]] Update appearance/css of the installer (sgtmudd) - closed.
+- 0000255: [[ THEMES ]] Fix unclosed tags in themes (dochavoc) - closed.
+- 0000251: [[ MODULES ]] Can not promote user to admin using PNPro Your Account v5.0.0 (sgtmudd) - closed.
+- 0000247: [[ MODULES ]] Copyright link error in DFWsiteInfo admin (sgtmudd) - closed.
+- 0000249: [[ UPGRADING ]] Organize upgrade SQL files (sgtmudd) - closed.
+- 0000245: [[ MODULES ]] remove extra WYSIWYG Input text area in EDL Downloads (sgtmudd) - closed.
+- 0000248: [[ DATABASE ]] add 76b4 to 76b5 upgrade sql (sgtmudd) - closed.
+- 0000235: [[ CORE ]] User suggestion: include a time zone selection during install (sgtmudd) - closed.
+- 0000238: [[ MODULES ]] Create an About Us module (sgtmudd) - closed.
+
+[34 issues]
+
+Platinum Nuke Pro - v1.0.0b (Released 2011-12-01)
+=================================================
+- 0000221: [[DOCUMENTATION]] Update version checker/Changelog for release (sgtmudd) - closed.
+- 0000232: [[ MODULES ]] Shopping cart layout issues - TB9848 (platmember) - closed.
+- 0000233: [[ MODs/HACKs ] - FORUMS] Issue with ranks (sgtmudd) - closed.
+- 0000224: [[ MODULES ]] Add update birthday notification in user profile (sgtmudd) - closed.
+- 0000229: [[ LANGUAGES ]] Update language translation package (sgtmudd) - closed.
+- 0000227: [[ MODULES ]] Move sNavi to Administration Menu (sgtmudd) - closed.
+- 0000230: [[ FORUMS ]] topic_attribute field missing (sgtmudd) - closed.
+- 0000228: [[ THEMES ]] add snavi.css and images to included theme packages (sgtmudd) - closed.
+- 0000226: [[ MODs/HACKs ] - CORE] Fix sNavi width issue (dochavoc) - closed.
+- 0000223: [[ DATABASE ]] Fixed initial start date (sgtmudd) - closed.
+- 0000222: [[ MODULES ]] video stream module homepage link wrong (dochavoc) - closed.
+- 0000218: [[ CORE ]] PHP Warning: Strict Standards: Non-static method (dochavoc) - closed.
+- 0000219: [[ MODULES ]] PHP Warning: preg_match() (dochavoc) - closed.
+- 0000220: [[ CORE ]] PHP Warning: preg_replace() (dochavoc) - closed.
+- 0000217: [[ CORE ]] Update SuperGlobals ($HTTP_*_VARS) to php 5.3+ (sgtmudd) - closed.
+- 0000216: [[ MODs/HACKs ] - FORUMS] Create 'Edit user profile' link in view user profile (sgtmudd) - closed.
+- 0000212: [[ LANGUAGES ]] Created English language pack for conversion (sgtmudd) - closed.
+- 0000214: [[ MODULES ]] Speed up sNavi news scroll (sgtmudd) - closed.
+
+[18 issues]
+
+Platinum Nuke Pro - v1.0.0 (Released 2013-11-01)
+================================================
+- 0000094: [[ MODULES ]] Update Change Log For Release (sgtmudd) - closed.
+- 0000209: [[ THEMES ]] Create 'reset user's theme to default' in theme console (sgtmudd) - closed.
+- 0000210: [[ THEMES ]] Create new main site theme for PNPv1 Release (dochavoc) - closed.
+- 0000208: [[ MODULES ]] fix typo in shopping cart module (sgtmudd) - closed.
+- 0000207: [[ THEMES ]] update theme's css to include tab settings (dochavoc) - closed.
+- 0000205: [[ MODULES ]] Banners not showing in Advertising module (sgtmudd) - closed.
+- 0000204: [[ BLOCKS ]] when clicking on the Facebook share button on the homepage, the url isn't correct (sgtmudd) - closed.
+- 0000284: [[ MODULES ]] Fix new user group errors (sgtmudd) - closed.
+- 0000286: [[ MODULES ]] Add show email protection to your_account=activate (sgtmudd) - closed.
+- 0000285: [[ MODULES ]] Update user deletion for 'Personal User' group (sgtmudd) - closed.
+- 0000287: [[ INSTALLER ]] Add admin real name field in installer (sgtmudd) - closed.
+- 0000283: [[ INSTALLER ]] setting site start date when site is installed for first time (sgtmudd) - closed.
+- 0000276: [[ FORUMS ]] Error deleting user (Forums Admin) (sgtmudd) - closed.
+- 0000280: [[ THEMES ]] Add a 'Save to all themes' into theme console (sgtmudd) - closed.
+- 0000275: [[ MODULES ]] Banner Ads not saving (sgtmudd) - closed.
+- 0000282: [[ MODULES ]] Extra tabs in admin site config (sgtmudd) - closed.
+- 0000271: [[ MODULES ]] Statistics module not showing stats (sgtmudd) - closed.
+- 0000281: [[ MODULES ]] Error in Resend-Mail module (sgtmudd) - closed.
+- 0000279: [[ MODULES ]] Upgrade Theme-Console (dochavoc) - closed.
+- 0000272: [[ MODs/HACKs ] - FORUMS] Convert Glance Forums Admin to database instead of config file (sgtmudd) - closed.
+- 0000256: [[ MODULES ]] Found deprecated ereg values in EDL (sgtmudd) - closed.
+- 0000261: [[ MODULES ]] Snavi & Glance editors no longer saving (dochavoc) - closed.
+- 0000273: [[ MODULES ]] Language file missing for pending users admin (sgtmudd) - closed.
+- 0000270: [[ MODULES ]] Fatal error: Call to undefined function message_die() ...saveactivate.php on line 102 (sgtmudd) - closed.
+- 0000263: [[ FORUMS ]] Error after clicking 'Waiting' from the DFW Site Info (sgtmudd) - closed.
+- 0000265: [[ DATABASE ]] remove 'sgtmudd' from sentinel admin DB SQL (sgtmudd) - closed.
+- 0000267: [[ MODULES ]] Passsword strength meter JS updated (dochavoc) - closed.
+- 0000262: [[ FORUMS ]] junk characters appearing in forums admin (dochavoc) - closed.
+- 0000258: [[ MODULES ]] Added Nuken's Emporium/Shopping Cart update (sgtmudd) - closed.
+- 0000257: [[ PHP 5.3+ ]] Depricated values update (info) (sgtmudd) - closed.
+- 0000250: [[ FORUMS ]] Create SQL to remove duplicate initial user group entries (sgtmudd) - closed.
+- 0000242: [[ MODULES ]] Initial User Group Re-Build/Fix (sgtmudd) - closed.
+- 0000247: [[ FORUMS ]] Issue assigning ranks (dochavoc) - closed.
+- 0000254: [[ CORE ]] Changes to javascript.php for corrected loading required scripts (dochavoc) - closed.
+- 0000248: [[ BUGS ]] password strength meter not working (dochavoc) - closed.
+- 0000251: [[ MODs/HACKs ] - CORE] Re-write of the youtube ckeditor mod (dochavoc) - closed.
+- 0000252: [[ CORE ]] Changes to mainfile.php for globals (dochavoc) - closed.
+- 0000253: [[ CORE ]] Changes to header.php for corrected loading of css and js scripts (dochavoc) - closed.
+- 0000249: [[ CORE ]] Create pnpconfig.php to relocate all extra config settings to single location (dochavoc) - closed.
+- 0000246: [[ SECURITY ]] Added CHMOD checks for captcha files during install (sgtmudd) - closed.
+- 0000245: [[ MODULES ]] Update version check to test for beta versions (sgtmudd) - closed.
+- 0000244: [[ MODULES ]] Missing copyright information (sgtmudd) - closed.
+- 0000241: [[ FORUMS ]] Create upgrade group script to be added to upgrade script (sgtmudd) - closed.
+- 0000243: [[ BLOCKS ]] Add Edit Users Config selection to Advanced PNP Admin block (sgtmudd) - closed.
+- 0000239: [[ MODULES ]] EDL downloads and NukeC30 Classifieds deprecated errors. (sgtmudd) - closed.
+- 0000234: [[ MODs/HACKs ] - CORE] Shortlinks/GoogleTap feature (sgtmudd) - closed.
+- 0000238: [[ MODULES ]] Downloads dbi layer updated (dochavoc) - closed.
+- 0000094: [[ MODULES ]] Update Change Log For Release (sgtmudd) - closed.
+- 0000237: [[ MODULES ]] Download links not working - closed.
+- 0000170: [[DOCUMENTATION]] Create Documentation (nextgen) - closed.
+ - 0000218: [[DOCUMENTATION]] Create manual theme edit update instructions. (dochavoc) - closed.
+- 0000112: [[ DATABASE ]] Update 76v502 SQL to PNPv1 SQL (sgtmudd) - closed.
+- 0000213: [[ MODULES ]] Error when importing IP2Country tables (sgtmudd) - closed.
+- 0000236: [[ INSTALLER ]] Installer cleanup script (sgtmudd) - closed.
+- 0000235: [[ INSTALLER ]] Option: Have installer create first user account also (sgtmudd) - closed.
+- 0000224: [[ MODULES ]] Backup module SQL layout issue (sgtmudd) - closed.
+- 0000182: [[ MODULES ]] Can not post ads in NukeC30 Classifieds module - closed.
+- 0000229: [[ CORE ]] XHTML compliance Part 1 - closed.
+- 0000202: [[ FORUMS ]] Signature editor bbcode layout issues. (dochavoc) - closed.
+- 0000231: [[IMAGES]] Image for Glance Forum Admin (dochavoc) - closed.
+- 0000225: [[ MODULES ]] Your_Account view profile not showing signature (dochavoc) - closed.
+- 0000226: [[ MODULES ]] DFWSiteInfo admin image list empty (dochavoc) - closed.
+- 0000203: [[DOCUMENTATION]] Tag all files with PlatinumNukePro Header Information (sgtmudd) - closed.
+- 0000222: [[ MODULES ]] Custom fields not showing in new user registration (dochavoc) - closed.
+- 0000221: [[ MODULES ]] JS conflict during new user registration (dochavoc) - closed.
+- 0000228: [[ MODULES ]] Create At-A-Glance forum admin configurator (sgtmudd) - closed.
+- 0000223: [[ MODULES ]] Update Supporters_2 Blocks and Module (sgtmudd) - closed.
+- 0000175: [[ MODULES ]] Add New User password strength meter (dochavoc) - closed.
+- 0000066: [[ SECURITY ]] Spam warning on Hide/Unhide user email in profile edit (sgtmudd) - closed.
+- 0000220: [[ MODULES ]] Fix layout issue with new user registration (sgtmudd) - closed.
+- 0000214: [[ FORUMS ]] Timezone not displaying in user management in forums admin (dochavoc) - closed.
+- 0000215: [[ MODULES ]] Update site credits (sgtmudd) - closed.
+- 0000212: [[IMAGES]] Admin icon for NukeStyles Downloads (dochavoc) - closed.
+- 0000208: [[ FORUMS ]] Arcade user ranks not showing (dochavoc) - closed.
+- 0000204: [[ BLOCKS ]] mktime error (sgtmudd) - closed.
+- 0000189: [[ MODULES ]] Update Documents with new Legal module (dochavoc) - closed.
+- 0000190: [[ MODULES ]] Update current cnbya_youraccount 4.2.2 to version 5.0.0 (dochavoc) - closed.
+- 0000206: [[ MODULES ]] videostream disclaimer errors (sgtmudd) - closed.
+- 0000207: [[ MODULES ]] Upgrade EDL 2.1 to EDL 3.0 (Enhanced DownLoads) (sgtmudd) - closed.
+- 0000193: [[ MODULES ]] Add DFW Site Info module (dochavoc) - closed.
+- 0000209: [[ BLOCKS ]] install block re-done for appearance and updated information (dochavoc) - closed.
+- 0000195: [[ CORE ]] Error in DFWSiteInfo admin area (dochavoc) - closed.
+- 0000210: [[IMAGES]] missing admin icon for Member_Application (dochavoc) - closed.
+- 0000211: [[ INSTALLER ]] New PNPro image for installer (dochavoc) - closed.
+- 0000205: [[ CORE ]] Robots.txt error (sgtmudd) - closed.
+- 0000200: [[ MODULES ]] Issue with SiteMap module (dochavoc) - closed.
+- 0000201: [[IMAGES]] Some Flag images missing. (dochavoc) - closed.
+- 0000197: [[ MODULES ]] Main Supporters 2 page error (sgtmudd) - closed.
+- 0000198: [[IMAGES]] Journal header logo missing (sgtmudd) - closed.
+- 0000199: [[IMAGES]] blank.gif avatar is missing. (sgtmudd) - closed.
+- 0000188: [[ BLOCKS ]] Update WebCrawler block/module (sgtmudd) - closed.
+- 0000187: [[ MODULES ]] Update version-check information (sgtmudd) - closed.
+- 0000176: [[ SECURITY ]] Fusion - REMOVED (sgtmudd) - closed.
+- 0000184: [[ CORE ]] Install TegoNuke Mailer (sgtmudd) - closed.
+- 0000164: [[ MODULES ]] move social bookmarks and add boxover to 'Add your comments' link in NukeBlog (dochavoc) - closed.
+- 0000098: [[ INSTALLER ]] Update installer (sgtmudd) - closed.
+- 0000095: [[ CORE ]] Initial User Group fix (dochavoc) - closed.
+- 0000185: [[ MODULES ]] Install Bug Report Module (sgtmudd) - closed.
+- 0000183: [[ MODULES ]] All new DB backup module (sgtmudd) - closed.
+- 0000179: [[ MODULES ]] ColorBox not working in Content Module (dochavoc) - closed.
+- 0000178: [[ SECURITY ]] Captcha not showing security code (sgtmudd) - closed.
+- 0000153: [[ CORE ]] Allow Platinum Nuke Pro to be able to load .js and .css to the head and body dynamically in a standard way. (dochavoc) - closed.
+- 0000151: [[ CORE ]] Update all references from PHP-Nuke Platinum to Platinum Nuke Pro (sgtmudd) - closed.
+- 0000154: [[ DATABASE ]] Can not promote user to admin (dochavoc) - closed.
+- 0000174: [[ THEMES ]] Fix Banner Ads Admin Icon (sgtmudd) - closed.
+- 0000173: [[ MODs/HACKs ] - GENERAL] Update administration icons. (dochavoc) - closed.
+- 0000171: [[ FORUMS ]] Error in forum admin attributes (sgtmudd) - closed.
+- 0000169: [[ MODs/HACKs ] - FORUMS] update flags mod (dochavoc) - closed.
+- 0000146: [[ FORUMS ]] Forum admin stats not showing (sgtmudd) - closed.
+- 0000156: [[ CORE ]] Update Setpermissions.php - add/update CKeditor paths (sgtmudd) - closed.
+- 0000158: [[ MODs/HACKs ] - FORUMS] AUC seems to have stopped working (dochavoc) - closed.
+- 0000163: [[ CORE ]] Add YouTube linking to Ckeditor via the flash plugin (dochavoc) - closed.
+- 0000159: [[ MODs/HACKs ] - FORUMS] Collapsing Forum MOD (C.F.I.) (dochavoc) - closed.
+- 0000162: [[ MODULES ]] TON Configure the number of News colums 1or2 in index, turn on/off social bookmarks via admin panel. (dochavoc) - closed.
+- 0000044: [[ CORE ]] Fix deprecated errors in php5.3.x (sgtmudd) - closed.
+- 0000161: [[ FORUMS ]] Error getting user list for group (After adding initial User Group fix) (dochavoc) - closed.
+- 0000152: [[ BUGS ]] bug in the TON automated news (dochavoc) - closed.
+- 0000157: [[ MODULES ]] Error in NukeC30 module:Cannot redeclare getthumbname (dochavoc) - closed.
+- 0000119: [[ FORUMS ]] Can not delete PMs (sgtmudd) - closed.
+- 0000133: [[ MODULES ]] Coppermine for Php-Nuke 1.3.2 (sgtmudd) - closed.
+- 0000135: [[ MODULES ]] Update Content Module (dochavoc) - closed.
+- 0000134: [[ BUGS ]] html corrections (dochavoc) - closed.
+- 0000149: [[ CORE ]] Lightbox/colorbox no longer functioning (dochavoc) - closed.
+- 0000145: [[ FORUMS ]] Link to futurenuke in forum admin needs changing (sgtmudd) - closed.
+- 0000111: [[ DATABASE ]] Update donation tables v502 SQL to PNPv1 SQL (sgtmudd) - closed.
+- 0000118: [[ MODs/HACKs ] - FORUMS] Install LightBox in forums (sgtmudd) - closed.
+- 0000084: [[ FORUMS ]] multi ranks (dochavoc) - closed.
+- 0000148: [[ BLOCKS ]] Problems with JS/JQuery (dochavoc) - closed.
+- 0000147: [[ FORUMS ]] mouse hover topic boxover (dochavoc) - closed.
+- 0000096: [[ THEMES ]] New theme (dochavoc) - closed.
+- 0000132: [[ MODULES ]] Ajax Modules block failure (sgtmudd) - closed.
+- 0000115: [[ THEMES ]] Create new Plat Pro v1 Graphics (dochavoc) - closed.
+- 0000117: [[ FORUMS ]] Replace Forum Admin logo (dochavoc) - closed.
+- 0000136: [[ CORE ]] More Checking and correctingfiles for HTML and eregi, ereg fixs. (dochavoc) - closed.
+- 0000137: [[ CORE ]] Verified preg_match/i, for current list (dochavoc) - closed.
+- 0000138: [[ CORE ]] config.php added class to array (used for colorbox) (dochavoc) - closed.
+- 0000139: [[ MODULES ]] FPDF error: Some data has already been output, can't send PDF file (dochavoc) - closed.
+- 0000140: [[ CORE ]] fpdf updated to v1.6 (dochavoc) - closed.
+- 0000141: [[ CORE ]] boxover.js updated to v2.1a (dochavoc) - closed.
+- 0000142: [[ CORE ]] menu.js updated to v1.8 (dochavoc) - closed.
+- 0000143: [[ CORE ]] edited robots.txt for compliance (dochavoc) - closed.
+- 0000144: [[ MODULES ]] added boxover to link in infobar and altered .css (dochavoc) - closed.
+- 0000102: [[ MODULES ]] REPLACED DataBase Backup Module with a more advanced module/converted to Platinum (sgtmudd) - closed.
+- 0000036: [[ CORE ]] Globalize jQuery, ajax and lightbox (sgtmudd) - closed.
+- 0000123: [[ CORE ]] Upgrade FCKeditor to CKeditor (sgtmudd) - closed.
+ - 0000129: [[ CORE ]] Add ColorBox to WYSIWYG editor (dochavoc) - closed.
+- 0000121: [[ FORUMS ]] Update Editor in Forums (sgtmudd) - closed.
+- 0000131: [[ MODULES ]] Add TrickedOut News Module (dochavoc) - closed.
+- 0000113: [[ CORE ]] Create Alpha/Beta Tester Serial Number System (TSNS) (sgtmudd) - closed.
+- 0000126: [[ BLOCKS ]] Updated Forum Collapse Block (dochavoc) - closed.
+- 0000128: [[ CORE ]] Various CSS validations (dochavoc) - closed.
+- 0000127: [[ CORE ]] compliance fix "improperly closed tag" (dochavoc) - closed.
+- 0000130: [[ MODULES ]] Fix E.I. alignment in shoutbox (dochavoc) - closed.
+- 0000124: [[ CORE ]] Group Classes (sgtmudd) - closed.
+- 0000107: [[ CORE ]] Group Javascipts (sgtmudd) - closed.
+- 0000122: [[ MODs/HACKs ] - FORUMS] Added new user welcome PM (sgtmudd) - closed.
+- 0000101: [[ MODULES ]] Coppermine deprecated errors (sgtmudd) - closed.
+- 0000108: [[ MODULES ]] Fix Block Editor Layout (sgtmudd) - closed.
+- 0000106: [[ BLOCKS ]] Advanced Admin links in new window (sgtmudd) - closed.
+- 0000104: [[ MODULES ]] Error in member application (sgtmudd) - closed.
+- 0000097: [[ MODULES ]] Update Snavi graphics and settings (sgtmudd) - closed.
+- 0000103: [[ MODULES ]] Update Shoutbox (sgtmudd) - closed.
+[160 issues]
+
+Platinum 76v5.x.x - 76v5.0.2 (Released 2010-03-01)
+==================================================
+- 0000079: [[DOCUMENTATION]] Update changelog.txt (sgtmudd) - closed.
+- 0000082: [[ FORUMS ]] AUC colors bleeding from author to last poster - closed.
+- 0000041: [[ THEMES ]] New theme templates (user6) - closed.
+- 0000092: [[ FORUMS ]] fixed linking in the private messages images in the view user account page. (user6) - closed.
+- 0000093: [[ MODULES ]] Added theme installer created by Darkforge Graphics. (user6) - closed.
+- 0000091: [[ THEMES ]] Upgrade and Customize Theme Console (user6) - closed.
+- 0000090: [[ BLOCKS ]] Add Lonestar's Universal Forums block update (sgtmudd) - closed.
+- 0000087: [[ MODULES ]] Add Killigan's Advanced Admin Module (sgtmudd) - closed.
+- 0000088: [[ MODULES ]] Add SNAVI menu bar (sgtmudd) - closed.
+- 0000089: [[ INSTALLER ]] Tweak installer-make display errors 'on' by default (sgtmudd) - closed.
+- 0000086: [[ MODULES ]] Layout error in donations module. (sgtmudd) - closed.
+- 0000076: [[ MODULES ]] Coppa/TOS registration problem (sgtmudd) - closed.
+- 0000085: [[ MODULES ]] Add Workboard fix (sgtmudd) - closed.
+- 0000057: [[ UPGRADING ]] Upgrade SQL 76B4v2 to 76v502 (sgtmudd) - closed.
+- 0000069: [[ LANGUAGES ]] Language Files (sgtmudd) - closed.
+- 0000080: [[ MODULES ]] supporter 2 is not holding the configuration (sgtmudd) - closed.
+- 0000058: [[ BLOCKS ]] Blocks admin layout (sgtmudd) - closed.
+- 0000078: [[ MODULES ]] Video Stream Error - watch.php (sgtmudd) - closed.
+- 0000077: [[ BLOCKS ]] Error in block-HTTP_Video_Stream.php (sgtmudd) - closed.
+- 0000073: [[ THEMES ]] Tweak User-from flag on member list (sgtmudd) - closed.
+- 0000063: [[ THEMES ]] New theme by techfreak (sgtmudd) - closed.
+- 0000070: [[ MODs/HACKs ] - FORUMS] Add social bookmarking to forums (sgtmudd) - closed.
+- 0000061: [[ MODULES ]] Update Nuke Classifieds (sgtmudd) - closed.
+- 0000062: [[ INSTALLER ]] Update Installer for 76v502 (sgtmudd) - closed.
+ - 0000055: [[ UPGRADING ]] Upgrade SQL 76B5 to 76v502 (sgtmudd) - closed.
+ - 0000056: [[ UPGRADING ]] Upgrade SQL 76v501 to 76v502 (sgtmudd) - closed.
+- 0000048: [[ INSTALLER ]] Step 4 to step 5 error (sgtmudd) - closed.
+- 0000060: [[ MODULES ]] Add IP2Country Installer (sgtmudd) - closed.
+- 0000051: [[ MODULES ]] Version Checker - update code (sgtmudd) - closed.
+- 0000054: [[ MODULES ]] Nuke Blog integration (sgtmudd) - closed.
+[30 issues]
+
+Platinum 76v5.x.x - 76v5.0.1 (Released 2009-10-28)
+==================================================
+- 0000030: [[ FORUMS ]] Updates to 2.0.23 (sgtmudd) - closed.
+- 0000047: [[ BLOCKS ]] Fix block-Link-Us.php (sgtmudd) - closed.
+- 0000034: [[ MODULES ]] Your_Account 'Change Info' link changed (sgtmudd) - closed.
+- 0000046: [[ MODULES ]] Modified glance Module (sgtmudd) - closed.
+- 0000027: [[ MODULES ]] Updated Nuke Tools to v4 (sgtmudd) - closed.
+- 0000025: [[ MODs/HACKs ] - CORE] User From Flag MOD (sgtmudd) - closed.
+- 0000037: [[ MODULES ]] Added Version Checker (sgtmudd) - closed.
+- 0000031: [[ BLOCKS ]] Reduce the size of the admin block (sgtmudd) - closed.
+- 0000040: [[ MODULES ]] Applied the link-us admin fix (sgtmudd) - closed.
+[10 issues]

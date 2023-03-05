@@ -1,0 +1,16 @@
+SQL CREATE TABLE `nuke_MA_mapcfg` (`keyfld` int(11) NOT NULL auto_increment,`apptxt` longtext NOT NULL,`admaddr` text NOT NULL,`emdetail` tinyint(1) NOT NULL default '0',`fpdetail` tinyint(1) NOT NULL default '0',`group_id` mediumint(8) NOT NULL default '0',`forum_id` smallint(5) NOT NULL default '0',`tytxt` longtext NOT NULL,`noapptxt` longtext NOT NULL,`appson` tinyint(1) NOT NULL default '1',`current` tinyint(1) NOT NULL default '0',`formtitle` varchar(64) NOT NULL default '',`appslimit` tinyint(1) NOT NULL default '0',`appslimitno` int(11) NOT NULL default '0',`appsfull` tinyint(1) NOT NULL default '0',`group_add` mediumint(8) NOT NULL default '0',`block_multi_apps` tinyint(1) NOT NULL default '1',`email_admin` tinyint(1) NOT NULL default '1',`mailgroup` tinyint(1) NOT NULL default '0',`topicwatch` tinyint(1) NOT NULL default '0',`emuser` tinyint(1) NOT NULL default '0',`formno` int(11) NOT NULL default '0',`annon` tinyint(1) NOT NULL default '0',`VertAlign` tinyint(1) NOT NULL default '0',`auto_group` tinyint(1) NOT NULL default '0',`approvtxt` longtext NOT NULL,`denytxt` longtext NOT NULL,`formlist` tinyint(1) NOT NULL default '0',`compat` BOOL NOT NULL default '0',`emhtml` BOOL NOT NULL default '0',UNIQUE KEY `keyfld` (`keyfld`)) AUTO_INCREMENT=0
+ Result OK
+ 
+ SQL CREATE TABLE `nuke_MA_mapp` (`fldnum` int(10) unsigned NOT NULL auto_increment,`fldord` int(11) NOT NULL default '0',`fldname` text NOT NULL,`requrd` char(1) NOT NULL default '',`inuse` char(1) NOT NULL default '',`format` char(1) NOT NULL default '',`parent` smallint(6) NOT NULL default '0',`isdel` tinyint(1) NOT NULL default '0',`formno` int(11) NOT NULL default '0',`rgextxt` text,UNIQUE KEY `fldnum` (`fldnum`)) AUTO_INCREMENT=0 
+ Result OK
+ 
+ SQL INSERT INTO `nuke_MA_mapp` VALUES (0, 0, 'User IP', '0', '0', 't', 0, 0, 0, NULL)
+ Result OK
+ 
+ SQL UPDATE  `nuke_MA_mapp` SET `fldnum` = 0 WHERE `fldname` = 'User IP' LIMIT 1 
+ Result OK
+ 
+ SQL CREATE TABLE `nuke_MA_mappresp` (`recno` bigint(11) NOT NULL auto_increment,  `appnum` bigint(20) NOT NULL default '0', `userno` bigint(20) NOT NULL default '0', `qno` bigint(20) NOT NULL default '0', `response` longtext NOT NULL,  `adate` text NOT NULL, `formno` int(11) NOT NULL default '0', `appstatus` tinyint(4) NOT NULL default '0', PRIMARY KEY  (`recno`)) ENGINE=MyISAM AUTO_INCREMENT=0 
+ Result OK
+ 
+ 

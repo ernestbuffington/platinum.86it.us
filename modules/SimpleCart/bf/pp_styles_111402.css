@@ -1,0 +1,192 @@
+/* dont ask */
+  .dummy {}
+  
+/* Tag modifiers */
+  BODY                     {font-size: 13px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 400; color: #000000;}
+  LI                       {line-height: 120%;}
+  A                        {color: #0033cc;}
+  P, DIV                   {border: 0px; margin: 0px; padding: 0px;}
+  P.box                    {border: solid #aaaaaa 1px; padding: 3px;}
+  B                        {font-weight: 700;}
+  FORM                     {margin: 0px;}
+  SELECT                   {font-size: 13px;}
+  INPUT                    {font-size: 13px;}
+  BR.h5                    {font-size: 5px; line-height: 5px;}
+  BR.h6                    {font-size: 6px; line-height: 6px;}
+  BR.h8                    {font-size: 8px; line-height: 8px;}
+  BR.h10                   {font-size: 10px; line-height: 10px;}
+  BR.h12                   {font-size: 12px; line-height: 12px;}
+  BR.text_spacer           {font-size: 20px; line-height: 20px;}
+  BR.field_spacer          {font-size: 28px; line-height: 28px;}
+  BR.field_spacer_opt      {font-size: 35px; line-height: 35px;}
+  BR.ir_spacer             {font-size: 20px; line-height: 20px;}
+  BLOCKQUOTE.ir            {margin: 0px 0px 5px 10px;}
+  UL.irlist                {margin: 0px 5px 0px 15px;}
+  OL.irolist               {margin: 0px 5px 0px 35px;}
+  
+/* Image modifiers */
+  IMG                      {border: 0px;}   /* only works in ie, ns6, but hey, it helps */
+  IMG.left                 {float: left;}
+  IMG.right                {float: right;}
+  
+/* Really big fonts */
+  .ppbigtext              {font-size: 17px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 400;}
+  .ppheadingshops         {font-size: 17px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 700; color: #ffffff;}
+  .ppheading              {font-size: 17px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 700; color: #003366;}
+  .ppcobrand              {font-size: 21px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 700; color: #003366;}
+
+/* Pretty big fonts */
+  .ppmediumtext           {font-size: 15px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 400;}
+  .ppsubheading           {font-size: 15px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 700; color: #003366;}
+  
+/* Regular fonts */ 
+  .pptext, .maincenter, .maintd, td    {font-size: 13px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 400;}
+  .pptextbold             {font-size: 13px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 700;}
+  .ppnote                 {font-size: 13px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 400; color: #999999;}
+  .pperror                {font-size: 13px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 400; color: #ff0000;}
+  .pperrorbold            {font-size: 13px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 700; color: #ff0000;}
+  .ppmessage              {font-size: 13px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 700;}  
+  
+/* Small fonts */ 
+  .ppsmalltext            {font-size: 11px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 400;}
+  .ppsmalltextbold        {font-size: 11px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 700;}
+  .ppsmallnote            {font-size: 11px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 400; color: #999999;}
+  .ppsmallerror           {font-size: 11px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 400; color: #ff0000;}
+  .ppsmallerrorbold       {font-size: 11px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 700; color: #ff0000;}
+  .pplabel                {font-size: 11px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 700; padding: 1px 0 0 0;}
+  .pplabelerror           {font-size: 11px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 700; padding: 1px 0 0 0; color: #ff0000;}
+  .pplabelgrey            {font-size: 11px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 700; padding: 1px 0 0 0; color: #666666;}
+  .pplabelgreyerror       {font-size: 11px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 700; padding: 1px 0 0 0; color: #ff0000;}
+  .ppfooter, .footer      {font-size: 11px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 400;}
+  .ppsmalltextboldwhite   {font-size: 11px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 700; color: #ffffff;}
+
+/* Button modifiers */
+  .ppbutton               {font-size: 13px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 400; border-style:outset; color:#000000; background-color: #cccccc;}
+  .ppbuttonhot            {font-size: 13px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 700; border-style:outset; color:#000000; background-color: #cccccc;}
+  .ppbuttonsmall          {font-size: 11px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 400; border-style:outset; color:#000000; background-color: #cccccc;}
+  .ppbuttonverysmall      {font-size: 9px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 400; border-style:outset; color:#000000; background-color: #cccccc;}
+
+/* Shopping Cart specific */
+  .ppscnormal             {font-size: 11px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 400;}
+  .ppscbig                {font-size: 15px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 700;}
+  .ppscbutton             {font-size: 11px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 400; border-style:outset; color:#000000; background-color: #cccccc;}
+  .ppscmessage            {font-size: 15px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 700;}
+
+/* Sitewide modifiers - see usage notes */    
+  .ppinlineoptional       {font-weight: 400;}
+  .ppinlinedisabled       {color: #999999;}
+  .ppinlinefootnote       {color: #999999;}
+  .ppinlineerror          {color: #ff0000;}
+  .ppinlineerrorbold      {font-weight: 700; color: #ff0000;}
+  .ppinlineyellowbg       {background-color: #ffffcc;}
+  .ppinlinewhitebg        {background-color: #ffffff;}
+  .ppinlinelightgreybg    {background-color: #e6e6e6;}
+  .ppinlinedarkgreybg     {background-color: #cccccc;}
+  .ppinlinedisabledgrey   {background-color: #e6e6e6; color: #666666;}
+  .ppinlinepaypalblue     {color: #336699;}
+  .ppinlinewhite          {color: #ffffff;}
+  .ppinlinereward         {color: #00aa00;}
+  .ppinlinegreen          {color: #00aa00;}
+  .ppinlinered            {color: #ff0000;}
+  .ppinlineblue           {color: #0000ff;}
+  .ppinlineorange         {color: #ff9900;} 
+  .ppinlinegreyongrey     {color: #333333;}
+  .ppinlinemedgrey        {color: #999999;}
+  .ppinlinemoneygreen     {color: #336633;}
+  
+/* Specialty stuff */
+  .ppleftnav_parent       {padding: 0px; font-size: 13px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 400; line-height: 110%;}
+  .ppleftnav_child        {padding: 5px 0 5px 15px; font-size: 13px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 400; line-height: 110%;}
+  .ppleftnav_parent_small {padding: 0px; font-size: 11px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 400; line-height: 110%;}
+  .ppleftnav_child_small  {padding: 5px 0 5px 15px; font-size: 11px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 400; line-height: 110%;}
+  
+
+/* Specialty tab stuff */
+  .pptabtext              {font-size: 13px; font-weight: 700; font-family: verdana,helvetica,arial,sans-serif; color: #ffffff; text-decoration: none;}
+  .ppsubtabtextoff        {font-size: 11px; font-weight: 700; font-family: verdana,helvetica,arial,sans-serif; color: #ffffff; text-decoration: none;}
+  .ppsubtabtextoff:hover  {font-size: 11px; font-weight: 700; font-family: verdana,helvetica,arial,sans-serif; color: #ffffff; text-decoration: underline;}
+  .ppsubtabtextoffspacer  {font-size: 11px; font-weight: 700; font-family: verdana,helvetica,arial,sans-serif; color: #ffffff; text-decoration: none;}
+  .ppsubtabtexton         {font-size: 11px; font-weight: 700; font-family: verdana,helvetica,arial,sans-serif; color: #000000; text-decoration: none;}
+ 
+/* WAX styles */  
+  .ppbcactive               {font-size: 13px; color: #27537F; font-family: verdana,arial,helvetica,sans-serif; font-weight: 700; text-align: center;}  
+  .ppbcoff                  {font-size: 13px; color: #606060; font-family: verdana,arial,helvetica,sans-serif; text-align: center; }  
+  .ppbcvisited              {font-size: 13px; color: #27537F; font-family: verdana,arial,helvetica,sans-serif; text-align: center; }  
+  .ppbclineactive           {background-color: #27537F;}  
+  .ppbclineoff              {background-color: #b5b5b5;}  
+  .ppbclinevisited          {background-color: #27537F;}  
+  .ppwaxtablewidth          {width: 750px;}  
+  .ppwaxborderbox           {border: solid #aaaaaa 2px; padding: 5px; height: 120px; }  
+  .ppwaxtrustbox            {padding: 10px; height: 150px; font-size: 11px; text-align: center;}  
+  .ppwaxdottedline          {border-bottom: dashed #aaaaaa 2px; font-size: xsmall; height: 7px; width: 750px; align: center; }  
+  .pptextboldbghighlite     {font-size: 13px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 700; background-color: #ffff99; padding: 5px;}  
+  .ppwaxcobrand             {font-size: 17px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 200; color: #000000;}  
+
+/* Table stuff returns from the dead */
+  TABLE.yellowtable       {border-style: solid; border-color: #999966; border-width: 1px; background-color: #ffffff; color: #000000; font-family: verdana,helvetica,arial,sans-serif; font-size: 12px;}
+
+/* Border for headers*/
+.ppheaderborder           {font-size: 11px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 400; background-color: #F9F9F9; border-color: #CCC; border-width: 1px 0px 1px 0px; border-style: solid; padding: 5px}
+.ppborderline             {border-color: #CCC; border-width: 1px 0px 0px 0px; border-style: solid;}
+
+/* Dashboard styles */
+  .ppdashheader           {font-size: 11px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 700;}
+  .ppdashbody             {font-size: 11px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 400;}
+  .ppdashbodybold         {font-size: 11px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 700;}
+
+/* Localizable Emphatic Elements */
+/* Combos are on their way -- ben */
+
+  /* In EN 100-199 are weights */
+  .ppem100       {font-weight: 100;}       /* super-skinny */
+  .ppem101       {font-weight: 200;}       /*              */
+  .ppem102       {font-weight: 300;}       /*              */
+  .ppem103       {font-weight: 400;}       /* normal       */
+  .ppem104       {font-weight: 500;}       /*              */
+  .ppem105       {font-weight: 600;}       /*              */
+  .ppem106       {font-weight: 700;}       /* bold         */
+  .ppem107       {font-weight: 800;}       /*              */
+  .ppem108       {font-weight: 900;}       /*              */
+  
+  /* In EN 200-299 are font styles */
+  .ppem200       {font-style: normal;}     /* normal       */
+  .ppem201       {font-style: italic;}     /* italic       */
+  .ppem202       {font-style: oblique;}    /* better ital. */
+  
+  /* In EN 300-399 are color/bgcolor varieties */
+  /* 300-329 greys  */
+  /* 330-349 reds   */
+  /* 350-369 greens */
+  /* 370-389 blues  */
+  
+  .ppem301       {color: #000000;}         /* black        */
+  .ppem302       {color: #333333;}         /* dark grey    */
+  .ppem303       {color: #666666;}         /* dk/med grey  */
+  .ppem304       {color: #999999;}         /* lt/med grey  */
+  .ppem305       {color: #cccccc;}         /* lt grey      */
+  .ppem306       {color: #e6e6e6;}         /* pp grey 1    */
+  .ppem307       {color: #f6f6f6;}         /* pp grey 2    */
+  .ppem308       {color: #ffffff;}         /* white        */
+  
+  .ppem330       {color: #ff0000;}         /* red          */
+  
+  .ppem350       {color: #00ff00;}         /* green        */
+  
+  .ppem370       {color: #0000ff;}         /* blue         */
+  
+/* WAX styles */
+
+  .ppbcactive				{font-size: 13px; color: #27537F; font-family: verdana,arial,helvetica,sans-serif; font-weight: 700; text-align: center;}
+  .ppbcoff					{font-size: 13px; color: #606060; font-family: verdana,arial,helvetica,sans-serif; text-align: center; }
+  .ppbcvisited  			{font-size: 13px; color: #27537F; font-family: verdana,arial,helvetica,sans-serif; text-align: center; }
+  .ppbclineactive			{background-color: #27537F;}
+  .ppbclineoff				{background-color: #b5b5b5;}
+  .ppbclinevisited  		{background-color: #27537F;}
+  .ppwaxtablewidth  		{width: 750px;}
+  .ppwaxborderbox			{border: solid #aaaaaa 2px; padding: 5px; height: 120px; }
+  .ppwaxtrustbox			{padding: 10px; height: 150px; font-size: 11px; text-align: center;}
+  #ppwaxdottedline			{border-bottom: dashed #aaaaaa 2px; font-size: xsmall; height: 7px; width: 750px; align: center; }
+  .pptextboldbghighlite		{font-size: 13px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 700; background-color: #ffff99; padding: 5px;}
+  .ppwaxcobrand             {font-size: 17px; font-family: verdana,arial,helvetica,sans-serif; font-weight: 200; color: #000000;}
+
+  

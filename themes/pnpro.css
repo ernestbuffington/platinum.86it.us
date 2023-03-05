@@ -1,0 +1,147 @@
+/* CAUTION - DO NOT DELETE THIS FILE */
+/**
+ * Platinum Nuke Pro Generic / Default CSS
+ *
+ * Generic pnpro.css which carries default CSS formatting
+ * to help with the transition towards better overall support
+ * within Platinum Nuke Pro for separation of presentation from
+ * logic.
+ *
+ * PHP versions 5 and above.
+ *
+ * LICENSE: GNU/GPL 2 (see provided LICENSE file)
+ *
+ * @category    Visual
+ * @package     Platinum Nuke Pro
+ * @license     http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt GNU/GPL 2
+ * @version     1.0.0
+ * @link        http://www.platinumnukepro.com
+ * @since       1.00.00
+ */
+/* CAUTION - DO NOT DELETE THIS FILE */
+/* DEFAULT CSS STATEMENTS WILL BE ADDED OVER TIME */
+/* DEFAULT CSS */
+/**Main Boxover**EXAMPLE USE*******title="cssheader=[boxhdr] cssbody=[boxbdy] header=[title text]body=[body text] **************/
+.boxhdr {
+   margin-left: 5px;
+   margin-right: 5px;
+   padding:5px;
+   font-weight:bold;
+   border:1px solid #000000;
+   	box-shadow: 5px 5px 5px #3e3e3e; 
+  -webkit-border-top-left-radius: 6px;
+  -webkit-border-top-right-radius: 6px;
+  -moz-border-radius-topright: 6px;
+  -moz-border-radius-topleft: 6px;
+  border-top-right-radius: 6px; 	
+  border-top-left-radius: 6px; 
+   background:#0033cc;
+   color:#FFFFFF;
+   }
+.boxbdy {
+   margin-left: 5px;
+   margin-right: 5px;
+   padding:5px;
+   border:1px solid #000000;
+   	box-shadow: 5px 5px 5px #3e3e3e;
+  -webkit-border-bottom-left-radius: 6px;
+  -webkit-border-bottom-right-radius: 6px;
+  -moz-border-radius-bottomright: 6px;
+  -moz-border-radius-bottomleft: 6px;
+  border-bottom-right-radius: 6px; 	
+  border-bottom-left-radius: 6px; 	
+   background:#FFFFFF;
+   color:#000000;
+    }
+/**Forum Topic Boxover**EXAMPLE USE*******title="cssheader=[boxhdr1] cssbody=[boxbdy1] header=[title text]body=[body text] **************/
+.boxhdr1 {
+   margin-left: 5px;
+   margin-right: 5px;
+   padding:5px;
+   font-weight:bold;
+   border:1px solid #000000;
+  box-shadow: 5px 5px 5px #3e3e3e;
+ -webkit-border-radius: 6px;
+    -moz-border-radius: 6px; 
+    border-radius: 6px;	
+   background:#0033cc;
+   color:#FFFFFF;
+   }
+.boxbdy1 {
+   margin-left: 5px;
+   margin-right: 5px;
+   padding:5px;
+   border:1px solid #000000;
+   box-shadow: 5px 5px 5px #3e3e3e;  
+  -webkit-border-top-left-radius: 6px;
+  -webkit-border-top-right-radius: 6px;
+  -moz-border-radius-topright: 6px;
+  -moz-border-radius-topleft: 6px;
+  border-top-right-radius: 6px; 	
+  border-top-left-radius: 6px;    
+  -webkit-border-bottom-left-radius: 6px;
+  -webkit-border-bottom-right-radius: 6px;
+  -moz-border-radius-bottomright: 6px;
+  -moz-border-radius-bottomleft: 6px;
+  border-bottom-right-radius: 6px; 	
+  border-bottom-left-radius: 6px; 	
+   background:#FFFFFF;
+   color:#000000;
+    }
+/**News and Social bookmarks Boxover**EXAMPLE USE*******title="cssheader=[tonheaderclass] cssbody=[tonbodyclass] header=[title text]body=[body text] **************/
+.tonheaderclass{
+   margin-left: 5px;
+   margin-right: 5px;
+   padding:5px;
+   font-weight:bold;
+   border:1px solid #000000;
+   box-shadow: 5px 5px 5px #3e3e3e;
+ -webkit-border-radius: 6px;
+    -moz-border-radius: 6px; 
+    border-radius: 6px;	
+   background:#0033cc;
+   color:#FFFFFF;
+   }
+.tonbodyclass{
+   margin-left: 5px;
+   margin-right: 5px;
+   border:1px solid #000000;
+  box-shadow: 5px 5px 5px #3e3e3e;   
+ -webkit-border-radius: 6px;
+    -moz-border-radius: 6px; 
+    border-radius: 6px;	
+   background:#FFFFFF;
+   color:#000000;
+    }
+.tonheaderclass2{
+   margin-left: 5px;
+   margin-right: 5px;
+   padding:5px;
+   font-weight:bold;
+   border:1px solid #000000;
+  box-shadow: 5px 5px 5px #3e3e3e;   
+box-shadow: 3px 3px 3px #3e3e3e; 
+-webkit-border-top-left-radius: 6px;
+-webkit-border-top-right-radius: 6px;
+-moz-border-radius-topright: 6px;
+-moz-border-radius-topleft: 6px;
+border-top-right-radius: 6px; 	
+border-top-left-radius: 6px; 
+   background:#0033cc;
+   color:#FFFFFF;
+   }
+.tonbodyclass2{
+   margin-left: 5px;
+   margin-right: 5px;
+   padding:5px;
+   border:1px solid #000000;
+box-shadow: 3px 3px 3px #3e3e3e; 
+-webkit-border-top-left-radius: 6px;
+-webkit-border-top-right-radius: 6px;
+-moz-border-radius-topright: 6px;
+-moz-border-radius-topleft: 6px;
+border-top-right-radius: 6px; 	
+border-top-left-radius: 6px;; 	
+   background:#FFFFFF;
+   color:#000000;
+    }

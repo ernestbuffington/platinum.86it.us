@@ -1,0 +1,257 @@
+We are not done with this update, but due to many requests I decided to release it only to Gold members to assist with the completion of the testing. There are ALOT of changes in this version. I have implemented alot of the code updates and security issue fixes used the the latest RavenNuke release, and I have added several new security features myself. You should find Fusion to be fairly useful once you find out what all the functions do. There are still some areas in the Fusion system that are not complete, but I will update them as we progress. Here is a list of the changes in this Version.
+ 
+* NSN Groups has been upgraded to the latest 1.7.1 Version and integrated into the Modules Administration and Blocks Administration. 
+ 
+* Modules Administration and Blocks Administration is now run by Ajax coding and will make working with these areas alot faster and more user friendly 
+ 
+* The FCK Editor with WYSIWYG ability has been integrated throughout most areas, like News, Journal, Reviews, Content, and other Administrative areas. 
+ 
+* The Donations Module has been recoded so you will no longer have to enter any database info to get it to run. It now draws its database info directly from the Config.php settings. 
+ 
+* An updated Supporters and Affliates Module has been added and secured from the latest known security Exploits. 
+ 
+* The Old Security Code system has been replaced with an New version that works with the newer versions of PHP 5 + 
+ 
+* The Terms of Service editor has been added to the Your Account Module so you can edit it directly there now instead of editing the ******** file. 
+ 
+* An updated Advertisment system has been added that makes it easier for you to place ads on your site. 
+ 
+* There are now two Download systems. One designed for public downloads which is using the heavily modified version of the EDL 2.1 Mod. The other is designed for Private Downloads which you can assign to NSN Groups. 
+ 
+* The Fusion System has been added which is an recoded version of Protector. The details for Fusion are: 
+ 
+Fusion 
+ 
+Fusion is a security system engineered for PHP-Nuke to record extensive logs of session activity, perform security actions, and maintenance actions via the administration panel. Fusion was designed by Goose aka Techgfx and Mister both of which were the creators of the Protector system. I am in the process of picking up the project from where they left off, updating it, adding new features and integrating it into Genesis. Fusion is a more user friendly security system and will not have false triggers which Sentinel has. It is designed for people who like to continually modify their site and not have to worry about continually banning yourself as sentinel does. 
+ 
+Basic Security 
+ 
+Block any kind of SQL injections 
+ 
+POST - Forms 
+ 
+GET - HTTP 
+ 
+COOKIE - User Agent Session 
+ 
+Logging of all visitors that view your site 
+ 
+Country / location 
+ 
+Pages visited 
+ 
+Proxy internet protocol 
+ 
+Internet protocol 
+ 
+Times visited 
+ 
+User agent 
+ 
+Username or anonymous 
+ 
+Banning 
+ 
+Automatic banning of users / IPs performing illegal exploits / ******s 
+ 
+Manual banning of users / IPs at your own judgement 
+ 
+Banned users / IPs will be directed to a page about the ban. This is not compulsory; you can choose to redirect the user to another site of your choice, e.g. www.phpnuke.org 
+ 
+Fusion will email the site administrator why the user / IP have been automatically banned 
+ 
+Deny access from any HTTP referers 
+ 
+Deny access from any proxy internet protocol 
+ 
+Deny access to any bandwidth consuming robots and web spiders 
+ 
+Possibility of banning a single IP address, or a whole IP address range 
+ 
+Internal information on why the IP address is banned can be set 
+ 
+Personal messages can be set to any banned IP address 
+ 
+Expiration times for bans can be set 
+ 
+Statistics 
+ 
+Comprehensive site statistics including 
+ 
+Total logged ip addresses 
+ 
+Total logged members 
+ 
+Total logged anonymous 
+ 
+Total banned 
+ 
+Total hits on ban page 
+ 
+Top visitors 
+ 
+Latest referrers 
+ 
+Current users online 
+- Host address 
+- Host name 
+- Ban ability 
+- Time online hh:mm:ss 
+ 
+Robot Management 
+ 
+PDF Compile 
+ 
+Print Logs 
+ 
+Advanced Security 
+ 
+Admin Lock 
+ 
+Assign a user / IP to access admin file 
+ 
+Any other user / IP that is not assigned to have access will be automatically redirected to index.php 
+ 
+Automatic IP Protection 
+ 
+If the above feature is enabled [admin lock] and you have an IP address which changes [dynamic IP address], Fusion will automatically protect your new IP address if it changes 
+ 
+This automatic protection will only apply if you are logged into admin while your IP address dynamically changes. If you are logged out [cookie expired] then you are not automatically protected 
+ 
+Hard IP Protection 
+ 
+Hard protection allows the IP address you are currently logged into the admin file with, to be protected only. This means multiple IP addresses under your username will not be stored. Only 1 IP address under your username will be stored and protected. If this feature is enabled, it will mean a user will be only able to access the administration file from 1 computer / IP only 
+ 
+Dynamic IP addresses will still be hard protected, only if the user does not logout of admin, deeming your cookie session as expired 
+ 
+Admin Lock, Automatic IP Protection and Hard IP Protection are extremely secure, however if you do not have full knowledge of how the features work it can be easy to lock yourself out of your own website. If this happens there are processes you can follow to regain access 
+ 
+Authorised Ban Protection 
+ 
+The ability to protect your IP completely, so it will not be possible to be banned by Fusion 
+ 
+This feature is only available for site administrators 
+ 
+Module Customisation 
+ 
+The ability to create protected properties for modules and assign users/ip addresses to be able to access the protected secure module. All other users/ip addresses that have not been assigned access to the module will be denied. 
+ 
+Users can also be denied access to modules that the general public/community can access. 
+ 
+Bot Crawler Exclusion 
+ 
+Excluding bots / webspiders to be excluded from Fusion page monitoring. Every ip address in this list will not be listed in the log center, thus not tracked. 
+ 
+When the first bot enters your site [i.e. Google 111.111.111.111/crawler01.googlebot.com] you can add googlebot.com and every google crawler will be added automatically. 
+ 
+ 
+Supercharged Security 
+ 
+FTP Security 
+ 
+FTP security allows you to "secure" files on your webserver. This is done by a dynamic database comparison of server file changes. 
+ 
+There are 3 options; Scan and Add, List Approved, and Secure Scan. 
+ 
+Scan and Add is an inital server scan. It scans the server for any filetype extension [php/html/exe/com/js]. Upon scanning, it will list every file [of the filetype selected] and give you the option to "approve" the files. 
+ 
+List Approved option lists the files that you have approved after the file/filetype scan. Once a file has been approved, it means you are aware that it exists and that the file is safe. 
+ 
+Secure Scan is a scan you perform at any time to see if anything has been altered on your FTP without your knowledge. A Secure Scan can give 3 results: 
+1. FTP is secure, no altered .php files have been found 
+2. WARNING 
+Note: File is approved but file size has changed 
+Approved: 3328 byte 
+Found: (3329 byte) 
+The file was last changed: November 25 2005 18:49:58. 
+File: /home/uname/public_html/loc/index.php 
+3. WARNING 
+File: /home/goose/public_html/fusion1/backend.php is not approved 
+The file was last changed: September 09 2005 20:15:55. 
+Size: (2389 byte /home/goose/public_html/fusion1/backend.php) 
+ 
+Denial of Service [DoS] Countermeasures 
+ 
+This features prevents users/ip addresses hitting your site too often in a short period of time. There are 3 configurable options; time limit, max hits, and block time. 
+ 
+The time limit variates on the maximum hits limit and is a set time in seconds in which a user/ip address can make a set amount of hits. 
+ 
+The maximum hits is the amount of hits a user/ip address is allowed to hit your site during the time limit set. If the user hits your site too many times, they will be banned for a set amount of seconds. 
+ 
+The ban time is defined in seconds and will automatically block hit breaches for this set time. 
+ 
+Close Site 
+ 
+This allows you to "close" your PHP-Nuke site. All users that are trying to access your site will be redirected automatically to a page with information including a custom set message. 
+ 
+As admin you can access every part of your site, a notice is displayed at the top of your site displaying that the site is closed and only admins can access. 
+ 
+Additionally you can show your sites logo on the closed page. This can be customised via the preview button. 
+ 
+User Monitor System [UMS] 
+ 
+User Monitor System is an advanced tracking system, which allows admins to track any individual users that they define. It is a more extensive and detailed version of the standard log center. 
+ 
+This feature can use significant server resources, which is why only admins are permitted to define which users are tracked through UMS. 
+ 
+Once a user granted to UMS tracking the following information will be initially collected: 
+- ID: 1 [note: this is the UMS id / #] 
+- IP: xxx.xx.xxx.xxx 
+- Proxy: If applicable 
+- Host: xxxx-xx-xxx-xxx.xxxxxx.xxx.xxxxxxxx.xxx 
+- Name: Username 
+- Last here: yyyyy.mm.dd hh:mm:ss 
+- Hits: #### 
+- User Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; Maxthon) 
+ 
+This can also be linked to IP 2 Country to find a users country/city location. 
+ 
+In addition, every users movement will be tracked and logged. This includes: 
+- Last used ip address 
+- Time of ip usage and user agent used. 
+- IP addressed previously used including time of last ip usage and user agent used. 
+- Pages visited including times and user agent. 
+- What the user did on any page, including GET [http location] and POST [any user input such as login form or forums]. 
+ 
+ 
+Htaccess Manager 
+ 
+End of Documentation 
+ 
+* Several New Mods were added some of which are: 
+ 
+User Groups Control Panel Display 
+User Group Copy 
+User List Sort 
+Forum Management on Index 
+SubForums Mod 
+Link Us 
+Czuser Administration Panel 
+Advanced Report Mod 
+Session Repair 
+phpmyadmin in Forums Admin 
+Search disable for guests 
+Reviews Plus 
+Favorites Mod 
+Tutorials Mod 
+Sitemap 
+NukeSEO 
+Whats New Mod 
+SimpleCart 
+MetAuthors 
+Latest Members Application Mod 
+Html Newsletter 
+Resend Email Confirmation Mod 
+Advanced Administration Block 
+Revised Forums Administration Area. 
+Custom BBCODE Box for forums 
+Nuke Sentinel has been upgraded to the latest 2.5.10 release 
+PHPBB bb2 nuke upgrade for 2.0.22 
+Advanced User Color mod has been integrated into several areas like subforums, shoutbok, czuser block, latest forums posts block, glance area, and users visited in the last 24 hours area. 
+Users visited in the last 24 hour mod was added 
+Platinum Custom Fields have been added so you can now create new fields that can be required in the registration area and will show in the profile and forum post areas. 
+Initial Usergroup Mod was added 
+Googlebot record in Forums Admin 
+Custom Platinum Installer 
+2 Custom Themes designed by Gazzasan released just for B5 
+Member theme Selection display in Members List Mod

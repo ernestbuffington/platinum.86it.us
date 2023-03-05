@@ -1,0 +1,56 @@
+.infobar {
+	font: bold 330%/100% "Lucida Grande";
+	float: none;
+	padding: 2px;
+	background-color: #ff0033;
+	text-align: center;
+	font-style: oblique;
+	filter:alpha(opacity=90);
+	opacity: 0.90;
+	-moz-opacity:0.90;
+	font-size: 16px;
+	box-shadow: 3px 4px 3px #3e3e3e;	
+  -webkit-border-top-left-radius: 6px;
+  -webkit-border-top-right-radius: 6px;
+  -moz-border-radius-topright: 6px;
+  -moz-border-radius-topleft: 6px;
+  border-top-right-radius: 6px; 	
+  border-top-left-radius: 6px;    
+  -webkit-border-bottom-left-radius: 6px;
+  -webkit-border-bottom-right-radius: 6px;
+  -moz-border-radius-bottomright: 6px;
+  -moz-border-radius-bottomleft: 6px;
+  border-bottom-right-radius: 6px; 	
+  border-bottom-left-radius: 6px; 
+	position: relative;
+}
+.submenu {
+	font: bold 330%/100% "Lucida Grande";
+	float: none;
+	padding: 1px;
+   margin-left: 5px;
+   margin-right: 5px;
+   padding:5px;
+   border:1px solid #000000;
+  	font-style: oblique;
+	color: #ff00;
+	font-size: 20px; 
+   box-shadow: 5px 5px 5px #3e3e3e;  
+  -webkit-border-top-left-radius: 6px;
+  -webkit-border-top-right-radius: 6px;
+  -moz-border-radius-topright: 6px;
+  -moz-border-radius-topleft: 6px;
+  border-top-right-radius: 6px; 	
+  border-top-left-radius: 6px;    
+  -webkit-border-bottom-left-radius: 6px;
+  -webkit-border-bottom-right-radius: 6px;
+  -moz-border-radius-bottomright: 6px;
+  -moz-border-radius-bottomleft: 6px;
+  border-bottom-right-radius: 6px; 	
+  border-bottom-left-radius: 6px; 
+ left:20px;
+top:100px;
+  	position: relative;
+   background:#ff0033;
+   color:#ffffff;  
+    }	

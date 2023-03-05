@@ -1,0 +1,1 @@
+$news[] = "Platinum Nuke Pro v2 is in development.|http://www.platinumnukepro.com|";

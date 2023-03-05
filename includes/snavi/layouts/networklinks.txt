@@ -1,0 +1,77 @@
+| define module categories in "clan" menu
+| used to grouping modules into several category menus under "Clans"
+|
+@@IF clan_module_cat@@
+  
+aa     |>| null |>| aa.gif       |>| Americas Army             |>| Americas Army           |>| null |>| null |>| null
+
+@@ENDIF clan_module_cat@@
+
+
+
+| define module category items in "clan" menu
+| used to grouping modules into several category menus under "home"
+|
+@@IF clan_module_item@@
+
+
+aa      |>| null |>| null    |>| -AS- AssaultSnipers   |>| null  |>| http://assaultsnipers.com         |>| _blank |>| null
+
+@@ENDIF clan_module_item@@
+
+
+| define custom categories in "clan" menu
+| used to grouping your custom menu into several category menus under "home"
+|
+@@IF clan_custom_cat@@
+
+@@ENDIF clan_custom_cat@@
+
+
+| define custom menu items in "Network" menu
+| used to grouping custom menu into several category menus under "home"
+|
+@@IF clan_custom_item@@
+
+@@ENDIF clan_custom_item@@
+
+
+| define module categories in "Network" menu
+| used to grouping modules into several category menus under "home"
+|
+@@IF network_module_cat@@
+des  |>| null |>| icon_home.png     |>| Design              |>| Design Websites      |>| null |>| null |>| null
+dev  |>| null |>| icon_article.png  |>| Development         |>| Development Websites |>| null |>| null |>| null
+host |>| null |>| icon_manblack.png |>| Hosting             |>| Hosting Services     |>| null |>| null |>| null
+news |>| null |>| icon_news.png     |>| News                |>| News Services        |>| null |>| null |>| null 
+@@ENDIF network_module_cat@@
+
+
+| define module category items in "Network" menu
+| used to grouping modules into several category menus under "home"
+|
+@@IF network_module_item@@
+
+des  |>| null |>| icon_recommend.png    |>| FreakGFX   			 |>| null  |>| http://www.freakgfx.co.cc           |>| _blank |>| null
+dev  |>| null |>| icon_manblue.png      |>| PlatinumNuke         |>| null  |>| http://www.platinumnukepro.com         |>| _blank |>| null
+dev  |>| null |>| icon_manblue.png      |>| DarkForge Graphics   |>| null  |>| http://www.darkforgegfx.com         |>| _blank |>| null
+host |>| null |>| icon_story.png        |>| Mach-hosting         |>| null  |>| http://www.mach-hosting.com         |>| _blank |>| null
+host |>| null |>| icon_story.png        |>| DC-Hosting           |>| null  |>| http://www.delgadocomputershosting.co.cc/   |>| _blank |>| null
+
+@@ENDIF network_module_item@@
+
+
+| define custom categories in "Network" menu
+| used to grouping your custom menu into several category menus under "home"
+|
+@@IF network_custom_cat@@
+
+@@ENDIF home_custom_cat@@
+
+
+| define custom menu items in "Network" menu
+| used to grouping custom menu into several category menus under "home"
+|
+@@IF network_custom_item@@
+
+@@ENDIF network_custom_item@@

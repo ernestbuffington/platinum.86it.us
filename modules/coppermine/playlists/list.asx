@@ -1,0 +1,20 @@
+<ASX Version="3">
+ <TITLE>Pc-Nuke! Playlist</TITLE> 
+
+   <ENTRY ClientSkip="no">
+      <REF HREF="http://aristarec.com/media/dido/video/white_flag_300.asx"/>
+   </ENTRY>
+   <ENTRY>
+      <REF HREF="http://aristarec.com/media/dido/video/thank_you_300.asx"/>
+   </ENTRY>
+   <ENTRY>
+      <REF HREF="http://aristarec.com/media/sarah_mclachlan/video/possession_300.asx"/>
+   </ENTRY>
+   <ENTRY>
+      <REF HREF="http://aristarec.com/media/sarah_mclachlan/video/sweet_surrender_300.asx"/>
+   </ENTRY>
+   <ENTRY>
+      <REF HREF="http://aristarec.com/media/pink/video/family_portrait_300.asx"/>
+   </ENTRY>
+
+</ASX>

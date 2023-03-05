@@ -1,0 +1,61 @@
+        <tr>
+                <td>
+                        <table width="100%" cellpadding="0" cellspacing="0">
+                                <td class="tableh2_compact" nowrap>
+                                        <strong>{MSG_AUTHOR}</strong>
+<!-- BEGIN ipinfo -->
+                                ({HDR_IP} [{RAW_IP}])
+<!-- END ipinfo -->
+
+                                </td>
+                                <td class="tableh2_compact" align="right" width="100%">
+<!-- BEGIN buttons -->
+                                        <a href="javascript:;" onClick="blocking('cbody{MSG_ID}','', 'block'); blocking('cedit{MSG_ID}','', 'block'); return false;" title="{EDIT_TITLE}"><img src="$CPG_M_DIR/images/edit.gif" border="0" align="absmiddle" ></a>
+                                        <a href="$CPG_URL&file=delete&msg_id={MSG_ID}&what=comment"  onclick="return confirm('{CONFIRM_DELETE}');"><img src="$CPG_M_DIR/images/delete.gif" border="0" align="absmiddle" ></a>
+<!-- END buttons -->
+                                </td>
+                                <td class="tableh2_compact" align="right" nowrap>
+                                        <span class="comment_date">[{MSG_DATE}]</span>
+                                </td>
+                        </table>
+                </td>
+        </tr>
+        <tr>
+                <td class="tableb_compact">
+                        <div id="cbody{MSG_ID}" style="display:block">
+                                {MSG_BODY}
+                        </div>
+                        <div id="cedit{MSG_ID}" style="display:none">
+                                                <form name="f{MSG_ID}" method="POST" action="$CPG_URL&file=db_input">
+                                                <input type="hidden" name="event" value="comment_update">
+                                                <input type="hidden" name="msg_id" value="{MSG_ID}">
+                                                <table width="100%" cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                <td>
+                                                   <input type="{MSG_TYPE}" name="msg_author" value="{MSG_AUTHOR}" class="textinput" size="10">
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td width="80%">
+                                                        <textarea cols="40" rows="2" class="textinput" name="msg_body" onselect="storeCaret_f{MSG_ID}(this);" onclick="storeCaret_f{MSG_ID}(this);" onkeyup="storeCaret_f{MSG_ID}(this);" style="width: 100%;">{MSG_BODY_RAW}</textarea>
+                                                </td>
+                                                <td class="tableb_compact">
+                                                </td>
+                                                <td>
+                                                        <input type="submit" class="comment_button" name="submit" value="{OK}">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td colspan="3"><img src="$CPG_M_DIR/images/spacer.gif" width="1" height="2" /><br /></td>
+                                        </tr>
+                                </table>
+                                {SMILIES}
+                                </form>
+                               
+<!-- BEGIN edit_box_smilies -->
+<!-- END edit_box_smilies -->
+<!-- BEGIN edit_box_no_smilies -->
+<!-- END edit_box_no_smilies -->
+                        </div>
+                </td>
+        </tr>

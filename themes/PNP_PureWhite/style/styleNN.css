@@ -1,0 +1,20 @@
+FONT		{FONT-FAMILY: Geneva, Helvetica, Verdana; FONT-SIZE: 10px; COLOR: #00ffff}
+TD		{FONT-FAMILY: Geneva, Helvetica, Verdana; FONT-SIZE: 10px; COLOR: #00ffff}
+BODY		{FONT-FAMILY: Geneva, Helvetica, Verdana; FONT-SIZE: 10px; COLOR: #00ffff}
+P		{FONT-FAMILY: Geneva, Helvetica, Verdana; FONT-SIZE: 10px; COLOR: #00ffff}
+DIV		{FONT-FAMILY: Geneva, Helvetica, Verdana; FONT-SIZE: 10px; COLOR: #00ffff}
+INPUT		{FONT-FAMILY: Geneva, Helvetica, Verdana; FONT-SIZE: 10px; COLOR: #00ffff; background-color: #FF9900; border-color: #003333;}
+TEXTAREA	{FONT-FAMILY: Geneva, Helvetica, Verdana; FONT-SIZE: 10px; COLOR: #00ffff; background-color: #003333; border-color: #003333;}
+FORM 		{FONT-FAMILY: Geneva, Helvetica, Verdana; FONT-SIZE: 10px; COLOR: #00ffff}
+A:link          {BACKGROUND: none; COLOR: #00ffff; FONT-SIZE: 10px Geneva, Helvetica, Verdana; TEXT-DECORATION: underline}
+A:active        {BACKGROUND: none; COLOR: #00ffff; FONT-SIZE: 10px Geneva, Helvetica, Verdana; TEXT-DECORATION: underline}
+A:visited       {BACKGROUND: none; COLOR: #00ffff; FONT-SIZE: 10px Geneva, Helvetica, Verdana; TEXT-DECORATION: underline}
+A:hover         {BACKGROUND: none; COLOR: #00ffff; FONT-SIZE: 10px Geneva, Helvetica, Verdana; TEXT-DECORATION: underline}
+.title 		{BACKGROUND: none; COLOR: #00ffff; FONT-SIZE: 14px; FONT-WEIGHT: bold; FONT-FAMILY: Geneva, Helvetica, Verdana; TEXT-DECORATION: none}
+.content 	{BACKGROUND: none; COLOR: #00ffff; FONT-SIZE: 12px; FONT-FAMILY: Geneva, Helvetica, Verdana;}
+.storytitle 	{BACKGROUND: none; COLOR: #00ffff; FONT-SIZE: 12px; FONT-WEIGHT: bold; FONT-FAMILY: Geneva, Helvetica, Verdana; TEXT-DECORATION: none}
+.storycat	{BACKGROUND: none; COLOR: #00ffff; FONT-SIZE: 12px; FONT-WEIGHT: bold; FONT-FAMILY: Geneva, Helvetica, Verdana; TEXT-DECORATION: underline}
+.boxtitle 	{BACKGROUND: none; COLOR: #00ffff; FONT-SIZE: 10px; FONT-WEIGHT: bold; FONT-FAMILY: Geneva, Helvetica, Verdana; TEXT-DECORATION: none}
+.boxcontent 	{BACKGROUND: none; COLOR: #00ffff; FONT-SIZE: 12px; FONT-FAMILY: Geneva, Helvetica, Verdana;}
+.option 	{BACKGROUND: none; COLOR: #00ffff; FONT-SIZE: 13px; FONT-WEIGHT: bold; FONT-FAMILY: Geneva, Helvetica, Verdana; TEXT-DECORATION: none}
+.tiny		{BACKGROUND: none; COLOR: #00ffff; FONT-SIZE: 10px; FONT-WEIGHT: normal; FONT-FAMILY: Geneva, Helvetica, Verdana; TEXT-DECORATION: none}

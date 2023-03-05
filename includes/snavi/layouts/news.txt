@@ -1,0 +1,2 @@
+$news[] = "Mach-hosting will install Platinum Nuke Pro on your server for only $20/USD.|http://www.mach-hosting.com|";
+$news[] = "Platinum Hosting!|http://www.delgadocomputershosting.co.cc/.com|";

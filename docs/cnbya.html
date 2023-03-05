@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8"/>
+	<title>Platinum Nuke Pro Docs</title>
+	<link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="css/layout.css" type="text/css" media="screen" />
+	<!--[if lt IE 9]>
+	<link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" />
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+    <script type="text/javascript" src="js/prototype.js"></script>
+<script type="text/javascript" src="js/scriptaculous.js?load=effects,builder"></script>
+<script type="text/javascript" src="js/lightbox.js"></script>
+	<script src="js/jquery-1.5.2.min.js" type="text/javascript"></script>
+	<script src="js/hideshow.js" type="text/javascript"></script>
+	<script src="js/jquery.tablesorter.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="js/jquery.equalHeight.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() 
+    	{ 
+      	  $(".tablesorter").tablesorter(); 
+   	 } 
+	);
+	$(document).ready(function() {
+
+	//When page loads...
+	$(".tab_content").hide(); //Hide all content
+	$("ul.tabs li:first").addClass("active").show(); //Activate first tab
+	$(".tab_content:first").show(); //Show first tab content
+
+	//On Click Event
+	$("ul.tabs li").click(function() {
+
+		$("ul.tabs li").removeClass("active"); //Remove any "active" class
+		$(this).addClass("active"); //Add "active" class to selected tab
+		$(".tab_content").hide(); //Hide all tab content
+
+		var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
+		$(activeTab).fadeIn(); //Fade in the active ID content
+		return false;
+	});
+
+});
+    </script>
+    <script type="text/javascript">
+    $(function(){
+        $('.column').equalHeight();
+    });
+</script>
+
+<script type="text/javascript" src="js/slimbox2.js"></script>
+<link rel="stylesheet" href="css/slimbox2.css" type="text/css" media="screen" />
+</head>
+
+
+<body>
+
+	<header id="header">
+		<hgroup>
+			<h1 class="site_title">Platinum Nuke</h1>
+			<h2 class="section_title">EXPECT TO BE IMPRESSED</h2><div class="btn_view_site"><a href="http://www.platinumnukepro.com" title="Support" target="_new">Support</a></div>
+		</hgroup>
+	</header> <!-- end of header bar -->
+	
+	<section id="secondary_bar">
+		<div class="user">
+			<p><a href="index.html">MAIN</a></p>
+			<!-- <a class="logout_user" href="#" title="Logout">Logout</a> -->
+		</div>
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs"><a href="index.html">MAIN</a> <div class="breadcrumb_divider"></div> <a class="current">CNBYA</a></article>
+		</div>
+	</section><!-- end of secondary bar -->
+	
+	<aside id="sidebar" class="column">
+
+		<hr/>
+		<h3>Installation</h3>
+		<ul class="toggle">
+			<li class="icn_new_article"><a href="prep.html">Preperation</a></li>
+			<li class="icn_edit_article"><a href="setup.html">Setup</a></li>
+			<li class="icn_categories"><a href="installation.html">Post Installation</a></li>
+			<li class="icn_jump_back"><a href="common1.html">Common Issues</a></li>
+		</ul>
+		<h3>Site Setup</h3>
+		<ul class="toggle">
+			<li class="icn_add_user"><a href="settings.html">Settings</a></li>
+			<li class="icn_security"><a href="sec1.html">Security</a></li>
+			<li class="icn_jump_back"><a href="common2.html">Common Issues</a></li>
+		</ul>
+		<h3>New Features</h3>
+		<ul class="toggle">
+			<li class="icn_folder"><a href="php53.html">PHP 5.3 Ready</a></li>
+			<li class="icn_folder"><a href="gallery.html">Coppermine 1.3.2</a></li>
+			<li class="icn_folder"><a href="tegonukem.html">Tego Nuke Mailer</a></li>
+            <li class="icn_folder"><a href="dfgsite.html">DFW Site Info</a></li>
+            <li class="icn_folder"><a href="trickedoutnews.html">Tricked Out News</a></li>
+            <li class="icn_folder"><a href="collapsingforums.html">Collapsing Forums Mod</a></li>
+            <li class="icn_folder"><a href="cnbya.html">CNBYA 5.0.0</a></li>
+            <li class="icn_folder"><a href="legaldocs.html">Legal Docs 1.0.0</a></li> 
+            <li class="icn_folder"><a href="jquery.html">JQuery Menu</a></li>
+            <li class="icn_folder"><a href="multipleranks.html">Multiple Ranks Mod</a></li>
+            <li class="icn_folder"><a href="edl.html">Nuke Style EDL 3.0</a></li>
+		</ul>	
+		<h3>How to</h3>
+		<ul class="toggle">			
+			<li class="icn_folder"><a href="pnpdefault_css.html">Platinum Nuke Pro Default CSS</a></li>
+			<li class="icn_folder"><a href="colorbox_mod.html">Platinum Nuke Pro Ckeditor Colorbox mod</a></li>
+			<li class="icn_folder"><a href="youtube_cke_mod.html">Platinum Nuke Pro Ckeditor Youtube mod</a></li>
+		</ul>
+		<h3>Themes</h3>
+		<ul class="toggle">
+			<li class="icn_settings"><a href="options.html">Options</a></li>
+			<li class="icn_jump_back"><a href="common3.html">Common Issues</a></li>
+		</ul>
+		<h3>Theme Conversion<br> Platinum v501-502 to PNPv1.0</h3>
+        <ul class="toggle">
+			<li class="icn_tags"><a href="converting.html">Converting</a></li>
+			<li class="icn_tags"><a href="tabbed_pages.html">Required CSS edits for Tabbed Pages</a></li>
+			<li class="icn_tags"><a href="collapsible_forum_index.html">Collapsible Forum Index Mod</a></li>
+            <li class="icn_tags"><a href="forum_colorbox_mod.html">Forum Colorbox Mod</a></li>
+            <li class="icn_tags"><a href="ranks_social_bookmarks_mods.html">Ranks and Social bookmarks Mods</a></li>
+            <li class="icn_tags"><a href="forum_topic_and_titles_boxover_mod.html">Forum Topic and Titles boxover Mod</a></li>
+            </ul>
+		<footer>
+			<hr />
+			<p><strong>Copyright &copy; 2017 Platinum Nuke Pro</strong></p>
+			<p><strong><em>Theme edits by</em></strong> <a href="http://ngnuke.webuda.com"><strong>Nextgen</strong></a></p>
+			<p><strong><em>Theme styling by</em></strong> <a href="http://www.havocst.net"><strong>DocHaVoC</strong></a></p>
+           <p><a href="projectcredit.html"><strong><em>Project Credits</em></strong></a></p> 
+           <br>
+	  </footer>
+	</aside><!-- end of sidebar -->
+	
+	<section id="main" class="column">
+		
+		<h4 class="alert_info">With CNBYA you take the control.</h4>
+		
+		<article class="module width_full">
+			<header><h3>Version Information</h3></header>
+			<div class="module_content">
+				<article class="stats_graph"><img src="images/PNP_logo_mirror_250w.png" width="200" height="146" alt="Main" longdesc="http://platinumnukepro.com"></article>
+				
+				<article class="stats_overview">
+				  <div class="overview_today">
+						<p class="overview_day">PHP-Nuke</p>
+						<p class="overview_count">7.6</p>
+						<p class="overview_day">Patched</p>
+						<p class="overview_count">3.5</p>
+						<p class="overview_type"></p>
+					</div>
+					<div class="overview_previous">
+						<p class="overview_day">Nuke Sentinel</p>
+						<p class="overview_count">2.6.0.1</p>
+						<p class="overview_day">BBTONUKE</p>
+						<p class="overview_count">2.0.23</p>
+						<p class="overview_type"></p>
+					</div>
+				</article>
+				<div class="clear"></div>
+			</div>
+		</article><!-- end of stats article --><!-- end of content manager article --><!-- end of messages article -->
+		
+    <div class="clear"></div><!-- end of post new article -->
+
+    <article class="module width_full">
+<header><h3>CNBYA 5.0.0 Features</h3></header>
+				<div class="module_content">
+					<p>One of the more important features in the Platinum Pro Release is the CNBYA 5.0.0 Module. (<a href="images/cnbya.png" rel="lightbox" title="CNBYA ADMIN">See CNBYA</a>)  The settings included with this module help you with user registration, user login and log out and username and password lengths. See the list below for a full list of its features. </p>
+
+					<ul>
+						<li>Activate user registration. </li>
+						<li>Activate user account via E-Mail.</li>
+						<li>Active to require Admin approval for registration.</li>
+						<li>Activate Coppa Complance.</li>
+                        <li>Activate Agree to TOS (Terms Of Service).</li>
+                        <li>Set which default fields are active.</li>
+                        <li>Cookie Control.</li>
+                        <li>Notify Admin via E-Mail upon a registration or name change.</li>
+                        <li>Notify Admin upon an account removal.</li> 
+                        <li>Verify any E-Mail changes.</li>
+                        <li>To allow or not a user can change themes.</li>
+                        <li>Suspending of unverified accounts control.</li>
+                        <li>Control to Block unwanted E-Mail Domains.</li>
+                        <li>Auto Logout control on inactivity of page views.</li>
+					</ul>
+                    
+
+				</div>
+		</article><!-- end of styles article -->
+		<div class="spacer"></div>
+	</section>
+
+
+</body>
+
+</html>

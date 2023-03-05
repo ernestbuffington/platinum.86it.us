@@ -1,0 +1,75 @@
+<!-- BEGIN c_header -->
+<table width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+<!-- END c_header -->
+<!-- BEGIN c_stat_row -->
+    <td colspan="{COLUMNS}" class="tableh1" align="center"><span class="statlink"><strong>{STATISTICS}</strong></span></td>
+  </tr>
+  <tr>
+<!-- END c_stat_row -->
+<!-- BEGIN c_album_cell -->
+    <td width="{COL_WIDTH}%" height="100%" valign="top">
+      <table width="100%" height="100%" cellspacing="0" cellpadding="0">
+        <tr>
+          <td colspan="3" height="1" valign="top" class="tableh2">
+                <strong><a href="{ALB_LINK_TGT}" class="albums">{ALBUM_TITLE}</a></strong>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <img src="$CPG_M_DIR/images/spacer.gif" width="1" height="1"><br />
+          </td>
+        </tr>
+        <tr height="100%">
+          <td align="center" height="100%" valign="middle" class="thumbnails">
+            <img src="$CPG_M_DIR/images/spacer.gif" width="{THUMB_CELL_WIDTH}" height="1" class="image" style="margin-top: 0px; margin-bottom: 0px; border: none;"><br />
+            <a href="{ALB_LINK_TGT}" class="albums">{ALB_LINK_PIC}<br /></a>
+          </td>
+          <td height="100%">
+            <img src="$CPG_M_DIR/images/spacer.gif" width="1" height="1">
+          </td>
+          <td width="100%" height="100%" valign="top" class="tableb_compact">
+            {ADMIN_MENU}
+            <p>{ALB_DESC}</p>
+            <p class="album_stat">{ALB_INFOS}</p>
+          </td>
+        </tr>
+      </table>
+    </td>
+<!-- END c_album_cell -->
+<!-- BEGIN c_empty_cell -->
+    <td width="{COL_WIDTH}%" height="100%" valign="top">
+      <table width="100%" height="100%" cellspacing="0" cellpadding="0">
+        <tr>
+          <td height="1" valign="top" class="tableh2">
+            <strong>&nbsp;</strong>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="$CPG_M_DIR/images/spacer.gif" width="1" height="1"><br />
+          </td>
+        </tr>
+        <tr height="100%">
+          <td width="100%" height="100%" valign="top" class="tableb_compact">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+<!-- END c_empty_cell -->
+<!-- BEGIN c_row_separator -->
+  </tr><tr>
+<!-- END c_row_separator -->
+<!-- BEGIN c_footer -->
+        </tr>
+<!-- END c_footer -->
+<!-- BEGIN c_tabs -->
+        <tr>
+                <td colspan="{COLUMNS}" style="padding: 0px;">
+                        <table width="100%" cellspacing="0" cellpadding="0">
+                                <tr>
+                                        {TABS}
+                                </tr>
+                        </table>
+                </td>
+        </tr>
+<!-- END c_tabs -->
