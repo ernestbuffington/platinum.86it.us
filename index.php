@@ -49,8 +49,8 @@ define('MODULE_FILE', true);
 /* Forum - Arcade v.3.0.2                      START */
 /*****************************************************/
 //Arcade MOD - IBProSupport
-$arcade = $_GET['act'];
-$newscore = $_GET['do'];
+$arcade = $_GET['act'] ?? '';
+$newscore = $_GET['do'] ?? '';
 if($arcade == 'Arcade' && $newscore='newscore')
 {
 	$gamename = str_replace("\'","''",$_POST['gname']);
