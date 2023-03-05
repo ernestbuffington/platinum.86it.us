@@ -62,9 +62,9 @@ die();
 /
 /************************************************************************/
 $dbhost = "localhost";
-$dbuname = "platinum_admin";
-$dbpass = "xwdNPADv86p";
-$dbname = "platinum_database";
+$dbuname = "platinum86it_db";
+$dbpass = "";
+$dbname = "platinum86it_db";
 $prefix = "nuke";
 $user_prefix = "nuke";
 $dbtype = "MySQLi";

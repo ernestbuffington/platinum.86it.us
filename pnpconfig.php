@@ -253,8 +253,6 @@ $disableCSRFChecking = false;
 /**This will not remove depricated warning, but will make it PHP 6 compatable.**/
 /**We do not like suppressing errors, but there is no other way as PHP 5.3+ will produce warnings.**/
 if (!version_compare(phpversion(), '6.0.0') >= 0) {
-	@set_magic_quotes_runtime(0); // Disable magic_quotes_runtime
 	@ini_set('allow_call_time_pass_reference', true); // PHP5 may/will throw a warning so this will suppress it
 }
 
-?>
