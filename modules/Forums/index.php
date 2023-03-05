@@ -28,6 +28,14 @@
 /* along with this program; if not, write to the Free Software                 */
 /* Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA. */
 /*******************************************************************************/
+
+/********************************************
+ Applied rules:
+ * DirNameFileConstantToDirConstantRector
+ * LongArrayToShortArrayRector
+ * TernaryToNullCoalescingRector
+ ********************************************/
+
 if ( !defined('MODULE_FILE') )
 {
    die("You can't access this file directly...");
@@ -37,7 +45,7 @@ $index = 1;
 
 if ($popup != "1")
     {
-        $module_name = basename(dirname(__FILE__));
+        $module_name = basename(__DIR__);
         require_once("modules/".$module_name."/nukebb.php");
     }
     else
@@ -58,7 +66,7 @@ init_userprefs($userdata);
 $viewcat = ( !empty($_GET[POST_CAT_URL]) ) ? $_GET[POST_CAT_URL] : -1;
 if( isset($_GET['mark']) || isset($_POST['mark']) )
 {
-        $mark_read = ( isset($_POST['mark']) ) ? $_POST['mark'] : $_GET['mark'];
+        $mark_read = $_POST['mark'] ?? $_GET['mark'];
 }
 else
 {
@@ -73,8 +81,7 @@ if( $mark_read == 'forums' )
         {
                 setcookie($board_config['cookie_name'] . '_f_all', time(), 0, $board_config['cookie_path'], $board_config['cookie_domain'], $board_config['cookie_secure']);
         }
-        $template->assign_vars(array(
-                "META" => '<meta http-equiv="refresh" content="3;url='  .append_sid("index.$phpEx") . '">')
+        $template->assign_vars(["META" => '<meta http-equiv="refresh" content="3;url='  .append_sid("index.$phpEx") . '">']
         );
         $message = $lang['Forums_marked_read'] . '<br /><br />' . sprintf($lang['Click_return_index'], '<a href="' . append_sid("index.$phpEx") . '">', '</a> ');
         message_die(GENERAL_MESSAGE, $message);
@@ -82,8 +89,8 @@ if( $mark_read == 'forums' )
 //
 // End handle marking posts
 //
-$tracking_topics = ( isset($_COOKIE[$board_config['cookie_name'] . '_t']) ) ? unserialize($_COOKIE[$board_config['cookie_name'] . "_t"]) : array();
-$tracking_forums = ( isset($_COOKIE[$board_config['cookie_name'] . '_f']) ) ? unserialize($_COOKIE[$board_config['cookie_name'] . "_f"]) : array();
+$tracking_topics = ( isset($_COOKIE[$board_config['cookie_name'] . '_t']) ) ? unserialize($_COOKIE[$board_config['cookie_name'] . "_t"]) : [];
+$tracking_forums = ( isset($_COOKIE[$board_config['cookie_name'] . '_f']) ) ? unserialize($_COOKIE[$board_config['cookie_name'] . "_f"]) : [];
 //
 // If you don't use these stats on your index you may want to consider
 // removing them
@@ -134,7 +141,7 @@ if( !($result = $db->sql_query($sql)) )
 {
         message_die(GENERAL_ERROR, 'Could not query categories list', '', __LINE__, __FILE__, $sql);
 }
-$category_rows = array();
+$category_rows = [];
 while ($row = $db->sql_fetchrow($result))
 {
 	$category_rows[] = $row;
@@ -194,7 +201,7 @@ if( ( $total_categories = count($category_rows) ) )
         {
                 message_die(GENERAL_ERROR, 'Could not query forums information', '', __LINE__, __FILE__, $sql);
         }
-        $forum_data = array();
+        $forum_data = [];
         while( $row = $db->sql_fetchrow($result) )
         {
                 $forum_data[] = $row;
@@ -227,7 +234,7 @@ if( ( $total_categories = count($category_rows) ) )
                 {
                         message_die(GENERAL_ERROR, 'Could not query new topic information', '', __LINE__, __FILE__, $sql);
                 }
-                $new_topic_data = array();
+                $new_topic_data = [];
                 while( $topic_data = $db->sql_fetchrow($result) )
                 {
                         $new_topic_data[$topic_data['forum_id']][$topic_data['topic_id']] = $topic_data['post_time'];
@@ -257,7 +264,7 @@ if( ( $total_categories = count($category_rows) ) )
         {
                 message_die(GENERAL_ERROR, 'Could not query forum moderator information', '', __LINE__, __FILE__, $sql);
         }
-        $forum_moderators = array();
+        $forum_moderators = [];
         while( $row = $db->sql_fetchrow($result) )
         {
 /*****************************************************/
@@ -290,15 +297,15 @@ if( ( $total_categories = count($category_rows) ) )
         //
         // Find which forums are visible for this user
         //
-        $is_auth_ary = array();
+        $is_auth_ary = [];
         $is_auth_ary = auth(AUTH_VIEW, AUTH_LIST_ALL, $userdata, $forum_data);
 	$itemarray = explode('ß', str_replace("Þ", "", $userdata['user_items']));
         global $prefix;
 	$sql = "select name, accessforum from ".$prefix."_shopitems where accessforum != '0' and accessforum > '0'";
 	if ( !($result = $db->sql_query($sql)) ) { message_die(GENERAL_MESSAGE, "Database Connection Error!".mysql_error()); }
 	$num_rows = $db->sql_numrows($result);
-	$itemformaccess = array();
-	$itemcataccess = array();
+	$itemformaccess = [];
+	$itemcataccess = [];
 	for ($x = 0; $x < $num_rows; $x++)
 	{
 		$row = $db->$sql_fetchrow($result);
@@ -372,60 +379,60 @@ if($result = $db->sql_query($sql))
         define('SHOW_ONLINE', true);
         $page_title = $lang['Index'];
         include_once("includes/page_header.php");
-        $template->set_filenames(array(
-                'body' => 'index_body.tpl')
+        $template->set_filenames(['body' => 'index_body.tpl']
         );
-        $template->assign_vars(array(
-                'TOTAL_POSTS' => sprintf($l_total_post_s, $total_posts),
-                'TOTAL_USERS' => sprintf($l_total_user_s, $total_users),
-                'NEWEST_USER' => sprintf($lang['Newest_user'], '<a href="' . append_sid("profile.$phpEx?mode=viewprofile&amp;" . POST_USERS_URL . "=$newest_uid") . '">', $newest_user, '</a>'),
-//+MOD: DHTML Collapsible Forum Index MOD
-		'U_CFI_JSLIB'			=> 'includes/javascript/collapsible_forum_index.js',
-		'CFI_COOKIE_NAME'		=> get_cfi_cookie_name(),
-		'COOKIE_PATH'			=> $board_config['cookie_path'],
-		'COOKIE_DOMAIN'			=> $board_config['cookie_domain'],
-		'COOKIE_SECURE'			=> $board_config['cookie_secure'],
-		'L_CFI_OPTIONS'			=> str_replace(array("'",' '), array("\'",'&nbsp;'), $lang['CFI_options']),
-		'L_CFI_OPTIONS_EX'		=> str_replace(array("'",' '), array("\'",'&nbsp;'), $lang['CFI_options_ex']),
-		'L_CFI_CLOSE'			=> str_replace(array("'",' '), array("\'",'&nbsp;'), $lang['CFI_close']),
-		'L_CFI_DELETE'			=> str_replace(array("'",' '), array("\'",'&nbsp;'), $lang['CFI_delete']),
-		'L_CFI_RESTORE'			=> str_replace(array("'",' '), array("\'",'&nbsp;'), $lang['CFI_restore']),
-		'L_CFI_SAVE'			=> str_replace(array("'",' '), array("\'",'&nbsp;'), $lang['CFI_save']),
-		'L_CFI_EXPAND_ALL'		=> str_replace(array("'",' '), array("\'",'&nbsp;'), $lang['CFI_Expand_all']),
-		'L_CFI_COLLAPSE_ALL'	=> str_replace(array("'",' '), array("\'",'&nbsp;'), $lang['CFI_Collapse_all']),
-		'IMG_UP_ARROW'			=> $images['up_arrow'],
-		'IMG_DW_ARROW'			=> $images['down_arrow'],
-		'IMG_PLUS'				=> $images['icon_sign_plus'],
-		'IMG_MINUS'				=> $images['icon_sign_minus'],
-		'SPACER'				=> $phpbb_root_path . 'images/spacer.gif',
-//-MOD: DHTML Collapsible Forum Index MOD
-                'FORUM_IMG' => $images['forum'],
-                'FORUM_NEW_IMG' => $images['forum_new'],
-                'FORUM_LOCKED_IMG' => $images['forum_locked'],
-// Start add - Birthday MOD
-		'L_WHOSBIRTHDAY_WEEK' => ($board_config['birthday_check_day'] > 1) ? sprintf( (($birthday_week_list) ? $lang['Birthday_week'] : $lang['Nobirthday_week']), $board_config['birthday_check_day']).$birthday_week_list : '',
-		'L_WHOSBIRTHDAY_TODAY' => ($board_config['birthday_check_day']) ? ($birthday_today_list) ? $lang['Birthday_today'].$birthday_today_list : $lang['Nobirthday_today'] : '',
-// End add - Birthday MOD
-                'L_FORUM' => $lang['Forum'],
-                'L_TOPICS' => $lang['Topics'],
-                'L_REPLIES' => $lang['Replies'],
-                'L_VIEWS' => $lang['Views'],
-                'L_POSTS' => $lang['Posts'],
-                'L_LASTPOST' => $lang['Last_Post'],
-                'L_NO_NEW_POSTS' => $lang['No_new_posts'],
-                'L_NEW_POSTS' => $lang['New_posts'],
-                'L_NO_NEW_POSTS_LOCKED' => $lang['No_new_posts_locked'],
-                'L_NEW_POSTS_LOCKED' => $lang['New_posts_locked'],
-                'L_ONLINE_EXPLAIN' => $lang['Online_explain'],
-                'L_MODERATOR' => $lang['Moderators'],
-                'L_FORUM_LOCKED' => $lang['Forum_is_locked'],
-                'L_MARK_FORUMS_READ' => $lang['Mark_all_forums'],
-                'U_MARK_READ' => append_sid("index.$phpEx?mark=forums"))
+        $template->assign_vars([
+            'TOTAL_POSTS' => sprintf($l_total_post_s, $total_posts),
+            'TOTAL_USERS' => sprintf($l_total_user_s, $total_users),
+            'NEWEST_USER' => sprintf($lang['Newest_user'], '<a href="' . append_sid("profile.$phpEx?mode=viewprofile&amp;" . POST_USERS_URL . "=$newest_uid") . '">', $newest_user, '</a>'),
+            //+MOD: DHTML Collapsible Forum Index MOD
+            'U_CFI_JSLIB'			=> 'includes/javascript/collapsible_forum_index.js',
+            'CFI_COOKIE_NAME'		=> get_cfi_cookie_name(),
+            'COOKIE_PATH'			=> $board_config['cookie_path'],
+            'COOKIE_DOMAIN'			=> $board_config['cookie_domain'],
+            'COOKIE_SECURE'			=> $board_config['cookie_secure'],
+            'L_CFI_OPTIONS'			=> str_replace(["'", ' '], ["\'", '&nbsp;'], $lang['CFI_options']),
+            'L_CFI_OPTIONS_EX'		=> str_replace(["'", ' '], ["\'", '&nbsp;'], $lang['CFI_options_ex']),
+            'L_CFI_CLOSE'			=> str_replace(["'", ' '], ["\'", '&nbsp;'], $lang['CFI_close']),
+            'L_CFI_DELETE'			=> str_replace(["'", ' '], ["\'", '&nbsp;'], $lang['CFI_delete']),
+            'L_CFI_RESTORE'			=> str_replace(["'", ' '], ["\'", '&nbsp;'], $lang['CFI_restore']),
+            'L_CFI_SAVE'			=> str_replace(["'", ' '], ["\'", '&nbsp;'], $lang['CFI_save']),
+            'L_CFI_EXPAND_ALL'		=> str_replace(["'", ' '], ["\'", '&nbsp;'], $lang['CFI_Expand_all']),
+            'L_CFI_COLLAPSE_ALL'	=> str_replace(["'", ' '], ["\'", '&nbsp;'], $lang['CFI_Collapse_all']),
+            'IMG_UP_ARROW'			=> $images['up_arrow'],
+            'IMG_DW_ARROW'			=> $images['down_arrow'],
+            'IMG_PLUS'				=> $images['icon_sign_plus'],
+            'IMG_MINUS'				=> $images['icon_sign_minus'],
+            'SPACER'				=> $phpbb_root_path . 'images/spacer.gif',
+            //-MOD: DHTML Collapsible Forum Index MOD
+            'FORUM_IMG' => $images['forum'],
+            'FORUM_NEW_IMG' => $images['forum_new'],
+            'FORUM_LOCKED_IMG' => $images['forum_locked'],
+            // Start add - Birthday MOD
+            'L_WHOSBIRTHDAY_WEEK' => ($board_config['birthday_check_day'] > 1) ? sprintf( (($birthday_week_list) ? $lang['Birthday_week'] : $lang['Nobirthday_week']), $board_config['birthday_check_day']).$birthday_week_list : '',
+            'L_WHOSBIRTHDAY_TODAY' => ($board_config['birthday_check_day']) ? ($birthday_today_list) ? $lang['Birthday_today'].$birthday_today_list : $lang['Nobirthday_today'] : '',
+            // End add - Birthday MOD
+            'L_FORUM' => $lang['Forum'],
+            'L_TOPICS' => $lang['Topics'],
+            'L_REPLIES' => $lang['Replies'],
+            'L_VIEWS' => $lang['Views'],
+            'L_POSTS' => $lang['Posts'],
+            'L_LASTPOST' => $lang['Last_Post'],
+            'L_NO_NEW_POSTS' => $lang['No_new_posts'],
+            'L_NEW_POSTS' => $lang['New_posts'],
+            'L_NO_NEW_POSTS_LOCKED' => $lang['No_new_posts_locked'],
+            'L_NEW_POSTS_LOCKED' => $lang['New_posts_locked'],
+            'L_ONLINE_EXPLAIN' => $lang['Online_explain'],
+            'L_MODERATOR' => $lang['Moderators'],
+            'L_FORUM_LOCKED' => $lang['Forum_is_locked'],
+            'L_MARK_FORUMS_READ' => $lang['Mark_all_forums'],
+            'U_MARK_READ' => append_sid("index.$phpEx?mark=forums"),
+        ]
         );
         //
 	// Let's decide which categories we should display
 	//
-	$display_categories = array();
+	$display_categories = [];
 	for ($i = 0; $i < $total_forums; $i++ )
 	{
 		if ($is_auth_ary[$forum_data[$i]['forum_id']]['auth_view'])
@@ -445,13 +452,14 @@ if($result = $db->sql_query($sql))
 		//
 		if (isset($display_categories[$cat_id]) && $display_categories[$cat_id])
                 {
-                        $template->assign_block_vars('catrow', array(
-//+MOD: DHTML Collapsible Forum Index MOD
-				'DISPLAY' => (is_category_collapsed($cat_id) ? '' : 'none'),
-//-MOD: DHTML Collapsible Forum Index MOD
-                                'CAT_ID' => $cat_id,
-                                'CAT_DESC' => $category_rows[$i]['cat_title'],
-                                'U_VIEWCAT' => append_sid("index.$phpEx?" . POST_CAT_URL . "=$cat_id"))
+                        $template->assign_block_vars('catrow', [
+                            //+MOD: DHTML Collapsible Forum Index MOD
+                            'DISPLAY' => (is_category_collapsed($cat_id) ? '' : 'none'),
+                            //-MOD: DHTML Collapsible Forum Index MOD
+                            'CAT_ID' => $cat_id,
+                            'CAT_DESC' => $category_rows[$i]['cat_title'],
+                            'U_VIEWCAT' => append_sid("index.$phpEx?" . POST_CAT_URL . "=$cat_id"),
+                        ]
                         );
                         if ( $viewcat == $cat_id || $viewcat == -1 )
                         {
@@ -464,7 +472,7 @@ if($result = $db->sql_query($sql))
    $attached_id = $forum_data[$j]['attached_forum_id'];
 						if ( $is_auth_ary[$forum_id]['auth_view'] && $attached_id == -1 )
 						{
-							$attached_forums = array();
+							$attached_forums = [];
 							foreach ($attach as $key => $value)
 							{
 								$sub_forum_id = $value['forum_id'];
@@ -504,12 +512,7 @@ if($result = $db->sql_query($sql))
 										$attach_img = $images['icon_minipost'];
 										$l_attach_img = $lang['No_new_posts'];
 									}
-									$attached_forums[] = array(
-										'sub_img'=>$attach_img,
-										'sub_alt'=>$l_attach_img,
-										'sub_name'=>$value['forum_name'],
-										'sub_url'=>append_sid ('viewforum.php?f=' . $value['forum_id'] )
-										);
+									$attached_forums[] = ['sub_img'=>$attach_img, 'sub_alt'=>$l_attach_img, 'sub_name'=>$value['forum_name'], 'sub_url'=>append_sid ('viewforum.php?f=' . $value['forum_id'] )];
 								}
 							}
 // END Added by Attached Forums MOD
@@ -567,44 +570,38 @@ $unread_topics=check_unread($forum_id);
                                                         }
                                                         $row_color = ( !($i % 2) ) ? $theme['td_color1'] : $theme['td_color2'];
                                                         $row_class = ( !($i % 2) ) ? $theme['td_class1'] : $theme['td_class2'];
-                                                        $template->assign_block_vars('catrow.forumrow',        array(
-//+MOD: DHTML Collapsible Forum Index MOD
-								'FORUM_ID' => $forum_id,
-								'DISPLAY' => (is_category_collapsed($cat_id) ? 'none' : ''),
-//-MOD: DHTML Collapsible Forum Index MOD
-                                                                'ROW_COLOR' => '#' . $row_color,
-                                                                'ROW_CLASS' => $row_class,
-                                                                'FORUM_EDIT_IMG'	=> (($userdata['user_level'] == ADMIN) ? '&nbsp;&nbsp;<a href="#" onclick="window.open(\'modules/Forums/admin/admin_forums.'. $phpEx .'?mode=editforum&in_from=index&'. POST_FORUM_URL .'='. $forum_id .'&sid='. $userdata['session_id'] .'\',\'popup\',\'width=650,height=600,scrollbars=yes,resizable=no,toolbar=no,directories=no,location=no,menubar=no,status=no\'); return false;"><img src="modules/Forums/templates/subSilver/images/forum_edit.gif" border="0"></a>' : ''),
-                                                                'FORUM_FOLDER_IMG' => $folder_image,
-                                                                'FORUM_NAME' => $forum_data[$j]['forum_name'],
-                                                                'FORUM_DESC' => $forum_data[$j]['forum_desc'],
-                                                                'POSTS' => $forum_data[$j]['forum_posts'],
-                                                                'TOPICS' => $forum_data[$j]['forum_topics'],
-                                                                'LAST_POST' => $last_post,
-                                                                'MODERATORS' => $moderator_list,
-                                                                'L_MODERATOR' => $l_moderators,
-                                                                'L_FORUM_FOLDER_ALT' => $folder_alt,
-                                                                'U_VIEWFORUM' => append_sid("viewforum.$phpEx?" . POST_FORUM_URL . "=$forum_id"))
+                                                        $template->assign_block_vars('catrow.forumrow',        [
+                                                            //+MOD: DHTML Collapsible Forum Index MOD
+                                                            'FORUM_ID' => $forum_id,
+                                                            'DISPLAY' => (is_category_collapsed($cat_id) ? 'none' : ''),
+                                                            //-MOD: DHTML Collapsible Forum Index MOD
+                                                            'ROW_COLOR' => '#' . $row_color,
+                                                            'ROW_CLASS' => $row_class,
+                                                            'FORUM_EDIT_IMG'	=> (($userdata['user_level'] == ADMIN) ? '&nbsp;&nbsp;<a href="#" onclick="window.open(\'modules/Forums/admin/admin_forums.'. $phpEx .'?mode=editforum&in_from=index&'. POST_FORUM_URL .'='. $forum_id .'&sid='. $userdata['session_id'] .'\',\'popup\',\'width=650,height=600,scrollbars=yes,resizable=no,toolbar=no,directories=no,location=no,menubar=no,status=no\'); return false;"><img src="modules/Forums/templates/subSilver/images/forum_edit.gif" border="0"></a>' : ''),
+                                                            'FORUM_FOLDER_IMG' => $folder_image,
+                                                            'FORUM_NAME' => $forum_data[$j]['forum_name'],
+                                                            'FORUM_DESC' => $forum_data[$j]['forum_desc'],
+                                                            'POSTS' => $forum_data[$j]['forum_posts'],
+                                                            'TOPICS' => $forum_data[$j]['forum_topics'],
+                                                            'LAST_POST' => $last_post,
+                                                            'MODERATORS' => $moderator_list,
+                                                            'L_MODERATOR' => $l_moderators,
+                                                            'L_FORUM_FOLDER_ALT' => $folder_alt,
+                                                            'U_VIEWFORUM' => append_sid("viewforum.$phpEx?" . POST_FORUM_URL . "=$forum_id"),
+                                                        ]
                                                         );
                                // Added by Attached Forums MOD
                      $attached_forum_count = count($attached_forums);
                      if($attached_forum_count)
                      {
-					   $template->assign_block_vars('catrow.forumrow.switch_attached_forums', array(
-                        'L_ATTACHED_FORUMS' => ($attached_forum_count ==1)? $lang['Attached_forum']: $lang['Attached_forums']
-						));
+					   $template->assign_block_vars('catrow.forumrow.switch_attached_forums', ['L_ATTACHED_FORUMS' => ($attached_forum_count ==1)? $lang['Attached_forum']: $lang['Attached_forums']]);
 						if (count($forum_moderators[$forum_id]) > 0 )
 						{
-						   $template->assign_block_vars('catrow.forumrow.switch_attached_forums.br', array());
+						   $template->assign_block_vars('catrow.forumrow.switch_attached_forums.br', []);
 						}
                         for($k = 0; $k < $attached_forum_count; $k++)
                         {
-                           $template->assign_block_vars('catrow.forumrow.switch_attached_forums.attached_forums', array(
-                              'FORUM_IMAGE' => $attached_forums[$k]['sub_img'],
-                              'FORUM_NAME' => $attached_forums[$k]['sub_name'],
-                              'L_FORUM_IMAGE' => $attached_forums[$k]['sub_alt'],
-                              'U_VIEWFORUM' => $attached_forums[$k]['sub_url']
-                           ));
+                           $template->assign_block_vars('catrow.forumrow.switch_attached_forums.attached_forums', ['FORUM_IMAGE' => $attached_forums[$k]['sub_img'], 'FORUM_NAME' => $attached_forums[$k]['sub_name'], 'L_FORUM_IMAGE' => $attached_forums[$k]['sub_alt'], 'U_VIEWFORUM' => $attached_forums[$k]['sub_url']]);
                         }
                      }
    // END added by Attached Forums MOD
