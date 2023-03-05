@@ -61,9 +61,9 @@ $sql="SELECT topic_title FROM ".$user_prefix."_bbtopics WHERE topic_id='$t' LIMI
 //$sql="SELECT topic_title FROM ".$prefix."_bbtopics WHERE topic_id='$t' LIMIT 0,1";
 $result = $db->sql_query($sql); 
     while ($row = $db->sql_fetchrow($result)) { 
-$tname = check_html($row[topic_title], nohtml); 
+$tname = check_html($row['topic_title'], 'nohtml'); 
 $pagetitle = "$name-$file-$tname" ; 
-$pagetitle = check_html($pagetitle, nohtml); 
+$pagetitle = check_html($pagetitle, 'nohtml'); 
 } 
 } 
 include_once("header.php");
