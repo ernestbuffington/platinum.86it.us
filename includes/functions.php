@@ -475,7 +475,9 @@ function setup_style($style)
                 cookiedecode($user);
             $info=$db->sql_query("select * from ".$prefix."_bbconfig where config_name='default_style'");
             $get_info=$db->sql_fetchrow($info);
-            $default_style=$get_info[config_value];
+			if(!isset($get_info['config_value']))
+			$get_info[config_value] = '';
+            $default_style=$get_info['config_value'];
             if($cookie[1] == "" AND $style != "$default_style") {
                 $style = "$default_style";
             }
@@ -1141,7 +1143,7 @@ function realdate($date_syntax="Ymd",$date=0)
 	 	return create_date($date_syntax,$date*86400+1,0);
 	} else
 	{
-		$year= -(date%1461);
+		$year = -($date%1461);
 		$days = $date + $year*1461;
 		while ($days<0)
 		{
