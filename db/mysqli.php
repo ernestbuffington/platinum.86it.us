@@ -107,7 +107,7 @@ class sql_db
 				$this->mysql_version = mysqli_get_server_info($this->db_connect_id);
 
 				# not sure why this was removed i see no explanation, Thanks Dick!
-				if (version_compare($this->mysql_version, '4.1.3', '>='))
+				if (version_compare($this->mysql_version, '7.2.0', '>='))
 				{
 					// Create connection
                     $hornswonkle = mysqli_connect($this->server, $this->user, $this->password, $this->dbname);
