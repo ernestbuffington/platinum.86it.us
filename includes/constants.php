@@ -306,7 +306,7 @@ define('ARCADE_FAV_TABLE', $prefix.'_bbarcade_fav');
 /*****************************************************/
 /* Forum - PHP-Nuke Admin Link v.1.0.1         START */
 /*****************************************************/
-define('NUKEADMINCP', "../../../$admin_file.".php);
+define('NUKEADMINCP', "../../../'.$admin_file.'.php");
 /*****************************************************/
 /* Forum - PHP-Nuke Admin Link v.1.0.1           END */
 /*****************************************************/
