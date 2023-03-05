@@ -42,6 +42,15 @@
 /* along with this program; if not, write to the Free Software                 */
 /* Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA. */
 /*******************************************************************************/
+
+/********************************************
+ Applied rules:
+ * LongArrayToShortArrayRector
+ * AddDefaultValueForUndefinedVariableRector (https://github.com/vimeo/psalm/blob/29b70442b11e3e66113935a2ee22e165a70c74a4/docs/fixing_code.md#possiblyundefinedvariable)
+ * NullToStrictStringFuncCallArgRector
+ ********************************************/
+
+
 /* Added usere avatars - sgtnmudd */
 
 if ( !defined('BLOCK_FILE') ) {
@@ -49,8 +58,17 @@ if ( !defined('BLOCK_FILE') ) {
 }
 global $prefix, $ShoutSubmit, $ShoutComment, $db, $user, $cookie, $shoutuid, $top_content, $mid_content, $bottom_content, $ShoutMarqueewidth, $ShoutMarqueeheight, $currentlang;
 function ShoutBox($ShoutSubmit, $prefix, $ShoutComment, $db, $user, $cookie, $shoutuid) {
-	global $admin, $admin_file, $currentlang, $top_content, $mid_content, $bottom_content, $ShoutMarqueewidth, $ShoutMarqueeheight;
-	$self = preg_replace("#/#", "",$_SERVER['PHP_SELF']);
+	$BannedShouter = null;
+ $ShoutError = null;
+ $userSetup = [];
+ $tempContent = [];
+ $bgcolor = null;
+ $preURL = null;
+ $nameresultZ = null;
+ $PreviousUsername = null;
+ $PreviousComment = null;
+ global $admin, $admin_file, $currentlang, $top_content, $mid_content, $bottom_content, $ShoutMarqueewidth, $ShoutMarqueeheight;
+	$self = preg_replace("#/#", "",(string) $_SERVER['PHP_SELF']);
 	if ($admin_file == '') { $admin_file = 'admin'; }
 	if ((is_admin($admin)) AND ("".$admin_file.".php" == $self)) {
 		$sqlV = "select * from ".$prefix."_config";
@@ -93,7 +111,7 @@ function ShoutBox($ShoutSubmit, $prefix, $ShoutComment, $db, $user, $cookie, $sh
 		$uip = getenv("HTTP_X_FORWARDED_FOR");
 	} else if (getenv("REMOTE_ADDR") && strcasecmp(getenv("REMOTE_ADDR"), "unknown")) {
 		$uip = getenv("REMOTE_ADDR");
-	} else if (isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] && strcasecmp($_SERVER['REMOTE_ADDR'], "unknown")) {
+	} else if (isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] && strcasecmp((string) $_SERVER['REMOTE_ADDR'], "unknown")) {
 		$uip = $_SERVER['REMOTE_ADDR'];
 	} else {
 		$uip = "";
@@ -107,9 +125,9 @@ function ShoutBox($ShoutSubmit, $prefix, $ShoutComment, $db, $user, $cookie, $sh
 		$sql = "select * from ".$prefix."_shoutbox_ipblock";
 		$ipresult = $db->sql_query($sql);
 		while ($badips = $db->sql_fetchrow($ipresult)) {
-			if (preg_match("/\*/", $badips['name'])) { // Allow for Subnet bans like 123.456.*
-				$badipsArray = explode(".",$badips['name']);
-				$uipArray = explode(".",$uip);
+			if (preg_match("/\*/", (string) $badips['name'])) { // Allow for Subnet bans like 123.456.*
+				$badipsArray = explode(".",(string) $badips['name']);
+				$uipArray = explode(".",(string) $uip);
 				$i = 0;
 				foreach($badipsArray as $badipsPart) {
 					if ($badipsPart == "*") { $BannedShouter = "yes"; break; }
@@ -134,7 +152,7 @@ function ShoutBox($ShoutSubmit, $prefix, $ShoutComment, $db, $user, $cookie, $sh
 	// start processing shout
 	if ($shoutuid) { $username = "$shoutuid"; }
 	//shoutuid tests
-	$username = trim($username); // remove whitespace off ends of nickname
+	$username = trim((string) $username); // remove whitespace off ends of nickname
 	if($conf['anonymouspost'] == "yes") {
 		$unum = strlen($username);
 		if ($unum < 2) { $ShoutError = ""._NICKTOOSHORT.""; }
@@ -147,7 +165,7 @@ function ShoutBox($ShoutSubmit, $prefix, $ShoutComment, $db, $user, $cookie, $sh
 	if (!is_user($user) && ($username) && $username != "Anonymous") {
 		$username = preg_replace("/ /", "/_/",$username);
 	}
-	$ShoutComment = trim($ShoutComment); // remove whitespace off ends of shout
+	$ShoutComment = trim((string) $ShoutComment); // remove whitespace off ends of shout
 	$ShoutComment = preg_replace('/\s+/', ' ', $ShoutComment); // convert double spaces in middle of shout to single space
 	$num = strlen($ShoutComment);
 	if ($num < 1) { $ShoutError = ""._SHOUTTOOSHORT.""; }
@@ -296,7 +314,7 @@ function ShoutBox($ShoutSubmit, $prefix, $ShoutComment, $db, $user, $cookie, $sh
 			$cresult = $db->sql_query($sql);
 			while ($censor = $db->sql_fetchrow($cresult)) {
 				if ($username != 'Anonymous') {
-					$one = strtolower($censor['text']);
+					$one = strtolower((string) $censor['text']);
 					$usernameL = strtolower($username);
 					if (stristr($usernameL, $one) !== false) {
 						$username = "Anonymous";
@@ -313,7 +331,7 @@ function ShoutBox($ShoutSubmit, $prefix, $ShoutComment, $db, $user, $cookie, $sh
 			$i = 0;
 			foreach($ShoutArrayScan as $ShoutPart) {
 				$ShoutPart = strtolower($ShoutPart);
-				$censor['text'] = strtolower($censor['text']);
+				$censor['text'] = strtolower((string) $censor['text']);
 				if ($ShoutPart == $censor['text']) { $ShoutArrayReplace[$i] = $censor['replacement']; }
 				$i++;
 			}
@@ -347,14 +365,14 @@ function ShoutBox($ShoutSubmit, $prefix, $ShoutComment, $db, $user, $cookie, $sh
 		if ($conf['timeOffset'] == 0) {
 			$day = date("$rowD[date]");
 			$time = date("$rowD[time]");
-		} elseif (strstr($conf['timeOffset'], '+')) {
-			$sbTimeMultiplier = str_replace('+', '', $conf['timeOffset']);
+		} elseif (strstr((string) $conf['timeOffset'], '+')) {
+			$sbTimeMultiplier = str_replace('+', '', (string) $conf['timeOffset']);
 			$sbTimeOffset = $sbTimeMultiplier * 3600;
 			$sbTimeTemp = time();
 			$time = date("$rowD[time]", ($sbTimeTemp + $sbTimeOffset));
 			$day = date("$rowD[date]", ($sbTimeTemp + $sbTimeOffset));
 		} else {
-			$sbTimeMultiplier = str_replace('-', '', $conf['timeOffset']);
+			$sbTimeMultiplier = str_replace('-', '', (string) $conf['timeOffset']);
 			$sbTimeOffset = $sbTimeMultiplier * 3600;
 			$sbTimeTemp = time();
 			$time = date("$rowD[time]", ($sbTimeTemp - $sbTimeOffset));
@@ -517,7 +535,7 @@ function ShoutBox($ShoutSubmit, $prefix, $ShoutComment, $db, $user, $cookie, $sh
 		} else {
 			$tempContent[$i] = "<tr><td style=\"background-color: $bgcolor;\">";
 		}
-		$ShoutComment = str_replace('src=', 'src="', $row['comment']);
+		$ShoutComment = str_replace('src=', 'src="', (string) $row['comment']);
 		$ShoutComment = str_replace('.gif>', '.gif" alt="" />', $ShoutComment);
 		$ShoutComment = str_replace('.jpg>', '.jpg" alt="" />', $ShoutComment);
 		$ShoutComment = str_replace('.png>', '.png" alt="" />', $ShoutComment);
@@ -575,7 +593,7 @@ function ShoutBox($ShoutSubmit, $prefix, $ShoutComment, $db, $user, $cookie, $sh
 $shoutAvatar = 1; // 1 = show / 0 = hide
 
 			if ((isset($shoutAvatar)) && ($shoutAvatar == 1)) {
-				if (($rowN['user_avatar']) && ($rowN['user_avatar'] != "blank.gif") && ($rowN['user_avatar'] != "gallery/blank.gif") && (stristr($rowN['user_avatar'],'.') == TRUE)) {
+				if (($rowN['user_avatar']) && ($rowN['user_avatar'] != "blank.gif") && ($rowN['user_avatar'] != "gallery/blank.gif") && (stristr((string) $rowN['user_avatar'],'.') == TRUE)) {
 					$sbAvatarImage = 'modules/Forums/images/avatars/'.$rowN['user_avatar'];
 					$sbAvatar = "<img src=\"$sbAvatarImage\" alt=\"\" height=\"16px\" width=\"16px\" />";
 					} else {
@@ -675,7 +693,7 @@ $shoutAvatar = 1; // 1 = show / 0 = hide
 		$bottom_content .= "</td></tr>\n";
 		// Start smilie Drop-Down Code
 		$messageDefinition = ""._SB_MESSAGE."";
-		if (preg_match("/MSIE(.*)/", $_SERVER['HTTP_USER_AGENT']) || preg_match("#Konqueror/3(.*)#", $_SERVER['HTTP_USER_AGENT']) || (preg_match("/Opera(.*)/", $_SERVER['HTTP_USER_AGENT']))) {
+		if (preg_match("/MSIE(.*)/", (string) $_SERVER['HTTP_USER_AGENT']) || preg_match("#Konqueror/3(.*)#", (string) $_SERVER['HTTP_USER_AGENT']) || (preg_match("/Opera(.*)/", (string) $_SERVER['HTTP_USER_AGENT']))) {
 			$ShoutNameWidth = $conf['textWidth'];
 			$ShoutTextWidth = $conf['textWidth'];
 		} else {
@@ -700,7 +718,7 @@ $shoutAvatar = 1; // 1 = show / 0 = hide
 			$sql = "select * from ".$prefix."_shoutbox_emoticons where image='$return[0]' limit 1";
 			$nameresult = $db->sql_query($sql);
 			while ($emoticons = $db->sql_fetchrow($nameresult)){
-				$emoticons[3] = str_replace('>', '', $emoticons['image']);
+				$emoticons[3] = str_replace('>', '', (string) $emoticons['image']);
 				$emoticons[3] = str_replace('src=', 'src="', $emoticons[3]);
 				$bottom_content .= "<span style=\"cursor: hand;\" onclick=\"DoSmilie(' $emoticons[text] ','$messageDefinition');\">$emoticons[3]\" border=\"0\" alt=\"\" /></span>&nbsp;";
 				if ($flag == $conf['smiliesPerRow']) {
