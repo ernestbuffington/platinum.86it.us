@@ -42,7 +42,9 @@
 	cookiedecode($user);
     $ip = $_SERVER["REMOTE_ADDR"];
 	$url = $_SERVER["REQUEST_URI"];
-    $uname = $cookie[1];
+    
+	if(isset($cookie[1]))
+	$uname = $cookie[1];
     
 	$guest = 0;
 	
