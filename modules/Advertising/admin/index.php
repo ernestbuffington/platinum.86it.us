@@ -48,8 +48,6 @@ if (!defined('ADMIN_FILE')) {
 
 }
 
- 
-
 global $prefix, $db, $nukeurl, $admin_file;
 
 $aid = substr((string) $aid, 0,25);
@@ -57,16 +55,9 @@ $aid = substr((string) $aid, 0,25);
 $row = $db->sql_fetchrow($db->sql_query("SELECT radminsuper FROM " . $prefix . "_authors WHERE aid='$aid'"));
 
 if ($row['radminsuper'] == 1) {
-
-
-
 	/*********************************************************/
-
 	/* Banners Administration Functions                      */
-
 	/*********************************************************/
-
-
 
 	$c_num = $db->sql_numrows($db->sql_query("SELECT * FROM ".$prefix."_banner_clients"));
 
@@ -93,51 +84,26 @@ if ($row['radminsuper'] == 1) {
 	}
 
 	$ad_admin_menu = "<center><font class=\"title\"><strong>" . _BANNERSADMIN . "</strong></font>
-
 	<hr width='80%'>
-
 	[ <a href=\"".$admin_file.".php?op=BannersAdmin\">"._BANNERCLIENTS."</a>
-
     || <a href=\"".$admin_file.".php?op=ad_positions\">"._ADPOSITIONS."</a>
-
 	|| <a href=\"".$admin_file.".php?op=ajaxBlocksEditor\">"._ADBLOCKS."</a>
-
 	|| <a href=\"".$admin_file.".php\">"._ADMINMAIN."</a>
-
 	|| <a href=\"modules.php?name=Advertising\">"._ADSFRONTSIDE."</a> ]<br /><br />
-
-	
-
 <strong>Edit:</strong>  [ 
-
 <a href=\"".$admin_file.".php?op=frontpage\">"._TITLEFRONT."</a> - 
-
 <a href=\"".$admin_file.".php?op=cancel\">"._TITLECANCEL."</a> - 
-
 <a href=\"".$admin_file.".php?op=campaigns\">"._TITLECAMPAIGNS."</a> - 
-
 <a href=\"".$admin_file.".php?op=stats\">"._TITLESTATS."</a> - 
-
 <a href=\"".$admin_file.".php?op=ad_terms\">"._TITLETERMS."</a> - 
-
 <a href=\"".$admin_file.".php?op=thanks\">"._TITLETHANKS."</a> ]
-
 <br /><br />
-
 <strong>Add:</strong>   [  $cli - <a href=\"".$admin_file.".php?op=add_client\">"._ADDCLIENT."</a> - <a href=\"".$admin_file.".php?op=ad_plans\">"._PLANSPRICES."</a> ]
-
 <br /><br />  [  <strong><a href=\"".$admin_file.".php?op=CheckImages\">"._ADSUPLOAD."</a> | <a href='modules.php?name=Advertising&op=sponsors'>"._ADVIEWBANNERS."</a></strong> ]<br /></center><br />$act";
 
-
-
-
-
 /////////////////////////////////////////////////////////////////
-
 // Main page of Advertising Admin
-
 /////////////////////////////////////////////////////////////////
-
 	function BannersAdmin() {
 
 		global $prefix, $db, $bgcolor2, $banners, $admin_file, $ad_admin_menu, $bgcolor1;
@@ -161,27 +127,16 @@ if ($row['radminsuper'] == 1) {
 		OpenTable();
 
 		echo "<center><font class=\"option\"><strong>" . _ACTIVEBANNERS . "</strong></font></center><br />"
-
 		."<table width=100% border=1><tr>"
-
 		."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _BANNERNAME . "</strong></td>"
-
 		."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _CLIENT . "</strong></td>"
-
 		."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _ENDDATE . "</strong></td>"
-
 		."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _IMPRESSIONS . "</strong></td>"
-
 		."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _IMPLEFT . "</strong></td>"
-
 		."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _CLICKS . "</strong></td>"
-
 		."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _CLICKSPERCENT . "</strong></td>"
-
 		."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _POSITION . "</strong></td>"
-
 		."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _CLASS . "</strong></td>"
-
 		."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _FUNCTIONS . "</strong></td><tr>";
 
 		$result = $db->sql_query("SELECT bid, cid, name, dateend, imptotal, impmade, clicks, imageurl, date,  position, active, ad_class from " . $prefix . "_banner WHERE active='1' order by position,bid");
@@ -289,51 +244,31 @@ if ($row['radminsuper'] == 1) {
 			}
 
 		echo "<td bgcolor=\"$bgcolor1\" align=center>".$row['name']."</td>"
-
 			."<td bgcolor=\"$bgcolor1\" align=center><a href=\"".$admin_file.".php?op=BannerClientEdit&cid=".$row['cid']."\">$name</a></td>"
-
 			."<td bgcolor=\"$bgcolor1\" align=center>$enddate</td>"
-
 			."<td bgcolor=\"$bgcolor1\" align=center>$impmade</td>"
-
 			."<td bgcolor=\"$bgcolor1\" align=center>$left</td>"
-
 			."<td bgcolor=\"$bgcolor1\" align=center>$clicks</td>"
-
 			."<td bgcolor=\"$bgcolor1\" align=center>$percent</td>"
-
 			."<td bgcolor=\"$bgcolor1\" align=center>$type</td>"
-
 			."<td bgcolor=\"$bgcolor1\" align=center>$ad_class</td>"
-
-			."<td bgcolor=\"$bgcolor1\" align=center>&nbsp;<a href=\"".$admin_file.".php?op=BannerEdit&amp;bid=$bid\"><img src=\"images/edit.gif\" alt=\""._EDIT."\" title=\""._EDIT."\" border=\"0\" width=\"17\" height=\"17\"></a>  <a href=\"".$admin_file.".php?op=BannerStatus&amp;bid=$bid&status=$active\">$c_active</a>  <a href=\"".$admin_file.".php?op=BannerDelete&amp;bid=$bid&amp;ok=0\"><img src=\"images/delete.gif\" alt=\""._DELETE."\" title=\""._DELETE."\" border=\"0\" width=\"17\" height=\"17\"></a>&nbsp;</td><tr>";
-
+			."<td bgcolor=\"$bgcolor1\" align=center>&nbsp;<a href=\"".$admin_file.".php?op=BannerEdit&amp;bid=$bid\"><img src=\"images/edit.gif\" alt=\""._EDIT."\" 
+			title=\""._EDIT."\" border=\"0\" width=\"17\" height=\"17\"></a>  <a href=\"".$admin_file.".php?op=BannerStatus&amp;bid=$bid&status=$active\">$c_active</a>  <a 
+			href=\"".$admin_file.".php?op=BannerDelete&amp;bid=$bid&amp;ok=0\"><img src=\"images/delete.gif\" alt=\""._DELETE."\" title=\""._DELETE."\" border=\"0\" width=\"17\" height=\"17\"></a>&nbsp;</td><tr>";
 		}
 
 		echo "</td></tr></table><br />"
-
 		."<center><font class=\"option\"><strong>" . _INACTIVEBANNERS . "</strong></font></center><br />"
-
 		."<table width=100% border=1><tr>"
-
 		."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _BANNERNAME . "</strong></td>"
-
 		."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _CLIENT . "</strong></td>"
-
 		."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _ENDDATE . "</strong></td>"
-
 		."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _IMPRESSIONS . "</strong></td>"
-
 		."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _IMPLEFT . "</strong></td>"
-
 		."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _CLICKS . "</strong></td>"
-
 		."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _CLICKSPERCENT . "</strong></td>"
-
 		."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _POSITION . "</strong></td>"
-
 		."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _CLASS . "</strong></td>"
-
 		."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _FUNCTIONS . "</strong></td><tr>";
 
 		$result = $db->sql_query("SELECT bid, cid, name, enddate, imptotal, impmade, clicks, imageurl, date, position, active, ad_class from " . $prefix . "_banner WHERE active='0' order by position,bid");
@@ -439,25 +374,17 @@ if ($row['radminsuper'] == 1) {
 			}
 
 		echo "<td bgcolor=\"$bgcolor1\" align=center>".$row['name']."</td>"
-
 			."<td bgcolor=\"$bgcolor1\" align=center><a href=\"".$admin_file.".php?op=BannerClientEdit&cid=".$row['cid']."\">$name</a></td>"
-
 			."<td bgcolor=\"$bgcolor1\" align=center>$enddate</td>"
-
 			."<td bgcolor=\"$bgcolor1\" align=center>$impmade</td>"
-
 			."<td bgcolor=\"$bgcolor1\" align=center>$left</td>"
-
 			."<td bgcolor=\"$bgcolor1\" align=center>$clicks</td>"
-
 			."<td bgcolor=\"$bgcolor1\" align=center>$percent</td>"
-
 			."<td bgcolor=\"$bgcolor1\" align=center>$type</td>"
-
 			."<td bgcolor=\"$bgcolor1\" align=center>$ad_class</td>"
-
-			."<td bgcolor=\"$bgcolor1\" align=center>&nbsp;<a href=\"".$admin_file.".php?op=BannerEdit&amp;bid=$bid\"><img src=\"images/edit.gif\" alt=\""._EDIT."\" title=\""._EDIT."\" border=\"0\" width=\"17\" height=\"17\"></a>  <a href=\"".$admin_file.".php?op=BannerStatus&amp;bid=$bid&status=$active\">$c_active</a>  <a href=\"".$admin_file.".php?op=BannerDelete&amp;bid=$bid&amp;ok=0\"><img src=\"images/delete.gif\" alt=\""._DELETE."\" title=\""._DELETE."\" border=\"0\" width=\"17\" height=\"17\"></a>&nbsp;</td><tr>";
-
+			."<td bgcolor=\"$bgcolor1\" align=center>&nbsp;<a href=\"".$admin_file.".php?op=BannerEdit&amp;bid=$bid\"><img src=\"images/edit.gif\" alt=\""._EDIT."\" title=\""._EDIT."\" border=\"0\" 
+			width=\"17\" height=\"17\"></a>  <a href=\"".$admin_file.".php?op=BannerStatus&amp;bid=$bid&status=$active\">$c_active</a>  <a 
+			href=\"".$admin_file.".php?op=BannerDelete&amp;bid=$bid&amp;ok=0\"><img src=\"images/delete.gif\" alt=\""._DELETE."\" title=\""._DELETE."\" border=\"0\" width=\"17\" height=\"17\"></a>&nbsp;</td><tr>";
 		}
 
 		echo "</td></tr></table>";
@@ -471,19 +398,12 @@ if ($row['radminsuper'] == 1) {
 		OpenTable();
 
 		echo "<center><font class=\"option\"><strong>" . _ADVERTISINGCLIENTS . "</strong></font></center><br />"
-
 		."<table width=\"100%\" border=\"1\"><tr>"
-
 		."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _CLIENTNAME . "</strong></td>"
-
 		."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _ACTIVEBANNERS2 . "</strong></td>"
-
 		."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _INACTIVEBANNERS . "</strong></td>"
-
 		."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _CONTACTNAME . "</strong></td>"
-
 		."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _CONTACTEMAIL . "</strong></td>"
-
 		."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _FUNCTIONS . "</strong></td><tr>";
 
 		$result3 = $db->sql_query("SELECT cid, name, contact, email from " . $prefix . "_banner_clients order by cid");
@@ -509,38 +429,22 @@ if ($row['radminsuper'] == 1) {
 			$numrows2 = $db->sql_numrows($db->sql_query("SELECT cid from " . $prefix . "_banner WHERE cid='$cid' AND active='0'"));
 
 			echo "<td bgcolor=\"$bgcolor1\" align=\"center\">$name</td>"
-
 			."<td bgcolor=\"$bgcolor1\" align=\"center\">$numrows</td>"
-
 			."<td bgcolor=\"$bgcolor1\" align=\"center\">$numrows2</td>"
-
 			."<td bgcolor=\"$bgcolor1\" align=\"center\">$contact</td>"
-
 			."<td bgcolor=\"$bgcolor1\" align=\"center\"><a href=\"mailto:$email\">$email</a></td>"
-
-			."<td bgcolor=\"$bgcolor1\" align=\"center\" nowrap>&nbsp;<a href=\"".$admin_file.".php?op=BannerClientEdit&amp;cid=$cid\"><img src=\"images/edit.gif\" alt=\""._EDIT."\" title=\""._EDIT."\" border=\"0\" width=\"17\" height=\"17\"></a>  <a href=\"".$admin_file.".php?op=BannerClientDelete&amp;cid=$cid\"><img src=\"images/delete.gif\" alt=\""._DELETE."\" title=\""._DELETE."\" border=\"0\" width=\"17\" height=\"17\"></a>&nbsp;</td><tr>";
-
+			."<td bgcolor=\"$bgcolor1\" align=\"center\" nowrap>&nbsp;<a href=\"".$admin_file.".php?op=BannerClientEdit&amp;cid=$cid\"><img src=\"images/edit.gif\" alt=\""._EDIT."\" title=\""._EDIT."\" 
+			border=\"0\" width=\"17\" height=\"17\"></a>  <a href=\"".$admin_file.".php?op=BannerClientDelete&amp;cid=$cid\"><img src=\"images/delete.gif\" alt=\""._DELETE."\" title=\""._DELETE."\" 
+			border=\"0\" width=\"17\" height=\"17\"></a>&nbsp;</td><tr>";
 		}
 
 		echo "</td></tr></table>";
 
 		CloseTable();
 
-
-
-include_once("footer.php");
+        include_once("footer.php");
 
 	}
-
-
-
-
-
-
-
-
-
-
 
 	function add_banner() {
 
@@ -591,35 +495,23 @@ include_once("footer.php");
 			}
 
 			echo "</select></td></tr>"
-
 			."<tr><td nowrap>" . _BANNERNAME . ":</td><td><input type=\"text\" name=\"adname\" size=\"12\" maxlength=\"50\"></td></tr>"
-
 			."<tr><td nowrap>" . _ENDDATE . ":</td><td><input type=\"text\" name=\"enddate\" size=\"12\" maxlength=\"100\"> This is only for reference - All ads have to be manually stopped by the Admin</td></tr>"
-
 			."<tr><td nowrap>" . _PURCHASEDIMPRESSIONS . ":</td><td><input type=\"text\" name=\"imptotal\" size=\"12\" maxlength=\"11\"> 0 = " . _UNLIMITED . "</td></tr>"
-
 			."<tr><td>" . _ADCLASS . ":</td><td><select name=\"ad_class\">"
-
 			."<option name=\"type\" value=\"image\">" . _ADIMAGE . "</option>"
-
 			."<option name=\"type\" value=\"code\">" . _ADCODE . "</option>"
-
 			."<option name=\"type\" value=\"flash\">" . _ADFLASH . "</option>"
-
 			."</select></td></tr>"
-
 			."<tr><td>&nbsp;</td><td><i>"._CLASSNOTE."</i></td></tr>"
-
 			."<tr><td>" . _IMAGESWFURL . ":</td><td><input type=\"text\" name=\"imageurl\" size=\"50\" maxlength=\"100\" value=\"http://\"></td></tr>"
-
-			."<tr><td>" . _IMAGESIZE . ":</td><td>"._WIDTH.": <input type=\"text\" name=\"ad_width\" size=\"4\" maxlength=\"4\"> &nbsp; "._HEIGHT.": <input type=\"text\" name=\"ad_height\" size=\"4\" maxlength=\"4\"> &nbsp; "._INPIXELS."</td></tr>"
+			
+			."<tr><td>" . _IMAGESIZE . ":</td><td>"._WIDTH.": <input type=\"text\" name=\"ad_width\" size=\"4\" maxlength=\"4\"> &nbsp; "._HEIGHT.": <input type=\"text\" name=\"ad_height\" size=\"4\" 
+			maxlength=\"4\"> &nbsp; "._INPIXELS."</td></tr>"
 
 			."<tr><td>" . _CLICKURL . "</td><td><input type=\"text\" name=\"clickurl\" size=\"50\" maxlength=\"200\" value=\"http://\"></td></tr>"
-
 			."<tr><td>" . _ALTTEXT . ":</td><td><input type=\"text\" name=\"alttext\" size=\"50\" maxlength=\"255\"></td></tr>"
-
 			."<tr><td>" . _ADCODE . ":</td><td><textarea name=\"ad_code\" rows=\"15\" cols=\"70\"></textarea></td></tr>"
-
 			."<tr><td>" . _TYPE . ":</td><td><select name=\"position\">";
 
 			$result = $db->sql_query("SELECT position_number, position_name FROM ".$prefix."_banner_positions ORDER BY position_number");
@@ -631,15 +523,10 @@ include_once("footer.php");
 			}
 
 			echo "</select></td></tr><tr><td>&nbsp;</td><td>"._POSITIONNOTE."</td></tr>"
-
 				."<tr><td>" . _ACTIVATE . ":</td><td><input type=\"radio\" name=\"active\" value=\"1\" checked>" . _YES . "&nbsp;&nbsp;<input type=\"radio\" name=\"active\" value=\"0\">" . _NO . "</td></tr>"
-
 				."<tr><td>&nbsp;</td><td><input type=\"hidden\" name=\"op\" value=\"BannersAdd\">"
-
 				."<input type=\"submit\" value=\"" . _ADDBANNER . "\">"
-
 				."</form></td></tr></table>";
-
 		} else {
 
 			echo "<center><font class=\"title\"><strong>" . _ADDNEWBANNER . "</strong></font></center><br /><br />"
@@ -653,16 +540,6 @@ include_once("footer.php");
 		include_once("footer.php");
 
 	}
-
-	
-
-	
-
-	
-
-	
-
-	
 
 	function add_client() {
 
@@ -685,36 +562,22 @@ include_once("footer.php");
 		$cl_pass = makepass();
 
 		echo"<center><font class=\"title\"><strong>" . _ADDCLIENT . "</strong></font></center><br /><br />
-
 			<table border=\"0\"><tr><td>
-
 			<form action=\"".$admin_file.".php?op=BannerAddClient\" method=\"post\">
-
 			" . _CLIENTNAME . ":</td><td><input type=\"text\" name=\"name\" size=\"30\" maxlength=\"60\"></td></tr>
-
 			<tr><td>" . _CONTACTNAME . ":</td><td><input type=\"text\" name=\"contact\" size=\"30\" maxlength=\"60\"></td></tr>
-
 			<tr><td>" . _CONTACTEMAIL . ":</td><td><input type=\"text\" name=\"email\" size=\"30\" maxlength=\"60\"></td></tr>
-
 			<tr><td>" . _CLIENTLOGIN . ":</td><td><input type=\"text\" name=\"login\" size=\"12\" maxlength=\"10\"></td></tr>
-
 			<tr><td>" . _CLIENTPASSWD . ":</td><td><input type=\"text\" name=\"passwd\" size=\"12\" maxlength=\"10\" value=\"$cl_pass\"></td></tr>
-
 			<tr><td>" . _EXTRAINFO . ":</td><td><textarea name=\"extrainfo\" cols=\"70\" rows=\"15\"></textarea></td></tr>
-
 			<tr><td>&nbsp;</td><td><input type=\"hidden\" name=\"op\" value=\"BannerAddClient\">
-
 			<input type=\"submit\" value=\"" . _ADDCLIENT2 . "\">
-
 			</form></td></tr></table>";
 
 		CloseTable();
 
 		include_once("footer.php");
-
 	}
-
-
 
 	function BannerStatus($bid, $status) {
 
@@ -797,8 +660,6 @@ include_once("footer.php");
 
 	}
 
-
-
 	function BannerAddClient($name, $contact, $email, $login, $passwd, $extrainfo) {
 
 		global $prefix, $db, $admin_file;
@@ -821,8 +682,6 @@ include_once("footer.php");
 
 	}
 
-
-
 	function BannerDelete($bid, $ok=0) {
 
 		$alttext = null;
@@ -839,8 +698,6 @@ include_once("footer.php");
 		} else {
 
 			include_once("header.php");
-
-			
 
 			OpenTable();
 
@@ -895,29 +752,17 @@ include_once("footer.php");
 			} elseif ($ad_class == "flash") {
 
 				echo "<center>
-
 					<OBJECT classid=\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\"
-
 					codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0\"
-
 					WIDTH=\"$ad_width\" HEIGHT=\"$ad_height\" id=\"$bid\">
-
 					<PARAM NAME=movie VALUE=\"$imageurl\">
-
 					<PARAM NAME=quality VALUE=high>
-
 					<EMBED src=\"$imageurl\" quality=high WIDTH=\"$ad_width\" HEIGHT=\"$ad_height\"
-
 					NAME=\"$bid\" ALIGN=\"\" TYPE=\"application/x-shockwave-flash\"
-
 					PLUGINSPAGE=\"http://www.macromedia.com/go/getflashplayer\">
-
 					</EMBED>
-
 					</OBJECT>
-
 					</center><br /><br />";
-
 			} else {
 
 				echo "<center><img src=\"$imageurl\" border=\"1\" alt=\"$alttext\" title=\"$alttext\" width=\"$ad_width\" height=\"$ad_height\"></center><br /><br />";
@@ -925,17 +770,11 @@ include_once("footer.php");
 			}
 
 			echo "<table width=\"100%\" border=\"1\"><tr>"
-
 				."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _BANNERNAME . "<strong></td>"
-
 				."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _IMPRESSIONS . "<strong></td>"
-
 				."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _IMPLEFT . "<strong></td>"
-
 				."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _CLICKS . "<strong></td>"
-
 				."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _CLICKSPERCENT . "<strong></td>"
-
 				."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _CLIENTNAME . "<strong></td><tr>";
 
 			$row2 = $db->sql_fetchrow($db->sql_query("SELECT cid, name from " . $prefix . "_banner_clients where cid='$cid'"));
@@ -957,17 +796,11 @@ include_once("footer.php");
 			}
 
 			echo "<td bgcolor=\"$bgcolor1\" align=\"center\">".$row['name']."</td>"
-
 			."<td bgcolor=\"$bgcolor1\" align=\"center\">$impmade</td>"
-
 			."<td bgcolor=\"$bgcolor1\" align=\"center\">$left</td>"
-
 			."<td bgcolor=\"$bgcolor1\" align=\"center\">$clicks</td>"
-
 			."<td bgcolor=\"$bgcolor1\" align=\"center\">$percent%</td>"
-
 			."<td bgcolor=\"$bgcolor1\" align=\"center\">$name</td><tr>";
-
 		}
 
 		echo "</td></tr></table><br />"
@@ -979,12 +812,7 @@ include_once("footer.php");
 		CloseTable();
 
 		include_once("footer.php");
-
 	}
-
-	
-
-	
 
 	function BannerEdit($bid) {
 
@@ -995,8 +823,6 @@ include_once("footer.php");
 		define('NO_EDITOR', true);
 
 		include_once("header.php");
-
-		
 
 		OpenTable();
 
@@ -1057,43 +883,26 @@ include_once("footer.php");
 		} elseif ($ad_class == "flash") {
 
 			echo "<center>
-
 				<OBJECT classid=\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\"
-
 				codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0\"
-
 				WIDTH=\"$ad_width\" HEIGHT=\"$ad_height\" id=\"$bid\">
-
 				<PARAM NAME=movie VALUE=\"$imageurl\">
-
 				<PARAM NAME=quality VALUE=high>
-
 				<EMBED src=\"$imageurl\" quality=high WIDTH=\"$ad_width\" HEIGHT=\"$ad_height\"
-
 				NAME=\"$did\" ALIGN=\"\" TYPE=\"application/x-shockwave-flash\"
-
 				PLUGINSPAGE=\"http://www.macromedia.com/go/getflashplayer\">
-
 				</EMBED>
-
 				</OBJECT>
-
 				</center><br /><br />";
-
 		} else {
 
 			echo "<center><img src=\"$imageurl\" border=\"1\" alt=\"$alttext\" title=\"$alttext\" width=\"$ad_width\" height=\"$ad_height\"></center><br /><br />";
 
 		}
 
-
-
 		echo "<table border=\"0\" cellpadding=\"3\"><tr><td>"
-
 			."<form action=\"".$admin_file.".php?op=BannerChange\" method=\"post\">"
-
 			."" . _CLIENTNAME . ":</td><td>"
-
 			."<select name=\"cid\">";
 
 		$row2 = $db->sql_fetchrow($db->sql_query("SELECT cid, name from " . $prefix . "_banner_clients where cid='$cid'"));
@@ -1153,57 +962,34 @@ include_once("footer.php");
 		}
 
 		echo "<tr><td>"._BANNERNAME.":</td><td><input type=\"text\" name=\"adname\" size=\"20\" maxlength=\"50\" value=\"".$row['name']."\"></td></tr>";
-
 		echo "<tr><td>"._ENDDATE.":</td><td><input type=\"text\" name=\"enddate\" size=\"20\" maxlength=\"50\" value=\"".$row['enddate']."\"></td></tr>";
-
 		echo "<tr><td>"._ADDEDDATE.":</td><td>$date</td></tr>";
-
 		echo "<tr><td>"._IMPPURCHASED.":</td><td><strong>$impressions</strong></td></tr>";
-
 		echo "<tr><td>"._IMPMADE.":</td><td><strong>$impmade</strong></td></tr>";
-
 		echo "<tr><td>"._ADDIMPRESSIONS.":</td><td><input type=\"text\" name=\"impadded\" size=\"12\" maxlength=\"11\" value=\"0\"> <i>$unl</i></td></tr>";
-
 		echo "<tr><td>"._ADCLASS.":</td><td><strong>".ucFirst((string) $ad_class)."</strong></td></tr>";
 
 		if ($ad_class == "code") {
 
 			echo "<tr><td>" . _ADCODE . ":</td><td><textarea name=\"ad_code\" rows=\"15\" cols=\"70\">$ad_code</textarea>"
-
 				."<input type=\"hidden\" name=\"imageurl\" value=\"$imageurl\">"
-
 				."<input type=\"hidden\" name=\"ad_width\" value=\"$ad_width\">"
-
 				."<input type=\"hidden\" name=\"ad_height\" value=\"$ad_height\">"
-
 				."<input type=\"hidden\" name=\"clickurl\" value=\"$clickurl\">"
-
 				."<input type=\"hidden\" name=\"alttext\" value=\"$alttext\"></td></tr>";
-
 		} elseif ($ad_class == "flash") {
 
 			echo "<tr><td>" . _FLASHFILEURL . ":</td><td><input type=\"text\" name=\"imageurl\" size=\"50\" maxlength=\"100\" value=\"$imageurl\"> &nbsp; <a href=\"$imageurl\" target=\"_blank\"><img src=\"images/view.gif\" border=\"0\" alt=\""._SHOW."\" title=\""._SHOW."\"></a></td></tr>"
-
 				."<tr><td>" . _FLASHSIZE . ":</td><td>"._WIDTH.": <input type=\"text\" name=\"ad_width\" size=\"4\" maxlength=\"4\" value=\"$ad_width\"> &nbsp; "._HEIGHT.": <input type=\"text\" name=\"ad_height\" size=\"4\" maxlength=\"4\" value=\"$ad_height\"> &nbsp; "._INPIXELS.""
-
 				."<input type=\"hidden\" name=\"clickurl\" value=\"$clickurl\">"
-
 				."<input type=\"hidden\" name=\"alttext\" value=\"$alttext\">"
-
 				."<input type=\"hidden\" name=\"ad_code\" value=\"$ad_code\"></td></tr>";
-
 		} else {
-
 			echo "<tr><td>" . _IMAGEURL . ":</td><td><input type=\"text\" name=\"imageurl\" size=\"50\" maxlength=\"100\" value=\"$imageurl\"></td></tr>"
-
 				."<tr><td>" . _IMAGESIZE . ":</td><td>"._WIDTH.": <input type=\"text\" name=\"ad_width\" size=\"4\" maxlength=\"4\" value=\"$ad_width\"> &nbsp; "._HEIGHT.": <input type=\"text\" name=\"ad_height\" size=\"4\" maxlength=\"4\" value=\"$ad_height\"> &nbsp; "._INPIXELS."</td></tr>"
-
 				."<tr><td>" . _CLICKURL . ":</td><td><input type=\"text\" name=\"clickurl\" size=\"50\" maxlength=\"200\" value=\"$clickurl\"></td></tr>"
-
 				."<tr><td>" . _ALTTEXT . ":</td><td><input type=\"text\" name=\"alttext\" size=\"50\" maxlength=\"255\" value=\"$alttext\">"
-
 				."<input type=\"hidden\" name=\"ad_code\" value=\"$ad_code\"></td></tr>";
-
 		}
 
 		echo "<tr><td>" . _TYPE . ":</td><td><select name=\"position\">";
@@ -1227,40 +1013,18 @@ include_once("footer.php");
 		}
 
 		echo "</select></td></tr>"
-
 			."<tr><td>" . _ACTIVATE . ":</td><td><input type=\"radio\" name=\"active\" value=\"1\" $check1>" . _YES . "&nbsp;&nbsp;<input type=\"radio\" name=\"active\" value=\"0\" $check2>" . _NO . "</td></tr>"
-
 			."<tr><td>&nbsp;</td><td><input type=\"hidden\" name=\"bid\" value=\"$bid\">"
-
 			."<input type=\"hidden\" name=\"imptotal\" value=\"$imptotal\">"
-
 			."<input type=\"hidden\" name=\"impmade\" value=\"$impmade\">"
-
 			."<input type=\"hidden\" name=\"op\" value=\"BannerChange\">"
-
 			."<input type=\"submit\" value=\"" . _SAVECHANGES . "\">"
-
 			."</form></td></tr></table>";
 
 		CloseTable();
 
 		include_once("footer.php");
-
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	function BannerChange($bid, $cid, $adname, $enddate, $imptotal, $impadded, $imageurl, $clickurl, $alttext, $position, $active, $ad_code, $ad_width, $ad_height, $impmade) {
 
@@ -1319,22 +1083,6 @@ include_once("footer.php");
 
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	function BannerClientDelete($cid, $ok=0) {
 
 		global $prefix, $db, $admin_file, $ad_admin_menu;
@@ -1352,8 +1100,6 @@ include_once("footer.php");
 		} else {
 
 			include_once("header.php");
-
-			
 
 			OpenTable();
 
@@ -1423,8 +1169,6 @@ include_once("footer.php");
 
 		include_once("header.php");
 
-		
-
 		OpenTable();
 
 		echo "$ad_admin_menu";
@@ -1452,36 +1196,22 @@ include_once("footer.php");
 		OpenTable();
 
 		echo "<center><font class=\"option\"><strong>" . _EDITCLIENT . "</strong></font></center><br /><br />"
-
 		."<form action=\"".$admin_file.".php?op=BannerClientChange\" method=\"post\">"
-
 		."" . _CLIENTNAME . ": <input type=\"text\" name=\"name\" value=\"$name\" size=\"30\" maxlength=\"60\"><br /><br />"
-
 		."" . _CONTACTNAME . ": <input type=\"text\" name=\"contact\" value=\"$contact\" size=\"30\" maxlength=\"60\"><br /><br />"
-
 		."" . _CONTACTEMAIL . ": <input type=\"text\" name=\"email\" size=30 maxlength=\"60\" value=\"$email\"><br /><br />"
-
 		."" . _CLIENTLOGIN . ": <input type=\"text\" name=\"login\" size=12 maxlength=\"10\" value=\"$login\"><br /><br />"
-
 		."" . _CLIENTPASSWD . ": <input type=\"text\" name=\"passwd\" size=12 maxlength=\"10\" value=\"$passwd\"><br /><br />"
-
 		."" . _EXTRAINFO . "<br /><textarea name=\"extrainfo\" cols=\"70\" rows=\"15\">$extrainfo</textarea><br /><br />"
-
 		."<input type=\"hidden\" name=\"cid\" value=\"$cid\">"
-
 		."<input type=\"hidden\" name=\"op\" value=\"BannerClientChange\">"
-
 		."<input type=\"submit\" value=\"" . _SAVECHANGES . "\">"
-
 		."</form>";
 
 		CloseTable();
 
 		include_once("footer.php");
-
 	}
-
-
 
 	function BannerClientChange($cid, $name, $contact, $email, $extrainfo, $login, $passwd) {
 
@@ -1507,8 +1237,6 @@ include_once("footer.php");
 
 	}
 
-
-
 	function ad_positions() {
 
 		global $prefix, $db, $banners, $admin_file, $ad_admin_menu, $bgcolor1, $bgcolor2;
@@ -1528,13 +1256,9 @@ include_once("footer.php");
 		OpenTable();
 
 		echo "<center><font class=\"title\"><strong>"._CURRENTPOSITIONS."</strong></font></center><br /><br /><table width=\"100%\" border=\"1\"><tr>"
-
 			."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _POSITIONNAME . "<strong></td>"
-
 			."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _POSITIONNUMBER . "<strong></td>"
-
 			."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _ASSIGNEDADS . "<strong></td>"
-
 			."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _FUNCTIONS . "<strong></td>";
 
 		$result = $db->sql_query("SELECT * FROM ".$prefix."_banner_positions ORDER BY apid");
@@ -1546,11 +1270,8 @@ include_once("footer.php");
 			$row['position_name'] = filter($row['position_name'], "nohtml");
 
 			echo "<tr><td bgcolor=\"$bgcolor1\" align=\"center\">".$row['position_name']."</td>"
-
 				."<td bgcolor=\"$bgcolor1\" align=\"center\">".$row['position_number']."</td>"
-
 				."<td bgcolor=\"$bgcolor1\" align=\"center\">$ban_num</td>"
-
 				."<td bgcolor=\"$bgcolor1\" align=\"center\">&nbsp;<a href=\"".$admin_file.".php?op=position_edit&amp;apid=".$row['apid']."\"><img src=\"images/edit.gif\" alt=\""._EDIT."\" title=\""._EDIT."\" border=\"0\" width=\"17\" height=\"17\"></a>  <a href=\"".$admin_file.".php?op=position_delete&amp;apid=".$row['apid']."\"><img src=\"images/delete.gif\" alt=\""._DELETE."\" title=\""._DELETE."\" border=\"0\" width=\"17\" height=\"17\"></a>&nbsp;</td></tr>";
 
 		}
@@ -1578,11 +1299,8 @@ include_once("footer.php");
 		}
 
 		echo "<center><font class=\"title\"><strong>"._ADDNEWPOSITION."</strong></font><br /><br />"
-
 			."<form method=\"\" action=\"".$admin_file.".php\">"
-
 			.""._POSITIONNAME.": <input type=\"text\" name=\"ad_position_name\"> "._POSITIONNUMBER.": <strong>$pos_num</strong><input type=\"hidden\" name=\"ad_position_number\" value=\"$pos_num\"><input type=\"hidden\" name=\"position_new\" value=\"1\"><input type=\"hidden\" name=\"op\" value=\"position_save\"><br /><br /><input type=\"submit\" value=\""._ADDPOSITION."\">"
-
 			."</form></center>";
 
 		CloseTable();
@@ -1598,8 +1316,6 @@ include_once("footer.php");
 		include_once("footer.php");
 
 	}
-
-	
 
 	function position_save($apid=0, $ad_position_number, $ad_position_name, $position_new=0) {
 
@@ -1653,8 +1369,6 @@ include_once("footer.php");
 
 	}
 
-	
-
 	function position_edit($apid) {
 
 		global $prefix, $db, $banners, $admin_file, $ad_admin_menu;
@@ -1688,11 +1402,8 @@ include_once("footer.php");
 		$row['position_name'] = filter($row['position_name'], "nohtml");
 
 		echo "<center><font class=\"title\"><strong>"._EDITPOSITION."</strong></font><br /><br />"
-
 			."<form method=\"POST\" action=\"".$admin_file.".php\">"
-
 			.""._POSITIONNAME.": <input type=\"text\" name=\"ad_position_name\" value=\"".$row['position_name']."\"> "._POSITIONNUMBER.": <strong>".$row['position_number']."</strong><input type=\"hidden\" name=\"ad_position_number\" value=\"".$row['position_number']."\"><input type=\"hidden\" name=\"apid\" value=\"$apid\"><input type=\"hidden\" name=\"op\" value=\"position_save\"><br /><br /><input type=\"submit\" value=\""._SAVEPOSITION."\">"
-
 			."</form></center>";
 
 		CloseTable();
@@ -1700,8 +1411,6 @@ include_once("footer.php");
 		include_once("footer.php");
 
 	}
-
-
 
 	function position_delete($apid, $ok=0, $active=0, $new_pos=\X) {
 
@@ -1847,21 +1556,13 @@ include_once("footer.php");
 				}
 
 				echo "</select><br /><br />";
-
 				echo ""._MOVEDADSSTATUS.": <select name=\"active\">";
-
 				echo "<option value=\"same\">"._NOCHANGES."</option>";
-
 				echo "<option value=\"active\">"._ACTIVE."</option>";
-
 				echo "<option value=\"inactive\">"._INACTIVE."</option>";
-
 				echo "<option value=\"delete_all\">"._DELETEALLADS." ($numrows)</option>";
-
 				echo "</select><br /><br />";
-
 				echo "<input type=\"hidden\" name=\"apid\" value=\"$apid\"><input type=\"hidden\" name=\"ok\" value=\"1\"><input type=\"hidden\" name=\"op\" value=\"position_delete\"><input type=\"submit\" value=\""._DELETE."\">";
-
 				echo "</form>";
 
 			} else {
@@ -1877,18 +1578,6 @@ include_once("footer.php");
 		include_once("footer.php");
 
 	}
-
-
-
-	
-
-	
-
-	
-
-	
-
-	
 
 	function ad_terms($save=0, $terms_body=0, $country=0) {
 
@@ -1960,22 +1649,7 @@ include_once("footer.php");
 
 	}
 
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
 // Altered by hammer on 06.09.20 - www.pcnuke.com //
-
-	
-
 	function ad_plans() {
 
 		$type = null;
@@ -2070,39 +1744,23 @@ include_once("footer.php");
 		OpenTable();
 
 		echo "<center><font class=\"title\"><strong>"._ADDADVERTISINGPLAN."</strong></font></center><br /><br />";
-
 		echo "<table border=\"0\"><tr><td>";
-
 		echo "<form method=\"POST\" action=\"".$admin_file.".php\">";
-
 		echo ""._PLANNAME.":</td><td><input type=\"text\" size=\"40\" name=\"name\"></td></tr>";
-
 		echo "<tr><td>"._PLANDESCRIPTION.":</td><td><textarea name=\"description\" rows=\"10\" cols=\"70\"></textarea></td></tr>";
-
 		echo "<tr><td>"._DELIVERYQUANTITY.":</td><td><input type=\"text\" size=\"10\" name=\"delivery\"></td></tr>";
-
 		echo "<tr><td>"._DELIVERYTYPE.":</td><td><select name=\"type\">"
-
 			."<option value=\"0\">"._IMPRESSIONS."</option>"
-
 			."<option value=\"1\">"._CLICKS."</option>"
-
 			."<option value=\"2\">"._PDAYS."</option>"
-
 			."<option value=\"3\">"._PMONTHS."</option>"
-
 			."<option value=\"4\">"._PYEARS."</option>"
-
 			."</select></td></tr>";
 
 		echo "<tr><td>"._PRICE.":</td><td><input type=\"text\" size=\"10\" name=\"price\"></td></tr>";
-
 		echo "<tr><td>"._PLANBUYLINKS.":</td><td><textarea name=\"buy_links\" rows=\"10\" cols=\"70\"></textarea></td></tr>";
-
 		echo "<tr><td>"._PLANBUYLINKS2.":</td><td><textarea name=\"buy_links2\" rows=\"10\" cols=\"70\"></textarea></td></tr>";
-
 		echo "<tr><td>"._INITIALSTATUS.":</td><td><input type=\"radio\" name=\"status\" value=\"1\" checked> "._ACTIVE." &nbsp;&nbsp; <input type=\"radio\" name=\"status\" value=\"0\"> "._INACTIVE."</td></tr>";
-
 		echo "<tr><td>&nbsp;</td><td><input type=\"hidden\" name=\"op\" value=\"ad_plans_add\"><input type=\"submit\" value=\""._ADDNEWPLAN."\"></td></tr></table></form><br /><center><i>"._PLANSNOTE."</i></center>";
 
 		CloseTable();
@@ -2110,8 +1768,6 @@ include_once("footer.php");
 		include_once("footer.php");
 
 	}
-
-
 
 	function ad_plans_add($name, $description, $delivery, $type, $price, $buy_links, $buy_links2, $status) {
 
@@ -2159,8 +1815,6 @@ include_once("footer.php");
 
 	}
 
-
-
 	function ad_plans_edit($pid) {
 
 		$sel0 = null;
@@ -2191,19 +1845,10 @@ include_once("footer.php");
 		$row = $db->sql_fetchrow($db->sql_query("SELECT * FROM ".$prefix."_banner_plans WHERE pid='$pid'"));
 
 		echo "<center><font class=\"title\"><strong>"._ADVERTISINGPLANEDIT."</strong></font></center><br /><br />";
-
 		echo "<table border=\"0\"><tr><td>";
-
 		echo "<form method=\"POST\" action=\"".$admin_file.".php\">";
-
 		echo ""._PLANNAME.":</td><td><input type=\"text\" size=\"40\" name=\"name\" value=\"".$row['name']."\"></td></tr>";
-
 		echo "<tr><td>"._PLANDESCRIPTION.":</td><td><textarea name=\"description\" rows=\"10\" cols=\"70\">".$row['description']."</textarea></td></tr>";
-
-		
-
-		
-
 		echo "<tr><td>"._DELIVERYQUANTITY.":</td><td><input type=\"text\" size=\"10\" name=\"delivery\" value=\"".$row['delivery']."\"></td></tr>";
 
 		if ($row['delivery_type'] == 0) {
@@ -2237,23 +1882,15 @@ include_once("footer.php");
 		}
 
 		echo "<tr><td>"._DELIVERYTYPE.":</td><td><select name=\"type\">"
-
 			."<option value=\"0\" $sel0>"._IMPRESSIONS."</option>"
-
 			."<option value=\"1\" $sel1>"._CLICKS."</option>"
-
 			."<option value=\"2\" $sel2>"._PDAYS."</option>"
-
 			."<option value=\"3\" $sel3>"._PMONTHS."</option>"
-
 			."<option value=\"4\" $sel4>"._PYEARS."</option>"
-
 			."</select></td></tr>";
 
 		echo "<tr><td>"._PRICE.":</td><td><input type=\"text\" size=\"10\" name=\"price\" value=\"".$row['price']."\"></td></tr>";
-
 		echo "<tr><td>"._PLANBUYLINKS.":</td><td><textarea name=\"buy_links\" rows=\"10\" cols=\"70\">".$row['buy_links']."</textarea></td></tr>";
-
 		echo "<tr><td>"._PLANBUYLINKS2.":</td><td><textarea name=\"buy_links2\" rows=\"10\" cols=\"70\">".$row['buy_links2']."</textarea></td></tr>";
 
 		if ($row['active'] == 1) {
@@ -2271,16 +1908,12 @@ include_once("footer.php");
 		}
 
 		echo "<tr><td>"._STATUS.":</td><td><input type=\"radio\" name=\"status\" value=\"1\" $check0> "._ACTIVE." &nbsp;&nbsp; <input type=\"radio\" name=\"status\" value=\"0\" $check1> "._INACTIVE."</td></tr>";
-
 		echo "<tr><td>&nbsp;</td><td><input type=\"hidden\" name=\"pid\" value=\"$pid\"><input type=\"hidden\" name=\"op\" value=\"ad_plans_save\"><input type=\"submit\" value=\""._SAVECHANGES."\"></td></tr></table></form><br /><center><i>"._PLANSNOTE."</i></center>";
 
 		CloseTable();
 
 		include_once("footer.php");
-
 	}
-
-	
 
 	function ad_plans_save($pid, $name, $description, $delivery, $type, $price, $buy_links, $buy_links2, $status) {
 
@@ -2330,8 +1963,6 @@ include_once("footer.php");
 
 	}
 
-	
-
 	function ad_plans_delete($pid, $ok=0) {
 
 		global $prefix, $db, $admin_file, $ad_admin_menu;
@@ -2376,16 +2007,6 @@ include_once("footer.php");
 
 	}
 
-	
-
-
-
-
-
-
-
-
-
 	function ad_plans_status($pid, $status) {
 
 		global $prefix, $db, $admin_file;
@@ -2408,8 +2029,6 @@ include_once("footer.php");
 
 	}
 
-
-
 if (!isset($save)) { $save = ""; }
 
 if (!isset($terms_body)) { $terms_body = ""; }
@@ -2422,26 +2041,11 @@ if (!isset($active)) { $active = ""; }
 
 if (!isset($new_pos)) { $new_pos = ""; }
 
-
-
-
-
-
-
 /////////////////  PCN ADVERTISING UPGRADE EXTRAS  --  START    ////////////////////
 
-
-
-
-
-	
-
 /*********************************/
-
 /* ADVERTISING EDIT FRONTPAGE    */
-
 /*********************************/
-
 	function frontpage($save=0, $frontpage_body=0) {
 
 		global $prefix, $db, $banners, $admin_file, $ad_admin_menu;
@@ -2489,15 +2093,8 @@ if (!isset($new_pos)) { $new_pos = ""; }
 		include_once("footer.php");
 
 	}
-
-	
-
-	
-
 /*************************************/
-
 /* ADVERTISING EDIT CANCEL PAGE   */
-
 /*************************************/
 
 	function cancel($save=0, $cancel_body=0) {
@@ -2547,19 +2144,9 @@ if (!isset($new_pos)) { $new_pos = ""; }
 		include_once("footer.php");
 
 	}
-
-	
-
-	
-
-	
-
 /*************************************/
-
 /* ADVERTISING EDIT CAMPAIGNS PAGE   */
-
 /*************************************/
-
 	function campaigns($save=0, $campaigns_body=0) {
 
 		global $prefix, $db, $banners, $admin_file, $ad_admin_menu;
@@ -2607,29 +2194,9 @@ if (!isset($new_pos)) { $new_pos = ""; }
 		include_once("footer.php");
 
 	}
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*********************************/
-
 /* ADVERTISING EDIT STATS PAGE   */
-
 /*********************************/
-
 	function stats($save=0, $stats_body=0) {
 
 		global $prefix, $db, $banners, $admin_file, $ad_admin_menu;
@@ -2677,21 +2244,9 @@ if (!isset($new_pos)) { $new_pos = ""; }
 		include_once("footer.php");
 
 	}
-
-
-
-
-
-
-
-
-
 /*************************************/
-
 /* ADVERTISING EDIT THANKS PAGE      */
-
 /*************************************/
-
 	function thanks($save=0, $thanks_body=0) {
 
 		global $prefix, $db, $banners, $admin_file, $ad_admin_menu;
@@ -2739,15 +2294,9 @@ if (!isset($new_pos)) { $new_pos = ""; }
 		include_once("footer.php");
 
 	}
-
-	
-
 /*************************************/
-
 /*  Check Images PAGE                */
-
 /*************************************/
-
 function CheckImages() {
 
 global $prefix, $db, $banners, $admin_file, $ad_admin_menu;
@@ -2777,276 +2326,130 @@ CloseTable();
 include_once("footer.php");
 
 	}
-
-	
-
-	
-
-
-
-	
-
 /////////////////  PCN ADVERTISING UPGRADE EXTRAS  --  END    ////////////////////
-
-
-
-
-
-
-
 	switch($op) {
 
-
-
 		case "BannersAdmin":
-
 		BannersAdmin();
-
 		break;
-
-
 
 		case "BannersAdd":
-
 		BannersAdd($name, $cid, $adname, $enddate, $imptotal, $imageurl, $clickurl, $alttext, $position, $active, $ad_class, $ad_code, $ad_width, $ad_height);
-
 		break;
-
-
 
 		case "BannerAddClient":
-
 		BannerAddClient($name, $contact, $email, $login, $passwd, $extrainfo);
-
 		break;
-
-
 
 		case "BannerDelete":
-
 		BannerDelete($bid, $ok);
-
 		break;
-
-
 
 		case "BannerEdit":
-
 		BannerEdit($bid);
-
 		break;
-
-
 
 		case "BannerChange":
-
 		BannerChange($bid, $cid, $adname, $enddate, $imptotal, $impadded, $imageurl, $clickurl, $alttext, $position, $active, $ad_code, $ad_width, $ad_height, $impmade);
-
 		break;
-
-
 
 		case "BannerClientDelete":
-
 		BannerClientDelete($cid, $ok);
-
 		break;
-
-
 
 		case "BannerClientEdit":
-
 		BannerClientEdit($cid);
-
 		break;
-
-
 
 		case "BannerClientChange":
-
 		BannerClientChange($cid, $name, $contact, $email, $extrainfo, $login, $passwd);
-
 		break;
-
-
 
 		case "BannerStatus":
-
 		BannerStatus($bid, $status);
-
 		break;
-
-
 
 		case "add_banner":
-
 		add_banner();
-
 		break;
-
-		
 
 		case "add_client":
-
 		add_client();
-
 		break;
-
-
 
 		case "ad_positions":
-
 		ad_positions();
-
 		break;
-
-		
 
 		case "position_save":
-
 		position_save($apid, $ad_position_number, $ad_position_name, $position_new);
-
 		break;
-
-
 
 		case "position_edit":
-
 		position_edit($apid);
-
 		break;
-
-
 
 		case "position_delete":
-
 		position_delete($apid, $ok, $active, $new_pos);
-
 		break;
-
-
 
 		case "ad_terms":
-
 		ad_terms($save, $terms_body, $country);
-
 		break;
-
-		
 
 		case "ad_plans":
-
 		ad_plans();
-
 		break;
-
-
 
 		case "ad_plans_add":
-
 		ad_plans_add($name, $description, $delivery, $type, $price, $buy_links, $buy_links2, $status);
-
 		break;
-
-
 
 		case "ad_plans_edit":
-
 		ad_plans_edit($pid);
-
 		break;
-
-
 
 		case "ad_plans_save":
-
 		ad_plans_save($pid, $name, $description, $delivery, $type, $price, $buy_links, $buy_links2, $status);
-
 		break;
-
-		
 
 		case "ad_plans_delete":
-
 		ad_plans_delete($pid, $ok);
-
 		break;
-
-		
 
 		case "ad_plans_status":
-
 		ad_plans_status($pid, $status);
-
 		break;
-
-
-
  /////////////////  PCN ADVERTISING UPGRADE EXTRAS  --  START    ////////////////////
 
 		case "frontpage":
-
 		frontpage($save, $frontpage_body);
-
 		break;
-
-		
 
 		case "cancel":
-
 		cancel($save, $cancel_body);
-
 		break;		
-
-		
 
 		case "campaigns":
-
 		campaigns($save, $campaigns_body);
-
 		break;		
-
-		
 
 		case "stats":
-
 		stats($save, $stats_body);
-
 		break;
 
-		
-
 		case "thanks":
-
 		thanks($save, $thanks_body);
-
 		break;		
 
-
-
 		case "CheckImages":
-
 		CheckImages();
-
 		break;	
-
-		
-
 	/////////////////  PCN ADVERTISING UPGRADE EXTRAS  --  END    ////////////////////
-
-
-
 	}
-
-
 
 } else {
 
 	echo "Access Denied";
 
 }
-
-
-
-?>
-
