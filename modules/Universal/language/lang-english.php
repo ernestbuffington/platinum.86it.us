@@ -1,5 +1,4 @@
 <?php
-
 #####################################################
 #													#
 #	Universal Module 2.5							#
@@ -39,399 +38,397 @@
 /* Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA. */
 /*******************************************************************************/
 
-define("_UNI_ADM_LNK","Universal");
+define_once("_UNI_ADM_LNK","Universal");
 
 // Main Header
 
-define("_MODMAIN","Main Index");
-define("_SEARCH","Search");
-define("_ADDITEM","Submit Item");
-define("_TOPRATED","Top Rated");
-define("_RANDOM","Random Item");
-define("_MODADMIN","Administration");
-define("_MOSTWANTED","Most Wanted");
+define_once("_MODMAIN","Main Index");
+define_once("_SEARCH","Search");
+define_once("_ADDITEM","Submit Item");
+define_once("_TOPRATED","Top Rated");
+define_once("_RANDOM","Random Item");
+define_once("_MODADMIN","Administration");
+define_once("_MOSTWANTED","Most Wanted");
 
-define("_MAINCATEGORY","Main Categories");
-define("_THEREAREMAIN","There is");
-define("_INDATABASE","in the database.");
-define("_CATEGORIES2","Categories");
-define("_ITEMS","Item(s)");
-define("_AND","and");
+define_once("_MAINCATEGORY","Main Categories");
+define_once("_THEREAREMAIN","There is");
+define_once("_INDATABASE","in the database.");
+define_once("_CATEGORIES2","Categories");
+define_once("_ITEMS","Item(s)");
+define_once("_AND","and");
 
 // Sort-By Drop Down Box
 
-define("_SORTBYD","Sort Items By");
-define("_SONE","-- Select One -- ");
-define("_TDESC","Title Descending");
-define("_TASC","Title Ascending");
-define("_DDESC","Date Descending");
-define("_DASC","Date Ascending");
-define("_RDESC","Ratings Descending");
-define("_RASC","Ratings Ascending");
-define("_PDESC","Views Descending");
-define("_PASC","Views Ascending");
+define_once("_SORTBYD","Sort Items By");
+define_once("_SONE","-- Select One -- ");
+define_once("_TDESC","Title Descending");
+define_once("_TASC","Title Ascending");
+define_once("_DDESC","Date Descending");
+define_once("_DASC","Date Ascending");
+define_once("_RDESC","Ratings Descending");
+define_once("_RASC","Ratings Ascending");
+define_once("_PDESC","Views Descending");
+define_once("_PASC","Views Ascending");
 
 // Sorted By
 
-define("_SITEMS","Sort Items");
-define("_TITLEAZ","Title Descending");
-define("_TITLEZA","Title Ascending");
-define("_DDATE1","Date Descending");
-define("_DDATE2","Date Ascending");
-define("_RATING1","Ratings Descending");
-define("_RATING2","Ratings Ascending");
-define("_POPULARITY1","Views Descending");
-define("_POPULARITY2","Views Ascending");
+define_once("_SITEMS","Sort Items");
+define_once("_TITLEAZ","Title Descending");
+define_once("_TITLEZA","Title Ascending");
+define_once("_DDATE1","Date Descending");
+define_once("_DDATE2","Date Ascending");
+define_once("_RATING1","Ratings Descending");
+define_once("_RATING2","Ratings Ascending");
+define_once("_POPULARITY1","Views Descending");
+define_once("_POPULARITY2","Views Ascending");
 
 // No Main Categories
 
-define("_NOMAINCAT","There are no main categories");
-define("_CONTACTWEB","Please contact the webmaster and let them know of this");
-define("_NOCATMESS","No Categories in your Item Module");
+define_once("_NOMAINCAT","There are no main categories");
+define_once("_CONTACTWEB","Please contact the webmaster and let them know of this");
+define_once("_NOCATMESS","No Categories in your Item Module");
 
 // Page Links
 
-define("_PREVPAGENO","No Previous Pages");
-define("_PREVPAGE","Previous Page");
-define("_NEXTPAGENO","No Next Page");
-define("_NEXTPAGE","Next Page");
+define_once("_PREVPAGENO","No Previous Pages");
+define_once("_PREVPAGE","Previous Page");
+define_once("_NEXTPAGENO","No Next Page");
+define_once("_NEXTPAGE","Next Page");
 
 // View Items Page
 
-define("_ITEMSFOR","Items for");
+define_once("_ITEMSFOR","Items for");
 
 // Misc
 
-define("_SORTBY","Items currently sorted by");
-define("_MAIN","Main");
-define("_SITEMS","Sort Items by");
-define("_NOITEMS","There are no Items in this category");
-define("_RATINGS","Rating");
-define("_POP","Popularity");
-define("_POPULARIMAGE","Very Popular");
-define("_NOSUBCAT","There are no sub-categories");
-define("_MODIFYITEM","Submit Modification Request");
-define("_DATE","Date Submitted");
-define("_LASTDATE","Date Last Modified");
-define("_TITLE","Title");
-define("_CATEGORY","Category");
-define("_WAIT1","We currently have");
-define("_WAIT2","Items waiting to be published.");
-define("_AUTHOR","Author");
-define("_SMREQUEST","Submit Modification Request");
-define("_PRINTER","Printer Friendly Version");
-define("_FRIEND","Send to a Friend");
-define("_OPTIONS","Options");
-define("_CTCOMMENTS","Comments");
-define("_CTVOTES","Votes");
-define("_CTSCORE","Score");
-define("_INSERTPB","Insert Pagebreak");
-define("_PREVIEWIMAGE","Preview Image");
+define_once("_SORTBY","Items currently sorted by");
+define_once("_MAIN","Main");
+define_once("_SITEMS","Sort Items by");
+define_once("_NOITEMS","There are no Items in this category");
+define_once("_RATINGS","Rating");
+define_once("_POP","Popularity");
+define_once("_POPULARIMAGE","Very Popular");
+define_once("_NOSUBCAT","There are no sub-categories");
+define_once("_MODIFYITEM","Submit Modification Request");
+define_once("_DATE","Date Submitted");
+define_once("_LASTDATE","Date Last Modified");
+define_once("_TITLE","Title");
+define_once("_CATEGORY","Category");
+define_once("_WAIT1","We currently have");
+define_once("_WAIT2","Items waiting to be published.");
+define_once("_AUTHOR","Author");
+define_once("_SMREQUEST","Submit Modification Request");
+define_once("_PRINTER","Printer Friendly Version");
+define_once("_FRIEND","Send to a Friend");
+define_once("_OPTIONS","Options");
+define_once("_CTCOMMENTS","Comments");
+define_once("_CTVOTES","Votes");
+define_once("_CTSCORE","Score");
+define_once("_INSERTPB","Insert Pagebreak");
+define_once("_PREVIEWIMAGE","Preview Image");
 
 // User Login
 
-define("_USERREGLOGIN","User Registration/Login");
-define("_PASSWORDLOST","Lost your Password?");
-define("_REGNEWUSER","New User Registration");
-define("_USERLOGIN","User Login");
-define("_LOGININCOR","Login Incorrect! Please Try Again...");
+define_once("_USERREGLOGIN","User Registration/Login");
+define_once("_PASSWORDLOST","Lost your Password?");
+define_once("_REGNEWUSER","New User Registration");
+define_once("_USERLOGIN","User Login");
+define_once("_LOGININCOR","Login Incorrect! Please Try Again...");
 
 // Search Page
 
-define("_RESULTSFOR","Search Results for");
-define("_THEREAREIS","There is");
-define("_QUERYRESULTS","result(s) for your query");
-define("_NORESULTSFOR","There are no results for");
-define("_PLEASETRY","Please try a different query");
+define_once("_RESULTSFOR","Search Results for");
+define_once("_THEREAREIS","There is");
+define_once("_QUERYRESULTS","result(s) for your query");
+define_once("_NORESULTSFOR","There are no results for");
+define_once("_PLEASETRY","Please try a different query");
 
 // Submission
 
-define("_DESCRIPTION","Description");
-define("_ADDEDON","Added on");
-define("_VIEWS","Views");
-define("_HOMEPAGE","Home Page");
-define("_EDIT","Edit");
-define("_SUBMITBY","Item Submitted by");
-define("_ON","On");
-define("_LASTMOD","Last Updated");
+define_once("_DESCRIPTION","Description");
+define_once("_ADDEDON","Added on");
+define_once("_VIEWS","Views");
+define_once("_HOMEPAGE","Home Page");
+define_once("_EDIT","Edit");
+define_once("_SUBMITBY","Item Submitted by");
+define_once("_ON","On");
+define_once("_LASTMOD","Last Updated");
 
 // View Box
 
-define("_VBFROM","From");
-define("_VBEMAIL","E-Mail");
-define("_VBADDED","Added");
-define("_VBMODIFIED","Modified");
-define("_VBVIEWS","Views");
-define("_VBVOTES","Votes");
-define("_VBRATING","Rating");
-define("_VBEMAIL2","Send E-Mail");
-define("_VBPRINT","Print This");
-define("_VBNOEMAIL","No E-Mail");
-define("_VBUNKNOWN","Unknown");
-define("_VBCAT","Category");
+define_once("_VBFROM","From");
+define_once("_VBEMAIL","E-Mail");
+define_once("_VBADDED","Added");
+define_once("_VBMODIFIED","Modified");
+define_once("_VBVIEWS","Views");
+define_once("_VBVOTES","Votes");
+define_once("_VBRATING","Rating");
+define_once("_VBEMAIL2","Send E-Mail");
+define_once("_VBPRINT","Print This");
+define_once("_VBNOEMAIL","No E-Mail");
+define_once("_VBUNKNOWN","Unknown");
+define_once("_VBCAT","Category");
 
 // Comments System
 
-define("_CPWM","The comments are owned by the poster. We aren't responsible for their content.");
-define("_SUBMITCOMM","Submit Comment");
-define("_COMMPOST","posted this comment");
-define("_NOCOMMS","There are no comments, please feel free to post one.");
-define("_COMMMESS","posted this comment");
-define("_COMMNOTMESS","Comment Posting has been disabled the site administrator.");
-define("_ENTERCOMMENT","You Must enter a comment before pressing Post Comment.");
-define("_GOBACK","Go Back");
-define("_COMMREG","Comments not allowed unless your are logged in. Please");
-define("_LOGIN","Log-In");
+define_once("_CPWM","The comments are owned by the poster. We aren't responsible for their content.");
+define_once("_SUBMITCOMM","Submit Comment");
+define_once("_COMMPOST","posted this comment");
+define_once("_NOCOMMS","There are no comments, please feel free to post one.");
+define_once("_COMMMESS","posted this comment");
+define_once("_COMMNOTMESS","Comment Posting has been disabled the site administrator.");
+define_once("_ENTERCOMMENT","You Must enter a comment before pressing Post Comment.");
+define_once("_GOBACK","Go Back");
+define_once("_COMMREG","Comments not allowed unless your are logged in. Please");
+define_once("_LOGIN","Log-In");
 
 // New
 
-define("_DCATNEWTODAY","New Items in this Category Added Today");
-define("_DCATLAST3DAYS","New Items in this Category Added in the last 3 days");
-define("_DCATTHISWEEK","New Items in this Category Added this week");
-define("_LINKSDATESTRING","%d-%b-%Y"); // Don't Alter this.
-define("_NEWTODAY","New Today");
-define("_NEWLAST3DAYS","New last 3 days");
-define("_NEWTHISWEEK","New This Week");
+define_once("_DCATNEWTODAY","New Items in this Category Added Today");
+define_once("_DCATLAST3DAYS","New Items in this Category Added in the last 3 days");
+define_once("_DCATTHISWEEK","New Items in this Category Added this week");
+define_once("_LINKSDATESTRING","%d-%b-%Y"); // Don't Alter this.
+define_once("_NEWTODAY","New Today");
+define_once("_NEWLAST3DAYS","New last 3 days");
+define_once("_NEWTHISWEEK","New This Week");
 
 // Add Form
 
-define("_NEWCAT","Category");
-define("_NEWPLSONE","Please Select One");
-define("_NEWAUTHOR","Author");
-define("_NEWITEMAUTHOR","The Author of the item");
-define("_NEWWEBSITE","WebSite");
-define("_NEWWEBMESS","The Items Website");
-define("_NEWTITLE","Item Title");
-define("_NEWTITLEMESS","The Name of the Item");
-define("_NEWYOURNAME","Your Name");
-define("_NEWNAMEMESS","Your Name, if you are not a registered user");
-define("_NEWYOUREMAIL","Your E-Mail");
-define("_NEWYOUREMESS","Your E-mail Address");
-define("_NEWDESCRIP","Short Description");
-define("_NEWDESCRIPMESS","A short description of the item");
-define("_NEWCONTENT","Content");
-define("_NEWHTML","HTML Allowed");
-define("_NEWPREVIEW","Preview");
-define("_NEWPOST","Post");
-define("_NEWGO","Go");
-define("_BYPASS","Bypass Queue");
-define("_NEWYES","Yes");
-define("_NEWNO","No");
-define("_CHOSELANG","Item Language");
+define_once("_NEWCAT","Category");
+define_once("_NEWPLSONE","Please Select One");
+define_once("_NEWAUTHOR","Author");
+define_once("_NEWITEMAUTHOR","The Author of the item");
+define_once("_NEWWEBSITE","WebSite");
+define_once("_NEWWEBMESS","The Items Website");
+define_once("_NEWTITLE","Item Title");
+define_once("_NEWTITLEMESS","The Name of the Item");
+define_once("_NEWYOURNAME","Your Name");
+define_once("_NEWNAMEMESS","Your Name, if you are not a registered user");
+define_once("_NEWYOUREMAIL","Your E-Mail");
+define_once("_NEWYOUREMESS","Your E-mail Address");
+define_once("_NEWDESCRIP","Short Description");
+define_once("_NEWDESCRIPMESS","A short description of the item");
+define_once("_NEWCONTENT","Content");
+define_once("_NEWHTML","HTML Allowed");
+define_once("_NEWPREVIEW","Preview");
+define_once("_NEWPOST","Post");
+define_once("_NEWGO","Go");
+define_once("_BYPASS","Bypass Queue");
+define_once("_NEWYES","Yes");
+define_once("_NEWNO","No");
+define_once("_CHOSELANG","Item Language");
 
 // Submit Page
 
-define("_ADMINPOSTED","Your Item List has been published");
-define("_ADDPOSTHEADER","Thank you for your submission");
-define("_ADDPOSTMESSAGE","We will check it shortly and if it is appropriate it will be posted soon");
-define("_ADDPOSTPART1","We currently have");
-define("_ADDPOSTPART2","item lists waiting to be published");
+define_once("_ADMINPOSTED","Your Item List has been published");
+define_once("_ADDPOSTHEADER","Thank you for your submission");
+define_once("_ADDPOSTMESSAGE","We will check it shortly and if it is appropriate it will be posted soon");
+define_once("_ADDPOSTPART1","We currently have");
+define_once("_ADDPOSTPART2","item lists waiting to be published");
 
 // Preview Page
 
-define("_PREVIEWHEAD","New Item Post - Preview");
-define("_PREVIEWTITLE","Your Post will look something like this:");
-define("_PREVIEWREQUEST","Please check text, links, etc. before sending your item!");
+define_once("_PREVIEWHEAD","New Item Post - Preview");
+define_once("_PREVIEWTITLE","Your Post will look something like this:");
+define_once("_PREVIEWREQUEST","Please check text, links, etc. before sending your item!");
 
 // Not Allowed to Post
 
-define("_ONLYREGUSERS","Your Must be a registered user to post, login or register now.");
-define("_POSTDISABLED","Posting has been disabled by the site administrator");
+define_once("_ONLYREGUSERS","Your Must be a registered user to post, login or register now.");
+define_once("_POSTDISABLED","Posting has been disabled by the site administrator");
 
 // Top Rated Fuction
 
-define("_TOPTOP","Top");
-define("_TOPBYHITS","By Hits");
-define("_TOPITEM","Content");
-define("_TOPPOS","Position");
-define("_TOPBYRAT","By Rating");
+define_once("_TOPTOP","Top");
+define_once("_TOPBYHITS","By Hits");
+define_once("_TOPITEM","Content");
+define_once("_TOPPOS","Position");
+define_once("_TOPBYRAT","By Rating");
 
 // New Category Index
 
-define("_CIITEMSFOR","Items System for");
-define("_CIVIEWONLY","Only View Items Starting With");
-define("_CIALL","All");
-define("_CIPOSTED","Item Posted by");
-define("_CION","on");
-define("_CICTITLE","Item Title");
+define_once("_CIITEMSFOR","Items System for");
+define_once("_CIVIEWONLY","Only View Items Starting With");
+define_once("_CIALL","All");
+define_once("_CIPOSTED","Item Posted by");
+define_once("_CION","on");
+define_once("_CICTITLE","Item Title");
 
 // Send to Friend Form
 
-define("_FRIENDTITLE","Send Item to Friend");
-define("_FMTITLE","Send item to Friend");
-define("_YOURNAME","Your Name");
-define("_YOUREMAIL","Your E-Mail");
-define("_FRIENDNAME","Friend's Name");
-define("_FRIENDEMAIL","Friend's E-Mail");
-define("_TYPEMESS","Type a short message: (Optional)");
-define("_FRIENDNOTE","NB: The Item itself will not be sent, instead the e-mail will included a link to the item.");
-define("_SEND","Send");
-define("_CANCEL","Cancel");
-define("_CHECKYNAME","Please enter your name");
-define("_CHECKYEMAIL","Please enter your e-mail address");
-define("_CHECKFNAME","Please enter your friends name");
-define("_CHECKFEMAIL","Please enter your friends e-mail address");
+define_once("_FRIENDTITLE","Send Item to Friend");
+define_once("_FMTITLE","Send item to Friend");
+define_once("_YOURNAME","Your Name");
+define_once("_YOUREMAIL","Your E-Mail");
+define_once("_FRIENDNAME","Friend's Name");
+define_once("_FRIENDEMAIL","Friend's E-Mail");
+define_once("_TYPEMESS","Type a short message: (Optional)");
+define_once("_FRIENDNOTE","NB: The Item itself will not be sent, instead the e-mail will included a link to the item.");
+define_once("_SEND","Send");
+define_once("_CANCEL","Cancel");
+define_once("_CHECKYNAME","Please enter your name");
+define_once("_CHECKYEMAIL","Please enter your e-mail address");
+define_once("_CHECKFNAME","Please enter your friends name");
+define_once("_CHECKFEMAIL","Please enter your friends e-mail address");
 
 // Send E-Mail to friend
 
-define("_INTERESTING","Interesting Item List at");
-define("_HELLO","Hello");
-define("_YOURFRIEND","Your Friend");
-define("_CONSIDERED","considered the following item list interesting and wanted to send it to you.");
-define("_LINKMESS","You can view the item list at the following address:");
-define("_URL","URL");
-define("_YOUCANREAD","You can read more interesting items at");
-define("_MAILSENT1","A link for the selected item list has");
-define("_MAILSENT2","been mailed to");
-define("_CLOSE","Close");
-define("_SHORTMESSAGE","They have also included this short message");
-define("_FITEMID","Item ID");
+define_once("_INTERESTING","Interesting Item List at");
+define_once("_HELLO","Hello");
+define_once("_YOURFRIEND","Your Friend");
+define_once("_CONSIDERED","considered the following item list interesting and wanted to send it to you.");
+define_once("_LINKMESS","You can view the item list at the following address:");
+define_once("_URL","URL");
+define_once("_YOUCANREAD","You can read more interesting items at");
+define_once("_MAILSENT1","A link for the selected item list has");
+define_once("_MAILSENT2","been mailed to");
+define_once("_CLOSE","Close");
+define_once("_SHORTMESSAGE","They have also included this short message");
+define_once("_FITEMID","Item ID");
 
 // Sort-By Drop Down Box
 
-define("_SORTBYD","Sort Items By");
-define("_SONE","-- Select One -- ");
-define("_TDESC","Title Descending");
-define("_TASC","Title Ascending");
-define("_DDESC","Date Descending");
-define("_DASC","Date Ascending");
-define("_RDESC","Ratings Descending");
-define("_RASC","Ratings Ascending");
-define("_PDESC","Views Descending");
-define("_PASC","Views Ascending");
+define_once("_SORTBYD","Sort Items By");
+define_once("_SONE","-- Select One -- ");
+define_once("_TDESC","Title Descending");
+define_once("_TASC","Title Ascending");
+define_once("_DDESC","Date Descending");
+define_once("_DASC","Date Ascending");
+define_once("_RDESC","Ratings Descending");
+define_once("_RASC","Ratings Ascending");
+define_once("_PDESC","Views Descending");
+define_once("_PASC","Views Ascending");
 
 // Submission Error Checking
 
-define("_ECCAT","Please select a category for your Item");
-define("_ECAUTHOR","Please enter the author of the Item");
-define("_ECWEBSITE","Please enter the Item's WebSite, if you don't know enter 'None'");
-define("_ECTITLE","Enter the Item's Title");
-define("_ECYOURNAME","Please enter your Name or Nickname");
-define("_ECYOUREMAIL","Please enter a valid e-mail address");
-define("_ECDESCRIP","Please enter a short description of the item");
-define("_ECCONTENT","Please enter the item(s) for the entry");
-define("_ECUSEOFWORD","The use of word");
-define("_ECNOTPERMIT","is not permitted");
-define("_ECITEMNAME","A Item with the name");
-define("_ECPOSTERROR","already exists");
-define("_ECSUBNOTACCEPT","Submission Not Accepted - ERROR");
-define("_ECSUBNOTACCEPT2","Your submission was not accepted.");
-define("_ECCLICKHERE","<a href=\"javascript:history.go(-1)\">Click Here</a> to go back and make appropriate changes. Below is a list of errors");
-define("_ECITEMNAME2","A Item Request with the name");
-define("_ECPOSTERROR2","already exists");
-define("_ECMWTITLE","Please enter the title of the Item you want a list for");
-define("_ECMWNAME","Please enter your name");
+define_once("_ECCAT","Please select a category for your Item");
+define_once("_ECAUTHOR","Please enter the author of the Item");
+define_once("_ECWEBSITE","Please enter the Item's WebSite, if you don't know enter 'None'");
+define_once("_ECTITLE","Enter the Item's Title");
+define_once("_ECYOURNAME","Please enter your Name or Nickname");
+define_once("_ECYOUREMAIL","Please enter a valid e-mail address");
+define_once("_ECDESCRIP","Please enter a short description of the item");
+define_once("_ECCONTENT","Please enter the item(s) for the entry");
+define_once("_ECUSEOFWORD","The use of word");
+define_once("_ECNOTPERMIT","is not permitted");
+define_once("_ECITEMNAME","A Item with the name");
+define_once("_ECPOSTERROR","already exists");
+define_once("_ECSUBNOTACCEPT","Submission Not Accepted - ERROR");
+define_once("_ECSUBNOTACCEPT2","Your submission was not accepted.");
+define_once("_ECCLICKHERE","<a href=\"javascript:history.go(-1)\">Click Here</a> to go back and make appropriate changes. Below is a list of errors");
+define_once("_ECITEMNAME2","A Item Request with the name");
+define_once("_ECPOSTERROR2","already exists");
+define_once("_ECMWTITLE","Please enter the title of the Item you want a list for");
+define_once("_ECMWNAME","Please enter your name");
 
 // No Main Categories
 
-define("_NOMAINCAT","There are no main categories");
-define("_CONTACTWEB","Please contact the webmaster and let them know of this");
-define("_NOCATMESS","No Categories in your Item Module");
+define_once("_NOMAINCAT","There are no main categories");
+define_once("_CONTACTWEB","Please contact the webmaster and let them know of this");
+define_once("_NOCATMESS","No Categories in your Item Module");
 
 // Related Links System
 
-define("_RELATED","Related Links");
-define("_MOSTREAD","Most Popular Item");
-define("_NOITEMSSTORED","No Related Links stored for this Item");
-define("_ADDRLINK","Add Related Link");
+define_once("_RELATED","Related Links");
+define_once("_MOSTREAD","Most Popular Item");
+define_once("_NOITEMSSTORED","No Related Links stored for this Item");
+define_once("_ADDRLINK","Add Related Link");
 
 // Most Wanted System
 
-define("_ITEMSREQUESTED","The Following Items have been requested by users");
-define("_REQUESTMESS","This list will be updated as new requests are made and/or Requests are fulfilled.");
-define("_REQUESTMESS2","To submit a request for a item please use this");
-define("_REQUESTFORM","form");
-define("_NOREQUESTED","There are no requested items in our database");
-define("_ITEMNAME","Item Name");
-define("_REQUESTEDBY","Requested By");
-define("_REQUESTDATE","Date");
+define_once("_ITEMSREQUESTED","The Following Items have been requested by users");
+define_once("_REQUESTMESS","This list will be updated as new requests are made and/or Requests are fulfilled.");
+define_once("_REQUESTMESS2","To submit a request for a item please use this");
+define_once("_REQUESTFORM","form");
+define_once("_NOREQUESTED","There are no requested items in our database");
+define_once("_ITEMNAME","Item Name");
+define_once("_REQUESTEDBY","Requested By");
+define_once("_REQUESTDATE","Date");
 
 // Submit Request
 
-define("_SUNMITREQUEST","Submit A Request");
-define("_ADMINAPPROVE","NOTE: Requests are subject to Admin Approval");
-define("_ITEMTITLE","Item Title");
-define("_YOURNAME","Your Name");
-define("_SUBMITREQUEST","Submit Request");
-define("_REQUESTPOSTED","Your Item Request has been posted");
-define("_ADMINMUSTAPPROVE","It will be listed as soon as the Admin approves it");
+define_once("_SUNMITREQUEST","Submit A Request");
+define_once("_ADMINAPPROVE","NOTE: Requests are subject to Admin Approval");
+define_once("_ITEMTITLE","Item Title");
+define_once("_YOURNAME","Your Name");
+define_once("_SUBMITREQUEST","Submit Request");
+define_once("_REQUESTPOSTED","Your Item Request has been posted");
+define_once("_ADMINMUSTAPPROVE","It will be listed as soon as the Admin approves it");
 
 // Submit Modification Request
 
-define("_SUBMITMODREQUEST","Submit a Modification Request");
-define("_SMERRORMESS","Sorry, but your attempt to submit a modification request");
-define("_SMFORITEM","for the item");
-define("_SMPENDINGMESS","cannot be accepted at this time because there is already a pending modification request.");
-define("_SMTRYAGAIN","Please try again later.");
-define("_SMRETURNTO","Return to");
-define("_SMINDEX","Index.");
-define("_SMYOURREQUEST","Your Modification Request has been submitted.");
-define("_SMWILLCHECK","Will we check it shortly");
-define("_SMRETURNINDEX","Return to Index");
+define_once("_SUBMITMODREQUEST","Submit a Modification Request");
+define_once("_SMERRORMESS","Sorry, but your attempt to submit a modification request");
+define_once("_SMFORITEM","for the item");
+define_once("_SMPENDINGMESS","cannot be accepted at this time because there is already a pending modification request.");
+define_once("_SMTRYAGAIN","Please try again later.");
+define_once("_SMRETURNTO","Return to");
+define_once("_SMINDEX","Index.");
+define_once("_SMYOURREQUEST","Your Modification Request has been submitted.");
+define_once("_SMWILLCHECK","Will we check it shortly");
+define_once("_SMRETURNINDEX","Return to Index");
 
 // Pages for Viewing Items
 
-define("_PREVIOUS","Previous Page");
-define("_NEXT","Next Page");
-define("_PAGE","Page");
+define_once("_PREVIOUS","Previous Page");
+define_once("_NEXT","Next Page");
+define_once("_PAGE","Page");
 
 // Printer Friendly Page
 
-define("_PITEMSFOR","Items For");
-define("_PITEMCAT","Item Category");
-define("_PITEMAUTHOR","Item Author");
-define("_PITEMSUBMIT","Item Submitted by");
-define("_PITEMSUBON","Item Submitted on");
-define("_PITEMLASTMOD","Item Last Modified");
-define("_PITEMPRINTED","This Item was printed from");
+define_once("_PITEMSFOR","Items For");
+define_once("_PITEMCAT","Item Category");
+define_once("_PITEMAUTHOR","Item Author");
+define_once("_PITEMSUBMIT","Item Submitted by");
+define_once("_PITEMSUBON","Item Submitted on");
+define_once("_PITEMLASTMOD","Item Last Modified");
+define_once("_PITEMPRINTED","This Item was printed from");
 
 // Checking settings.php writable and/or install.php exists
 
-define("_BIGWARN","WARNING");
-define("_ISWRITABLE","is writable, this is a possible security risk, please CHMOD this file to 0444");
-define("_INSTALLEXISTS","still exists, please delete this file right away else someone could reset your database");
+define_once("_BIGWARN","WARNING");
+define_once("_ISWRITABLE","is writable, this is a possible security risk, please CHMOD this file to 0444");
+define_once("_INSTALLEXISTS","still exists, please delete this file right away else someone could reset your database");
 
 // Modification Form checking code
 
-define("_MFONLYREGUSERS1","Only registered users are allowed to submit modification requests");
-define("_MFPLEASE","Please");
-define("_MFLOGIN","Log-in");
-define("_MFBEFORETRY","before trying again");
-define("_MFONLYUSER","Only the user who submitted this item can post modification requests");
-define("_MFCLICKHERE","Click Here");
-define("_MFONLYUSER2","to return to the module index");
+define_once("_MFONLYREGUSERS1","Only registered users are allowed to submit modification requests");
+define_once("_MFPLEASE","Please");
+define_once("_MFLOGIN","Log-in");
+define_once("_MFBEFORETRY","before trying again");
+define_once("_MFONLYUSER","Only the user who submitted this item can post modification requests");
+define_once("_MFCLICKHERE","Click Here");
+define_once("_MFONLYUSER2","to return to the module index");
 
 // phpBB Style Page Numbering
 
-define("_GOTOPAGE","Goto page");
+define_once("_GOTOPAGE","Goto page");
 
 
 // BBCode Stuff
 
-define("_UMBBCODE", "Code");
-define("_UMBBQUOTE", "Quote");
-define("_UMBBWROTE", "Wrote");
-define("_UMBBDARKRED", "Dark Red");
-define("_UMBBRED", "Red");
-define("_UMBBORANGE", "Orange");
-define("_UMBBBROWN", "Brown");
-define("_UMBBYELLOW", "Yellow");
-define("_UMBBGREEN", "Green");
-define("_UMBBOLIVE", "Olive");
-define("_UMBBCYAN", "Cyan");
-define("_UMBBBLUE", "Blue");
-define("_UMBBDARKBLUE", "Dark Blue");
-define("_UMBBINDIGO", "Indigo");
-define("_UMBBVIOLET", "Violet");
-define("_UMBBWHITE", "White");
-define("_UMBBBLACK", "Black");
-define("_UMBBFONTCOLOR", "Font Color");
-define("_UMBBTINY", "Tiny");
-define("_UMBBSMALL", "Small");
-define("_UMBBNORMAL", "Normal");
-define("_UMBBLARGE", "Large");
-define("_UMBBHUGH", "Hugh");
-define("_UMBBFONTSIZE", "Font Size");
-define("_UMBBFONTDEFAULT", "Default Font");
-
-?>
+define_once("_UMBBCODE", "Code");
+define_once("_UMBBQUOTE", "Quote");
+define_once("_UMBBWROTE", "Wrote");
+define_once("_UMBBDARKRED", "Dark Red");
+define_once("_UMBBRED", "Red");
+define_once("_UMBBORANGE", "Orange");
+define_once("_UMBBBROWN", "Brown");
+define_once("_UMBBYELLOW", "Yellow");
+define_once("_UMBBGREEN", "Green");
+define_once("_UMBBOLIVE", "Olive");
+define_once("_UMBBCYAN", "Cyan");
+define_once("_UMBBBLUE", "Blue");
+define_once("_UMBBDARKBLUE", "Dark Blue");
+define_once("_UMBBINDIGO", "Indigo");
+define_once("_UMBBVIOLET", "Violet");
+define_once("_UMBBWHITE", "White");
+define_once("_UMBBBLACK", "Black");
+define_once("_UMBBFONTCOLOR", "Font Color");
+define_once("_UMBBTINY", "Tiny");
+define_once("_UMBBSMALL", "Small");
+define_once("_UMBBNORMAL", "Normal");
+define_once("_UMBBLARGE", "Large");
+define_once("_UMBBHUGH", "Hugh");
+define_once("_UMBBFONTSIZE", "Font Size");
+define_once("_UMBBFONTDEFAULT", "Default Font");
