@@ -27,6 +27,7 @@ if (!defined('RNYA')) {
 	header('Location: ../../../index.php');
 	die();
 }
+
 if (!isset($bypass)) $bypass = '';
 // montego - modified to not just go get the whole phpBB bbconfig table - only get what we need
 $resultbc = $db->sql_query('SELECT * FROM ' . $prefix . '_bbconfig WHERE config_name = \'avatar_path\' OR config_name = \'avatar_gallery_path\'');
@@ -79,7 +80,7 @@ if ($num == 1) {
 // START - Request fill in birthday - sgtmudd
 			completeUserInfo($usrinfo);
 // END - Request fill in birthday - sgtmudd
-			nav(1);
+			//nav(1);
 		} else {
 			echo '<p class="title">' . _PERSONALINFO . '</p>';
 		}
