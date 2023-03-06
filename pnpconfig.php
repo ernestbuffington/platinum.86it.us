@@ -45,6 +45,7 @@ if (!defined('NUKE_ADMIN_DIR')) define('NUKE_ADMIN_DIR', NUKE_BASE_DIR . 'admin/
 if (!defined('NUKE_CLASSES_DIR')) define('NUKE_CLASSES_DIR', NUKE_INCLUDE_DIR . 'classes/');
 if (!defined('NUKE_ADMIN_MODULE_DIR')) define('NUKE_ADMIN_MODULE_DIR', NUKE_ADMIN_DIR . 'modules/');
 if (!defined('NUKE_FORUMS_DIR')) define('NUKE_FORUMS_DIR', (defined('IN_ADMIN') ? './../' : 'modules/Forums/'));
+if (!defined('NUKE_VENDOR_DIR')) define('NUKE_VENDOR_DIR', NUKE_BASE_DIR . 'includes/vendor/');
 $pagetitle = '';
 define('NUKE_FILE', true);
 define('CORE_FILE', true);
