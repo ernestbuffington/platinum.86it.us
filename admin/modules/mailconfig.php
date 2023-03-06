@@ -37,7 +37,7 @@ if (!defined('ADMIN_FILE')) {
  * sure the mailer function is loaded and it will take care of checking that the
  * tables are created.
  */
-if (!defined(TNML_IS_ACTIVE)) include_once INCLUDE_PATH . 'includes/tegonuke/mailer/mailer.php';
+include_once INCLUDE_PATH . 'includes/tegonuke/mailer/mailer.php';
 /*
  * Get appropriate language file to use within language/tegonuke/mailer/ directory
  */
