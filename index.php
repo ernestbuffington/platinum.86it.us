@@ -28,20 +28,28 @@
 /* along with this program; if not, write to the Free Software                 */
 /* Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA. */
 /*******************************************************************************/
-if (@file_exists("install"))
+
+/*******************************************
+   Applied rules:
+ * LongArrayToShortArrayRector
+ * ListToArrayDestructRector (https://wiki.php.net/rfc/short_list_syntax https://www.php.net/manual/en/migration71.new-features.php#migration71.new-features.symmetric-array-destructuring)
+ * NullToStrictStringFuncCallArgRector
+ *******************************************/
+
+if (file_exists("install"))
 {
 	header("Location: install/index.php");
 }
-@require_once("mainfile.php");
+require_once("mainfile.php");
 global $prefix, $db, $admin_file;
 if (isset($op) AND ($op == 'ad_click') AND isset($bid)) {
     $bid = intval($bid);
     $sql = 'SELECT clickurl FROM '.$prefix.'_banner WHERE bid=\''.$bid.'\'';
     $result = $db->sql_query($sql);
-    list($clickurl) = $db->sql_fetchrow($result);
+    [$clickurl] = $db->sql_fetchrow($result);
     $db->sql_query('UPDATE '.$prefix.'_banner SET clicks=clicks+1 WHERE bid=\''.$bid.'\'');
     update_points(21);
-    Header('Location: '.htmlentities($clickurl));
+    Header('Location: '.htmlentities((string) $clickurl));
     die();
 }
 define('MODULE_FILE', true);
@@ -53,8 +61,8 @@ $arcade = $_GET['act'] ?? '';
 $newscore = $_GET['do'] ?? '';
 if($arcade == 'Arcade' && $newscore='newscore')
 {
-	$gamename = str_replace("\'","''",$_POST['gname']);
-	$gamename = preg_replace(array('#&(?!(\#[0-9]+;))#', '#<#', '#>#'), array('&amp;', '&lt;', '&gt;'),$gamename);
+	$gamename = str_replace("\'","''",(string) $_POST['gname']);
+	$gamename = preg_replace(['#&(?!(\#[0-9]+;))#', '#<#', '#>#'], ['&amp;', '&lt;', '&gt;'],$gamename);
 	$gamescore = intval($_POST['gscore']);
 	//Get Game ID
 	$row = $db->sql_fetchrow($db->sql_query("SELECT game_id from ".$prefix."_bbgames WHERE game_scorevar='$gamename'"));
@@ -100,10 +108,10 @@ if ($httpref == 1) {
 }
 if (!isset($mop)) { $mop = 'modload'; }
 if (!isset($mod_file)) { $mod_file = 'index'; }
-$name = trim($name);
-if (isset($file)) { $file = trim($file); }
-$mod_file = trim($mod_file);
-$mop = trim($mop);
+$name = trim((string) $name);
+if (isset($file)) { $file = trim((string) $file); }
+$mod_file = trim((string) $mod_file);
+$mop = trim((string) $mop);
 if (stripos_clone($name, '..') || (isset($file) && stripos_clone($file, '..')) || stripos_clone($mod_file, '..') || stripos_clone($mop, '..')) {
     die('You are so cool...');
 } else {
@@ -134,4 +142,3 @@ if (stripos_clone($name, '..') || (isset($file) && stripos_clone($file, '..')) |
         include_once('footer.php');
     }
 }
-?>
