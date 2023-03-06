@@ -231,7 +231,7 @@ $bypassInstallationFolderCheck = FALSE;
 $bypassNukeSentinelInvalidIPCheck = FALSE;
 
 # Vendor Autoload - only if vendor directory exists with an autoload file! START
-require_once(INCLUDE_PATH.'vendor/autoload.php');
+require_once(INCLUDE_PATH.'includes/vendor/autoload.php');
 # Vendor Autoload - only if vendor directory exists with an autoload file! END
 
 use function PHP81_BC\strftime;
