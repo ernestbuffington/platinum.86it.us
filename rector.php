@@ -25,7 +25,8 @@ return static function (RectorConfig $rectorConfig): void {
 		  //__DIR__ . '/modules/News/article.php',
 		  //__DIR__ . '/index.php',
 		  //__DIR__ . '/themes/Impressed/theme.php',
-		  __DIR__ . '/modules/Advertising/index.php',
+		  //__DIR__ . '/modules/Advertising/index.php',
+		  __DIR__ . '/modules/Advertising/admin/index.php',
     ]);
 
     // register a single rule
