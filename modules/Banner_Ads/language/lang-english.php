@@ -227,6 +227,7 @@ define_once("_BA_ORDSTATAT","Your Order Statistics at");
 define_once("_BA_ORDSTATMAIL","Order Stats Emailed");
 define_once("_BA_ORDSTATNOTSENT","Statistics for this Banner can't be sent because<br>there is no email associated with the client.<br>Please contact the Administrator");
 define_once("_BA_ORDSTATSENT","Order Stats Sent");
+if(!isset($sitename)) $sitename = '';
 define_once("_BA_OUTSIDE","You can't access this file from outside the $sitename server...");
 define_once("_BA_PASS","Password");
 define_once("_BA_PASSRE","Re-Enter");
