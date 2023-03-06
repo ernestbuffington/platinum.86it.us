@@ -962,8 +962,8 @@ function cookiedecode($user) {
         $cookie = $user;
     }
     if (!isset($pass)) {
-	   $sql = [];
 	   if(isset($cookie[1])):
+	     $sql = [];
          $sql = "SELECT `user_password` FROM ".$user_prefix."_users WHERE username='$cookie[1]'";
          $result = $db->sql_query($sql);
          [$pass] = $db->sql_fetchrow($result);
