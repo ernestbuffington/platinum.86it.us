@@ -272,7 +272,7 @@ function ya_get_configs() {
 	return $config;
 }
 function yacookie($setuid, $setusername, $setpass, $setstorynum, $setumode, $setuorder, $setthold, $setnoscore, $setublockon, $settheme, $setcommentmax) {
-	global $ya_config, $db, $prefix, $nsnst_const;
+	global $user, $ya_config, $db, $prefix, $nsnst_const, $identify;
 	if (defined('NUKESENTINEL_IS_LOADED')) {
 		$ip = $nsnst_const['remote_ip'] ?? 'none';
 	} else {
@@ -290,11 +290,12 @@ function yacookie($setuid, $setusername, $setpass, $setstorynum, $setumode, $set
 	$guest = 1;
     $user_agent = $identify->identify_agent();
     
-	   if (is_user()) 
+	   if(is_user($user))
 	   {
           $guest = 0;
        } 
-	   elseif(isset($user_agent['engine']) && $user_agent['engine'] == 'bot') 
+	   
+	   if(isset($user_agent['engine']) && $user_agent['engine'] == 'bot') 
 	   {
           $guest = 3;
        }
