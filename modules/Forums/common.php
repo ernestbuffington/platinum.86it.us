@@ -48,7 +48,7 @@ error_reporting  (E_ERROR | E_WARNING | E_PARSE); // This will NOT report uninit
 // The following code (unsetting globals)
 // Thanks to Matt Kavanagh and Stefan Esser for providing feedback as well as patch files
 // PHP5 with register_long_arrays off?
-if (@phpversion() >= '5.0.0' && (!@ini_get('register_long_arrays') || @ini_get('register_long_arrays') == '0' || strtolower(@ini_get('register_long_arrays')) == 'off'))
+if (phpversion() >= '5.0.0' && (!ini_get('register_long_arrays') || ini_get('register_long_arrays') == '0' || strtolower(ini_get('register_long_arrays')) == 'off'))
 {
 	$_POST = $_POST;
 	$_GET = $_GET;
@@ -72,7 +72,7 @@ if (isset($_SESSION) && !is_array($_SESSION))
 {
 	die("Hacking attempt");
 }
-if (@ini_get('register_globals') == '1' || strtolower(@ini_get('register_globals')) == 'on')
+if (ini_get('register_globals') == '1' || strtolower(ini_get('register_globals')) == 'on')
 {
 	// PHP4+ path
 	$not_unset = ['HTTP_GET_VARS', 'HTTP_POST_VARS', 'HTTP_COOKIE_VARS', 'HTTP_SERVER_VARS', 'HTTP_SESSION_VARS', 'HTTP_ENV_VARS', 'HTTP_POST_FILES', 'phpEx', 'phpbb_root_path', 'name', 'admin', 'nukeuser', 'user', 'no_page_header', 'cookie', 'db', 'prefix'];
@@ -88,7 +88,7 @@ if (@ini_get('register_globals') == '1' || strtolower(@ini_get('register_globals
 	$input = array_merge($_GET, $_POST, $_COOKIE, $_SERVER, $_SESSION, $_ENV, $_FILES);
 	unset($input['input']);
 	unset($input['not_unset']);
-	while ([$var, ] = @each($input))
+	while ([$var, ] = each($input))
 	{
 		if (!in_array($var, $not_unset))
 		{
@@ -102,8 +102,6 @@ if (@ini_get('register_globals') == '1' || strtolower(@ini_get('register_globals
 // this is a security precaution to prevent someone
 // trying to break out of a SQL statement.
 //
-if( !get_magic_quotes_gpc() )
-{
 	if( is_array($_GET) )
 	{
 		foreach ($_GET as $k => $v) {
@@ -112,14 +110,13 @@ if( !get_magic_quotes_gpc() )
    				foreach ($_GET[$k] as $k2 => $v2) {
            $_GET[$k][$k2] = addslashes($v2);
        }
-   				@reset($_GET[$k]);
+   				reset($_GET[$k]);
    			}
    			else
    			{
    				$_GET[$k] = addslashes($v);
    			}
-  }
-		@reset($_GET);
+	reset($_GET);
 	}
 	if( is_array($_POST) )
 	{
@@ -129,14 +126,14 @@ if( !get_magic_quotes_gpc() )
    				foreach ($_POST[$k] as $k2 => $v2) {
            $_POST[$k][$k2] = addslashes($v2);
        }
-   				@reset($_POST[$k]);
+   				reset($_POST[$k]);
    			}
    			else
    			{
    				$_POST[$k] = addslashes($v);
    			}
   }
-		@reset($_POST);
+		reset($_POST);
 	}
 	if( is_array($_COOKIE) )
 	{
@@ -153,7 +150,7 @@ if( !get_magic_quotes_gpc() )
    				$_COOKIE[$k] = addslashes($v);
    			}
   }
-		@reset($_COOKIE);
+		reset($_COOKIE);
 	}
 }
 //
@@ -236,4 +233,3 @@ if( $board_config['board_disable'] && !defined("IN_ADMIN") && !defined("IN_LOGIN
 {
 	message_die(GENERAL_MESSAGE, 'Board_disable', 'Information');
 }
-?>
