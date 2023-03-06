@@ -84,8 +84,16 @@ while ($session = $db->sql_fetchrow($result)) {
 	} else {
 		//--- Anonymous user
 		if (isset($admin)) {
+		    
+			if (!isset($session['time']))
+		    $session['time'] = time();
+			
 			$title = '<A title="' . displayTime($session['time']) . "\">$session[username]</a>";
 		} else {
+			
+			if (!isset($session['time']))
+		    $session['time'] = time();
+			
 			$title = '<A title="' . displayTime($session['time']) . '">' . _VISITEUR . '</a>';
 		}
 	}
