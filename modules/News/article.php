@@ -40,6 +40,14 @@
 /* Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA. */
 /*******************************************************************************/
 
+/***********************************************
+ Applied rules:
+ * DirNameFileConstantToDirConstantRector
+ * LongArrayToShortArrayRector
+ * ListToArrayDestructRector (https://wiki.php.net/rfc/short_list_syntax https://www.php.net/manual/en/migration71.new-features.php#migration71.new-features.symmetric-array-destructuring)
+ * NullToStrictStringFuncCallArgRector
+ ***********************************************/
+
 if ( !defined('MODULE_FILE') )
 {
     die('You can\'t access this file directly...');
@@ -49,20 +57,20 @@ if (!isset($op)) $op = '';
 if (!isset($gfx_check)) $gfx_check = '';
 
 $optionbox = '';
-$module_name = basename(dirname(__FILE__));
+$module_name = basename(__DIR__);
 get_lang($module_name);
 // TON mod
 $sql = "SELECT rblocks, showtags FROM ".$prefix."_news_config";
     $result = $db->sql_query($sql);
     $row = $db->sql_fetchrow($result);   
-    $rblocks =  stripslashes(check_html($row['rblocks'], 'nohtml'));
-    $showtags = stripslashes(check_html($row['showtags'], 'nohtml'));
+    $rblocks =  stripslashes((string) check_html($row['rblocks'], 'nohtml'));
+    $showtags = stripslashes((string) check_html($row['showtags'], 'nohtml'));
 if ($rblocks == '1') {
 define('INDEX_FILE', TRUE);
 }
 
 if (isset($sid)) { $sid = intval($sid); } else { $sid = ''; }
-if (stristr($_SERVER['REQUEST_URI'],'mainfile')) {
+if (stristr((string) $_SERVER['REQUEST_URI'],'mainfile')) {
     Header('Location: modules.php?name='.$module_name.'&file=article&sid='.$sid);
 } elseif (empty($sid) && !isset($tid)) {
     Header('Location: index.php');
@@ -99,20 +107,20 @@ $numrows = $db->sql_numrows($result);
 }
 $row = $db->sql_fetchrow($result);
 $catid = intval($row['catid']);
-$aaid = stripslashes($row['aid']);
+$aaid = stripslashes((string) $row['aid']);
 $time = $row['time'];
-$title = stripslashes(check_html($row['title'], 'nohtml'));
-$hometext = stripslashes($row['hometext']);
-$bodytext = stripslashes($row['bodytext']);
+$title = stripslashes((string) check_html($row['title'], 'nohtml'));
+$hometext = stripslashes((string) $row['hometext']);
+$bodytext = stripslashes((string) $row['bodytext']);
 $topic = intval($row['topic']);
-$informant = stripslashes($row['informant']);
-$notes = stripslashes($row['notes']);
+$informant = stripslashes((string) $row['informant']);
+$notes = stripslashes((string) $row['notes']);
 $acomm = intval($row['acomm']);
 $haspoll = intval($row['haspoll']);
 $pollID = intval($row['pollID']);
 $score = intval($row['score']);
 $ratings = intval($row['ratings']);
-$associated = stripslashes($row['associated']);
+$associated = stripslashes((string) $row['associated']);
 # nukeSEO Social Bookmarking added Tricked Out News
 require_once("includes/nukeSEO_SB.php");
 //require_once("includes/nukeSEO_sSB.php");
@@ -136,7 +144,7 @@ include_once('header.php');
 $artpage = 0;
 
 formatTimestamp($time);
-$title = stripslashes(check_html($title, 'nohtml'));
+$title = stripslashes((string) check_html($title, 'nohtml'));
 $hometext = stripslashes($hometext);
 $bodytext = stripslashes($bodytext);
 $notes = stripslashes($notes);
@@ -169,7 +177,7 @@ getTopics($sid);
 
 if ($catid != 0) {
     $row2 = $db->sql_fetchrow($db->sql_query('SELECT title FROM '.$prefix.'_stories_cat WHERE catid=\''.$catid.'\''));
-    $title1 = stripslashes(check_html($row2['title'], 'nohtml'));
+    $title1 = stripslashes((string) check_html($row2['title'], 'nohtml'));
     $title = '<a href="modules.php?name='.$module_name.'&amp;file=categories&amp;op=newindex&amp;catid='.$catid.'"><span class="storycat">'.$title1.'</span></a>: '.$title;
 }
 
@@ -183,7 +191,7 @@ $result = $db->sql_query("SELECT tag FROM ".$prefix."_tags WHERE cid='$sid'");
 	Opentable();
 	echo '<div><img src="images/news/tag.png" alt="Tags" align="left" />&nbsp;';	
 		while ($row = $db->sql_fetchrow($result)) {
-			$tag = addslashes(check_words(check_html($row['tag'], "nohtml")));
+			$tag = addslashes((string) check_words(check_html($row['tag'], "nohtml")));
 			$num = $db->sql_numrows($db->sql_query("SELECT tag FROM ".$prefix."_tags WHERE tag='$tag'"));
 			if ($num<=1) { $dim = "class1"; }
 			else if ($num<=5) { $dim = "class2"; }
@@ -215,7 +223,7 @@ if ($haspoll == 1) {
     $boxContent .= '<input type="hidden" name="pollID" value="'.$pollID.'" />';
     $boxContent .= '<input type="hidden" name="forwarder" value="'.$url.'" />';
     $row3 = $db->sql_fetchrow($db->sql_query('SELECT pollTitle, voters FROM '.$prefix.'_poll_desc WHERE pollID=\''.$pollID.'\''));
-    $pollTitle = stripslashes(check_html($row3['pollTitle'], 'nohtml'));
+    $pollTitle = stripslashes((string) check_html($row3['pollTitle'], 'nohtml'));
     $voters = $row3['voters'];
     $boxTitle = _ARTICLEPOLL;
     $boxContent .= '<font class="content"><strong>'."$pollTitle".'</strong></font><br /><br />'."\n";
@@ -255,11 +263,11 @@ if ($haspoll == 1) {
 }
 
 $row7 = $db->sql_fetchrow($db->sql_query('SELECT title, content, active, bposition FROM '.$prefix.'_blocks WHERE blockfile=\'block-Login.php\''." $querylang"));
-$title = stripslashes(check_html($row7['title'], 'nohtml'));
-$content = stripslashes($row7['content']);
+$title = stripslashes((string) check_html($row7['title'], 'nohtml'));
+$content = stripslashes((string) $row7['content']);
 $active = intval($row7['active']);
 $position = $row7['bposition'];
-$position = substr($position, 0,1);
+$position = substr((string) $position, 0,1);
 if (($active == 1) AND ($position == 'r') AND (!is_user($user))) {
     loginbox($gfx_check);
 }
@@ -268,8 +276,8 @@ $boxtitle = _RELATED;
 $boxstuff = '<font class="content">';
 $result8 = $db->sql_query('SELECT name, url FROM '.$prefix.'_related WHERE tid=\''.$topic.'\'');
 while ($row8 = $db->sql_fetchrow($result8)) {
-    $name = stripslashes($row8['name']);
-    $url = stripslashes($row8['url']);
+    $name = stripslashes((string) $row8['name']);
+    $url = stripslashes((string) $row8['url']);
     $boxstuff .= '<strong><big>&middot;</big></strong>&nbsp;<a href="'.$url.'" target="_blank">'.$name.'</a><br />'."\n";
 }
 
@@ -285,7 +293,7 @@ if ($multilingual == 1) {
 }
 $row9 = $db->sql_fetchrow($db->sql_query('SELECT sid, title FROM '.$prefix.'_stories WHERE topic=\''.$topic."' $querylang".' ORDER BY counter DESC LIMIT 0,1'));
 $topstory = intval($row9['sid']);
-$ttitle = stripslashes(check_html($row9['title'], 'nohtml'));
+$ttitle = stripslashes((string) check_html($row9['title'], 'nohtml'));
 
 $boxstuff .= '<a href="modules.php?name='.$module_name.'&amp;file=article&amp;sid='.$topstory.'">'.$ttitle.'</a></font></center><br />'."\n";
 themesidebox($boxtitle, $boxstuff);
@@ -354,7 +362,7 @@ if (!empty($associated)) {
     for ($i=0; $i<sizeof($asso_t); $i++) {
         if (!empty($asso_t[$i])) {
             $query = $db->sql_query('SELECT topicimage, topictext from '.$prefix.'_topics WHERE topicid=\''.(int)$asso_t[$i].'\'');
-            list($topicimage, $topictext) = $db->sql_fetchrow($query);
+            [$topicimage, $topictext] = $db->sql_fetchrow($query);
             echo '<a href="modules.php?name='.$module_name.'&amp;new_topic='.(int)$asso_t[$i].'"><img src="'.$tipath.$topicimage.'" border="0" hspace="10" alt="'.$topictext.'" title="'.$topictext.'" /></a>';
         }
     }
