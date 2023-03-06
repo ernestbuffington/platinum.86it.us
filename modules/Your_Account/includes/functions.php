@@ -286,15 +286,30 @@ function yacookie($setuid, $setusername, $setpass, $setstorynum, $setumode, $set
 	if (!preg_match('/^([0-9]{1,3})\\.([0-9]{1,3})\\.([0-9]{1,3})\\.([0-9]{1,3})$/i', (string) $ip)) $ip = ''; // RN0001003
 	$result = $db->sql_query('SELECT time FROM ' . $prefix . '_session WHERE uname=\'' . addslashes((string) $setusername) . '\'');
 	$ctime = time();
-	if ($setusername != '') {
-		$uname = substr((string) $setusername, 0, 25);
-		$guest = 0;
-		if ($row = $db->sql_fetchrow($result)) {
-			$db->sql_query('UPDATE ' . $prefix . '_session SET uname=\'' . addslashes((string) $setusername) . '\', time=\'' . $ctime . '\', host_addr=\'' . $ip . '\', guest=\'' . $guest . '\' WHERE uname=\'' . addslashes($uname) . '\'');
-		} else {
-			$db->sql_query('INSERT INTO ' . $prefix . '_session (uname, time, host_addr, guest) VALUES (\'' . addslashes($uname) . '\', \'' . $ctime . '\', \'' . $ip . '\', \'' . $guest . '\')');
-		}
-	}
+    
+	$guest = 1;
+    $user_agent = $identify->identify_agent();
+    
+	   if (is_user()) 
+	   {
+          $guest = 0;
+       } 
+	   elseif(isset($user_agent['engine']) && $user_agent['engine'] == 'bot') 
+	   {
+          $guest = 3;
+       }
+	   	
+	if (!empty($setusername)) {
+        $uname = substr($setusername, 0,25);
+        if ($row = $db->sql_fetchrow($result)) {
+            $db->sql_query("UPDATE ".$prefix."_session SET uname='$setusername', time='$ctime', host_addr='$ip', guest='$guest' WHERE uname='$uname'");
+        } else {
+            $db->sql_query("INSERT INTO ".$prefix."_session (uname, time, host_addr, guest) VALUES ('$uname', '$ctime', '$ip', '$guest')");
+        }
+    }
+    $db->sql_freeresult($result);
+	
+	
 	$info = base64_encode($setuid . ':' . $setusername . ':' . $setpass . ':' . $setstorynum . ':' . $setumode . ':' . $setuorder . ':' . $setthold . ':' . $setnoscore . ':' . $setublockon . ':' . $settheme . ':' . $setcommentmax);
 	if ($ya_config['cookietimelife'] != '-') {
 		if (trim((string) $ya_config['cookiepath']) != '') setcookie('user', $info, ['expires' => time() + $ya_config['cookietimelife'], 'path' => (string) $ya_config['cookiepath']]);
