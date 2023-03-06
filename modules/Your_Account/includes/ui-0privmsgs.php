@@ -14,6 +14,18 @@
 /*  CNB Your Account http://www.phpnuke.org.br
 /*  NSN Your Account by Bob Marion, http://www.nukescripts.net
 /**************************************************************************/
+
+/****************************************
+ Applied rules:
+ * UseIdenticalOverEqualWithSameTypeRector
+ * SimplifyIfElseToTernaryRector
+ * LogicalToBooleanRector (https://stackoverflow.com/a/5998330/1348344)
+ * CommonNotEqualRector (https://stackoverflow.com/a/4294663/1348344)
+ * LongArrayToShortArrayRector
+ * ListToArrayDestructRector (https://wiki.php.net/rfc/short_list_syntax https://www.php.net/manual/en/migration71.new-features.php#migration71.new-features.symmetric-array-destructuring)
+ * NullToStrictStringFuncCallArgRector 
+ ****************************************/
+
 if (!defined('RNYA')) {
 	header('Location: ../../../../index.php');
 	die();
@@ -22,24 +34,12 @@ if (is_active('Private_Messages') && defined('LOGGEDIN_SAME_USER')) {
 	$uid = (int)$usrinfo['user_id'];
 	echo '<br />';
 	OpenTable();
-	if (is_active('Members_List')) {
-		$mem_list = '<a href="modules.php?name=Members_List">' . _BROWSEUSERS . '</a>';
-	} else {
-		$mem_list = '';
-	}
-	if (is_active('Search')) {
-		$mod_search = '<a href="modules.php?name=Search&amp;type=users">' . _SEARCHUSERS . '</a>';
-	} else {
-		$mod_search = '';
-	}
-	if ($mem_list != '' AND $mod_search != '') {
-		$a = ' | ';
-	} else {
-		$a = '';
-	}
-	if ($mem_list != '' OR $mod_search != '') {
+	$mem_list = is_active('Members_List') ? '<a href="modules.php?name=Members_List">' . _BROWSEUSERS . '</a>' : '';
+	$mod_search = is_active('Search') ? '<a href="modules.php?name=Search&amp;type=users">' . _SEARCHUSERS . '</a>' : '';
+	$a = $mem_list != '' && $mod_search != '' ? ' | ' : '';
+	if ($mem_list != '' || $mod_search != '') {
 		$links = '[ ' . $mem_list . ' ' . $a . ' ' . $mod_search . ' ]';
-	} elseif ($mem_list == '' AND $mod_search == '') {
+	} elseif ($mem_list === '' && $mod_search === '') {
 		$links = '';
 	}
 	/*
@@ -53,25 +53,29 @@ if (is_active('Private_Messages') && defined('LOGGEDIN_SAME_USER')) {
 		. 'SELECT 6, COUNT(*) FROM ' . $prefix . '_bbprivmsgs WHERE privmsgs_from_userid = ' . $uid . ' AND privmsgs_type = 4 UNION '
 		. 'SELECT 7, COUNT(*) FROM ' . $prefix . '_bbprivmsgs WHERE privmsgs_to_userid = ' . $uid . ' AND privmsgs_type = 5';
 	$result = $db->sql_query($sql);
-	list(, $ya_totpms) = $db->sql_fetchrow($result); // 1
-	list(, $ya_oldpms) = $db->sql_fetchrow($result); // 2
-	list(, $ya_newpms) = $db->sql_fetchrow($result); // 3
-	list(, $ya_outpms) = $db->sql_fetchrow($result); // 4
+	[, $ya_totpms] = $db->sql_fetchrow($result); // 1
+	[, $ya_oldpms] = $db->sql_fetchrow($result); // 2
+	[, $ya_newpms] = $db->sql_fetchrow($result); // 3
+	[, $ya_outpms] = $db->sql_fetchrow($result); // 4
 //	list(, $ya_savpms) = $db->sql_fetchrow($result); // 5
-	list(, $ya_savpms) = $db->sql_fetchrow($result); // 6
-	list(, $ya_outpms) = $db->sql_fetchrow($result); // 7
+	[, $ya_savpms] = $db->sql_fetchrow($result); // 6
+	[, $ya_outpms] = $db->sql_fetchrow($result); // 7
 	// menelaos: function changed to reflect the default phpbb2 style icons (in a future version they will show the users phpnuke forum theme icons)
 	// montego - modified to remove wasteful SQL calls
 	$configresult = $db->sql_query('SELECT config_name, config_value FROM ' . $prefix . '_bbconfig WHERE config_name = \'default_style\'');
-	list($bbstyle) = $db->sql_fetchrow($configresult);
-	$sql = 'SELECT template_name FROM ' . $prefix . '_bbthemes WHERE themes_id=\'' . addslashes($bbstyle) . '\'';
+	[$bbstyle] = $db->sql_fetchrow($configresult);
+	$sql = 'SELECT template_name FROM ' . $prefix . '_bbthemes WHERE themes_id=\'' . addslashes((string) $bbstyle) . '\'';
 	$result = $db->sql_query($sql);
 	$row = $db->sql_fetchrow($result);
+	
+	if(!isset($row['template_name']))
+	$row['template_name'] = '';
+	
 	$bbtheme = $row['template_name'];
 	//escudero: modification to get the theme from nukemods
-	if (@file_exists('./themes/' . $ThemeSel . '/Forums/images/whosonline.gif')) {
+	if (file_exists('./themes/' . $ThemeSel . '/Forums/images/whosonline.gif')) {
 		$imagedir = './themes/' . $ThemeSel . '/Forums/images';
-	} elseif (@file_exists('./modules/Forums/templates/' . $bbtheme . '/images/whosonline.gif')) {
+	} elseif (file_exists('./modules/Forums/templates/' . $bbtheme . '/images/whosonline.gif')) {
 		$imagedir = './modules/Forums/templates/' . $bbtheme . '/images';
 	} else {
 		$imagedir = './modules/Forums/templates/subSilver/images';
@@ -93,10 +97,9 @@ if (is_active('Private_Messages') && defined('LOGGEDIN_SAME_USER')) {
 	echo '<td><a href="modules.php?name=Private_Messages&amp;file=index&amp;folder=outbox"><img src="' . $imagedir . '/msg_inbox.gif" alt="" /></a></td>';
 	echo '<td valign="middle"><a href="modules.php?name=Private_Messages&amp;file=index&amp;folder=outbox"><strong>&nbsp; ' . _YAOUTBOX . ':&nbsp;' . $ya_outpms . '</strong></a></td></tr>';
 	echo '</table>';
-	echo '<form action="modules.php?name=Private_Messages&amp;mode=post&amp;pm_uname=' . htmlspecialchars($username) . '" method="post">';
+	echo '<form action="modules.php?name=Private_Messages&amp;mode=post&amp;pm_uname=' . htmlspecialchars((string) $username) . '" method="post">';
 	echo '<p align="center">' . _USENDPRIVATEMSG . ': <input type="text" name="pm_uname" size="25" />&nbsp;';
 	echo '<input type="submit" name="send" value="' . _SEND . '" /><br /><br />' . $links;
 	echo '</p></form></div>';
 	CloseTable();
 }
-?>
