@@ -234,11 +234,15 @@ $bypassNukeSentinelInvalidIPCheck = FALSE;
 require_once(INCLUDE_PATH.'includes/vendor/autoload.php');
 # Vendor Autoload - only if vendor directory exists with an autoload file! END
 
-use function PHP81_BC\strftime;
-
 require_once(INCLUDE_PATH."config.php");
 require_once(INCLUDE_PATH."db/db.php");
+
+# strftime Fix for PHP 8.1 and higer START
+use function PHP81_BC\strftime;
+# strftime Fix for PHP 8.1 and higer ENDs
+
 require_once(NUKE_CLASSES_DIR.'class.identify.php');
+
 global $agent;
 $identify = new identify();
 $agent = $identify->identify_agent();
