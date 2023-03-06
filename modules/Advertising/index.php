@@ -893,8 +893,8 @@ function sitestats() {
         <td>";
 		
 
-    $result = sql_query("select count from ".$prefix."_counter order by type desc", $dbi);
-    [$total] = sql_fetch_row($result, $dbi);
+    $result = $db->sql_query("select count from ".$prefix."_counter order by type desc");
+    [$total] = $db->sql_fetch_row($result);
 
     echo "<center>"._STATSTEXT."<br />"
     	.""._TOTALVIEWS." <strong>$views_t</strong><br />"
@@ -907,18 +907,18 @@ function sitestats() {
 		echo ""._GOOGLERANK." <strong>".getrank($url)."</strong><br />";
 	}
 
-    $result = sql_query("select year, month, hits from ".$prefix."_stats_month order by hits DESC limit 0,1", $dbi);
-    [$year, $month, $hits] = sql_fetch_row($result, $dbi);
+    $result = $db->sql_query("select year, month, hits from ".$prefix."_stats_month order by hits DESC limit 0,1");
+    [$year, $month, $hits] = $db->sql_fetch_row($result);
     if ($month == 1) {$month = _JANUARY;} elseif ($month == 2) {$month = _FEBRUARY;} elseif ($month == 3) {$month = _MARCH;} elseif ($month == 4) {$month = _APRIL;} elseif ($month == 5) {$month = _MAY;} elseif ($month == 6) {$month = _JUNE;} elseif ($month == 7) {$month = _JULY;} elseif ($month == 8) {$month = _AUGUST;} elseif ($month == 9) {$month = _OCTOBER;} elseif ($month == 10) {$month = _SEPTEMBER;} elseif ($month == 11) {$month = _NOVEMBER;} elseif ($month == 12) {$month = _DECEMBER;}
     echo ""._MOSTMONTH.": $month $year ($hits "._HITS.")<br />";
 
-    $result = sql_query("select year, month, date, hits from ".$prefix."_stats_date order by hits DESC limit 0,1", $dbi);
-    [$year, $month, $date, $hits] = sql_fetch_row($result, $dbi);
+    $result = $db->sql_query("select year, month, date, hits from ".$prefix."_stats_date order by hits DESC limit 0,1");
+    [$year, $month, $date, $hits] = $db->sql_fetch_row($result);
     if ($month == 1) {$month = _JANUARY;} elseif ($month == 2) {$month = _FEBRUARY;} elseif ($month == 3) {$month = _MARCH;} elseif ($month == 4) {$month = _APRIL;} elseif ($month == 5) {$month = _MAY;} elseif ($month == 6) {$month = _JUNE;} elseif ($month == 7) {$month = _JULY;} elseif ($month == 8) {$month = _AUGUST;} elseif ($month == 9) {$month = _OCTOBER;} elseif ($month == 10) {$month = _SEPTEMBER;} elseif ($month == 11) {$month = _NOVEMBER;} elseif ($month == 12) {$month = _DECEMBER;}
     echo ""._MOSTDAY.": $date $month $year ($hits "._HITS.")<br />";
 
-    $result = sql_query("select year, month, date, hour, hits from ".$prefix."_stats_hour order by hits DESC limit 0,1", $dbi);
-    [$year, $month, $date, $hour, $hits] = sql_fetch_row($result, $dbi);
+    $result = $db->sql_query("select year, month, date, hour, hits from ".$prefix."_stats_hour order by hits DESC limit 0,1");
+    [$year, $month, $date, $hour, $hits] = $db->sql_fetch_row($result);
     if ($month == 1) {$month = _JANUARY;} elseif ($month == 2) {$month = _FEBRUARY;} elseif ($month == 3) {$month = _MARCH;} elseif ($month == 4) {$month = _APRIL;} elseif ($month == 5) {$month = _MAY;} elseif ($month == 6) {$month = _JUNE;} elseif ($month == 7) {$month = _JULY;} elseif ($month == 8) {$month = _AUGUST;} elseif ($month == 9) {$month = _OCTOBER;} elseif ($month == 10) {$month = _SEPTEMBER;} elseif ($month == 11) {$month = _NOVEMBER;} elseif ($month == 12) {$month = _DECEMBER;}
     if ($hour < 10) {
 	$hour = "0$hour:00 - 0$hour:59";
