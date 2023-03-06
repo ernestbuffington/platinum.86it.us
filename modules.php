@@ -83,8 +83,8 @@ if(isset($name)) {
 			$pagetitle = '- '._SOCOOL;
 			include_once('header.php');
 			OpenTable();
-			echo '<center><strong>'._SOCOOL.'</strong></center><br />';
-			echo '<center>'._GOBACK.'</center>';
+			echo '<div align="center"><strong>'._SOCOOL.'</strong></div><br />';
+			echo '<div align="center">'._GOBACK.'</div>';
 			CloseTable();
 			include_once('footer.php');
 			die();
@@ -111,8 +111,8 @@ if(isset($name)) {
 					$pagetitle = '- '._RESTRICTEDAREA;
 					include_once('header.php');
 					OpenTable();
-					echo '<center><strong>'._RESTRICTEDAREA.'</strong></center><br />';
-					echo '<center>'._GOBACK.'</center>';
+					echo '<div align="center"><strong>'._RESTRICTEDAREA.'</strong></div><br />';
+					echo '<div align="center">'._GOBACK.'</div>';
 					CloseTable();
 					include_once('footer.php');
 					die();
@@ -121,8 +121,8 @@ if(isset($name)) {
 				$pagetitle = '- '._FILENOTFOUND;
 				include_once('header.php');
 				OpenTable();
-				echo '<center><strong>'._FILENOTFOUND.'</strong></center><br />';
-				echo '<center>'._GOBACK.'</center>';
+				echo '<div align="center"><strong>'._FILENOTFOUND.'</strong></div><br />';
+				echo '<div align="center">'._GOBACK.'</div>';
 				CloseTable();
 				include_once('footer.php');
 				die ();
@@ -132,8 +132,8 @@ if(isset($name)) {
 		$pagetitle = '- '._MODULENOTACTIVE;
 		include_once('header.php');
 		OpenTable();
-		echo '<center>'._MODULENOTACTIVE.'</center><br />';
-		echo '<center>'._GOBACK.'</center>';
+		echo '<div align="center">'._MODULENOTACTIVE.'</div><br />';
+		echo '<div align="center">'._GOBACK.'</div>';
 		CloseTable();
 		include_once('footer.php');
 		die ();
@@ -142,8 +142,8 @@ if(isset($name)) {
 	$pagetitle = '- '._MODULENOTFOUND;
 	include_once('header.php');
 	OpenTable();
-	echo '<center>'._MODULENOTFOUND.'</center><br />';
-	echo '<center>'._GOBACK.'</center>';
+	echo '<div align="center">'._MODULENOTFOUND.'</div><br />';
+	echo '<div align="center">'._GOBACK.'</div>';
 	CloseTable();
 	include_once('footer.php');
 	die ();
