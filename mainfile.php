@@ -994,6 +994,19 @@ function getusrinfo($user) {
     $db->sql_freeresult($result);
     unset($userinfo);
 }
+
+# Adds slashes to string and strips PHP+HTML for SQL insertion and hack prevention
+# $str: the string to modify
+# $nohtml: strip PHP+HTML tags, false=no, true=yes, default=false
+function Fix_Quotes($str, $nohtml=false) 
+{
+    if($nohtml): 
+	  $str = strip_tags($str);
+	endif;
+    
+	return $str;
+}
+
 function FixQuotes ($what = "") {
 	$what = str_replace("'","''",(string) $what);
 	while (stripos_clone($what, "\\\\'")) {
