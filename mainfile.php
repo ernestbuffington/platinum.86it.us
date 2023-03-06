@@ -953,6 +953,7 @@ function ultramode() {
 function cookiedecode($user) {
     global $cookie, $db, $user_prefix;
     static $pass;
+	
     if(!is_array($user)) {
         $user = base64_decode((string) $user);
         $user = addslashes($user);
@@ -961,12 +962,15 @@ function cookiedecode($user) {
         $cookie = $user;
     }
     if (!isset($pass)) {
-       $sql = "SELECT user_password FROM ".$user_prefix."_users WHERE username='$cookie[1]'";
-       $result = $db->sql_query($sql);
-       [$pass] = $db->sql_fetchrow($result);
-       $db->sql_freeresult($result);
+	   $sql = [];
+	   if(isset($cookie[1])):
+         $sql = "SELECT `user_password` FROM ".$user_prefix."_users WHERE username='$cookie[1]'";
+         $result = $db->sql_query($sql);
+         [$pass] = $db->sql_fetchrow($result);
+         $db->sql_freeresult($result);
+	   endif;
     }
-    if ($cookie[2] == $pass && !empty($pass)) { return $cookie; }
+    if (isset($cookie[2]) && $cookie[2] == $pass && !empty($pass)) { return $cookie; }
 }
 function getusrinfo($user) {
     global $user_prefix, $db, $userinfo, $cookie;
