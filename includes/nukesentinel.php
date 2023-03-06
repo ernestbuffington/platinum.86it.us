@@ -269,8 +269,12 @@ if($blocker_row['activate'] > 0) {
 }
 
 // ADMIN protection
+if(!isset($_COOKIE['admin']))
+$_COOKIE['admin'] = '';
+
 $blocker_row = $blocker_array[10];
 if($blocker_row['activate'] > 0) {
+	
 	if(stristr($_SERVER['PHP_SELF'], $admin_file . '.php') AND (isset($op) AND $op != 'login' AND $op != 'adminMain' AND $op != 'gfx') AND !is_admin($_COOKIE['admin'])) {
 		block_ip($blocker_row);
 	}
@@ -731,24 +735,24 @@ function get_remote_addr () {
 	return 'none';
 }
 
-function clear_session(){
-	global $db, $nsnst_const, $prefix;
-	// Clear nuke_session location
-	$x_forwarded = $nsnst_const['forward_ip'];
-	$client_ip = $nsnst_const['client_ip'];
-	$remote_addr = $nsnst_const['remote_addr'];
-	$db->sql_query('DELETE FROM `' . $prefix . '_session` WHERE `host_addr`="' . $x_forwarded . '" OR `host_addr`="' . $client_ip . '" OR `host_addr`="' . $remote_addr . '"');
-	// Clear nuke_bbsessions location
-	$x_f = explode('.', $x_forwarded);
-	$x_forwarded = str_pad(dechex($x_f[0]), 2, '0', STR_PAD_LEFT) . str_pad(dechex($x_f[1]), 2, '0', STR_PAD_LEFT) . str_pad(dechex($x_f[2]), 2, '0', STR_PAD_LEFT)
-				. str_pad(dechex($x_f[3]), 2, '0', STR_PAD_LEFT);
-	$c_p = explode('.', $client_ip);
-	$client_ip = str_pad(dechex($c_p[0]), 2, '0', STR_PAD_LEFT) . str_pad(dechex($c_p[1]), 2, '0', STR_PAD_LEFT) . str_pad(dechex($c_p[2]), 2, '0', STR_PAD_LEFT)
-				. str_pad(dechex($c_p[3]), 2, '0', STR_PAD_LEFT);
-	$r_a = explode('.', $remote_addr);
-	$remote_addr = str_pad(dechex($r_a[0]), 2, '0', STR_PAD_LEFT) . str_pad(dechex($r_a[1]), 2, '0', STR_PAD_LEFT) . str_pad(dechex($r_a[2]), 2, '0', STR_PAD_LEFT)
-				. str_pad(dechex($r_a[3]), 2, '0', STR_PAD_LEFT);
-	$db->sql_query('DELETE FROM `' . $prefix . '_bbsessions` WHERE `session_ip`="' . $x_forwarded . '" OR `session_ip`="' . $client_ip . '" OR `session_ip`="' . $remote_addr . '"');
+function clear_session()
+{
+  global $prefix, $db, $nsnst_const;
+  // Clear location
+  $x_forwarded = $nsnst_const['forward_ip'];
+  $client_ip = $nsnst_const['client_ip'];
+  $remote_addr = $nsnst_const['remote_addr'];
+  $db->sql_query("DELETE FROM `".$prefix."_session` WHERE `host_addr`='$x_forwarded' OR `host_addr`='$client_ip' OR `host_addr`='$remote_addr'");
+  // Clear sessions location
+  if(!isset($x_forwarded)):
+  $x_f = explode(".", (string) $x_forwarded);
+  $x_forwarded = str_pad(dechex((int)$x_f[0]), 2, "0", STR_PAD_LEFT).str_pad(dechex((int)$x_f[1]), 2, "0", STR_PAD_LEFT).str_pad(dechex((int)$x_f[2]), 2, "0", STR_PAD_LEFT).str_pad(dechex((int)$x_f[3]), 2, "0", STR_PAD_LEFT);
+  $c_p = explode(".", (string) $client_ip);
+  $client_ip = str_pad(dechex((int)$c_p[0]), 2, "0", STR_PAD_LEFT).str_pad(dechex((int)$c_p[1]), 2, "0", STR_PAD_LEFT).str_pad(dechex((int)$c_p[2]), 2, "0", STR_PAD_LEFT).str_pad(dechex((int)$c_p[3]), 2, "0", STR_PAD_LEFT);
+  $r_a = explode(".", (string) $remote_addr);
+  $remote_addr = str_pad(dechex($r_a[0]), 2, "0", STR_PAD_LEFT).str_pad(dechex((int)$r_a[1]), 2, "0", STR_PAD_LEFT).str_pad(dechex((int)$r_a[2]), 2, "0", STR_PAD_LEFT).str_pad(dechex((int)$r_a[3]), 2, "0", STR_PAD_LEFT);
+  $db->sql_query("DELETE FROM `".$prefix."_bbsessions` WHERE `session_ip`='$x_forwarded' OR `session_ip`='$client_ip' OR `session_ip`='$remote_addr'");
+  endif;
 }
 
 function is_excluded($rangeip){
@@ -1087,8 +1091,8 @@ if(!function_exists('file_get_contents')) {
 function abget_template($template = '') {
 	global $ab_config, $abmatch, $db, $ip, $nsnst_const, $nuke_config, $prefix;
 	if(empty($template)) { $template = 'abuse_default.tpl'; }
-	$sitename = $nuke_config['sitename'];
-	$adminmail = $nuke_config['adminmail'];
+	$sitename = $nuke_config['sitename'] ?? '';
+	$adminmail = $nuke_config['adminmail'] ?? '';
 	$adminmail = str_replace('@', '(at)', $adminmail);
 	$adminmail = str_replace('.', '(dot)', $adminmail);
 	$adminmail2 = urlencode($nuke_config['adminmail']);
