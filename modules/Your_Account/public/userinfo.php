@@ -41,7 +41,7 @@ $usrinfo = $db->sql_fetchrow($result);
 include_once 'header.php';
 // START - Request fill in birthday - sgtmudd
 	function completeUserInfo($usrinfo) {
-		GLOBAL $db, $user_prefix;
+		global $db, $user_prefix;
 		if (($usrinfo['user_birthday'] == '0') OR ($usrinfo['user_birthday'] == '999999')) {
 			echo '<a href="modules.php?name=Forums&file=profile&mode=editprofile"><u><h1>'. _UPDATEBIRTH .'</h1></u></a><br /><br />';
 		} else {
@@ -239,6 +239,10 @@ if ($num == 1) {
 			$sql3 = 'SELECT jid FROM ' . $prefix . '_journal WHERE aid=\'' . addslashes((string) $username) . '\' AND status=\'yes\' ORDER BY pdate,jid DESC LIMIT 0,1';
 			$result3 = $db->sql_query($sql3);
 			$row3 = $db->sql_fetchrow($result3);
+			
+			if(!isset($row3['jid']))
+			$row3['jid'] = '';
+			
 			$jid = $row3['jid'];
 			if (isset($jid) && $jid != '') {
 				echo '<p>[ <a href="modules.php?name=Journal&amp;file=search&amp;bywhat=aid&amp;forwhat=' . $username . '">' . _READMYJOURNAL . '</a> ]</p>';
