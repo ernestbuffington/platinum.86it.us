@@ -15,6 +15,7 @@ return static function (RectorConfig $rectorConfig): void {
 		  //__DIR__ . '/blocks/block-Shout_Box.php', # PHP 8.2.3
 		  //__DIR__ . '/blocks/block-ForumsCollapsing.php', # PHP 8.2.3
 		  //__DIR__ . '/includes/nukesentinel.php', # PHP 8.2.3
+		  __DIR__ . '/includes/bbcode.php', # PHP 8.2.3
 		  //__DIR__ . '/mainfile.php', # PHP 8.2.3
 		  //__DIR__ . '/modules/Forums/common.php', # PHP 8.2.3
 		  //__DIR__ . '/modules/Forums/index.php', # PHP 8.2.3
@@ -34,6 +35,7 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->rule(InlineConstructorDefaultToPropertyRector::class);
 
         $rectorConfig->sets([
-            LevelSetList::UP_TO_PHP_82
+            LevelSetList::UP_TO_PHP_82,
+			PHPUnitLevelSetList::UP_TO_PHPUNIT_90
         ]);
 };
