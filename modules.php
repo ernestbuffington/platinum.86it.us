@@ -153,4 +153,3 @@ if(!function_exists('stripos_clone')) {
 		return strpos(strtoupper((string) $haystack), strtoupper((string) $needle), $offset);
 	}
 }
-?>
