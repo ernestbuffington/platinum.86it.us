@@ -438,6 +438,9 @@ function define_once($constant, $value)
 
 function is_admin($admin) {
     static $adminSave; 
+	
+	$admin = [];
+	
     if (!$admin) { return 0; }
     if (isset($adminSave)) return $adminSave;
     if (!is_array($admin)) {
@@ -463,6 +466,7 @@ function is_admin($admin) {
 function is_user($user) {
     if (!$user) { return 0; }
     static $userSave; 
+	$user = [];
     if (isset($userSave)) return $userSave;
     if (!is_array($user)) {
         $user = base64_decode((string) $user);
