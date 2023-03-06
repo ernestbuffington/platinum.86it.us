@@ -1,5 +1,4 @@
 <?php
-
 /********************************************************/
 /* NSN Groups Universal                                 */
 /* By: NukeScripts Network (webmaster@nukescripts.net)  */
@@ -34,6 +33,14 @@
 /* along with this program; if not, write to the Free Software                 */
 /* Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA. */
 /*******************************************************************************/
+
+/****************************************
+ Applied rules:
+ * LongArrayToShortArrayRector
+ * AddDefaultValueForUndefinedVariableRector (https://github.com/vimeo/psalm/blob/29b70442b11e3e66113935a2ee22e165a70c74a4/docs/fixing_code.md#possiblyundefinedvariable)
+ * ListToArrayDestructRector (https://wiki.php.net/rfc/short_list_syntax https://www.php.net/manual/en/migration71.new-features.php#migration71.new-features.symmetric-array-destructuring)
+ * NullToStrictStringFuncCallArgRector
+ ****************************************/
 
 define("NSNGROUPS_IS_LOADED", TRUE);
 
@@ -73,7 +80,7 @@ function in_group($gid) {
 
 function in_groups($gids) {
     global $prefix, $db, $user, $admin, $cookie;
-    if(!is_array($gids)) { $gids = explode("-",$gids); }
+    if(!is_array($gids)) { $gids = explode("-",(string) $gids); }
     /*if (is_admin($admin)) {
         return 1;
     } else*/if (is_user($user)) {
@@ -98,7 +105,7 @@ function is_ingroup($guid,$gid) {
 $currdate = time ();
 $result = $db->sql_query("SELECT * FROM ".$prefix."_nsngr_users WHERE (edate<'$currdate' AND edate!='0') AND trial='0'");
 while($row = $db->sql_fetchrow($result)) {
-  list($phpBB) = $db->sql_fetchrow($db->sql_query("SELECT phpBB FROM ".$prefix."_nsngr_groups WHERE gid='".$row['gid']."'"));
+  [$phpBB] = $db->sql_fetchrow($db->sql_query("SELECT phpBB FROM ".$prefix."_nsngr_groups WHERE gid='".$row['gid']."'"));
   $db->sql_query("DELETE FROM ".$prefix."_nsngr_users WHERE (edate<'$currdate' AND edate!='0') AND trial='0'");
   $db->sql_query("OPTIMIZE TABLE ".$prefix."_nsngr_users");
   $db->sql_query("DELETE FROM ".$prefix."_bbuser_group WHERE group_id='$phpBB' and user_id='".$row['uid']."'");
@@ -114,7 +121,7 @@ while($row = $db->sql_fetchrow($result)) {
     $from = "From: $sitename <$adminmail>\r\n";
     $subject = $row3['gname']." "._GR_MEMBERSHIP." "._GR_EXPIRESSOON;
     $body = $row2['username'].":\r\r"._GR_EXPIREEXPLAIN."\r\r$sitename "._TEAM."\r$nukeurl";
-    @mail($row2['user_email'], $subject, $body, $from);
+    @mail((string) $row2['user_email'], $subject, $body, $from);
   }
   $db->sql_query("UPDATE ".$prefix."_nsngr_users SET notice='1' WHERE uid='".$row['uid']."' AND gid='".$row['gid']."'");
 }
@@ -127,14 +134,15 @@ function grsave_config($config_name, $config_value){
 function grget_config($config_name){
     global $prefix, $db;
     $configresult = $db->sql_query("SELECT config_value FROM ".$prefix."_nsngr_config WHERE config_name='$config_name'");
-    list($config_value) = $db->sql_fetchrow($configresult);
+    [$config_value] = $db->sql_fetchrow($configresult);
     return $config_value;
 }
 
 function grget_configs(){
+    $config = [];
     global $prefix, $db;
     $configresult = $db->sql_query("SELECT config_name, config_value FROM ".$prefix."_nsngr_config");
-    while (list($config_name, $config_value) = $db->sql_fetchrow($configresult)) {
+    while ([$config_name, $config_value] = $db->sql_fetchrow($configresult)) {
         $config[$config_name] = $config_value;
     }
     return $config;
