@@ -41,6 +41,7 @@
  * ListToArrayDestructRector (https://wiki.php.net/rfc/short_list_syntax https://www.php.net/manual/en/migration71.new-features.php#migration71.new-features.symmetric-array-destructuring)
  * NullToStrictStringFuncCallArgRector
  ****************************************/
+global $inside_mod, $prefix, $db, $user, $admin, $cookie, $lang;
 
 define("NSNGROUPS_IS_LOADED", TRUE);
 
