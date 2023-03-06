@@ -2,11 +2,6 @@
 
 declare(strict_types=1);
 
-function sys_get_local_temp_dir(){
-$CachePath = $_SERVER['DOCUMENT_ROOT'].'/cache';
-return $CachePath;
-}
-
 use Rector\Config\RectorConfig;
 use Rector\Set\ValueObject\SetList;
 use Rector\Set\ValueObject\LevelSetList;
