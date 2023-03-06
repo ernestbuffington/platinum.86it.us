@@ -9,7 +9,7 @@ use PhpParser\Node\Stmt\ClassConst;
 use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\Node\Stmt\Property;
 use Rector\Core\ValueObject\Visibility;
-use RectorPrefix202302\Webmozart\Assert\Assert;
+use RectorPrefix202303\Webmozart\Assert\Assert;
 /**
  * @see \Rector\Tests\Privatization\NodeManipulator\VisibilityManipulatorTest
  */
@@ -127,6 +127,23 @@ final class VisibilityManipulator
     public function removeReadonly($node) : void
     {
         $this->removeVisibilityFlag($node, Visibility::READONLY);
+    }
+    /**
+     * @param \PhpParser\Node\Stmt\ClassConst|\PhpParser\Node\Stmt\ClassMethod $node
+     * @return \PhpParser\Node\Stmt\ClassConst|\PhpParser\Node\Stmt\ClassMethod|null
+     */
+    public function publicize($node)
+    {
+        // already non-public
+        if (!$node->isPublic()) {
+            return null;
+        }
+        // explicitly public
+        if ($this->hasVisibility($node, Visibility::PUBLIC)) {
+            return null;
+        }
+        $this->makePublic($node);
+        return $node;
     }
     /**
      * This way "abstract", "static", "final" are kept

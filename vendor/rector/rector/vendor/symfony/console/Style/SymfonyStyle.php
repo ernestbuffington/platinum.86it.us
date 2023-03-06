@@ -8,26 +8,27 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace RectorPrefix202302\Symfony\Component\Console\Style;
+namespace RectorPrefix202303\Symfony\Component\Console\Style;
 
-use RectorPrefix202302\Symfony\Component\Console\Exception\InvalidArgumentException;
-use RectorPrefix202302\Symfony\Component\Console\Exception\RuntimeException;
-use RectorPrefix202302\Symfony\Component\Console\Formatter\OutputFormatter;
-use RectorPrefix202302\Symfony\Component\Console\Helper\Helper;
-use RectorPrefix202302\Symfony\Component\Console\Helper\OutputWrapper;
-use RectorPrefix202302\Symfony\Component\Console\Helper\ProgressBar;
-use RectorPrefix202302\Symfony\Component\Console\Helper\SymfonyQuestionHelper;
-use RectorPrefix202302\Symfony\Component\Console\Helper\Table;
-use RectorPrefix202302\Symfony\Component\Console\Helper\TableCell;
-use RectorPrefix202302\Symfony\Component\Console\Helper\TableSeparator;
-use RectorPrefix202302\Symfony\Component\Console\Input\InputInterface;
-use RectorPrefix202302\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use RectorPrefix202302\Symfony\Component\Console\Output\OutputInterface;
-use RectorPrefix202302\Symfony\Component\Console\Output\TrimmedBufferOutput;
-use RectorPrefix202302\Symfony\Component\Console\Question\ChoiceQuestion;
-use RectorPrefix202302\Symfony\Component\Console\Question\ConfirmationQuestion;
-use RectorPrefix202302\Symfony\Component\Console\Question\Question;
-use RectorPrefix202302\Symfony\Component\Console\Terminal;
+use RectorPrefix202303\Symfony\Component\Console\Exception\InvalidArgumentException;
+use RectorPrefix202303\Symfony\Component\Console\Exception\RuntimeException;
+use RectorPrefix202303\Symfony\Component\Console\Formatter\OutputFormatter;
+use RectorPrefix202303\Symfony\Component\Console\Helper\Helper;
+use RectorPrefix202303\Symfony\Component\Console\Helper\OutputWrapper;
+use RectorPrefix202303\Symfony\Component\Console\Helper\ProgressBar;
+use RectorPrefix202303\Symfony\Component\Console\Helper\SymfonyQuestionHelper;
+use RectorPrefix202303\Symfony\Component\Console\Helper\Table;
+use RectorPrefix202303\Symfony\Component\Console\Helper\TableCell;
+use RectorPrefix202303\Symfony\Component\Console\Helper\TableSeparator;
+use RectorPrefix202303\Symfony\Component\Console\Input\InputInterface;
+use RectorPrefix202303\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use RectorPrefix202303\Symfony\Component\Console\Output\ConsoleSectionOutput;
+use RectorPrefix202303\Symfony\Component\Console\Output\OutputInterface;
+use RectorPrefix202303\Symfony\Component\Console\Output\TrimmedBufferOutput;
+use RectorPrefix202303\Symfony\Component\Console\Question\ChoiceQuestion;
+use RectorPrefix202303\Symfony\Component\Console\Question\ConfirmationQuestion;
+use RectorPrefix202303\Symfony\Component\Console\Question\Question;
+use RectorPrefix202303\Symfony\Component\Console\Terminal;
 /**
  * Output decorator helpers for the Symfony Style Guide.
  *
@@ -291,6 +292,11 @@ class SymfonyStyle extends OutputStyle
         $this->questionHelper = $this->questionHelper ?? new SymfonyQuestionHelper();
         $answer = $this->questionHelper->ask($this->input, $this, $question);
         if ($this->input->isInteractive()) {
+            if ($this->output instanceof ConsoleSectionOutput) {
+                // add the new line of the `return` to submit the input to ConsoleSectionOutput, because ConsoleSectionOutput is holding all it's lines.
+                // this is relevant when a `ConsoleSectionOutput::clear` is called.
+                $this->output->addNewLineOfInputSubmit();
+            }
             $this->newLine();
             $this->bufferedOutput->write("\n");
         }

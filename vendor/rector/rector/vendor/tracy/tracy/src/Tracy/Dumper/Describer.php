@@ -5,10 +5,10 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace RectorPrefix202302\Tracy\Dumper;
+namespace RectorPrefix202303\Tracy\Dumper;
 
-use RectorPrefix202302\Tracy;
-use RectorPrefix202302\Tracy\Helpers;
+use RectorPrefix202303\Tracy;
+use RectorPrefix202303\Tracy\Helpers;
 /**
  * Converts PHP values to internal representation.
  * @internal
@@ -217,11 +217,14 @@ final class Describer
     }
     private function isSensitive(string $key, $val, ?string $class = null) : bool
     {
-        return $this->scrubber !== null && ($this->scrubber)($key, $val, $class) || isset($this->keysToHide[\strtolower($key)]) || isset($this->keysToHide[\strtolower($class . '::$' . $key)]);
+        return $val instanceof \SensitiveParameterValue || $this->scrubber !== null && ($this->scrubber)($key, $val, $class) || isset($this->keysToHide[\strtolower($key)]) || isset($this->keysToHide[\strtolower($class . '::$' . $key)]);
     }
-    private static function hideValue($var) : string
+    private static function hideValue($val) : string
     {
-        return self::HiddenValue . ' (' . (\is_object($var) ? Helpers::getClass($var) : \gettype($var)) . ')';
+        if ($val instanceof \SensitiveParameterValue) {
+            $val = $val->getValue();
+        }
+        return self::HiddenValue . ' (' . (\is_object($val) ? Helpers::getClass($val) : \gettype($val)) . ')';
     }
     public function getReferenceId($arr, $key) : ?int
     {

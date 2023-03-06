@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace RectorPrefix202302\Symfony\Component\Console\Output;
+namespace RectorPrefix202303\Symfony\Component\Console\Output;
 
-use RectorPrefix202302\Symfony\Component\Console\Formatter\OutputFormatterInterface;
-use RectorPrefix202302\Symfony\Component\Console\Helper\Helper;
-use RectorPrefix202302\Symfony\Component\Console\Terminal;
+use RectorPrefix202303\Symfony\Component\Console\Formatter\OutputFormatterInterface;
+use RectorPrefix202303\Symfony\Component\Console\Helper\Helper;
+use RectorPrefix202303\Symfony\Component\Console\Terminal;
 /**
  * @author Pierre du Plessis <pdples@gmail.com>
  * @author Gabriel Ostrolucký <gabriel.ostrolucky@gmail.com>
@@ -116,7 +116,8 @@ class ConsoleSectionOutput extends StreamOutput
             // re-add the line break (that has been removed in the above `explode()` for
             // - every line that is not the last line
             // - if $newline is required, also add it to the last line
-            if ($i < $count || $newline) {
+            // - if it's not new line, but input ending with `\PHP_EOL`
+            if ($i < $count || $newline || \substr_compare($input, \PHP_EOL, -\strlen(\PHP_EOL)) === 0) {
                 $lineContent .= \PHP_EOL;
             }
             // skip line if there is no text (or newline for that matter)
@@ -140,6 +141,14 @@ class ConsoleSectionOutput extends StreamOutput
         }
         $this->lines += $linesAdded;
         return $linesAdded;
+    }
+    /**
+     * @internal
+     */
+    public function addNewLineOfInputSubmit()
+    {
+        $this->content[] = \PHP_EOL;
+        ++$this->lines;
     }
     protected function doWrite(string $message, bool $newline)
     {

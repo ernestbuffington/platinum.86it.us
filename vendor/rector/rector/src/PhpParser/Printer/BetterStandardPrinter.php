@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Core\PhpParser\Printer;
 
-use RectorPrefix202302\Nette\Utils\Strings;
+use RectorPrefix202303\Nette\Utils\Strings;
 use PhpParser\Comment;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
@@ -475,6 +475,7 @@ final class BetterStandardPrinter extends Standard implements NodePrinterInterfa
      */
     private function resolveNewStmts(array $stmts) : array
     {
+        $stmts = \array_values($stmts);
         if (\count($stmts) === 1 && $stmts[0] instanceof FileWithoutNamespace) {
             return $this->resolveNewStmts($stmts[0]->stmts);
         }

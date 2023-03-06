@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Testing\Fixture;
 
-use RectorPrefix202302\Nette\Utils\FileSystem;
+use RectorPrefix202303\Nette\Utils\FileSystem;
 /**
  * @api used in tests
  */
@@ -16,7 +16,7 @@ final class FixtureTempFileDumper
     public static function dump(string $fileContents, string $suffix = 'php') : string
     {
         // the "php" suffix is important, because that will hook into \Rector\Core\Application\FileProcessor\PhpFileProcessor
-        $temporaryFileName = \sys_get_temp_dir() . self::TEMP_FIXTURE_DIRECTORY . '/' . \md5($fileContents) . '.' . $suffix;
+        $temporaryFileName = \sys_get_local_temp_dir() . self::TEMP_FIXTURE_DIRECTORY . '/' . \md5($fileContents) . '.' . $suffix;
         FileSystem::write($temporaryFileName, $fileContents);
         return $temporaryFileName;
     }

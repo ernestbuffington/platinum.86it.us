@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace RectorPrefix202302\Symfony\Contracts\Translation;
+namespace RectorPrefix202303\Symfony\Contracts\Translation;
 
-use RectorPrefix202302\Symfony\Component\Translation\Exception\InvalidArgumentException;
+use RectorPrefix202303\Symfony\Component\Translation\Exception\InvalidArgumentException;
 /**
  * A trait to help implement TranslatorInterface and LocaleAwareInterface.
  *
@@ -22,6 +22,9 @@ trait TranslatorTrait
      * @var string|null
      */
     private $locale;
+    /**
+     * @return void
+     */
     public function setLocale(string $locale)
     {
         $this->locale = $locale;

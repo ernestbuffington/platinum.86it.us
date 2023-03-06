@@ -234,6 +234,11 @@ $bypassNukeSentinelInvalidIPCheck = FALSE;
 require_once(INCLUDE_PATH.'includes/vendor/autoload.php');
 # Vendor Autoload - only if vendor directory exists with an autoload file! END
 
+# Vendor Autoload - only if vendor directory exists with an autoload file! START
+require_once(INCLUDE_PATH.'vendor/autoload.php');
+# Vendor Autoload - only if vendor directory exists with an autoload file! END
+
+
 require_once(INCLUDE_PATH."config.php");
 require_once(INCLUDE_PATH."db/db.php");
 

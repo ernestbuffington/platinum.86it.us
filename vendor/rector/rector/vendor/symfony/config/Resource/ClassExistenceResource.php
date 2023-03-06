@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace RectorPrefix202302\Symfony\Component\Config\Resource;
+namespace RectorPrefix202303\Symfony\Component\Config\Resource;
 
 /**
  * ClassExistenceResource represents a class existence.
@@ -44,7 +44,7 @@ class ClassExistenceResource implements SelfCheckingResourceInterface
     private static $existsCache = [];
     /**
      * @param string    $resource The fully-qualified class name
-     * @param bool|null $exists   Boolean when the existency check has already been done
+     * @param bool|null $exists   Boolean when the existence check has already been done
      */
     public function __construct(string $resource, bool $exists = null)
     {

@@ -9,10 +9,10 @@
  * the LICENSE file that was distributed with this source code.
  */
 declare (strict_types=1);
-namespace RectorPrefix202302\Composer\XdebugHandler;
+namespace RectorPrefix202303\Composer\XdebugHandler;
 
-use RectorPrefix202302\Composer\Pcre\Preg;
-use RectorPrefix202302\Psr\Log\LoggerInterface;
+use RectorPrefix202303\Composer\Pcre\Preg;
+use RectorPrefix202303\Psr\Log\LoggerInterface;
 /**
  * @author John Stevenson <john-stevenson@blueyonder.co.uk>
  *
@@ -271,7 +271,7 @@ class XdebugHandler
         $error = null;
         $iniFiles = self::getAllIniFiles();
         $scannedInis = \count($iniFiles) > 1;
-        $tmpDir = \sys_get_temp_dir();
+        $tmpDir = \sys_get_local_temp_dir();
         if (!$this->cli) {
             $error = 'Unsupported SAPI: ' . \PHP_SAPI;
         } elseif (!$this->checkConfiguration($info)) {

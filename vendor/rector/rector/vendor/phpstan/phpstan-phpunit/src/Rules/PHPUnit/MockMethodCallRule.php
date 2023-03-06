@@ -7,9 +7,9 @@ use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
-use RectorPrefix202302\PHPUnit\Framework\MockObject\Builder\InvocationMocker;
-use RectorPrefix202302\PHPUnit\Framework\MockObject\MockObject;
-use RectorPrefix202302\PHPUnit\Framework\MockObject\Stub;
+use RectorPrefix202303\PHPUnit\Framework\MockObject\Builder\InvocationMocker;
+use RectorPrefix202303\PHPUnit\Framework\MockObject\MockObject;
+use RectorPrefix202303\PHPUnit\Framework\MockObject\Stub;
 use function array_filter;
 use function count;
 use function implode;
@@ -56,7 +56,11 @@ class MockMethodCallRule implements Rule
             if ($mockedClassObject->hasMethod($method)->yes()) {
                 continue;
             }
-            $errors[] = sprintf('Trying to mock an undefined method %s() on class %s.', $method, implode('|', $mockedClassObject->getObjectClassNames()));
+            $classNames = $mockedClassObject->getObjectClassNames();
+            if (count($classNames) === 0) {
+                continue;
+            }
+            $errors[] = sprintf('Trying to mock an undefined method %s() on class %s.', $method, implode('|', $classNames));
         }
         return $errors;
     }

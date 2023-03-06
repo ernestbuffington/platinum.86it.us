@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace RectorPrefix202302\Symfony\Component\Console\Command;
+namespace RectorPrefix202303\Symfony\Component\Console\Command;
 
-use RectorPrefix202302\Symfony\Component\Console\Attribute\AsCommand;
-use RectorPrefix202302\Symfony\Component\Console\Input\InputArgument;
-use RectorPrefix202302\Symfony\Component\Console\Input\InputInterface;
-use RectorPrefix202302\Symfony\Component\Console\Input\InputOption;
-use RectorPrefix202302\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use RectorPrefix202302\Symfony\Component\Console\Output\OutputInterface;
-use RectorPrefix202302\Symfony\Component\Process\Process;
+use RectorPrefix202303\Symfony\Component\Console\Attribute\AsCommand;
+use RectorPrefix202303\Symfony\Component\Console\Input\InputArgument;
+use RectorPrefix202303\Symfony\Component\Console\Input\InputInterface;
+use RectorPrefix202303\Symfony\Component\Console\Input\InputOption;
+use RectorPrefix202303\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use RectorPrefix202303\Symfony\Component\Console\Output\OutputInterface;
+use RectorPrefix202303\Symfony\Component\Process\Process;
 /**
  * Dumps the completion script for the current shell.
  *
@@ -113,7 +113,7 @@ EOH
     }
     private function tailDebugLog(string $commandName, OutputInterface $output) : void
     {
-        $debugFile = \sys_get_temp_dir() . '/sf_' . $commandName . '.log';
+        $debugFile = \sys_get_local_temp_dir() . '/sf_' . $commandName . '.log';
         if (!\file_exists($debugFile)) {
             \touch($debugFile);
         }
