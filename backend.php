@@ -362,4 +362,4 @@ function entity_to_decimal_value($string){
     ' ',
     strtr($string,$entity_to_decimal) );
 }
-?>
+
