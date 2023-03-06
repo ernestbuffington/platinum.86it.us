@@ -153,7 +153,6 @@ if(isset($name))
 				$modpath = '';
 			}
 			$modpath .= 'modules/'.$name.'/'.$file.'.php';
-			
 			if(file_exists($modpath)) 
 			{
 				if($view == 0) 
