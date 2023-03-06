@@ -30,6 +30,9 @@
 /*******************************************************************************/
 define('ADMIN_FILE', true);
 require_once("mainfile.php");
+
+use function PHP81_BC\strftime;
+
 if(isset($aid)) {
   if($aid AND (!isset($admin) OR empty($admin)) AND $op != 'login') {
     unset($aid);
