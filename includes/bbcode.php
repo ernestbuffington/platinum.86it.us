@@ -1106,4 +1106,3 @@ function addWrap($curChar,$nextChar,$maxChars,&$finalText,&$tempText,&$curCount,
 /*****************************************************/
 /* Forum - Force Word Wrapping v.1.0.12          END */
 /*****************************************************/
-?>
