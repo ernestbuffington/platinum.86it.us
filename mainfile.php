@@ -230,6 +230,14 @@ if(defined('FORUM_ADMIN')) {
 $bypassInstallationFolderCheck = FALSE;
 $bypassNukeSentinelInvalidIPCheck = FALSE;
 
+# Vendor Autoload - only if vendor directory exists with an autoload file! START
+if(file_exists(NUKE_VENDOR_DIR.'autoload.php')):
+  require_once(NUKE_VENDOR_DIR.'autoload.php');
+endif;  
+# Vendor Autoload - only if vendor directory exists with an autoload file! END
+
+use function PHP81_BC\strftime;
+
 require_once(INCLUDE_PATH."config.php");
 require_once(INCLUDE_PATH."db/db.php");
 require_once(NUKE_CLASSES_DIR.'class.identify.php');
