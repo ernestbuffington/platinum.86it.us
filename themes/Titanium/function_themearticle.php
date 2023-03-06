@@ -112,7 +112,8 @@ table.themearticleblock {
 }
 </style> 
 <?
-
+   global $textcolor1;
+   
    echo"<table class=\"otthree\"border=\"0\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\">"
      . "<tr>"
      . "<td background=\"themes/$theme_name/tables/OpenTable/topmiddle.png\" align=\"left\" width=\"39\" colspan=\"2\">"
