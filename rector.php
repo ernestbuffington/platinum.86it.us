@@ -20,7 +20,8 @@ return static function (RectorConfig $rectorConfig): void {
 		  //__DIR__ . '/modules/Forums/index.php',
 		  //__DIR__ . '/includes/nsngr_func.php',
 		  //__DIR__ . '/modules/Your_Account/includes/functions.php',
-		    __DIR__ . '/includes/classes/class.paginator_html.php',
+		  //__DIR__ . '/includes/classes/class.paginator_html.php',
+		  __DIR__ . '/modules/News/index.php',
     ]);
 
     // register a single rule
