@@ -53,6 +53,9 @@ if(defined('FORUM_ADMIN')) {
 $ab_config = abget_configs();
 
 // Load required lang file
+if(!isset($nuke_config['language']))
+$nuke_config['language'] = 'english';
+
 if(!isset($lang)) { $lang = $nuke_config['language']; }
 if(!stristr($lang, '.') AND file_exists(NSINCLUDE_PATH . 'language/nukesentinel/lang-' . $lang . '.php')) {
 	require_once NSINCLUDE_PATH . 'language/nukesentinel/lang-' . $lang . '.php';
