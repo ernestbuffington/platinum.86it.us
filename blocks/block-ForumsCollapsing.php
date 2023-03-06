@@ -119,6 +119,10 @@
 ########################################################################
 
 global $admin, $bgcolor1, $bgcolor2, $db, $prefix, $sitename, $textcolor1, $textcolor2, $user, $user_prefix, $userinfo, $currentlang, $language;
+
+if(!isset($userinfo['user_level']))
+$userinfo['user_level'] = 1;
+
 $l = $userinfo['user_level'];
 $hideLinksFromGuests = TRUE;
 $hideTheseForums = '-1';  // use a comma delimited list of forum id's to hide like '1,5,8'
