@@ -1,62 +1,42 @@
 <?php
-
-
-
 /************************************************************************/
-
 /*    Pc-Nuke! Systems -  Advanced Content Management System            */
-
 /************************************************************************/
-
 /*    PCN AdsPlus v2.0 -- by Pc-Nuke! --  www.pcnuke.com                */
-
 /************************************************************************/
-
 /*    Created by PcNuke.com -- Released on: 06.10.20. y.m.d             */
-
 /*    http://www.max.pcnuke.com  --  http://www.pcnuke.com              */
-
 /*    All Rights Reserved 2006 -- by Pc-Nuke!                           */
-
 /*    No Modding, Porting, Changing, or Distribution of this program    */
-
 /*    is allowed without written permission from www.pcnuke.com         */
-
 /************************************************************************/
-
 /*         The Power of the Nuke - Without the Radiation!               */
-
 /************************************************************************/
 
 /************************************************************************/
-
 /* - Copyright Notice (read and understand the GNU_GPL)                 */
-
 /* - THIS PACKAGE IS RELEASED AS GPL/GNU SCRIPTING.                     */
-
 /* - http://www.max.pcnuke.com/modules.php?name=GNU_GPL                 */
-
 /************************************************************************/
-
 /*         Always Backup your file system and database before           */
-
 /*      doing any type of installation or changes such as these.        */
-
 /*      Failure to do so may end up costing you much repair time        */
-
 /************************************************************************/
 
 /**********************************/
-
 /*  Module Configuration          */
-
 /* (right side on) v3.1           */
-
-/* Remove the following 2 lines    */
-
+/* Remove the following 2 lines   */
 /* will remove the right side     */
-
 /**********************************/
+
+/*******************
+ Applied rules:
+ * AddDefaultValueForUndefinedVariableRector (https://github.com/vimeo/psalm/blob/29b70442b11e3e66113935a2ee22e165a70c74a4/docs/fixing_code.md#possiblyundefinedvariable)
+ * BinaryOpBetweenNumberAndStringRector (https://3v4l.org/XPEEl)
+ * SensitiveConstantNameRector (https://wiki.php.net/rfc/case_insensitive_constant_deprecation)
+ * NullToStrictStringFuncCallArgRector
+ *******************/
 
 define('INDEX_FILE', true);
 
@@ -72,7 +52,7 @@ if (!defined('ADMIN_FILE')) {
 
 global $prefix, $db, $nukeurl, $admin_file;
 
-$aid = substr($aid, 0,25);
+$aid = substr((string) $aid, 0,25);
 
 $row = $db->sql_fetchrow($db->sql_query("SELECT radminsuper FROM " . $prefix . "_authors WHERE aid='$aid'"));
 
@@ -234,7 +214,7 @@ if ($row['radminsuper'] == 1) {
 
 			$cid = intval($row2['cid']);
 
-			$name = trim($row2['name']);
+			$name = trim((string) $row2['name']);
 
 			$ad_class = $row['ad_class'];
 
@@ -258,7 +238,7 @@ if ($row['radminsuper'] == 1) {
 
 			}
 
-			$ad_class = ucFirst($ad_class);
+			$ad_class = ucFirst((string) $ad_class);
 
 			if($impmade==0) {
 
@@ -384,7 +364,7 @@ if ($row['radminsuper'] == 1) {
 
 			$cid = intval($row2['cid']);
 
-			$name = trim($row2['name']);
+			$name = trim((string) $row2['name']);
 
 			$ad_class = $row['ad_class'];
 
@@ -408,7 +388,7 @@ if ($row['radminsuper'] == 1) {
 
 			}
 
-			$ad_class = ucFirst($ad_class);
+			$ad_class = ucFirst((string) $ad_class);
 
 			if($impmade==0) {
 
@@ -762,7 +742,8 @@ include_once("footer.php");
 
 	function BannersAdd($name, $cid, $adname, $enddate, $imptotal, $imageurl, $clickurl, $alttext, $position, $active, $ad_class, $ad_code, $ad_width, $ad_height) {
 
-		global $prefix, $db, $admin_file, $ad_admin_menu;
+		$a = null;
+  global $prefix, $db, $admin_file, $ad_admin_menu;
 
 		$alttext = filter($alttext, "nohtml", 1);
 
@@ -844,7 +825,8 @@ include_once("footer.php");
 
 	function BannerDelete($bid, $ok=0) {
 
-		global $prefix, $db, $admin_file, $bgcolor1, $bgcolor2, $ad_admin_menu;
+		$alttext = null;
+  global $prefix, $db, $admin_file, $bgcolor1, $bgcolor2, $ad_admin_menu;
 
 		$bid = intval($bid);
 
@@ -1006,7 +988,9 @@ include_once("footer.php");
 
 	function BannerEdit($bid) {
 
-		global $prefix, $db, $admin_file, $ad_admin_menu;
+		$did = null;
+  $unl = null;
+  global $prefix, $db, $admin_file, $ad_admin_menu;
 
 		define('NO_EDITOR', true);
 
@@ -1044,7 +1028,7 @@ include_once("footer.php");
 
 		$date = $row['date'];
 
-		$date = explode(" ", $date);
+		$date = explode(" ", (string) $date);
 
 		$date = "$date[0] @ $date[1]";
 
@@ -1066,7 +1050,7 @@ include_once("footer.php");
 
 		if ($ad_class == "code") {
 
-			$ad_code = stripslashes(FixQuotes($ad_code));
+			$ad_code = stripslashes((string) FixQuotes($ad_code));
 
 			echo "<table border=\"0\" align=\"center\"><tr><td>$ad_code</td></tr></table><br /><br />";
 
@@ -1180,7 +1164,7 @@ include_once("footer.php");
 
 		echo "<tr><td>"._ADDIMPRESSIONS.":</td><td><input type=\"text\" name=\"impadded\" size=\"12\" maxlength=\"11\" value=\"0\"> <i>$unl</i></td></tr>";
 
-		echo "<tr><td>"._ADCLASS.":</td><td><strong>".ucFirst($ad_class)."</strong></td></tr>";
+		echo "<tr><td>"._ADCLASS.":</td><td><strong>".ucFirst((string) $ad_class)."</strong></td></tr>";
 
 		if ($ad_class == "code") {
 
@@ -1280,11 +1264,12 @@ include_once("footer.php");
 
 	function BannerChange($bid, $cid, $adname, $enddate, $imptotal, $impadded, $imageurl, $clickurl, $alttext, $position, $active, $ad_code, $ad_width, $ad_height, $impmade) {
 
-		global $prefix, $db, $admin_file;
+		$imp = null;
+  global $prefix, $db, $admin_file;
 
 		if (!is_numeric($impadded)) {
 
-			$impadded = strtoupper($impadded);
+			$impadded = strtoupper((string) $impadded);
 
 			if ($impadded == "X") {
 
@@ -1676,7 +1661,7 @@ include_once("footer.php");
 
 		$apid = intval($apid);
 
-		if ($apid == "" AND $apid == 0) {
+		if ($apid == 0 AND $apid == 0) {
 
 			Header("Location: ".$admin_file.".php?op=ad_positions");	
 
@@ -1718,9 +1703,10 @@ include_once("footer.php");
 
 
 
-	function position_delete($apid, $ok=0, $active=0, $new_pos=x) {
+	function position_delete($apid, $ok=0, $active=0, $new_pos=\X) {
 
-		global $prefix, $db, $admin_file, $ad_admin_menu;
+		$new_post = null;
+  global $prefix, $db, $admin_file, $ad_admin_menu;
 
 		$numrows = $db->sql_numrows($db->sql_query("SELECT * FROM ".$prefix."_banner_positions"));
 
@@ -1992,7 +1978,8 @@ include_once("footer.php");
 
 	function ad_plans() {
 
-		global $prefix, $db, $admin_file, $ad_admin_menu, $bgcolor1, $bgcolor2;
+		$type = null;
+  global $prefix, $db, $admin_file, $ad_admin_menu, $bgcolor1, $bgcolor2;
 
 		define('NO_EDITOR', true);
 
@@ -2176,7 +2163,14 @@ include_once("footer.php");
 
 	function ad_plans_edit($pid) {
 
-		global $prefix, $db, $banners, $admin_file, $ad_admin_menu;
+		$sel0 = null;
+  $sel1 = null;
+  $sel2 = null;
+  $sel3 = null;
+  $sel4 = null;
+  $check0 = null;
+  $check1 = null;
+  global $prefix, $db, $banners, $admin_file, $ad_admin_menu;
 
 		define('NO_EDITOR', true);
 
