@@ -1,5 +1,4 @@
 <?php
-
 /**************************************************************************/
 /* PHP-NUKE: Advanced Content Management System                           */
 /* ============================================                           */
@@ -45,6 +44,21 @@
 /* Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA. */
 /*******************************************************************************/
 
+/*****************************************************/
+/* Paginator                                         */
+/*****************************************************/
+define_once("_PAGINATOR_PAGE","Page");
+define_once("_PAGINATOR_TOTALITEMS","Total");
+define_once("_PAGINATOR_GO","Go");
+define_once("_PAGINATOR_GOTOPAGE","Page"); 
+define_once("_PAGINATOR_GOTONEXT","Next");
+define_once("_PAGINATOR_GOTOPREV","Prev");
+define_once("_PAGINATOR_GOTOFIRST","First");
+define_once("_PAGINATOR_GOTOLAST","Last");
+define_once("_OF","Of");
+/*****************************************************/
+/* Classifieds                                       */
+/*****************************************************/
 define_once("_CLASS1","Classifieds");
 define_once("_CLASSIFIEDS","Waiting Ads");
 /*****************************************************/
