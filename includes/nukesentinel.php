@@ -45,6 +45,11 @@ if(defined('FORUM_ADMIN')) {
 
 global $ab_config, $admin_file, $nsnst_const, $nuke_config, $remote;
 
+if(!isset($nuke_config))
+$nuke_config = [];
+if(!isset($nsnst_const))
+$nsnst_const = [];
+
 // Load required configs
 $ab_config = abget_configs();
 
@@ -87,14 +92,15 @@ $nsnst_const['referer'] = get_referer();
 $nsnst_const['ban_time'] = time();
 $nsnst_const['ban_ip'] = '';
 if (isset($_COOKIE['user'])) $uinfo = getusrinfo($_COOKIE['user']); else $uinfo = getusrinfo('');
-if($uinfo['user_id'] > 1 && !empty($uinfo['username'])) {
+if(isset($uinfo['user_id']) && $uinfo['user_id'] > 1 && !empty($uinfo['username'])) {
 	$nsnst_const['ban_user_id'] = $uinfo['user_id'];
 	$nsnst_const['ban_username'] = $uinfo['username'];
 } else {
+	if(!isset($nuke_config['anonymous']))
+	$nuke_config['anonymous'] = 'Anonymous';
 	$nsnst_const['ban_user_id'] = 1;
 	$nsnst_const['ban_username'] = $nuke_config['anonymous'];
 }
-
 // Load Blocker Arrays
 $result = $db->sql_query('SELECT * FROM `' . $prefix . '_nsnst_blockers` ORDER BY `blocker`');
 $num_rows = $db->sql_numrows($result);
@@ -651,6 +657,9 @@ function get_user_agent() {
 
 function get_referer() {
 	global $nuke_config;
+	
+	if(!isset($nuke_config['nukeurl']))
+	$nuke_config['nukeurl'] = 'https://www.'.$_SERVER["SERVER_NAME"];
 	if(get_env('HTTP_REFERER')) {
 	 if(stristr(get_env('HTTP_REFERER'), $nuke_config['nukeurl'])) {
 		return 'on site';
