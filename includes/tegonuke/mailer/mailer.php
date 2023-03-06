@@ -59,7 +59,10 @@ $tnml_asCfg = array();
 $result = $db->sql_query('SELECT * FROM ' . $prefix . '_mail_config');
 $row = $db->sql_fetchrow($result);
 $tnml_asCfg['nm_is_active'] = intval($row['active']);
-if ($tnml_asCfg['nm_is_active'] == 1) define('TNML_IS_ACTIVE', true); else define('TNML_IS_ACTIVE', false);
+
+if ($tnml_asCfg['nm_is_active'] == 1) define('TNML_IS_ACTIVE', true); 
+else 
+define('TNML_IS_ACTIVE', false);
 
 $tnml_asCfg['mailer'] = intval($row['mailer']);         // Which transport is desired - 1 = mail(), 2 = SMTP, 3 = sendmail
 $tnml_asCfg['smtp_host'] = $row['smtp_host'];           // SMTP host address
