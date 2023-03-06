@@ -21,7 +21,7 @@
 /*      doing any type of installation or changes such as these.        */
 /*      Failure to do so may end up costing you much repair time        */
 /************************************************************************/
-
+global $textcolor1;
 //--- PCN ADvertising extra define_onces  ---//
 // You may want to make TEXT adjustments in this area to things like the:
 // TOP RIGHT text, Payment Gateways, Image sizes, or maybe Advertising Quote, etc....
