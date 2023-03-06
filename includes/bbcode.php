@@ -999,7 +999,9 @@ function word_wrap_pass($message)
 	$longestAmp = 9;
 	$inTag = false;
 	$ampText = '';
-	for ($num=0;$num<strlen($message);$num++)
+	//for ($num=0;$num<strlen($message);$num++)
+	for ($num=0;$num<strlen((string) $message);$num++)
+
 	{
 		$curChar = $message[$num];
 		if ($curChar == '<')
