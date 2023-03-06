@@ -67,7 +67,7 @@ if (!isset($pagenum)) $pagenum = 0;
 
 switch ($op) {
 	default:
-		theindex(intval(isset($new_topic))); // Converting numerics to integers when passing precludes having to do it in every routine that calls it
+		theindex(intval($new_topic)); // Converting numerics to integers when passing precludes having to do it in every routine that calls it
 		break;
 	case 'rate_article':
 		rate_article(intval($sid) , intval($score)); // Converting numerics to integers when passing precludes having to do it in every routine that calls it
@@ -114,18 +114,30 @@ $sql_news_config = "SELECT newsrows, bookmark, showtags FROM ".$prefix."_news_co
 		$storynum = $storyhome;
 	}
 	$storynum = intval($storynum);
-	if ($new_topic == 0) {
+	
+	if ($new_topic == 0) 
+	{
 		$qdb = 'WHERE (ihome=0 OR s.catid=0)';
+	
 		$home_msg = '';
-	} else {
-		$qdb = 'WHERE topic=' . $new_topic;
+	} 
+	else 
+	{
+		$qdb = 'WHERE topic='.$new_topic;
+	
 		$result_a = $db->sql_query('SELECT topictext FROM ' . $prefix . '_topics WHERE topicid=\'' . $new_topic . '\'');
+	
 		$row_a = $db->sql_fetchrow($result_a);
+	
 		$numrows_a = $db->sql_numrows($result_a);
+		
 		if(!isset($row_a['topictext']))
 		$row_a['topictext'] = '';
+		
 		$topic_title = stripslashes((string) check_html($row_a['topictext'], 'nohtml'));
+		
 		OpenTable();
+	
 		if ($numrows_a == 0) {
 			echo '<center><font class="title">' . $sitename . '</font><br /><br />' . _NOINFO4TOPIC . '<br /><br />[ <a href="modules.php?name=News">' . _GOTONEWSINDEX . '</a> | <a href="modules.php?name=Topics">' . _SELECTNEWTOPIC . '</a> ]</center>';
 		} else {
