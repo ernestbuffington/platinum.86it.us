@@ -54,7 +54,7 @@ define("_HTML","HTML");
 define("_PMON","On");
 define("_PMOFF","Off");
 define("_BBCODE","BBCode");
-define("_WROTE","wrote");
+define("_CODE","code");
 define("_OPTIONS","Options");
 define("_HTMLDISSABLE","Disable HTML on this Post");
 define("_BBCODEDISSABLE","Disable <i>BBCode</i> on this Post");
