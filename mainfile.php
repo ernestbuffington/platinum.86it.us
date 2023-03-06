@@ -97,18 +97,18 @@ if (realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME']))
 	exit('Access Denied');
 }
 
-if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) && str_contains((string) $_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') && @extension_loaded('zlib') && !headers_sent())
+if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) && str_contains((string) $_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') && extension_loaded('zlib') && !headers_sent())
 {
 	ob_start('ob_gzhandler');
 	ob_implicit_flush(0);
 }
 
-if (@ini_get('date.timezone') == '')
+if (ini_get('date.timezone') == '')
 {
 	date_default_timezone_set("America/New_York");
 }
 
-if (!@ini_get('register_globals'))
+if (!ini_get('register_globals'))
 {
 	extract($_GET, EXTR_OVERWRITE);
 	extract($_POST, EXTR_OVERWRITE);
@@ -230,7 +230,7 @@ if(defined('FORUM_ADMIN')) {
 $bypassInstallationFolderCheck = FALSE;
 $bypassNukeSentinelInvalidIPCheck = FALSE;
 
-@require_once(INCLUDE_PATH."config.php");
+require_once(INCLUDE_PATH."config.php");
 require_once(INCLUDE_PATH."db/db.php");
 require_once(NUKE_CLASSES_DIR.'class.identify.php');
 global $agent;
@@ -242,20 +242,20 @@ require_once(INCLUDE_PATH."includes/nukesentinel.php");
 if (isset($tnsl_bUseShortLinks) && $tnsl_bUseShortLinks && file_exists(INCLUDE_PATH.'includes/tegonuke/shortlinks/shortlinks.php'))
 {
     define('TNSL_USE_SHORTLINKS', TRUE);
-    @include_once(INCLUDE_PATH.'includes/tegonuke/shortlinks/shortlinks.php');
+    include_once(INCLUDE_PATH.'includes/tegonuke/shortlinks/shortlinks.php');
 }
 // NSN Groups
-@include_once(INCLUDE_PATH.'includes/nsngr_func.php');
+include_once(INCLUDE_PATH.'includes/nsngr_func.php');
 /* FOLLOWING TWO LINES ARE DEPRECATED BUT ARE HERE FOR OLD MODULES COMPATIBILITY */
 /* PLEASE START USING THE NEW SQL ABSTRACTION LAYER. SEE MODULES DOC FOR DETAILS */
-/*@require_once(INCLUDE_PATH."includes/sql_layer.php");
+/*require_once(INCLUDE_PATH."includes/sql_layer.php");
 $dbi = sql_connect($dbhost, $dbuname, $dbpass, $dbname);
 $result = $db->sql_query("SELECT * FROM ".$prefix."_config");*/
 $result = $db->sql_query("SELECT * FROM `" . $prefix . "_config` LIMIT 0,1");
 $row = $db->sql_fetchrow($result);
-@require_once(INCLUDE_PATH."includes/ipban.php");
+require_once(INCLUDE_PATH."includes/ipban.php");
 if (file_exists(INCLUDE_PATH."includes/custom_files/custom_mainfile.php")) {
-  @include_once(INCLUDE_PATH."includes/custom_files/custom_mainfile.php");
+  include_once(INCLUDE_PATH."includes/custom_files/custom_mainfile.php");
 }
 if (!defined('FORUM_ADMIN')) {
   if(empty($admin_file)) {
@@ -267,9 +267,9 @@ if (!defined('FORUM_ADMIN')) {
 // Error reporting, to be set in config.php
 error_reporting(E_ALL^E_NOTICE);
 if($display_errors) {
-  @ini_set('display_errors', 1);
+  ini_set('display_errors', 1);
 } else {
-  @ini_set('display_errors', 0);
+  ini_set('display_errors', 0);
 }
 $sitename = $row['sitename'];
 $nukeurl = $row['nukeurl'];
@@ -1111,8 +1111,8 @@ function wysiwyg_textarea($name, $value, $config = "NukeUser", $cols = 50, $rows
    {
        echo "<textarea name=\"$name\" cols=\"$cols\" rows=\"$rows\">$value</textarea>";
    } else {
-    @include_once("includes/ckeditor/ckeditor.php");
-	@require_once("includes/ckfinder/ckfinder.php");
+    include_once("includes/ckeditor/ckeditor.php");
+	require_once("includes/ckfinder/ckfinder.php");
 	$CKEditor = new CKEditor();
 	$CKEditor->returnOutput = true;
 	CKFinder::SetupCKEditor($CKEditor);
@@ -1128,8 +1128,8 @@ function wysiwyg_textarea_html($name, $value, $config = "NukeUser", $cols = 50, 
    {
        echo "<textarea name=\"$name\" cols=\"$cols\" rows=\"$rows\">$value</textarea>";
    } else {
-    @include_once("includes/ckeditor/ckeditor.php");
-	@require_once("includes/ckfinder/ckfinder.php");
+    include_once("includes/ckeditor/ckeditor.php");
+	require_once("includes/ckfinder/ckfinder.php");
 	$CKEditor = new CKEditor();
 	$CKEditor->returnOutput = true;
 	CKFinder::SetupCKEditor($CKEditor);
@@ -1634,7 +1634,7 @@ function platinum_technology() {
         $currentime = time();
         $newtime = $last_check['value'] * 86400;	
             if ($currentime == $newtime) {
-                $data = @file_get_contents("http://www.platinumnukepro.com/check.php?ver=7.6.PNPv1.0.0");
+                $data = file_get_contents("http://www.platinumnukepro.com/check.php?ver=7.6.PNPv1.0.0");
                     if ($data) { $data = $data; } else { $data = ""._UNABLETOCHECK.""; } 
                     $db->sql_query("UPDATE ".$prefix."_platinum_technology SET value = '$data' where name = 'lastupdatecheck'");
                     $db->sql_query("UPDATE ".$prefix."_platinum_technology SET value = '$currenttime' where name = 'lastupdatecheck'");
@@ -1643,7 +1643,7 @@ function platinum_technology() {
                 return $vcheck['value'];	
             }
     } else {
-    $data = @file_get_contents("http://www.platinumnukepro.com/check.php?ver=7.6.PNPv1.0.0");
+    $data = file_get_contents("http://www.platinumnukepro.com/check.php?ver=7.6.PNPv1.0.0");
     if ($data) { $data = $data; } else { $data = ""._UNABLETOCHECK.""; } 
         $db->sql_query("INSERT INTO ".$prefix."_platinum_technology VALUES ('versioncheck', '$data')");
         $time = time();
@@ -1706,7 +1706,7 @@ function cb_blocks($rid) {
         if (empty($filename) AND $content > "") {
             themecenterbox($title, $content);
         } elseif ($filename > "" AND empty($content)) {
-            $file = @file("blocks/$filename");
+            $file = file("blocks/$filename");
             if (!$file) {
                 $content = _BLOCKPROBLEM;
             } else {
@@ -1724,11 +1724,11 @@ function cb_blocks($rid) {
 /* Addon - Center Blocks v.2.1.1                 END */
 /*****************************************************/
 if (defined('FORUM_ADMIN')) {
-	@include_once("../../../modules/Your_Account/includes/mainfileend.php");
+	include_once("../../../modules/Your_Account/includes/mainfileend.php");
 } elseif (defined('INSIDE_MOD')) {
-	@include_once("../../modules/Your_Account/includes/mainfileend.php");
+	include_once("../../modules/Your_Account/includes/mainfileend.php");
 } else {
-	@include_once("modules/Your_Account/includes/mainfileend.php");
+	include_once("modules/Your_Account/includes/mainfileend.php");
 }
 /*****************************************************/
 /* Forum - Advanced Username Color v.1.0.1     START */
