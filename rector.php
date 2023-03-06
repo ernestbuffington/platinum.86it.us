@@ -22,7 +22,8 @@ return static function (RectorConfig $rectorConfig): void {
 		  //__DIR__ . '/modules/Your_Account/includes/functions.php',
 		  //__DIR__ . '/includes/classes/class.paginator_html.php',
 		  //__DIR__ . '/modules/News/index.php',
-		    __DIR__ . '/index.php',
+		  //__DIR__ . '/index.php',
+		  __DIR__ . '/themes/Impressed/theme.php',
     ]);
 
     // register a single rule
