@@ -9,32 +9,32 @@ global $admin, $admin_file, $user, $cookie, $prefix, $user_prefix, $db, $anonymo
 //
 // language system
 //
-define('_MIN','&#039; ');
-define('_SEC','&quot;');
+define_once('_MIN','&#039; ');
+define_once('_SEC','&quot;');
 if ($lang=='french') {
-	define("_MEMBRES","Membres ");
-	define("_VISITEURS","Visiteurs ");
-	define("_VISITEUR","Visiteur ");
+	define_once("_MEMBRES","Membres ");
+	define_once("_VISITEURS","Visiteurs ");
+	define_once("_VISITEUR","Visiteur ");
 } else if ($lang=='russian') {
-	define("_MEMBRES","Члены");
-	define("_VISITEURS","Посетители");
-	define("_VISITEUR","Посетители");
+	define_once("_MEMBRES","Члены");
+	define_once("_VISITEURS","Посетители");
+	define_once("_VISITEUR","Посетители");
 } else if ($lang=='spanish') {
-	define("_MEMBRES","Miembro");
-	define("_VISITEURS","Visitante");
-	define("_VISITEUR","Visitantes");
+	define_once("_MEMBRES","Miembro");
+	define_once("_VISITEURS","Visitante");
+	define_once("_VISITEUR","Visitantes");
 } else if ($lang=='italian') {
-	define("_MEMBRES","Membri");
-	define("_VISITEURS","Ospiti");
-	define("_VISITEUR","Ospite");
+	define_once("_MEMBRES","Membri");
+	define_once("_VISITEURS","Ospiti");
+	define_once("_VISITEUR","Ospite");
 } else if ($lang=='portuguese') {
-	define("_MEMBRES","Miembro");
-	define("_VISITEURS","Visitantes");
-	define("_VISITEUR","Visitante");
+	define_once("_MEMBRES","Miembro");
+	define_once("_VISITEURS","Visitantes");
+	define_once("_VISITEUR","Visitante");
 } else {
-	define("_MEMBRES","Members");
-	define("_VISITEURS","Visitors");
-	define("_VISITEUR","Visitor");
+	define_once("_MEMBRES","Members");
+	define_once("_VISITEURS","Visitors");
+	define_once("_VISITEUR","Visitor");
 }
 //
 // Init
@@ -78,6 +78,8 @@ while ($session = $db->sql_fetchrow($result)) {
 	}	
 	$username_color = UsernameColor($session['user_color_gc'],$session['username']);
 	if ($guest == 0) {
+		if (!isset($session['time']))
+		$session['time'] = time();
 		$title = "<A HREF=\"modules.php?name=Your_Account&op=userinfo&username=$session[username]\" title=\"" . displayTime($session['time']) . "\">$username_color</a>";
 	} else {
 		//--- Anonymous user
