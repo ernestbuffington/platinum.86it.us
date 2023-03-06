@@ -88,7 +88,7 @@ function theindex($new_topic = 0) {
 	global $db, $storyhome, $topicname, $topicimage, $topictext, $datetime, $user, $cookie, $nukeurl, $prefix, $multilingual, $currentlang, $articlecomm, $sitename, $user_news, $userinfo;
 //require_once('newsconfig.php');
 // Query TON addons	
-$sql_news_config = "SELECT newsrows, bookmark, showtags FROM ".$prefix."_news_config";
+    $sql_news_config = "SELECT newsrows, bookmark, showtags FROM ".$prefix."_news_config";
     $result_news_config = $db->sql_query($sql_news_config);
     $row = $db->sql_fetchrow($result_news_config);   
     $newsrows = stripslashes((string) check_html($row['newsrows'], 'nohtml'));
