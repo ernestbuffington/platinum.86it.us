@@ -96,6 +96,12 @@ switch ($dbtype) {
         return $dbi;
     break;;
 
+    case "MySQLi":
+        $dbi=mysqli_connect($host, $user, $password);
+	    mysqli_select_db($db);
+        return $dbi;
+    break;;
+
     case "mSQL":
          $dbi=msql_connect($host);
 	 msql_select_db($db);
@@ -201,6 +207,11 @@ switch ($dbtype) {
         return $res;
     break;;
 
+    case "MySQLi":
+        $res=mysqli_query($query, $id);
+        return $res;
+    break;;
+
     case "mSQL":
         $res=@msql_query($query, $id);
         return $res;
@@ -299,6 +310,11 @@ switch ($dbtype) {
 
     case "MySQL":
         $row = mysql_fetch_row($res);
+        return $row;
+    break;;
+
+    case "MySQLi":
+        $row = mysqli_fetch_row($res);
         return $row;
     break;;
 
