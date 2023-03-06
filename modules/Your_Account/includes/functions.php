@@ -305,7 +305,7 @@ function yacookie($setuid, $setusername, $setpass, $setstorynum, $setumode, $set
         if ($row = $db->sql_fetchrow($result)) {
             $db->sql_query("UPDATE ".$prefix."_session SET uname='$setusername', time='$ctime', host_addr='$ip', guest='$guest' WHERE uname='$uname'");
         } else {
-            $db->sql_query("INSERT INTO ".$prefix."_session (uname, time, host_addr, guest) VALUES ('$uname', '$ctime', '$ip', '$guest')");
+            $db->sql_query("REPLACE INTO ".$prefix."_session (uname, time, host_addr, guest) VALUES ('$uname', '$ctime', '$ip', '$guest')");
         }
     }
     $db->sql_freeresult($result);
