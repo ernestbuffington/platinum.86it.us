@@ -57,18 +57,57 @@
  ***************************************/
 
 define('MODULE_FILE', true);
-require_once('mainfile.php');
+if(isset($_GET['file']) && $_GET['file'] == 'posting'): 
+  define('MEDIUM_SECURITY', true);
+endif;
+
+if(isset($_GET['Action']) && $_GET['Action'] == 'AJAX'):
+  define('MEDIUM_SECURITY', true);
+endif;
+
+if(isset($_POST['tos_text']) && isset($_POST['op']) && $_POST['op'] == 'editTOS'):
+  define('MEDIUM_SECURITY', true);
+endif;
+
+require_once(dirname(__FILE__) . '/mainfile.php');
+
+global $name;
+
 $module = 1;
-if (!isset($name)) $name='';
+
+if (!isset($name)) 
+$name='';
+
 $name = addslashes((string) check_html(trim((string) $name), 'nohtml')); //Fixes SQL Injection
+
 define('PN_MODULE_NAME', $name);
-if(!isset($file)) { $file='index'; }
-if(isset($name)) {
-	if(preg_match('/http\:\/\//i', $name)) { die('Hi&nbsp;and&nbsp;Bye'); }
-	if(preg_match('/http\:\/\//i', (string) $file)) { die('Hi&nbsp;and&nbsp;Bye'); }
+
+if(!isset($file)) 
+{ 
+  $file='index'; 
+}
+
+if(isset($name)) 
+{
+	if(preg_match('/http\:\/\//i', $name)) 
+	{ 
+	  die('Hi&nbsp;and&nbsp;Bye'); 
+	}
+	
+	if(preg_match('/http\:\/\//i', (string) $file)) 
+	{ 
+	  die('Hi&nbsp;and&nbsp;Bye'); 
+	}
+	
 	$modstring = strtolower((string) $_SERVER['QUERY_STRING']);
+	
 	if(stripos_clone($modstring,'&user=') AND ($name=='Private_Messages' || $name=='Forums' || $name=='Members_List')) header('Location: index.php');
+	
 	global $nukeuser, $db, $prefix;
+	
+	$module = $db->sql_ufetchrow('SELECT `title`, `active`, `view`, `custom_title`, `groups` FROM `'.$prefix.'_modules` WHERE `title`="'.Fix_Quotes($name).'"');
+	$module_name = $module['title'] ?? '';
+	
 	$nukeuser = base64_decode((string) $user);
 	$nukeuser = addslashes($nukeuser);
 	$result = $db->sql_query('SELECT * FROM `'.$prefix.'_modules` WHERE `title`=\''.$name.'\'');
@@ -76,11 +115,23 @@ if(isset($name)) {
 	$mod_active = intval($row['active']);
 	$view = intval($row['view']);
 	$groups = $row['groups'];
-	if(($mod_active == 1) OR (isset($admin) AND is_admin($admin))) {
-		if(!isset($mop)) { $mop='modload'; }
-		if(!isset($file)) { $file='index'; }
-		if(preg_match('/\.\./',$name) || preg_match('/\.\./',(string) $file) || preg_match('/\.\./',(string) $mop)) {
+	
+	if(($mod_active == 1) OR (isset($admin) AND is_admin($admin))) 
+	{
+		if(!isset($mop)) 
+		{ 
+		  $mop='modload'; 
+		}
+		
+		if(!isset($file)) 
+		{ 
+		  $file='index'; 
+		}
+		
+		if(preg_match('/\.\./',$name) || preg_match('/\.\./',(string) $file) || preg_match('/\.\./',(string) $mop)) 
+		{
 			$pagetitle = '- '._SOCOOL;
+		
 			include_once('header.php');
 			OpenTable();
 			echo '<div align="center"><strong>'._SOCOOL.'</strong></div><br />';
@@ -88,26 +139,45 @@ if(isset($name)) {
 			CloseTable();
 			include_once('footer.php');
 			die();
-		} else {
+		} 
+		else 
+		{
 			$ThemeSel = get_theme();
-			if(file_exists('themes/'.$ThemeSel.'/modules/'.$name.'/'.$file.'.php')) {
+		
+			if(file_exists('themes/'.$ThemeSel.'/modules/'.$name.'/'.$file.'.php')) 
+			{
 				$modpath = 'themes/'.$ThemeSel.'/';
-			} else {
+			} 
+			else 
+			{
 				$modpath = '';
 			}
 			$modpath .= 'modules/'.$name.'/'.$file.'.php';
-			if(file_exists($modpath)) {
-				if($view == 0) {
+			
+			if(file_exists($modpath)) 
+			{
+				if($view == 0) 
+				{
 					include_once($modpath);
-				} elseif($view == 1 AND ((isset($user) AND (is_user($user) OR is_group($user, $name))) OR (isset($admin) AND is_admin($admin)))) {
+				} 
+				elseif($view == 1 AND ((isset($user) AND (is_user($user) OR is_group($user, $name))) OR (isset($admin) AND is_admin($admin)))) 
+				{
 					include_once($modpath);
-				} elseif($view == 2 AND isset($admin) AND is_admin($admin)) {
+				} 
+				elseif($view == 2 AND isset($admin) AND is_admin($admin)) 
+				{
 					include_once($modpath);
-				} elseif($view == 3 AND paid()) {
+				} 
+				elseif($view == 3 AND paid()) 
+				{
 					include_once($modpath);
-				} elseif($view > 3 AND in_groups($groups)) {
+				} 
+				elseif($view > 3 AND in_groups($groups)) 
+				{
 					include_once($modpath);
-				} else {
+				} 
+				else 
+				{
 					$pagetitle = '- '._RESTRICTEDAREA;
 					include_once('header.php');
 					OpenTable();
@@ -117,7 +187,9 @@ if(isset($name)) {
 					include_once('footer.php');
 					die();
 				}
-			} else {
+			} 
+			else 
+			{
 				$pagetitle = '- '._FILENOTFOUND;
 				include_once('header.php');
 				OpenTable();
@@ -128,7 +200,9 @@ if(isset($name)) {
 				die ();
 			}
 		}
-	} else {
+	} 
+	else 
+	{
 		$pagetitle = '- '._MODULENOTACTIVE;
 		include_once('header.php');
 		OpenTable();
@@ -138,7 +212,9 @@ if(isset($name)) {
 		include_once('footer.php');
 		die ();
 	}
-} else {
+} 
+else 
+{
 	$pagetitle = '- '._MODULENOTFOUND;
 	include_once('header.php');
 	OpenTable();
@@ -148,8 +224,11 @@ if(isset($name)) {
 	include_once('footer.php');
 	die ();
 }
-if(!function_exists('stripos_clone')) {
-	function stripos_clone($haystack, $needle, $offset=0) {
+
+if(!function_exists('stripos_clone')) 
+{
+	function stripos_clone($haystack, $needle, $offset=0) 
+	{
 		return strpos(strtoupper((string) $haystack), strtoupper((string) $needle), $offset);
 	}
 }
