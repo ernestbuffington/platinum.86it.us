@@ -9,7 +9,7 @@ use Rector\Set\ValueObject\LevelSetList;
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->paths([
 		  //__DIR__ . '/db/mysqli.php',
-		  __DIR__ . '/modules.php',
+		  //__DIR__ . '/modules.php',
 		  //__DIR__ . '/themes/Titanium/theme.php',
 		  //__DIR__ . '/includes/kses/kses.php',
 		  //__DIR__ . '/blocks/block-Shout_Box.php',
