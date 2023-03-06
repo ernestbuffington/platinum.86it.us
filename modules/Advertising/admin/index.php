@@ -184,7 +184,7 @@ if ($row['radminsuper'] == 1) {
 
 		."<td bgcolor=\"$bgcolor2\" align=\"center\"><strong>" . _FUNCTIONS . "</strong></td><tr>";
 
-		$result = $db->sql_query("SELECT bid, cid, name, enddate, imptotal, impmade, clicks, imageurl, date,  position, active, ad_class from " . $prefix . "_banner WHERE active='1' order by position,bid");
+		$result = $db->sql_query("SELECT bid, cid, name, dateend, imptotal, impmade, clicks, imageurl, date,  position, active, ad_class from " . $prefix . "_banner WHERE active='1' order by position,bid");
 
 		while ($row = $db->sql_fetchrow($result)) {
 
