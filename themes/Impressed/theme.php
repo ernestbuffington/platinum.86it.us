@@ -46,7 +46,16 @@
 /* TechGFX: Your dreams, our imagination                                */
 /************************************************************************/
 
-if (stristr($_SERVER['SCRIPT_NAME'], "theme.php")) {
+/**************************************
+ Applied rules:
+ * AddDefaultValueForUndefinedVariableRector (https://github.com/vimeo/psalm/blob/29b70442b11e3e66113935a2ee22e165a70c74a4/docs/fixing_code.md#possiblyundefinedvariable)
+ * RandomFunctionRector
+ * SensitiveConstantNameRector (https://wiki.php.net/rfc/case_insensitive_constant_deprecation)
+ * AddLiteralSeparatorToNumberRector (https://wiki.php.net/rfc/numeric_literal_separator)
+ * NullToStrictStringFuncCallArgRector
+ **************************************/
+
+if (stristr((string) $_SERVER['SCRIPT_NAME'], "theme.php")) {
     die("Access Denied");
 }
 
@@ -134,14 +143,16 @@ function FormatStory($thetext, $notes, $aid, $informant)
 /************************************************************/
 function themeheader()
 {
+    $admin = null;
+    $babanners1 = null;
     global $user, $cookie, $prefix, $banners, $sitekey, $flash, $searchbox, $db;
-	
+ 
     cookiedecode($user);
-    mt_srand((double)microtime() * 1000000);
-    $maxran = 1000000;
-    $random_num = mt_rand(0, $maxran);
+    mt_srand((double)microtime() * 1_000_000);
+    $maxran = 1_000_000;
+    $random_num = random_int(0, $maxran);
     $datekey = date("F j");
-    $rcode = hexdec(md5($_SERVER[HTTP_USER_AGENT] . $sitekey . $random_num . $datekey));
+    $rcode = hexdec(md5($_SERVER['HTTP_USER_AGENT'] . $sitekey . $random_num . $datekey));
     $code = substr($rcode, 2, 6);
     $username = $cookie[1];
     if ($username == "") {
@@ -194,7 +205,7 @@ function themeheader()
   global $name;
 /*    if($name==Forums)*/
     {
-    blocks(left);
+    blocks('left');
     }  
     echo "</td>\n" . "<td width=\"1\" valign=\"top\" background=\"themes/Impressed/images/spacer.gif\"><img src=\"themes/Impressed/images/spacer.gif\" width=\"1\" height=\"1\" border=\"0\"></td>\n" .
         "<td width=\"100%\">\n";
@@ -211,6 +222,7 @@ function themeheader()
 /************************************************************/
 function themefooter()
 {
+    $babanners2 = null;
     global $index, $user, $banners, $cookie, $prefix, $db, $admin, $adminmail,
         $nukeurl;
 
@@ -225,7 +237,7 @@ function themefooter()
         "</tr>\n" . "</table>\n\n\n";
 
     include_once("themes/Impressed/footer.php");
-	
+
 //NSN banner ads
     if ($banners == 1) {
         @include_once("includes/babanners2.php");
@@ -241,6 +253,7 @@ function themefooter()
 function themeindex($aid, $informant, $time, $title, $counter, $topic, $thetext,
     $notes, $morelink, $topicname, $topicimage, $topictext)
 {
+    $r_file = null;
     global $anonymous, $tipath;
 
     $ThemeSel = get_theme();
@@ -267,8 +280,8 @@ function themeindex($aid, $informant, $time, $title, $counter, $topic, $thetext,
     $posted = "" . _POSTEDBY . " ";
     $posted .= get_author($aid);
     $posted .= " " . _ON . " $time  ";
-    $datetime = substr($morelink, 0, strpos($morelink, "|") - strlen($morelink));
-    $morelink = substr($morelink, strlen($datetime) + 2);
+    $datetime = substr((string) $morelink, 0, strpos((string) $morelink, "|") - strlen((string) $morelink));
+    $morelink = substr((string) $morelink, strlen($datetime) + 2);
     $tmpl_file = "themes/Impressed/story_home.html";
     $thefile = implode("", file($tmpl_file));
     $thefile = addslashes($thefile);
@@ -283,6 +296,9 @@ function themeindex($aid, $informant, $time, $title, $counter, $topic, $thetext,
 function themearticle($aid, $informant, $datetime, $title, $thetext, $topic, $topicname,
     $topicimage, $topictext)
 {
+    $notes = null;
+    $anonymous = null;
+    $r_file = null;
     global $admin, $sid, $tipath;
     $ThemeSel = get_theme();
     if (file_exists("themes/$ThemeSel/images/topics/$topicimage")) {
@@ -320,6 +336,7 @@ function themearticle($aid, $informant, $datetime, $title, $thetext, $topic, $to
 /************************************************************/
 function themesidebox($title, $content)
 {
+    $r_file = null;
     $tmpl_file = "themes/Impressed/blocks.html";
     $thefile = implode("", file($tmpl_file));
     $thefile = addslashes($thefile);
