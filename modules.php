@@ -50,20 +50,26 @@
 /* Additional code clean-up, performance enhancements, and W3C and      */
 /* XHTML compliance fixes by Raven and Montego.                         */
 /************************************************************************/
+
+/***************************************
+ Applied rules:
+ * NullToStrictStringFuncCallArgRector
+ ***************************************/
+
 define('MODULE_FILE', true);
 require_once('mainfile.php');
 $module = 1;
 if (!isset($name)) $name='';
-$name = addslashes(check_html(trim($name), 'nohtml')); //Fixes SQL Injection
+$name = addslashes((string) check_html(trim((string) $name), 'nohtml')); //Fixes SQL Injection
 define('PN_MODULE_NAME', $name);
 if(!isset($file)) { $file='index'; }
 if(isset($name)) {
 	if(preg_match('/http\:\/\//i', $name)) { die('Hi&nbsp;and&nbsp;Bye'); }
-	if(preg_match('/http\:\/\//i', $file)) { die('Hi&nbsp;and&nbsp;Bye'); }
-	$modstring = strtolower($_SERVER['QUERY_STRING']);
+	if(preg_match('/http\:\/\//i', (string) $file)) { die('Hi&nbsp;and&nbsp;Bye'); }
+	$modstring = strtolower((string) $_SERVER['QUERY_STRING']);
 	if(stripos_clone($modstring,'&user=') AND ($name=='Private_Messages' || $name=='Forums' || $name=='Members_List')) header('Location: index.php');
 	global $nukeuser, $db, $prefix;
-	$nukeuser = base64_decode($user);
+	$nukeuser = base64_decode((string) $user);
 	$nukeuser = addslashes($nukeuser);
 	$result = $db->sql_query('SELECT * FROM `'.$prefix.'_modules` WHERE `title`=\''.$name.'\'');
 	$row = $db->sql_fetchrow($result);
@@ -73,7 +79,7 @@ if(isset($name)) {
 	if(($mod_active == 1) OR (isset($admin) AND is_admin($admin))) {
 		if(!isset($mop)) { $mop='modload'; }
 		if(!isset($file)) { $file='index'; }
-		if(preg_match('/\.\./',$name) || preg_match('/\.\./',$file) || preg_match('/\.\./',$mop)) {
+		if(preg_match('/\.\./',$name) || preg_match('/\.\./',(string) $file) || preg_match('/\.\./',(string) $mop)) {
 			$pagetitle = '- '._SOCOOL;
 			include_once('header.php');
 			OpenTable();
@@ -144,7 +150,7 @@ if(isset($name)) {
 }
 if(!function_exists('stripos_clone')) {
 	function stripos_clone($haystack, $needle, $offset=0) {
-		return strpos(strtoupper($haystack), strtoupper($needle), $offset);
+		return strpos(strtoupper((string) $haystack), strtoupper((string) $needle), $offset);
 	}
 }
 ?>
