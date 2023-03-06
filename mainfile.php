@@ -39,6 +39,8 @@
  * StrStartsWithRector (https://wiki.php.net/rfc/add_str_starts_with_and_ends_with_functions)
  * StrContainsRector (https://externals.io/message/108562 https://github.com/php/php-src/pull/5179)
  * NullToStrictStringFuncCallArgRector
+ * ListToArrayDestructRector (https://wiki.php.net/rfc/short_list_syntax https://www.php.net/manual/en/migration71.new-features.php#migration71.new-features.symmetric-array-destructuring)
+ * StringifyDefineRector (https://3v4l.org/YiTeP) 
  ********************************************/
 
 //if(!defined('END_TRANSACTION')){ define('END_TRANSACTION', 2); }
@@ -407,7 +409,7 @@ function get_lang($module) {
 */
 function get_microtime() 
 {
-    list($usec, $sec) = explode(' ', microtime());
+    [$usec, $sec] = explode(' ', microtime());
     return ($usec + $sec);
 }
 
@@ -571,11 +573,11 @@ function render_blocks($side, $blockfile, $title, $content, $bid, $url) {
     if(!defined('BLOCK_FILE')) {
       define('BLOCK_FILE', true);
     }
-	
+
     if(!defined('CORE_FILE')) {
       define('CORE_FILE', true);
     }
-	
+
     if (empty($url)) {
         if (empty($blockfile)) {
             // GT-NExtGEn 0.5 by Bill Murrin (Audioslaved) http://gt.audioslaved.com (c) 2004
