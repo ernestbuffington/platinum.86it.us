@@ -620,6 +620,17 @@ class sql_db
         return '';
     }
 
+  /*
+   * sql_fetch_row(&$res,$row)
+   * given a result identifier, returns an array with the resulting row
+   */
+    function sql_fetch_row(&$res, $nr=0)
+    {
+        $row = mysqli_fetch_row($res);
+        return $row;
+    }
+
+
     function mariadb_short_version()
 	{
 		global $heading_color;
