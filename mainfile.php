@@ -1192,10 +1192,61 @@ function filter($what, $strip="", $save="", $type="") {
     }
     return($what);
 }
+
+# actualTime function by ReOrGaNiSaTiOn
+# currently not being used anywhere as of 1/13/2023
+function actualTime() {
+  $date = date('Y-m-d H:i:s');
+  $actualTime_tempdate = formatTimestamp($date, $format='Y-m-d H:i:s');
+  return $actualTime_tempdate;
+}
+
 /*********************************************************/
 /* formatting stories                                    */
 /*********************************************************/
-function formatTimestamp($time) {
+# formatTimestamp function by ReOrGaNiSaTiOn
+function formatTimestamp($time, $format='', $dateonly='') 
+{
+    global $datetime, $locale, $userinfo, $board_config;
+  
+        if(isset($userinfo['user_dateformat']) && !empty($userinfo['user_dateformat'])): 
+          $format = $userinfo['user_dateformat'];
+		elseif (isset($board_config['default_dateformat']) && !empty($board_config['default_dateformat'])): 
+          $format = $board_config['default_dateformat'];
+		else: 
+          $format = 'D M d, Y g:i a';
+		endif;
+
+	if(!empty($dateonly)): 
+      $replaces = ['a', 'A', 'B', 'c', 'D', 'g', 'G', 'h', 'H', 'i', 'I', 'O', 'r', 's', 'U', 'Z', ':'];
+      $format = str_replace($replaces, '', (string) $format);
+    endif;
+
+	if((isset($userinfo['user_timezone']) && !empty($userinfo['user_timezone'])) && $userinfo['user_id'] > 1): 
+      $tz = $userinfo['user_timezone'];
+	elseif (isset($board_config['board_timezone']) && !empty($board_config['board_timezone'])): 
+      $tz = $board_config['board_timezone'];
+	else: 
+     $tz = '10';
+	endif;
+
+    setlocale(LC_TIME, $locale);
+
+	if(!is_numeric($time)):
+	  # https://stackoverflow.com/questions/5145133/preg-match-for-mysql-date-format
+	  $adate= date_create($time); //date format that you don't want
+      $mysqldate = $adate->format($format);//date format that you do want
+	  $datetime = $mysqldate;
+ 	  //preg_match('/(\d{4})-(\d{1,2})-(\d{1,2}) (\d{1,2}):(\d{1,2}):(\d{1,2})/', (string) $time, $datetime);
+      //$time = gmmktime($datetime[4],$datetime[5],$datetime[6],$datetime[2],$datetime[3],$datetime[1]);
+	else:
+	  $datetime = FormatDate($format, $time, $tz);
+	endif;
+	//
+	return $datetime;
+}
+
+function formatTimestampPlatinum($time) {
     global $datetime, $locale;
     setlocale(LC_TIME, $locale);
     if (!is_numeric($time)) {
@@ -1242,8 +1293,17 @@ global $prefix, $db;
         $users[$aid] = $row;
         $db->sql_freeresult($result);
     }
+	
+	if(!isset($row['url']))  
+	$row['url'] = '';
+	
     $aidurl = stripslashes((string) $row['url']);
+
+	if(!isset($row['email']))  
+	$row['email'] = '';
+
     $aidmail = encode_mail(stripslashes((string) $row['email']));
+
     if ((isset($aidurl)) && ($aidurl != "http://")) {
         $aid = "<a href=\"".$aidurl."\">$aid</a>";
     } elseif (isset($aidmail)) {
