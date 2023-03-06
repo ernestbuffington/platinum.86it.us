@@ -18,7 +18,8 @@ return static function (RectorConfig $rectorConfig): void {
 		  //__DIR__ . '/mainfile.php', # PHP 8.2.3
 		  //__DIR__ . '/modules/Forums/common.php',
 		  //__DIR__ . '/modules/Forums/index.php',
-		    __DIR__ . '/includes//nsngr_func.php',
+		  //__DIR__ . '/includes/nsngr_func.php',
+		    __DIR__ . '/modules/Your_Account/includes/functions.php',
     ]);
 
     // register a single rule
