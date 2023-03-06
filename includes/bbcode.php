@@ -1001,12 +1001,12 @@ function word_wrap_pass($message)
 	$ampText = '';
 	for ($num=0;$num<strlen($message);$num++)
 	{
-		$curChar = $message{$num};
+		$curChar = $message[$num];
 		if ($curChar == '<')
 		{
 			for ($snum=0;$snum<strlen($ampText);$snum++)
 			{
-				addWrap($ampText{$snum},$ampText{$snum+1},$userdata['user_wordwrap'],$finalText,$tempText,$curCount,$tempCount);
+				addWrap($ampText[$snum],$ampText[$snum+1],$userdata['user_wordwrap'],$finalText,$tempText,$curCount,$tempCount);
 			}
 			$ampText = '';
 			$tempText .= '<';
@@ -1025,23 +1025,23 @@ function word_wrap_pass($message)
 		{
 			for ($snum=0;$snum<strlen($ampText);$snum++)
 			{
-				addWrap($ampText{$snum},$ampText{$snum+1},$userdata['user_wordwrap'],$finalText,$tempText,$curCount,$tempCount);
+				addWrap($ampText[$snum],$ampText[$snum+1],$userdata['user_wordwrap'],$finalText,$tempText,$curCount,$tempCount);
 			}
 			$ampText = '&';
 		}
 		elseif (strlen($ampText) < $longestAmp && $curChar == ";" && function_exists('html_entity_decode') &&
 		       (strlen(html_entity_decode("$ampText;")) == 1 || preg_match('/^&#[0-9]+$/',$ampText)))
 		{
-			addWrap($ampText.';',$message{$num+1},$userdata['user_wordwrap'],$finalText,$tempText,$curCount,$tempCount);
+			addWrap($ampText.';',$message[$num+1],$userdata['user_wordwrap'],$finalText,$tempText,$curCount,$tempCount);
 			$ampText = "";
 		}
 		elseif (strlen($ampText) >= $longestAmp || $curChar == ';')
 		{
 			for ($snum=0;$snum<strlen($ampText);$snum++)
 			{
-				addWrap($ampText{$snum},$ampText{$snum+1},$userdata['user_wordwrap'],$finalText,$tempText,$curCount,$tempCount);
+				addWrap($ampText[$snum],$ampText[$snum+1],$userdata['user_wordwrap'],$finalText,$tempText,$curCount,$tempCount);
 			}
-			addWrap($curChar,$message{$num+1},$userdata['user_wordwrap'],$finalText,$tempText,$curCount,$tempCount);
+			addWrap($curChar,$message[$num+1],$userdata['user_wordwrap'],$finalText,$tempText,$curCount,$tempCount);
 			$ampText = '';
 		}
 		elseif (strlen($ampText) != 0 && strlen($ampText) < $longestAmp)
@@ -1050,7 +1050,7 @@ function word_wrap_pass($message)
 		}
 		else
 		{
-			addWrap($curChar,$message{$num+1},$userdata['user_wordwrap'],$finalText,$tempText,$curCount,$tempCount);
+			addWrap($curChar,$message[$num+1],$userdata['user_wordwrap'],$finalText,$tempText,$curCount,$tempCount);
 		}
 	}
 	return $finalText . $tempText;
