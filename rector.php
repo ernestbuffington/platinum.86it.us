@@ -23,7 +23,8 @@ return static function (RectorConfig $rectorConfig): void {
 		  //__DIR__ . '/modules/Forums/index.php', # PHP 8.2.3
 		  //__DIR__ . '/includes/nsngr_func.php', # PHP 8.2.3
 		  //__DIR__ . '/modules/Your_Account/includes/functions.php', # PHP 8.2.3
-		    __DIR__ . '/modules/Your_Account/includes/ui-0headlines.php', # PHP 8.2.3
+		  //__DIR__ . '/modules/Your_Account/includes/ui-0headlines.php', # PHP 8.2.3
+		  __DIR__ . '/modules/Your_Account/includes/ui-0privmsgs.php', # PHP 8.2.3
 		  //__DIR__ . '/modules/Your_Account/includes/phpbb_bbinfo.php', # PHP 8.2.3
 		  //__DIR__ . '/modules/Your_Account/public/userinfo.php', # PHP 8.2.3
 		  //__DIR__ . '/includes/classes/class.paginator_html.php', # PHP 8.2.3
