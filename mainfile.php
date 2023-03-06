@@ -824,13 +824,16 @@ function online() {
 	$uname = $ip;
     $guest = 1;
 	$user_agent = $identify->identify_agent();	
-    if (is_user($user)) {
+    if (is_user($user)) 
+	{
         $uname = $userinfo['username'];
         $guest = 0;
 /*****[BEGIN]******************************************
  [ Base:    Advanced Security Extension        v1.0.0 ]
  ******************************************************/
-    } elseif($user_agent['engine'] == 'bot') {
+    } 
+	
+	if(isset($user_agent['engine']) && $user_agent['engine'] == 'bot') {
         $uname = $user_agent['bot'];
         $guest = 3;
     }
