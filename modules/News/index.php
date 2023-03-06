@@ -39,6 +39,16 @@
 /* along with this program; if not, write to the Free Software                 */
 /* Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA. */
 /*******************************************************************************/
+
+/******************************************
+ Applied rules:
+ * DirNameFileConstantToDirConstantRector
+ * LongArrayToShortArrayRector
+ * ListToArrayDestructRector (https://wiki.php.net/rfc/short_list_syntax https://www.php.net/manual/en/migration71.new-features.php#migration71.new-features.symmetric-array-destructuring)
+ * SetCookieRector (https://www.php.net/setcookie https://wiki.php.net/rfc/same-site-cookie)
+ * NullToStrictStringFuncCallArgRector
+ ******************************************/
+
 if (!defined('MODULE_FILE')) die('You can\'t access this file directly...');
 // BEGIN: Added in v2.40.00 - Mantis Issue 0001043
 $index = 0;
@@ -49,7 +59,7 @@ if (defined('INDEX_FILE') AND INDEX_FILE === true) {
 }
 // END: Added in v2.40.00 - Mantis Issue 0001043
 require_once('mainfile.php');
-$module_name = basename(dirname(__FILE__));
+$module_name = basename(__DIR__);
 get_lang($module_name);
 if (!(isset($new_topic))) $new_topic = 0;
 if (!isset($op)) $op = '';
@@ -57,7 +67,7 @@ if (!isset($pagenum)) $pagenum = 0;
 
 switch ($op) {
 	default:
-		theindex(intval($new_topic)); // Converting numerics to integers when passing precludes having to do it in every routine that calls it
+		theindex(intval(isset($new_topic))); // Converting numerics to integers when passing precludes having to do it in every routine that calls it
 		break;
 	case 'rate_article':
 		rate_article(intval($sid) , intval($score)); // Converting numerics to integers when passing precludes having to do it in every routine that calls it
@@ -81,9 +91,9 @@ function theindex($new_topic = 0) {
 $sql_news_config = "SELECT newsrows, bookmark, showtags FROM ".$prefix."_news_config";
     $result_news_config = $db->sql_query($sql_news_config);
     $row = $db->sql_fetchrow($result_news_config);   
-    $newsrows = stripslashes(check_html($row['newsrows'], 'nohtml'));
-    $bookmark = stripslashes(check_html($row['bookmark'], 'nohtml'));    
-    $showtags = stripslashes(check_html($row['showtags'], 'nohtml'));
+    $newsrows = stripslashes((string) check_html($row['newsrows'], 'nohtml'));
+    $bookmark = stripslashes((string) check_html($row['bookmark'], 'nohtml'));    
+    $showtags = stripslashes((string) check_html($row['showtags'], 'nohtml'));
    //determine percentage for news row mod 
         if ($newsrows==1) {	
            $newspercent ='100%'; 
@@ -112,10 +122,12 @@ $sql_news_config = "SELECT newsrows, bookmark, showtags FROM ".$prefix."_news_co
 		$result_a = $db->sql_query('SELECT topictext FROM ' . $prefix . '_topics WHERE topicid=\'' . $new_topic . '\'');
 		$row_a = $db->sql_fetchrow($result_a);
 		$numrows_a = $db->sql_numrows($result_a);
-		$topic_title = stripslashes(check_html($row_a['topictext'], 'nohtml'));
+		if(!isset($row_a['topictext']))
+		$row_a['topictext'] = '';
+		$topic_title = stripslashes((string) check_html($row_a['topictext'], 'nohtml'));
 		OpenTable();
 		if ($numrows_a == 0) {
-			echo '<center><font class="title">' . $sitename . '</font><br /><br />' . _NOINFO4TOPIC . '<br /><br />[ <a href="modules.php?name=News">' . _GOTONEWSINDEX . '<    /a> | <a href="modules.php?name=Topics">' . _SELECTNEWTOPIC . '</a> ]</center>';
+			echo '<center><font class="title">' . $sitename . '</font><br /><br />' . _NOINFO4TOPIC . '<br /><br />[ <a href="modules.php?name=News">' . _GOTONEWSINDEX . '</a> | <a href="modules.php?name=Topics">' . _SELECTNEWTOPIC . '</a> ]</center>';
 		} else {
 			echo '<center><font class="title">' . $sitename . ': ' . $topic_title . '</font><br /><br />'
 				. '<form action="modules.php?name=Search" method="post">'
@@ -136,7 +148,7 @@ $sql_news_config = "SELECT newsrows, bookmark, showtags FROM ".$prefix."_news_co
 //   if ($iTotNewsCount < $iNumRowsPerPg) $usePaginatorControl = true;
    if (isset($usePaginatorControl) and $usePaginatorControl) {
       $pagenum = intval($pagenum);
-      list($iNewsCount) = $db->sql_fetchrow($db->sql_query('SELECT COUNT(sid) AS iNewsCount FROM ' . $prefix . '_stories s ' . $qdb . ' ' . $querylang));
+      [$iNewsCount] = $db->sql_fetchrow($db->sql_query('SELECT COUNT(sid) AS iNewsCount FROM ' . $prefix . '_stories s ' . $qdb . ' ' . $querylang));
       include_once NUKE_CLASSES_DIR . 'class.paginator.php';
       include_once NUKE_CLASSES_DIR . 'class.paginator_html.php';
       $oPaginator = new Paginator_html($pagenum, $iNewsCount);
@@ -155,8 +167,40 @@ echo '<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left
 $itemsPerRow = $newsrows;
 $count = 0;
 #end Control column mod Tricked Out News
-      $result = $db->sql_query('SELECT t.topicname, t.topicimage, t.topictext,t.topicid, s.sid as ssid, s.catid, s.aid, s.title, s.time, s.hometext, s.bodytext, s.comments, s.counter, s.topic, s.informant, s.notes, s.acomm, s.score, s.ratings, s.ihome, c.title as ctitle FROM '.$prefix.'_stories s LEFT JOIN '.$prefix.'_topics t ON t.topicid = s.topic LEFT JOIN '.$prefix.'_stories_cat c ON c.catid=s.catid '."$qdb $querylang".' ORDER BY s.sid DESC limit '.$oPaginator->getStartRow().','.$storynum);
-	} else {
+              $result = $db->sql_query('SELECT t.topicname, 
+	                                          t.topicimage, 
+									           t.topictext,
+									             t.topicid, 
+										     s.sid as ssid, 
+											       s.catid, 
+												     s.aid, 
+												   s.title, 
+												    s.time, 
+												s.hometext, 
+												s.bodytext, 
+												s.comments, 
+												 s.counter, 
+												   s.topic, 
+											   s.informant, 
+											       s.notes, 
+												   s.acomm, 
+												   s.score, 
+												 s.ratings, 
+												   s.ihome, 
+												   c.title as ctitle FROM '.$prefix.'_stories s 
+												   
+												   LEFT JOIN '.$prefix.'_topics t 
+												   
+												   ON t.topicid = s.topic 
+												   
+												   LEFT JOIN '.$prefix.'_stories_cat c 
+												   
+												   ON c.catid=s.catid '."$qdb $querylang".' 
+												   
+												   ORDER BY s.sid DESC limit '.$oPaginator->getStartRow().','.$storynum);
+	} 
+	else 
+	{
 // SQL for non-paginator (could probably combine the two using a variable for the end of the SQL but ... someday
 #Control column mod Tricked Out News
 echo '<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left">';
@@ -169,24 +213,24 @@ $count = 0;
 	while ($row = $db->sql_fetchrow($result)) {
 		$topicname = $row['topicname'];
 		$topicimage = $row['topicimage'];
-		$topictext = stripslashes(check_html($row['topictext'], 'nohtml'));
+		$topictext = stripslashes((string) check_html($row['topictext'], 'nohtml'));
 		$sid = intval($row['ssid']);
 		$catid = intval($row['catid']);
-		$aid = stripslashes($row['aid']);
-		$title = stripslashes(check_html($row['title'], 'nohtml'));
+		$aid = stripslashes((string) $row['aid']);
+		$title = stripslashes((string) check_html($row['title'], 'nohtml'));
 		$time = $row['time'];
-		$hometext = stripslashes($row['hometext']);
-		$bodytext = stripslashes($row['bodytext']);
-		$comments = stripslashes($row['comments']);
+		$hometext = stripslashes((string) $row['hometext']);
+		$bodytext = stripslashes((string) $row['bodytext']);
+		$comments = stripslashes((string) $row['comments']);
 		$counter = intval($row['counter']);
 		$topic = intval($row['topic']);
-		$informant = stripslashes($row['informant']);
-		$notes = stripslashes($row['notes']);
+		$informant = stripslashes((string) $row['informant']);
+		$notes = stripslashes((string) $row['notes']);
 		$acomm = intval($row['acomm']);
 		$score = intval($row['score']);
 		$ratings = intval($row['ratings']);
 		if ($catid > 0) {
-			$cattitle = stripslashes(check_html($row['ctitle'], 'nohtml'));
+			$cattitle = stripslashes((string) check_html($row['ctitle'], 'nohtml'));
 		}
 		formatTimestamp($time);
 		$introcount = strlen($hometext);
@@ -203,7 +247,7 @@ $db_tags_cloud = $db->sql_query("SELECT tag FROM ".$prefix."_tags WHERE whr=3 AN
 	if(!empty($verifica_esistenza_tag)){	
 	$taglink = '<div class="tagindex"><img src="images/news/tag.png" alt="Tags" align="left" />&nbsp;';	
 		while ($row = $db->sql_fetchrow($db_tags_cloud)) {
-			$tag = addslashes(check_words(check_html($row['tag'], "nohtml")));
+			$tag = addslashes((string) check_words(check_html($row['tag'], "nohtml")));
 			$taglink .= '<a href="modules.php?name=Tags&amp;op=list&amp;tag='.urlencode($tag).'" title="'.$tag.'">'.$tag.'</a> ';
 		}
 		$taglink .= '</div>';	
@@ -233,7 +277,7 @@ $db_tags_cloud = $db->sql_query("SELECT tag FROM ".$prefix."_tags WHERE whr=3 AN
 		}
 		if ($catid != 0) {
 			$row3 = $db->sql_fetchrow($db->sql_query('SELECT title FROM ' . $prefix . '_stories_cat WHERE catid=\'' . $catid . '\''));
-			$title1 = stripslashes(check_html($row3['title'], 'nohtml'));
+			$title1 = stripslashes((string) check_html($row3['title'], 'nohtml'));
 			$title = '<a href="modules.php?name=News&amp;file=categories&amp;op=newindex&amp;catid=' . $catid . '"><font class="storycat">' . $title1 . ': </font></a>' . $title;
 			$morelink .= ' | <a href="modules.php?name=News&amp;file=categories&amp;op=newindex&amp;catid=' . $catid . '">' . $title1 . '</a>';
 		}
@@ -307,7 +351,7 @@ function rate_article($sid, $score) {
 			die();
 		}
 		if (isset($ratecookie)) {
-			$rcookie = base64_decode($ratecookie);
+			$rcookie = base64_decode((string) $ratecookie);
 			$rcookie = addslashes($rcookie);
 			$r_cookie = explode(':', $rcookie);
 		}
@@ -321,7 +365,7 @@ function rate_article($sid, $score) {
 		} else {
 			$result = $db->sql_query('update ' . $prefix . '_stories set score=score+' . $score . ', ratings=ratings+1 where sid=\'' . $sid . '\'');
 			$info = base64_encode($rcookie . $sid . ':');
-			setcookie('ratecookie', $info, time() +3600);
+			setcookie('ratecookie', $info, ['expires' => time() +3600]);
 			update_points(7);
 			Header('Location: modules.php?name=News&op=rate_complete&sid=' . $sid);
 		}
