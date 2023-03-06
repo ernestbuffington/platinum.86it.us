@@ -364,8 +364,8 @@ echo "}\n";
 echo "/* Sets the center block elements Style with CSS 3 */\n"; 
 echo ".maintable {\n";
 echo "background-image: 
-     url(../../../themes/HTML5-Titanium/images/backgrounds/titanium_background.png), 
-	 url(../../../themes/HTML5-Titanium/images/backgrounds/titanium_background.png);\n";
+     url(../../../themes/Titanium/images/backgrounds/titanium_background.png), 
+	 url(../../../themes/Titanium/images/backgrounds/titanium_background.png);\n";
 echo "background-position: center top;\n";
 echo "background-repeat: repeat-y;\n";
 echo "color: #000000;\n";
