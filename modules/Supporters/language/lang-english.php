@@ -68,6 +68,8 @@ define_once("_SP_LINKED","Linked");
 define_once("_SP_MAXHEIGHT","Max Image Height");
 define_once("_SP_MAXWIDTH","Max Image Width");
 define_once("_SP_MISSINGDATA","You are missing submission data!");
+if(!isset($sp_config['max_width'])) $sp_config['max_width'] = '';
+if(!isset($sp_config['max_height'])) $sp_config['max_height'] = '';
 define_once("_SP_MUSTBE","images larger than ".$sp_config['max_width']."x".$sp_config['max_height']." will be resized to ".$sp_config['max_width']."x".$sp_config['max_height']." on display");
 define_once("_SP_NAME","Site Name");
 define_once("_SP_NOACTIVESITES","There are no Active Sites.");
