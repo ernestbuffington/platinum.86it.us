@@ -263,9 +263,25 @@ if ($haspoll == 1) {
 }
 
 $row7 = $db->sql_fetchrow($db->sql_query('SELECT title, content, active, bposition FROM '.$prefix.'_blocks WHERE blockfile=\'block-Login.php\''." $querylang"));
+
+if(!isset($row7['title']))
+$row7['title'] = '';
+
 $title = stripslashes((string) check_html($row7['title'], 'nohtml'));
+
+if(!isset($row7['content']))
+$row7['content'] = '';
+
 $content = stripslashes((string) $row7['content']);
+
+if(!isset($row7['active']))
+$row7['active'] = '';
+
 $active = intval($row7['active']);
+
+if(!isset($row7['bposition']))
+$row7['bposition'] = '';
+
 $position = $row7['bposition'];
 $position = substr((string) $position, 0,1);
 if (($active == 1) AND ($position == 'r') AND (!is_user($user))) {
