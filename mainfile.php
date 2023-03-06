@@ -231,9 +231,7 @@ $bypassInstallationFolderCheck = FALSE;
 $bypassNukeSentinelInvalidIPCheck = FALSE;
 
 # Vendor Autoload - only if vendor directory exists with an autoload file! START
-if(file_exists(NUKE_VENDOR_DIR.'autoload.php')):
-  require_once(NUKE_VENDOR_DIR.'autoload.php');
-endif;  
+require_once(INCLUDE_PATH.'vendor/autoload.php');
 # Vendor Autoload - only if vendor directory exists with an autoload file! END
 
 use function PHP81_BC\strftime;
@@ -1536,9 +1534,25 @@ function public_message() {
 	$c_mid = intval($c_mid);
         $result2 = $db->sql_query("SELECT mid, content, date, who FROM ".$prefix."_public_messages WHERE mid > '$c_mid' ORDER BY date ASC LIMIT 1");
 	$row2 = $db->sql_fetchrow($result2);
+	
+	if(!isset($row2['mid']))
+	$row2['mid'] = '';
+	
 	$mid = intval($row2['mid']);
+
+	if(!isset($row2['content']))
+	$row2['content'] = '';
+	
 	$content = $row2['content'];
+
+	if(!isset($row2['date']))
+	$row2['date'] = '';
+
 	$tdate = $row2['date'];
+
+	if(!isset($row2['who']))
+    $row2['who'] = '';
+
 	$who = $row2['who'];
 	if ((!isset($c_mid)) OR ($c_mid = $mid)) {
     	    $public_msg = "<br /><table width=\"90%\" border=\"1\" cellspacing=\"2\" cellpadding=\"0\" bgcolor=\"FFFFFF\" align=\"center\"><tr><td>\n";
