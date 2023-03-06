@@ -117,4 +117,3 @@ if (!isset($ipnCheck)) { /* do not display the following */
 	ERROR';
 	}
 }
-?>
