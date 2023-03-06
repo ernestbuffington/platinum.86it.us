@@ -24,6 +24,12 @@ if (realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
 	exit('Access Denied');
 }
 
+global $ab_config, $admin_file, $nsnst_const, $nuke_config, $remote;
+
+if(!isset($nuke_config))
+$nuke_config = [];
+if(!isset($nsnst_const))
+$nsnst_const = [];
 
 $ab_config = [];
 $blocker_array = [];
@@ -42,13 +48,6 @@ if(defined('FORUM_ADMIN')) {
 } else {
 	define('NSINCLUDE_PATH', './');
 }
-
-global $ab_config, $admin_file, $nsnst_const, $nuke_config, $remote;
-
-if(!isset($nuke_config))
-$nuke_config = [];
-if(!isset($nsnst_const))
-$nsnst_const = [];
 
 // Load required configs
 $ab_config = abget_configs();
