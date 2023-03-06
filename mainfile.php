@@ -215,9 +215,9 @@ if(isset($user) && $user == $_COOKIE['user'])
    $user = base64_encode($user);
 }
 // Die message for not allowed HTML tags
-$htmltags = "<center><img src=\"images/logo.gif\"><br /><br /><strong>";
+$htmltags = "<div align=\"center\"><img src=\"images/logo.gif\"><br /><br /><strong>";
 $htmltags .= "The html tags you attempted to use are not allowed</strong><br /><br />";
-$htmltags .= "[ <a href=\"javascript:history.go(-1)\"><strong>Go Back</strong></a> ]</center>";
+$htmltags .= "[ <a href=\"javascript:history.go(-1)\"><strong>Go Back</strong></a> ]</div>";
 if(defined('FORUM_ADMIN')) {
 	define('INCLUDE_PATH', '../../../');
 } elseif(defined('INSIDE_MOD')) {
@@ -538,7 +538,7 @@ function update_points($id) {
 }
 function title($text) {
     OpenTable();
-    echo "<center><span class=\"title\"><strong>$text</strong></span></center>";
+    echo "<div align=\"center\"><span class=\"title\"><strong>$text</strong></span></div>";
     CloseTable();
     echo "<br />";
 }
@@ -748,10 +748,10 @@ function message_box() {
 /*****************************************************/
             if ($view > 5 AND in_groups($groups)) {
                 OpenTable();
-                echo "<center><font class=\"option\" color=\"$textcolor2\"><strong>$title</strong></font></center><br />\n";
+                echo "<div align=\"center\"><font class=\"option\" color=\"$textcolor2\"><strong>$title</strong></font></div><br />\n";
                 echo "<font class=\"content\">$content</font>\n";
                 if (is_admin($admin)) {
-                    echo "<br /><br /><center><font class=\"content\">[ "._MVIEWGROUPS." - $remain - <a href=\"".$admin_file.".php?op=editmsg&mid=$mid\">"._EDIT."</a> ]</font></center>\n";
+                    echo "<br /><br /><div align=\"center\"><font class=\"content\">[ "._MVIEWGROUPS." - $remain - <a href=\"".$admin_file.".php?op=editmsg&mid=$mid\">"._EDIT."</a> ]</font></div>\n";
                 }
                 CloseTable();
                 echo "<br />\n";
@@ -761,44 +761,44 @@ function message_box() {
 /* Module - NSN Groups v.1.7.1                   END */
 /*****************************************************/
             OpenTable();
-            echo "<center><font class=\"option\" color=\"$textcolor2\"><strong>$title</strong></font></center><br />\n"
+            echo "<div align=\"center\"><font class=\"option\" color=\"$textcolor2\"><strong>$title</strong></font></div><br />\n"
 		    	."<font class=\"content\">$content</font>";
 			if (is_admin($admin)) {
-		    	echo "<br /><br /><center><font class=\"content\">[ "._MVIEWSUBUSERS." - $remain - <a href=\"".$admin_file.".php?op=editmsg&mid=$mid\">"._EDIT."</a> ]</font></center>";
+		    	echo "<br /><br /><div align=\"center\"><font class=\"content\">[ "._MVIEWSUBUSERS." - $remain - <a href=\"".$admin_file.".php?op=editmsg&mid=$mid\">"._EDIT."</a> ]</font></div>";
 			}
     		CloseTable();
 			echo "<br />";
 	    } elseif ($view == 4 AND is_admin($admin)) {
                 OpenTable();
-                echo "<center><font class=\"option\" color=\"$textcolor2\"><strong>$title</strong></font></center><br />\n"
+                echo "<div align=\"center\"><font class=\"option\" color=\"$textcolor2\"><strong>$title</strong></font></div><br />\n"
 		    ."<font class=\"content\">$content</font>"
-		    ."<br /><br /><center><font class=\"content\">[ "._MVIEWADMIN." - $remain - <a href=\"".$admin_file.".php?op=editmsg&mid=$mid\">"._EDIT."</a> ]</font></center>";
+		    ."<br /><br /><div align=\"center\"><font class=\"content\">[ "._MVIEWADMIN." - $remain - <a href=\"".$admin_file.".php?op=editmsg&mid=$mid\">"._EDIT."</a> ]</font></div>";
 		CloseTable();
 		echo "<br />";
 	    } elseif ($view == 3 AND is_user($user) || is_admin($admin)) {
                 OpenTable();
-                echo "<center><font class=\"option\" color=\"$textcolor2\"><strong>$title</strong></font></center><br />\n"
+                echo "<div align=\"center\"><font class=\"option\" color=\"$textcolor2\"><strong>$title</strong></font></div><br />\n"
 		    ."<font class=\"content\">$content</font>";
 		if (is_admin($admin)) {
-		    echo "<br /><br /><center><font class=\"content\">[ "._MVIEWUSERS." - $remain - <a href=\"".$admin_file.".php?op=editmsg&mid=$mid\">"._EDIT."</a> ]</font></center>";
+		    echo "<br /><br /><div align=\"center\"><font class=\"content\">[ "._MVIEWUSERS." - $remain - <a href=\"".$admin_file.".php?op=editmsg&mid=$mid\">"._EDIT."</a> ]</font></div>";
 		}
     		CloseTable();
 		echo "<br />";
 	    } elseif ($view == 2 AND !is_user($user) || is_admin($admin)) {
                 OpenTable();
-                echo "<center><font class=\"option\" color=\"$textcolor2\"><strong>$title</strong></font></center><br />\n"
+                echo "<div align=\"center\"><font class=\"option\" color=\"$textcolor2\"><strong>$title</strong></font></div><br />\n"
 		    ."<font class=\"content\">$content</font>";
 		if (is_admin($admin)) {
-		    echo "<br /><br /><center><font class=\"content\">[ "._MVIEWANON." - $remain - <a href=\"".$admin_file.".php?op=editmsg&mid=$mid\">"._EDIT."</a> ]</font></center>";
+		    echo "<br /><br /><div align=\"center\"><font class=\"content\">[ "._MVIEWANON." - $remain - <a href=\"".$admin_file.".php?op=editmsg&mid=$mid\">"._EDIT."</a> ]</font></div>";
 		}
 		CloseTable();
 		echo "<br />";
 	    } elseif ($view == 1) {
                 OpenTable();
-                echo "<center><font class=\"option\" color=\"$textcolor2\"><strong>$title</strong></font></center><br />\n"
+                echo "<div align=\"center\"><font class=\"option\" color=\"$textcolor2\"><strong>$title</strong></font></div><br />\n"
 		    ."<font class=\"content\">$content</font>";
 		if (is_admin($admin)) {
-		    echo "<br /><br /><center><font class=\"content\">[ "._MVIEWALL." - $remain - <a href=\"".$admin_file.".php?op=editmsg&mid=$mid\">"._EDIT."</a> ]</font></center>";
+		    echo "<br /><br /><div align=\"center\"><font class=\"content\">[ "._MVIEWALL." - $remain - <a href=\"".$admin_file.".php?op=editmsg&mid=$mid\">"._EDIT."</a> ]</font></div>";
 		}
 		CloseTable();
 		echo "<br />";
@@ -883,7 +883,7 @@ function selectlanguage() {
     global $useflags, $currentlang;
     if ($useflags == 1) {
     $title = _SELECTLANGUAGE;
-    $content = "<center><font class=\"content\">"._SELECTGUILANG."<br /><br />";
+    $content = "<div align=\"center\"><font class=\"content\">"._SELECTGUILANG."<br /><br />";
     $langdir = dir("language");
     while($func=$langdir->read()) {
 	if(str_starts_with($func, "lang-")) {
@@ -901,11 +901,11 @@ function selectlanguage() {
 	    $content .= "<a href=\"index.php?newlang=".$tl."\"><img src=\"images/language/flag-".$tl.".png\" border=\"0\" alt=\"$altlang\" title=\"$altlang\" hspace=\"3\" vspace=\"3\"></a> ";
 	}
     }
-    $content .= "</font></center>";
+    $content .= "</font></div>";
     themesidebox($title, $content);
 	} else {
     $title = _SELECTLANGUAGE;
-    $content = "<center><font class=\"content\">"._SELECTGUILANG."<br /><br /></font>";
+    $content = "<div align=\"center\"><font class=\"content\">"._SELECTGUILANG."<br /><br /></font>";
     $content .= "<form action=\"index.php\" method=\"get\"><select name=\"newlanguage\" onChange=\"top.location.href=this.options[this.selectedIndex].value\">";
 	    $handle=opendir('language');
 	    while ($file = readdir($handle)) {
@@ -924,7 +924,7 @@ function selectlanguage() {
 	$content .= ">".ucfirst($languageslist[$i])."</option>\n";
 		}
     }
-    $content .= "</select></form></center>";
+    $content .= "</select></form></div>";
     themesidebox($title, $content);
 	}
 }
@@ -1283,7 +1283,7 @@ function loginbox($gfx_check) {
     if (!is_user($user)) {
         $title = _LOGIN;
         $boxstuff = '<form action="modules.php?name=Your_Account" method="post">';
-        $boxstuff .= '<center><font class="content">'._NICKNAME.'<br />';
+        $boxstuff .= '<div align=\"center\"><font class="content">'._NICKNAME.'<br />';
         $boxstuff .= '<input type="text" name="username" size="8" maxlength="25" /><br />';
         $boxstuff .= _PASSWORD.'<br />';
         $boxstuff .= '<input type="password" name="user_password" size="8" maxlength="20" /><br />';
@@ -1295,8 +1295,8 @@ function loginbox($gfx_check) {
  [ Base:    GFX Code                           v1.0.0 ]
  ******************************************************/
         $boxstuff .= '<input type="hidden" name="op" value="login" />';
-        $boxstuff .= '<input type="submit" value="'._LOGIN.'" /></font></center></form>';
-        $boxstuff .= '<center><font class="content">'._ASREGISTERED.'</font></center>';
+        $boxstuff .= '<input type="submit" value="'._LOGIN.'" /></font></div></form>';
+        $boxstuff .= '<div align=\"center\"><font class="content">'._ASREGISTERED.'</font></div>';
         themesidebox($title, $boxstuff);
     }
 }
@@ -1477,7 +1477,7 @@ if(!defined('FORUM_ADMIN')) {
 if(!function_exists("themecenterbox")) {
   function themecenterbox($title, $content) {
     OpenTable();
-    echo "<center><font class=\"option\"><strong>$title</strong></font></center><br />$content";
+    echo "<div align=\"center\"><font class=\"option\"><strong>$title</strong></font></div><br />$content";
     CloseTable();
     echo "<br />";
   }
@@ -1833,9 +1833,9 @@ function ads($position) {
         }
         if ($ad_class == 'code') {
             $ad_code = stripslashes((string) FixQuotes($ad_code));
-            $ads = '<center>'.$ad_code.'</center>';
+            $ads = '<div align="center">'.$ad_code.'</div>';
         } elseif ($ad_class == 'flash') {
-            $ads = '<center>
+            $ads = '<div align="center">
                 <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
                 codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"
                 width="'.$ad_width.'" height="'.$ad_height.'" id="'.$bid.'">
@@ -1846,9 +1846,9 @@ function ads($position) {
                 pluginspage="http://www.macromedia.com/go/getflashplayer">
                 </embed>
                 </object>
-                </center>';
+                </div>';
         } else {
-            $ads = '<center><a href="index.php?op=ad_click&amp;bid='.$bid.'" target="_blank"><img src="'.$imageurl.'" border="0" alt="'.$alttext.'" title="'.$alttext.'" /></a></center>';
+            $ads = '<div align="center"><a href="index.php?op=ad_click&amp;bid='.$bid.'" target="_blank"><img src="'.$imageurl.'" border="0" alt="'.$alttext.'" title="'.$alttext.'" /></a></div>';
         }
     } else {
         $ads = '';
