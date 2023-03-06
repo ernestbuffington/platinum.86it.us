@@ -40,7 +40,16 @@ if (file_exists("install"))
 {
 	header("Location: install/index.php");
 }
-require_once("mainfile.php");
+define('HOME_FILE', true);
+
+define('MODULE_FILE', true);
+
+$_SERVER['PHP_SELF'] = 'modules.php';
+
+$_SERVER['SCRIPT_NAME'] = 'modules.php';
+
+require_once(__DIR__.'/mainfile.php');
+
 global $prefix, $db, $admin_file;
 if (isset($op) AND ($op == 'ad_click') AND isset($bid)) {
     $bid = intval($bid);
@@ -52,7 +61,6 @@ if (isset($op) AND ($op == 'ad_click') AND isset($bid)) {
     Header('Location: '.htmlentities((string) $clickurl));
     die();
 }
-define('MODULE_FILE', true);
 /*****************************************************/
 /* Forum - Arcade v.3.0.2                      START */
 /*****************************************************/
@@ -82,12 +90,11 @@ if($arcade == 'Arcade' && $newscore='newscore')
 /* Forum - Arcade v.3.0.2                        END */
 /*****************************************************/
 $modpath = '';
-$_SERVER['PHP_SELF'] = 'modules.php';
-$_SERVER['SCRIPT_NAME'] = 'modules.php';
+
 $row = $db->sql_fetchrow($db->sql_query('SELECT main_module from '.$prefix.'_main'));
 $name = $row['main_module'];
 $home = 1;
-define('HOME_FILE', true);
+
 if (isset($url) AND is_admin($admin)) {
     Header('Location: '.$url);
     die();
@@ -129,7 +136,9 @@ if (stripos_clone($name, '..') || (isset($file) && stripos_clone($file, '..')) |
     $modpath .= 'modules/'.$name.'/'.$mod_file.'.php';
     if (file_exists($modpath)) {
         include_once($modpath);
-    } else {
+    } 
+	else 
+	{
         define('INDEX_FILE', true);
         include_once('header.php');
         OpenTable();
