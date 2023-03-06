@@ -43,6 +43,21 @@ if ( !defined('MODULE_FILE') )
 /* Remove the following line      */
 /* will remove the right side     */
 /**********************************/
+
+/*****************
+ Applied rules:
+ * DirNameFileConstantToDirConstantRector
+ * LongArrayToShortArrayRector
+ * AddDefaultValueForUndefinedVariableRector (https://github.com/vimeo/psalm/blob/29b70442b11e3e66113935a2ee22e165a70c74a4/docs/fixing_code.md#possiblyundefinedvariable)
+ * ListToArrayDestructRector (https://wiki.php.net/rfc/short_list_syntax https://www.php.net/manual/en/migration71.new-features.php#migration71.new-features.symmetric-array-destructuring)
+ * SetCookieRector (https://www.php.net/setcookie https://wiki.php.net/rfc/same-site-cookie)
+ * CurlyToSquareBracketArrayStringRector (https://www.php.net/manual/en/migration74.deprecated.php)
+ * AddLiteralSeparatorToNumberRector (https://wiki.php.net/rfc/numeric_literal_separator)
+ * ChangeSwitchToMatchRector (https://wiki.php.net/rfc/match_expression_v2)
+ * NullToStrictStringFuncCallArgRector
+ * ReturnNeverTypeRector (https://wiki.php.net/rfc/noreturn_type) 
+ *****************/
+
 define('INDEX_FILE', true);
 $index = 1; 
 
@@ -54,13 +69,13 @@ $index = 1;
 
 
 require_once("mainfile.php");
-$module_name = basename(dirname(__FILE__));
+$module_name = basename(__DIR__);
 get_lang($module_name);
 
 function is_client($client) {
 	global $prefix, $db;
 	if(!is_array($client)) {
-		$client = base64_decode($client);
+		$client = base64_decode((string) $client);
 		$client = addslashes($client);
 		$client = explode(":", $client);
 		$cid = "$client[0]";
@@ -109,6 +124,7 @@ echo "</table>";
 
 
 function plans() {
+$delivery = null;
 global $prefix, $sitename, $client, $client_opt, $user_prefix, $db, $module_name, $dbi, $bgcolor1, $bgcolor2, $bgcolor3, $user, $admin;
 include_once("header.php");
 
@@ -268,8 +284,8 @@ function terms() {
 	$year = $today['year'];
     include_once("header.php");
     $row = $db->sql_fetchrow($db->sql_query("SELECT * FROM ".$prefix."_banner_terms"));
-    $terms = preg_replace("/\[sitename\]/", $sitename, $row['terms_body']);
-	$terms = preg_replace("/\[country\]/", $row['country'], $terms);
+    $terms = preg_replace("/\[sitename\]/", (string) $sitename, (string) $row['terms_body']);
+	$terms = preg_replace("/\[country\]/", (string) $row['country'], $terms);
     OpenTable();
     themenu();
     title(""._TERMSCONDITIONS."");
@@ -299,7 +315,7 @@ function client() {
 }
 
 function zeroFill($a, $b) {
-    $z = hexdec(80000000);
+    $z = hexdec(80_000_000);
 	if ($z & $a) {
     	$a = ($a>>1);
         $a &= (~$z);
@@ -321,7 +337,7 @@ function mix($a,$b,$c) {
   $a -= $b; $a -= $c; $a ^= (zeroFill($c,3));   
   $b -= $c; $b -= $a; $b ^= ($a<<10);
   $c -= $a; $c -= $b; $c ^= (zeroFill($b,15));
-  return array($a,$b,$c);
+  return [$a, $b, $c];
 }
 
 function GoogleCH($url, $length=null, $init=GOOGLE_MAGIC) {
@@ -360,8 +376,9 @@ function GoogleCH($url, $length=null, $init=GOOGLE_MAGIC) {
 }
 
 function strord($string) {
-    for($i=0;$i<strlen($string);$i++) {
-        $result[$i] = ord($string{$i});
+    $result = [];
+    for($i=0;$i<strlen((string) $string);$i++) {
+        $result[$i] = ord($string[$i]);
     }
     return $result;
 }
@@ -377,7 +394,7 @@ function getrank($url) {
     return $rank;
 }
 
-function client_logout() {
+function client_logout(): never {
 	global $module_name;
 	$client = "";
 	setcookie("client");
@@ -403,7 +420,7 @@ function client_valid($login, $pass) {
 		$row = $db->sql_fetchrow($db->sql_query("SELECT cid FROM ".$prefix."_banner_clients WHERE login='$login' AND passwd='$pass'"));
 		$cid = $row['cid'];
 		$info = base64_encode("$cid:$login:$pass");
-		setcookie("client","$info",time()+3600);
+		setcookie("client","$info",['expires' => time()+3600]);
 		Header("Location: modules.php?name=$module_name&op=client_home");
 	}
 }
@@ -412,12 +429,13 @@ function client_valid($login, $pass) {
 
 /////// Updated 06.10.05 /////////
 function client_home() {
-	global $prefix, $db, $sitename, $bgcolor2, $module_name, $client;
+	$a = null;
+ global $prefix, $db, $sitename, $bgcolor2, $module_name, $client;
 	if (!is_client($client)) {
 		Header("Location: modules.php?name=$module_name&op=client");
 		die();
 	} else {
-		$client = base64_decode($client);
+		$client = base64_decode((string) $client);
 		$client = addslashes($client);
 		$client = explode(":", $client);
 		$cid = $client[0];
@@ -481,7 +499,7 @@ function client_home() {
 				."<td align=\"center\">$left</td>"
 				."<td align=\"center\">$clicks</td>"
 				."<td align=\"center\">$percent</td>"
-				."<td align=\"center\">".ucFirst($row['ad_class'])."</td>"
+				."<td align=\"center\">".ucFirst((string) $row['ad_class'])."</td>"
 				."<td align=\"center\"><a href=\"modules.php?name=$module_name&op=client_report&cid=$cid&bid=$bid\"><img src=\"images/edit.gif\" border=\"0\" alt=\""._EMAILSTATS."\" title=\""._EMAILSTATS."\"></a>  <a href=\"modules.php?name=$module_name&op=view_banner&cid=$cid&bid=$bid\"><img src=\"images/view.gif\" border=\"0\" alt=\""._VIEWBANNER."\" title=\""._VIEWBANNER."\"></a></td><tr>";
 		}
 		echo "</table>";
@@ -536,7 +554,7 @@ function client_home() {
 				."<td align=\"center\">$left</td>"
 				."<td align=\"center\">$clicks</td>"
 				."<td align=\"center\">$percent</td>"
-				."<td align=\"center\">".ucFirst($row['ad_class'])."</td>"
+				."<td align=\"center\">".ucFirst((string) $row['ad_class'])."</td>"
 				."<td align=\"center\"><a href=\"modules.php?name=$module_name&op=client_report&cid=$cid&bid=$bid\"><img src=\"images/edit.gif\" border=\"0\" alt=\""._EMAILSTATS."\" title=\""._EMAILSTATS."\"></a>  <a href=\"modules.php?name=$module_name&op=view_banner&cid=$cid&bid=$bid\"><img src=\"images/view.gif\" border=\"0\" alt=\""._VIEWBANNER."\" title=\""._VIEWBANNER."\"></a></td><tr>";
 			$a = 1;
 		}
@@ -550,12 +568,13 @@ function client_home() {
 }
 
 function view_banner($cid, $bid) {
-	global $prefix, $db, $module_name, $client, $bgcolor2, $sitename;
+	$status = null;
+ global $prefix, $db, $module_name, $client, $bgcolor2, $sitename;
 	if (!is_client($client)) {
 		Header("Location: modules.php?name=$module_name&op=client");
 		die();
 	} else {
-		$client = base64_decode($client);
+		$client = base64_decode((string) $client);
 		$client = addslashes($client);
 		$client = explode(":", $client);
 		$client_id = $client[0];
@@ -587,7 +606,7 @@ function view_banner($cid, $bid) {
 			$alttext = $row['alttext'];
 			echo "<center><font class=\"title\"><strong>" . _YOURBANNER . ": ".$row['name']."</strong></font><br /><br />";
 			if ($ad_class == "code") {
-				$ad_code = stripslashes(FixQuotes($ad_code));
+				$ad_code = stripslashes((string) FixQuotes($ad_code));
 				echo "<table border=\"0\" align=\"center\"><tr><td>$ad_code</td></tr></table><br /><br />";
 			} elseif ($ad_class == "flash") {
 				echo "<center>
@@ -653,7 +672,7 @@ function view_banner($cid, $bid) {
 				."<td align=\"center\">$left</td>"
 				."<td align=\"center\">$clicks</td>"
 				."<td align=\"center\">$percent</td>"
-				."<td align=\"center\">".ucFirst($row['ad_class'])."</td></tr><tr>"
+				."<td align=\"center\">".ucFirst((string) $row['ad_class'])."</td></tr><tr>"
 				."<td align=\"center\" colspan=\"7\">"._CURRENTSTATUS." $status</td></tr>"
 				."</table><br /><br />"
 				."[ <a href=\"modules.php?name=$module_name&op=client_report&cid=$cid&bid=$bid\">"._EMAILSTATS."</a> | <a href=\"modules.php?name=$module_name&op=logout\">"._LOGOUT."</a> ]";
@@ -664,12 +683,13 @@ function view_banner($cid, $bid) {
 }
 
 function client_report($cid, $bid) {
-	global $prefix, $db, $module_name, $client, $sitename;
+	$message = null;
+ global $prefix, $db, $module_name, $client, $sitename;
 	if (!is_client($client)) {
 		Header("Location: modules.php?name=$module_name&op=client");
 		die();
 	} else {
-		$client = base64_decode($client);
+		$client = base64_decode((string) $client);
 		$client = addslashes($client);
 		$client = explode(":", $client);
 		$client_id = $client[0];
@@ -692,7 +712,7 @@ function client_report($cid, $bid) {
 			$sql = "SELECT name, email FROM ".$prefix."_banner_clients WHERE cid='$cid'";
 			$result = $db->sql_query($sql);
 			$row = $db->sql_fetchrow($result);
-			$name = htmlentities($row['name']);
+			$name = htmlentities((string) $row['name']);
 			$email = $row['email'];
 			if ($email == "") {
 				echo "<center><br /><br />"
@@ -737,7 +757,7 @@ function client_report($cid, $bid) {
 					$message = ""._FOLLOWINGSTATS." $sitename:\n\n\n"._CLIENTNAME.": $name\n"._BANNERID.": $bid\n"._BANNERNAME.": ".$row['name']."\n\n"._IMPPURCHASED.": $imptotal\n"._IMPREMADE.": $impmade\n"._IMPRELEFT.": $left\n"._RECEIVEDCLICKS.": N/A\n"._CLICKSPERCENT.": N/A\n\n\n"._GENERATEDON.": $fecha";
 				}
 				$from = "$sitename";
-				mail($email, $subject, $message, "From: $from\nX-Mailer: PHP/" . phpversion());
+				mail((string) $email, $subject, $message, "From: $from\nX-Mailer: PHP/" . phpversion());
 				echo "<center><br /><br /><br />"
 					."<strong>"._STATSSENT." $email</strong><br /><br />"
 					."[ <a href=\"javascript:history.go(-1)\">"._GOBACK."</a> ]";
@@ -758,7 +778,7 @@ function theindex() {
     global $prefix, $sitename, $user_prefix, $db, $module_name, $dbi, $bgcolor1, $bgcolor2, $bgcolor3, $admin;
     include_once("header.php");  
     $row = $db->sql_fetchrow($db->sql_query("SELECT * FROM ".$prefix."_banner_frontpage"));
-    $frontpage = preg_replace("/\[sitename\]/", $sitename, $row['frontpage_body']);
+    $frontpage = preg_replace("/\[sitename\]/", (string) $sitename, (string) $row['frontpage_body']);
     OpenTable();
     themenu();
     title(""._MAIN."");
@@ -772,10 +792,13 @@ function theindex() {
 /* ADVERTISING Cancel Page   */
 /*****************************/
 function cancel() {
+$db = null;
+$prefix = null;
+$sitename = null;
 global $module_name, $admin, $buttons;
 include_once("header.php"); 
     $row = $db->sql_fetchrow($db->sql_query("SELECT * FROM ".$prefix."_banner_cancel"));
-    $cancel = preg_replace("/\[sitename\]/", $sitename, $row['cancel_body']);
+    $cancel = preg_replace("/\[sitename\]/", (string) $sitename, (string) $row['cancel_body']);
     OpenTable();
     themenu();
     title("Did you mean to cancel your Order!");
@@ -790,10 +813,13 @@ include_once("header.php");
 /* ADVERTISING Campaign Page */
 /*****************************/
 function campaigns() {
+$db = null;
+$prefix = null;
+$sitename = null;
 global $module_name, $admin, $buttons;
 include_once("header.php"); 
     $row = $db->sql_fetchrow($db->sql_query("SELECT * FROM ".$prefix."_banner_campaigns"));
-    $campaigns = preg_replace("/\[sitename\]/", $sitename, $row['campaigns_body']);
+    $campaigns = preg_replace("/\[sitename\]/", (string) $sitename, (string) $row['campaigns_body']);
     OpenTable();
     themenu();
     title(""._ADCAMPAIGNS.""); 
@@ -853,7 +879,7 @@ function sitestats() {
 	$regusers = $db->sql_numrows($db->sql_query("SELECT user_id FROM ".$user_prefix."_users"));
     include_once("header.php");
     $row = $db->sql_fetchrow($db->sql_query("SELECT * FROM ".$prefix."_banner_stats"));
-    $stats = preg_replace("/\[sitename\]/", $sitename, $row['stats_body']);
+    $stats = preg_replace("/\[sitename\]/", (string) $sitename, (string) $row['stats_body']);
     OpenTable();
     themenu();
 	title(""._GENERALSTATS."");
@@ -868,7 +894,7 @@ function sitestats() {
 		
 
     $result = sql_query("select count from ".$prefix."_counter order by type desc", $dbi);
-    list($total) = sql_fetch_row($result, $dbi);
+    [$total] = sql_fetch_row($result, $dbi);
 
     echo "<center>"._STATSTEXT."<br />"
     	.""._TOTALVIEWS." <strong>$views_t</strong><br />"
@@ -882,17 +908,17 @@ function sitestats() {
 	}
 
     $result = sql_query("select year, month, hits from ".$prefix."_stats_month order by hits DESC limit 0,1", $dbi);
-    list($year, $month, $hits) = sql_fetch_row($result, $dbi);
+    [$year, $month, $hits] = sql_fetch_row($result, $dbi);
     if ($month == 1) {$month = _JANUARY;} elseif ($month == 2) {$month = _FEBRUARY;} elseif ($month == 3) {$month = _MARCH;} elseif ($month == 4) {$month = _APRIL;} elseif ($month == 5) {$month = _MAY;} elseif ($month == 6) {$month = _JUNE;} elseif ($month == 7) {$month = _JULY;} elseif ($month == 8) {$month = _AUGUST;} elseif ($month == 9) {$month = _OCTOBER;} elseif ($month == 10) {$month = _SEPTEMBER;} elseif ($month == 11) {$month = _NOVEMBER;} elseif ($month == 12) {$month = _DECEMBER;}
     echo ""._MOSTMONTH.": $month $year ($hits "._HITS.")<br />";
 
     $result = sql_query("select year, month, date, hits from ".$prefix."_stats_date order by hits DESC limit 0,1", $dbi);
-    list($year, $month, $date, $hits) = sql_fetch_row($result, $dbi);
+    [$year, $month, $date, $hits] = sql_fetch_row($result, $dbi);
     if ($month == 1) {$month = _JANUARY;} elseif ($month == 2) {$month = _FEBRUARY;} elseif ($month == 3) {$month = _MARCH;} elseif ($month == 4) {$month = _APRIL;} elseif ($month == 5) {$month = _MAY;} elseif ($month == 6) {$month = _JUNE;} elseif ($month == 7) {$month = _JULY;} elseif ($month == 8) {$month = _AUGUST;} elseif ($month == 9) {$month = _OCTOBER;} elseif ($month == 10) {$month = _SEPTEMBER;} elseif ($month == 11) {$month = _NOVEMBER;} elseif ($month == 12) {$month = _DECEMBER;}
     echo ""._MOSTDAY.": $date $month $year ($hits "._HITS.")<br />";
 
     $result = sql_query("select year, month, date, hour, hits from ".$prefix."_stats_hour order by hits DESC limit 0,1", $dbi);
-    list($year, $month, $date, $hour, $hits) = sql_fetch_row($result, $dbi);
+    [$year, $month, $date, $hour, $hits] = sql_fetch_row($result, $dbi);
     if ($month == 1) {$month = _JANUARY;} elseif ($month == 2) {$month = _FEBRUARY;} elseif ($month == 3) {$month = _MARCH;} elseif ($month == 4) {$month = _APRIL;} elseif ($month == 5) {$month = _MAY;} elseif ($month == 6) {$month = _JUNE;} elseif ($month == 7) {$month = _JULY;} elseif ($month == 8) {$month = _AUGUST;} elseif ($month == 9) {$month = _OCTOBER;} elseif ($month == 10) {$month = _SEPTEMBER;} elseif ($month == 11) {$month = _NOVEMBER;} elseif ($month == 12) {$month = _DECEMBER;}
     if ($hour < 10) {
 	$hour = "0$hour:00 - 0$hour:59";
@@ -919,10 +945,14 @@ echo"  </td>
 /* ADVERTISING THANKS Page   */
 /*****************************/
 function thanks() {
+$db = null;
+$prefix = null;
+$sitename = null;
+$bgcolor3 = null;
 global $module_name, $admin, $buttons;
 include_once("header.php");  
     $row = $db->sql_fetchrow($db->sql_query("SELECT * FROM ".$prefix."_banner_thanks"));
-    $thanks = preg_replace("/\[sitename\]/", $sitename, $row['thanks_body']);
+    $thanks = preg_replace("/\[sitename\]/", (string) $sitename, (string) $row['thanks_body']);
     OpenTable();
     themenu();
     title("Thanks you for your Order");
@@ -1048,6 +1078,7 @@ include_once("footer.php");
 ////////////////////////////////////////////////////////////////////////////////
 
 function BannersAdd2($name, $cid, $adname, $enddate, $imptotal, $imageurl, $clickurl, $alttext, $position, $active, $ad_class, $ad_code, $ad_width, $ad_height) {
+$a = null;
 global $prefix, $db, $admin_file;
 $alttext = filter($alttext, "nohtml", 1);
 $cid = intval($cid);
@@ -1115,6 +1146,7 @@ include_once("footer.php");
 
 //// Sponsors - view all uploaded banners ////	
 function sponsors() {
+$did = null;
 global $prefix, $db, $admin_file, $sitename;
 include_once("header.php");
 OpenTable();
@@ -1132,7 +1164,7 @@ $imageurl = $row['imageurl'];
 $clickurl = $row['clickurl'];
 $alttext = filter($row['alttext'], "nohtml");
 $date = $row['date'];
-$date = explode(" ", $date);
+$date = explode(" ", (string) $date);
 $date = "$date[0] @ $date[1]";
 $position = $row['position'];
 $active = intval($row['active']);
@@ -1142,7 +1174,7 @@ $ad_width = $row['ad_width'];
 $ad_height = $row['ad_height'];
 
 	if ($ad_class == "code") {
-	$ad_code = stripslashes(FixQuotes($ad_code));
+	$ad_code = stripslashes((string) FixQuotes($ad_code));
 	echo "<table border=\"0\" align=\"center\"><tr><td>$ad_code</td></tr></table><hr width='90%'>";
 	} elseif ($ad_class == "flash") {
 	echo "<center>
@@ -1170,91 +1202,26 @@ include_once("footer.php");
 }	
 
 
-/////////////////  PCN ADVERTISING UPGRADE EXTRAS  --  END    ////////////////////
-
-
-switch ($op) {
- /////////////////  PCN ADVERTISING UPGRADE EXTRAS  --  START    ////////////////////
-    case "theindex":
-    theindex();
-    break;
-	
-	case "campaigns":
-    campaigns();
-    break;
-	
-	case "cancel":
-    cancel();
-    break;
-	
-	case "thanks":
-    thanks();
-    break;
-
-    case "sitestats":
-    sitestats();
-    break;
-
-    case "terms":
-    terms();
-    break;
-	/////////////////  PCN ADVERTISING UPGRADE EXTRAS  --  END    ////////////////////
-	
-	
-	default:
-    plans();
-    break;
-	
-	case "client":
-	client();
-	break;
-	
-	case "client_home":
-	client_home();
-	break;
-	
-	case "client_valid":
-	client_valid($login, $pass);
-	break;
-	
-	case "client_logout":
-	client_logout();
-	break;
-	
-	case "client_report":
-	client_report($cid, $bid);
-	break;
-	
-	case "view_banner":
-	view_banner($cid, $bid);
-	break;
-	
-	
-	case "addbanner":
-	addbanner();
-	break;
-	
-	case "BannersGood":
-	BannersGood();
-	break;
-	
-    case "BannersAdd2":
-	BannersAdd2($name, $cid, $adname, $enddate, $imptotal, $imageurl, $clickurl, $alttext, $position, $active, $ad_class, $ad_code, $ad_width, $ad_height);
-	break;
-
-	case "showplans":
-	showplans();
-	break;
-	
-	case "gateways":
-	gateways();
-	break;
-	
-	case "sponsors":
-	sponsors();
-	break;
-	
-
-}
+match ($op) {
+    "theindex" => theindex(),
+    "campaigns" => campaigns(),
+    "cancel" => cancel(),
+    "thanks" => thanks(),
+    "sitestats" => sitestats(),
+    "terms" => terms(),
+    "client" => client(),
+    "client_home" => client_home(),
+    "client_valid" => client_valid($login, $pass),
+    "client_logout" => client_logout(),
+    "client_report" => client_report($cid, $bid),
+    "view_banner" => view_banner($cid, $bid),
+    "addbanner" => addbanner(),
+    "BannersGood" => BannersGood(),
+    "BannersAdd2" => BannersAdd2($name, $cid, $adname, $enddate, $imptotal, $imageurl, $clickurl, $alttext, $position, $active, $ad_class, $ad_code, $ad_width, $ad_height),
+    "showplans" => showplans(),
+    "gateways" => gateways(),
+    "sponsors" => sponsors(),
+    default => plans(),
+};
 
 ?>
